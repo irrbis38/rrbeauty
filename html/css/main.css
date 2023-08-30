@@ -239,10 +239,10 @@ button {
   outline-offset: 0
 }
 .header {
-  min-height: 46px;
-  background-color: #000;
   position: relative;
-  z-index: 10
+  z-index: 10;
+  min-height: 46px;
+  background-color: #000
 }
 .header__container {
   position: relative;
@@ -353,7 +353,10 @@ button {
   flex-grow: 1
 }
 .panel {
-  border-bottom: 1px solid #d9d9d9
+  position: relative;
+  z-index: 6;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #fff
 }
 .panel__container {
   width: 100%;
@@ -660,6 +663,103 @@ button {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex
+}
+.menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease-out
+}
+.menu.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all
+}
+.menu__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.25);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease-out;
+  cursor: pointer
+}
+.menu__overlay.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all
+}
+.menu__container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: repeat(5,1fr)
+}
+.menu__container li {
+  min-height: 80px;
+  border-bottom: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9
+}
+.menu__container li:nth-child(5n+5) {
+  border-right: none
+}
+.menu__container li:last-child {
+  border-right: none
+}
+.menu__container li:hover {
+  position: relative;
+  z-index: 3;
+  box-shadow: -1px 0 0 0 #d9d9d9
+}
+.menu__container li:hover a {
+  background-color: #d9d9d9
+}
+.menu__container a {
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 24px
+}
+.menu__container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 24px;
+  pointer-events: none;
+  background-color: #fff
+}
+.menu__container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 24px;
+  pointer-events: none;
+  background-color: #fff
 }
 footer {
   padding: 20px

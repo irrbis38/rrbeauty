@@ -1,7 +1,7 @@
 .panel
     .panel__container 
         .panel__nav
-            button.panel__showCategories(aria-label="Показать или скрыть категории каталога")
+            button.panel__showCategories#show-menu(aria-label="Показать или скрыть категории каталога")
                 include ./_icon-categories-to-open
                 include ./_icon-categories-to-close
                 span Каталог
@@ -37,3 +37,7 @@
                 include ./_icon-cart
                 span.panel__amout
                     span 4
+
+    include ./_menu
+
+.menu__overlay#menu-overlay

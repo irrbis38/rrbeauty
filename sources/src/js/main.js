@@ -38,39 +38,57 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // panel logic
 
+  const panel_search = document.getElementById("panel-search");
+  const clear_panel_search_btn = document.getElementById("panel-search-clear");
+
+  panel_search.addEventListener("input", (e) => {
+    const isInputNotEmpty = Boolean(e.target.value);
+    if (!isInputNotEmpty) {
+      panel_search.classList.remove("active");
+      clear_panel_search_btn.classList.remove("visible");
+    } else {
+      panel_search.classList.add("active");
+      clear_panel_search_btn.classList.add("visible");
+    }
+  });
+
+  clear_panel_search_btn.addEventListener("click", () => {
+    panel_search.value = "";
+    panel_search.classList.remove("active");
+    panel_search.focus();
+    clear_panel_search_btn.classList.remove("visible");
+  });
+
+  // menu logic
+
+  const show_menu_button = document.getElementById("show-menu");
+  const menu_overlay = document.getElementById("menu-overlay");
+  const menu = document.getElementById("menu");
   const show_categories_button = document.querySelector(
     ".panel__showCategories"
   );
 
-  show_categories_button.addEventListener("click", () => {
-    requestAnimationFrame(() => doCategoriesMenuToggle(show_categories_button));
+  show_menu_button.addEventListener("click", () => {
+    requestAnimationFrame(
+      [menu_overlay, menu, show_categories_button].forEach((el) =>
+        el.classList.toggle("active")
+      )
+    );
   });
-});
 
-const panel_search = document.getElementById("panel-search");
-const clear_panel_search_btn = document.getElementById("panel-search-clear");
+  menu_overlay.addEventListener("click", () => {
+    requestAnimationFrame(
+      [menu_overlay, menu, show_categories_button].forEach((el) =>
+        el.classList.remove("active")
+      )
+    );
+  });
 
-panel_search.addEventListener("input", (e) => {
-  const isInputNotEmpty = Boolean(e.target.value);
-  if (!isInputNotEmpty) {
-    panel_search.classList.remove("active");
-    clear_panel_search_btn.classList.remove("visible");
-  } else {
-    panel_search.classList.add("active");
-    clear_panel_search_btn.classList.add("visible");
-  }
-});
-
-clear_panel_search_btn.addEventListener("click", () => {
-  panel_search.value = "";
-  panel_search.classList.remove("active");
-  panel_search.focus();
-  clear_panel_search_btn.classList.remove("visible");
+  // ====== end of DOMContentLoaded listener ========
 });
 
 // ========== functions =============
 
 function doCategoriesMenuToggle(btn) {
   btn.classList.toggle("active");
-  console.log("asdf");
 }
