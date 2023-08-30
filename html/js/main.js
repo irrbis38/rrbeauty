@@ -38,26 +38,50 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // panel logic
 
-  const panel_search = document.getElementById("panel-search");
-  const clear_panel_search_btn = document.getElementById("panel-search-clear");
+  const panel_input = document.querySelectorAll(".panel__input");
+  const clear_search_btn = document.querySelectorAll(".panel__clear");
 
-  panel_search.addEventListener("input", (e) => {
+  panel_input.forEach((el) =>
+    el.addEventListener("input", (e) =>
+      requestAnimationFrame(() => doSearchInputHandle(e))
+    )
+  );
+
+  function doSearchInputHandle(e) {
     const isInputNotEmpty = Boolean(e.target.value);
+    const current_panel_input = e.target;
+    const current_clear_btn = current_panel_input.nextElementSibling;
     if (!isInputNotEmpty) {
-      panel_search.classList.remove("active");
-      clear_panel_search_btn.classList.remove("visible");
+      current_panel_input.classList.remove("active");
+      current_clear_btn.classList.remove("visible");
     } else {
-      panel_search.classList.add("active");
-      clear_panel_search_btn.classList.add("visible");
+      current_panel_input.classList.add("active");
+      current_clear_btn.classList.add("visible");
     }
-  });
+  }
 
-  clear_panel_search_btn.addEventListener("click", () => {
-    panel_search.value = "";
-    panel_search.classList.remove("active");
-    panel_search.focus();
-    clear_panel_search_btn.classList.remove("visible");
-  });
+  function doResetSearchInput(input) {
+    const button = input.nextElementSibling;
+    input.value = "";
+    input.classList.remove("active");
+    button.classList.remove("visible");
+  }
+
+  clear_search_btn.forEach((el) =>
+    el.addEventListener("click", (e) =>
+      requestAnimationFrame(() => doClearSearchInput(e))
+    )
+  );
+
+  function doClearSearchInput(e) {
+    const current_clear_btn = e.target.closest(".panel__clear");
+    const current_panel_input = current_clear_btn.previousElementSibling;
+
+    current_panel_input.value = "";
+    current_panel_input.classList.remove("active");
+    current_panel_input.focus();
+    current_clear_btn.classList.remove("visible");
+  }
 
   // menu logic
 
@@ -69,19 +93,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
   );
 
   show_menu_button.addEventListener("click", () => {
-    requestAnimationFrame(
+    requestAnimationFrame(() => {
       [menu_overlay, menu, show_categories_button].forEach((el) =>
         el.classList.toggle("active")
-      )
-    );
+      );
+      panel_input.forEach((el) => doResetSearchInput(el));
+      // body.classList.toggle("lock");
+    });
   });
 
   menu_overlay.addEventListener("click", () => {
-    requestAnimationFrame(
+    requestAnimationFrame(() => {
       [menu_overlay, menu, show_categories_button].forEach((el) =>
         el.classList.remove("active")
-      )
-    );
+      );
+      panel_input.forEach((el) => doResetSearchInput(el));
+      // body.classList.remove("lock");
+    });
   });
 
   // ====== end of DOMContentLoaded listener ========
