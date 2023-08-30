@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const header_btn = document.querySelector(".header__btn");
 
   header_btn.addEventListener("click", () => {
+    requestAnimationFrame(doHeaderToggle);
+  });
+
+  function doHeaderToggle() {
     const isHeaderContainerActive =
       header_container.classList.contains("active");
     if (isHeaderContainerActive) {
@@ -15,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       header_menu.style.maxHeight = header_menu.scrollHeight + "px";
       header_menu.style.opacity = 1;
     }
-  });
+  }
 
   const mq1300 = window.matchMedia("(max-width: 1300px)");
 
@@ -31,6 +35,42 @@ document.addEventListener("DOMContentLoaded", function (event) {
       header_menu.style.opacity = 0;
     }
   }
+
+  // panel logic
+
+  const show_categories_button = document.querySelector(
+    ".panel__showCategories"
+  );
+
+  show_categories_button.addEventListener("click", () => {
+    requestAnimationFrame(() => doCategoriesMenuToggle(show_categories_button));
+  });
 });
 
-// Your functions here
+const panel_search = document.getElementById("panel-search");
+const clear_panel_search_btn = document.getElementById("panel-search-clear");
+
+panel_search.addEventListener("input", (e) => {
+  const isInputNotEmpty = Boolean(e.target.value);
+  if (!isInputNotEmpty) {
+    panel_search.classList.remove("active");
+    clear_panel_search_btn.classList.remove("visible");
+  } else {
+    panel_search.classList.add("active");
+    clear_panel_search_btn.classList.add("visible");
+  }
+});
+
+clear_panel_search_btn.addEventListener("click", () => {
+  panel_search.value = "";
+  panel_search.classList.remove("active");
+  panel_search.focus();
+  clear_panel_search_btn.classList.remove("visible");
+});
+
+// ========== functions =============
+
+function doCategoriesMenuToggle(btn) {
+  btn.classList.toggle("active");
+  console.log("asdf");
+}

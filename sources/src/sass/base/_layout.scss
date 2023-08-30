@@ -20,9 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
-  // color: var(--color_white);
-  // background: var(--color_dark_bg);
-  // font-family: var(--montserrat);
+  color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,22 +35,6 @@ body.lock {
   min-width: 320px;
   margin: 0 auto;
   padding: 0 20px;
-
-  // @include r(1700px) {
-  //   padding: 0 80px;
-  // }
-
-  // @include lg {
-  //   padding: 0 60px;
-  // }
-
-  // @include md {
-  //   padding: 0 40px;
-  // }
-
-  // @include xxs {
-  //   padding: 0 15px;
-  // }
 }
 
 a {
@@ -92,6 +74,10 @@ input {
   appearance: none;
   outline: none;
   background-color: transparent;
+}
+
+button {
+  cursor: pointer;
 }
 
 :active,
