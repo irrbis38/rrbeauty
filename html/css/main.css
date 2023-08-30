@@ -352,10 +352,13 @@ button {
   -ms-flex-positive: 1;
   flex-grow: 1
 }
+.panel {
+  border-bottom: 1px solid #d9d9d9
+}
 .panel__container {
   width: 100%;
   max-width: 1920px;
-  min-height: 71px;
+  min-height: 69px;
   margin: 0 auto;
   padding: 0 60px 0 54px;
   display: grid;
@@ -367,6 +370,11 @@ button {
 @media (max-width:1300px) {
   .panel__container {
     padding: 0 20px
+  }
+}
+@media (max-width:1000px) {
+  .panel__container {
+    min-height: 80px
   }
 }
 .panel__container input::-webkit-input-placeholder {
@@ -424,6 +432,11 @@ button {
   align-items: center;
   gap: 0 16px
 }
+.panel__showCategories svg {
+  display: block;
+  width: 24px;
+  height: 24px
+}
 .panel__showCategories svg:nth-child(2) {
   display: none
 }
@@ -433,9 +446,19 @@ button {
 .panel__showCategories.active svg:nth-child(2) {
   display: block
 }
+@media (max-width:1000px) {
+  .panel__showCategories svg {
+    width: 28px;
+    height: 28px
+  }
+  .panel__showCategories span {
+    display: none
+  }
+}
 .panel__search {
   position: relative;
   width: 26vw;
+  max-width: 500px;
   height: 54px
 }
 .panel__search img {
@@ -455,6 +478,16 @@ button {
 .panel__search input:focus {
   background-color: #f1f1f1
 }
+@media (max-width:1300px) {
+  .panel__search {
+    width: 23vw
+  }
+}
+@media (max-width:1000px) {
+  .panel__search {
+    display: none
+  }
+}
 .panel__clear {
   display: none;
   position: absolute;
@@ -466,6 +499,19 @@ button {
 }
 .panel__clear.visible {
   display: block
+}
+.panel__logo {
+  width: 138px
+}
+.panel__logo img {
+  display: block;
+  width: 100%;
+  height: auto
+}
+@media (max-width:1000px) {
+  .panel__logo {
+    width: 136px
+  }
 }
 .panel__menu {
   display: -webkit-flex;
@@ -493,6 +539,11 @@ button {
 .panel__user .panel__nonAuth {
   display: none
 }
+.panel__user .panel__nonAuth svg {
+  display: block;
+  width: 24px;
+  height: 24px
+}
 .panel__user .panel__auth {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -505,6 +556,18 @@ button {
 }
 .panel__user.not-authorized .panel__auth {
   display: none
+}
+@media (max-width:1000px) {
+  .panel__user {
+    margin-right: 0
+  }
+  .panel__user .user__name {
+    display: none
+  }
+  .panel__user .panel__nonAuth svg {
+    width: 28px;
+    height: 28px
+  }
 }
 .panel__auth,
 .panel__nonAuth {
@@ -534,6 +597,16 @@ button {
 .panel__favorites {
   margin-right: 36px
 }
+@media (max-width:1000px) {
+  .panel__favorites {
+    display: none
+  }
+}
+@media (max-width:1000px) {
+  .panel__cart {
+    display: none
+  }
+}
 .panel__cart,
 .panel__favorites {
   position: relative
@@ -548,7 +621,8 @@ button {
 .panel__favorites:hover path,
 .panel__showCategories:hover path,
 .panel__user:hover path {
-  fill: var(--color_grey,#838383)
+  fill: var(--color_grey,#838383);
+  stroke: var(--color_grey,#838383)
 }
 .panel__amout {
   display: none;
