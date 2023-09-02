@@ -112,6 +112,36 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   });
 
+  const intro_sliders_elements = Array.from(
+    document.querySelectorAll(".intro__slider")
+  );
+
+  const intro_sliders = [];
+
+  intro_sliders_elements.forEach((slider, _, idx) => {
+    intro_sliders[idx] = new Swiper(slider, {
+      // Optional parameters
+      loop: true,
+      grab: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+
+      // pagination
+      pagination: {
+        el: ".intro__pagination",
+        clickable: true,
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".intro__next",
+        prevEl: ".intro__prev",
+      },
+    });
+  });
+
   // ====== end of DOMContentLoaded listener ========
 });
 

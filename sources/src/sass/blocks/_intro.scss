@@ -1,0 +1,197 @@
+.intro {
+  max-height: 813px;
+  overflow: hidden;
+}
+
+.intro__container {
+  position: relative;
+  margin: 0 auto;
+}
+
+.intro__wrapper {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 75%);
+  gap: 0 24px;
+
+  @include lg {
+    grid-template-columns: repeat(3, 100%);
+    gap: 0;
+  }
+}
+
+.intro__block {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: 56.46%;
+  }
+
+  @include lg {
+    height: 600px;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.intro__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include lg {
+    position: static;
+  }
+}
+
+.intro__slider,
+.intro__slider ul {
+  height: 100%;
+}
+
+.splide__slide {
+  height: 100%;
+
+  @include lg {
+    height: 600px;
+  }
+}
+
+// slider navigation
+
+.intro__nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 75%;
+  max-width: 1440px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include lg {
+    width: 100%;
+  }
+
+  @include md {
+    display: none;
+  }
+}
+
+.intro__btn {
+  width: 56px;
+  height: 56px;
+  pointer-events: all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+
+  &,
+  path {
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover {
+    background-color: #000;
+
+    path {
+      fill: #fff;
+    }
+  }
+}
+
+.intro__prev {
+  border-left: 2px solid #000;
+}
+
+.intro__next {
+  border-right: 2px solid #000;
+}
+
+// paggination
+
+.intro__pagination {
+  position: absolute;
+  left: 0;
+  bottom: 52px;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 10px;
+
+  span {
+    position: relative;
+    width: 100%;
+    max-width: 24px;
+    height: 12px;
+    cursor: pointer;
+    border-radius: unset;
+    transition: all 0.4s ease-out;
+    overflow: hidden;
+    background-color: transparent;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 0;
+      z-index: 2;
+      height: 4px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 0;
+      z-index: 3;
+      height: 4px;
+      width: 100%;
+      background-color: #fff;
+      transition: all 5s linear;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    max-width: 98px;
+
+    &::after {
+      animation: sliderProgress 5s linear;
+    }
+  }
+}
+
+@keyframes sliderProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
