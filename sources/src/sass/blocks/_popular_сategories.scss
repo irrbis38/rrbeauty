@@ -1,5 +1,9 @@
 .popularCategories {
   margin-top: 159px;
+
+  @include xs {
+    margin-top: 100px;
+  }
 }
 
 .popularCategories__title {
@@ -9,12 +13,27 @@
   letter-spacing: 2.24px;
   text-transform: uppercase;
   border-top: 1px solid #d9d9d9;
+
+  @include xs {
+    padding: 30px 0 27px;
+    font-size: 24px;
+    letter-spacing: 1.2px;
+  }
 }
 
 .popularCategories__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 36px 24px;
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include xs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
 }
 
 .popularCategories__item {
@@ -25,6 +44,10 @@
     img {
       scale: 1.1;
     }
+  }
+
+  @include xs {
+    padding-bottom: 9px;
   }
 }
 
@@ -54,10 +77,18 @@
     object-fit: cover;
     transition: all 0.5s ease-out;
   }
+
+  @include xs {
+    margin-bottom: 10px;
+  }
 }
 
 .popularCategories__name {
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
+
+  @include xs {
+    font-size: 16px;
+  }
 }

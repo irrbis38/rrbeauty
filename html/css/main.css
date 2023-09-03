@@ -1149,7 +1149,7 @@ body.lock {
   margin: 0 auto;
   padding: 0 40px
 }
-@media (max-width:575px) {
+@media (max-width:767px) {
   .container {
     padding: 0 20px
   }
@@ -1819,7 +1819,7 @@ button {
     display: none
   }
 }
-@media (max-width:575px) {
+@media (max-width:767px) {
   .menu__container {
     grid-template-columns: 1fr;
     padding: 0 24px
@@ -1969,7 +1969,7 @@ button {
   position: absolute;
   left: 0;
   top: unset!important;
-  bottom: 52px!important;
+  bottom: 48px!important;
   width: 100%;
   z-index: 2;
   display: -webkit-flex;
@@ -2022,6 +2022,11 @@ button {
   -webkit-animation: sliderProgress 5s linear;
   animation: sliderProgress 5s linear
 }
+@media (max-width:767px) {
+  .intro__pagination {
+    bottom: 34px!important
+  }
+}
 @-webkit-keyframes sliderProgress {
   0% {
     -webkit-transform: translateX(-100%);
@@ -2045,6 +2050,11 @@ button {
 .popularCategories {
   margin-top: 159px
 }
+@media (max-width:767px) {
+  .popularCategories {
+    margin-top: 100px
+  }
+}
 .popularCategories__title {
   padding: 30px 0 32px;
   font-size: 32px;
@@ -2053,10 +2063,28 @@ button {
   text-transform: uppercase;
   border-top: 1px solid #d9d9d9
 }
+@media (max-width:767px) {
+  .popularCategories__title {
+    padding: 30px 0 27px;
+    font-size: 24px;
+    letter-spacing: 1.2px
+  }
+}
 .popularCategories__list {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 36px 24px
+}
+@media (max-width:1300px) {
+  .popularCategories__list {
+    grid-template-columns: repeat(3,1fr)
+  }
+}
+@media (max-width:767px) {
+  .popularCategories__list {
+    grid-template-columns: repeat(2,1fr);
+    gap: 24px 16px
+  }
 }
 .popularCategories__item {
   padding-bottom: 27px;
@@ -2064,6 +2092,11 @@ button {
 }
 .popularCategories__item:hover img {
   scale: 1.1
+}
+@media (max-width:767px) {
+  .popularCategories__item {
+    padding-bottom: 9px
+  }
 }
 .popularCategories__link {
   display: block;
@@ -2090,10 +2123,20 @@ button {
   object-fit: cover;
   transition: all .5s ease-out
 }
+@media (max-width:767px) {
+  .popularCategories__img {
+    margin-bottom: 10px
+  }
+}
 .popularCategories__name {
   font-size: 20px;
   font-weight: 600;
   line-height: 24px
+}
+@media (max-width:767px) {
+  .popularCategories__name {
+    font-size: 16px
+  }
 }
 .brandsSection {
   margin-top: 232px;

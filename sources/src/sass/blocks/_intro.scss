@@ -136,7 +136,7 @@
   position: absolute;
   left: 0;
   top: unset !important;
-  bottom: 52px !important;
+  bottom: 48px !important;
   width: 100%;
   z-index: 2;
   display: flex;
@@ -185,6 +185,10 @@
     &::after {
       animation: sliderProgress 5s linear;
     }
+  }
+
+  @include xs {
+    bottom: 34px !important;
   }
 }
 
