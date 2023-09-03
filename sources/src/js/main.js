@@ -1,5 +1,22 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-  const body = document.body;
+  doHeaderInit();
+  doPanelInit();
+
+  // main page
+
+  const intro_section = document.querySelector(".intro");
+  if (intro_section) {
+    doIntroSectionInit();
+  }
+
+  // ====== END OF DOMContentLoaded LISTENERS ========
+});
+
+// ========== FUNCTIONS =============
+
+// header logic
+
+function doHeaderInit() {
   const header_container = document.querySelector(".header__container");
   const header_menu = document.querySelector(".header__menu");
   const header_btn = document.querySelector(".header__btn");
@@ -35,7 +52,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
       header_menu.style.opacity = 0;
     }
   }
+}
 
+// panel and menu logic
+
+function doPanelInit() {
   // panel logic
 
   const panel_input = document.querySelectorAll(".panel__input");
@@ -98,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         el.classList.toggle("active")
       );
       panel_input.forEach((el) => doResetSearchInput(el));
-      // body.classList.toggle("lock");
     });
   });
 
@@ -108,45 +128,134 @@ document.addEventListener("DOMContentLoaded", function (event) {
         el.classList.remove("active")
       );
       panel_input.forEach((el) => doResetSearchInput(el));
-      // body.classList.remove("lock");
     });
   });
 
-  const intro_sliders_elements = Array.from(
-    document.querySelectorAll(".intro__slider")
+  function doCategoriesMenuToggle(btn) {
+    btn.classList.toggle("active");
+  }
+}
+
+// intro section logic
+
+function doIntroSectionInit() {
+  // separate initialization of each individual slider for correct operation of sliders
+  const intro_slider_left = new Swiper("#intro-slider-left", {
+    // Optional parameters
+    loop: true,
+    grab: false,
+    allowTouchMove: false,
+
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    hashNavigation: {
+      watchState: true,
+    },
+
+    // pagination
+    pagination: {
+      el: ".intro__pagination",
+      clickable: true,
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".intro__next",
+      prevEl: ".intro__prev",
+    },
+  });
+
+  const intro_slider_center = new Swiper("#intro-slider-center", {
+    // Optional parameters
+    loop: true,
+    grab: false,
+    allowTouchMove: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    hashNavigation: {
+      watchState: true,
+    },
+
+    // pagination
+    pagination: {
+      el: ".intro__pagination",
+      clickable: true,
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".intro__next",
+      prevEl: ".intro__prev",
+    },
+
+    breakpoints: {
+      1301: {
+        allowTouchMove: false,
+      },
+    },
+  });
+
+  const intro_slider_right = new Swiper("#intro-slider-right", {
+    // Optional parameters
+    loop: true,
+    grab: false,
+    allowTouchMove: false,
+
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    hashNavigation: {
+      watchState: true,
+    },
+
+    // pagination
+    pagination: {
+      el: ".intro__pagination",
+      clickable: true,
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".intro__next",
+      prevEl: ".intro__prev",
+    },
+  });
+
+  const intro_pagination = Array.from(
+    document.querySelectorAll(".intro__pagination span")
   );
+  // add listeners to central slider
+  intro_slider_center.on("slideChange", doUpdateActiveIntroSliderBullet);
 
-  const intro_sliders = [];
+  function doUpdateActiveIntroSliderBullet() {
+    // get index of current slide
+    const realIndex = intro_slider_center.realIndex;
 
-  intro_sliders_elements.forEach((slider, _, idx) => {
-    intro_sliders[idx] = new Swiper(slider, {
-      // Optional parameters
-      loop: true,
-      grab: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-
-      // pagination
-      pagination: {
-        el: ".intro__pagination",
-        clickable: true,
-      },
-
-      // Navigation arrows
-      navigation: {
-        nextEl: ".intro__next",
-        prevEl: ".intro__prev",
-      },
+    // reset current active bullet
+    intro_pagination.forEach((bullet) => {
+      bullet.classList.remove("swiper-pagination-bullet-active");
     });
+
+    // set new active bullet
+    intro_pagination[realIndex].classList.add(
+      "swiper-pagination-bullet-active"
+    );
+  }
+
+  // create mediaQuery
+  const mq1300 = window.matchMedia("(max-width: 1300px)");
+
+  // update left and right sliders after risize from '1300px<=' size to '>1300px' size
+  mq1300.addEventListener("change", (e) => {
+    if (!e.matches) {
+      const realIndex = intro_slider_center.realIndex;
+      intro_slider_right.slideToLoop(realIndex, 0);
+      intro_slider_left.slideToLoop(realIndex, 0);
+    }
   });
-
-  // ====== end of DOMContentLoaded listener ========
-});
-
-// ========== functions =============
-
-function doCategoriesMenuToggle(btn) {
-  btn.classList.toggle("active");
 }

@@ -66,7 +66,7 @@
   height: 100%;
 }
 
-.splide__slide {
+.intro__slide {
   height: 100%;
 
   @include lg {
@@ -135,7 +135,8 @@
 .intro__pagination {
   position: absolute;
   left: 0;
-  bottom: 52px;
+  top: unset !important;
+  bottom: 52px !important;
   width: 100%;
   z-index: 2;
   display: flex;
