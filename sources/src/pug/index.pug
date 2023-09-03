@@ -57,3 +57,31 @@ block page
                 button.intro__paginationItem(type="button" aria-label="Пагинация слайдера")
                 button.intro__paginationItem(type="button" aria-label="Пагинация слайдера")
                 button.intro__paginationItem(type="button" aria-label="Пагинация слайдера")
+
+
+    section.popularCategories
+        .container 
+            h2.popularCategories__title Популярные категории
+
+            ul.popularCategories__list 
+
+                - const numbersOfItems = [1, 2, 3, 4, 5, 6, 7, 8]
+
+                each number in numbersOfItems 
+                    +popularCategoriesItem(number)
+
+    section.brandsSection
+        .brandsSection__autoscroll.autoscroll__block.splide(aria-label="Заголовок бегущей строкой")
+            .splide__track
+                ul.splide__list
+                    li.splide__slide: h2.brandsSection__title.autoscroll__title бренды
+                    li.splide__slide: h2.brandsSection__title.autoscroll__title бренды
+                    li.splide__slide: h2.brandsSection__title.autoscroll__title бренды
+
+        .container 
+            ul.brandsSection__list 
+                li.brandsSection__item
+                    a(href="#") 
+
+
+

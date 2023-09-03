@@ -9,12 +9,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doIntroSectionInit();
   }
 
+  new Splide(".brandsSection__autoscroll", {
+    type: "loop",
+    perPage: 2,
+    arrows: false,
+    pagination: false,
+    autoScroll: {
+      speed: 1,
+    },
+  }).mount(window.splide.Extensions);
+
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
 // ========== FUNCTIONS =============
 
-// header logic
+//=== header logic
 
 function doHeaderInit() {
   const header_container = document.querySelector(".header__container");
@@ -54,7 +64,7 @@ function doHeaderInit() {
   }
 }
 
-// panel and menu logic
+//=== panel and menu logic
 
 function doPanelInit() {
   // panel logic
@@ -136,7 +146,7 @@ function doPanelInit() {
   }
 }
 
-// intro section logic
+//=== intro section logic
 
 function doIntroSectionInit() {
   // separate initialization of each individual slider for correct operation of sliders
@@ -254,6 +264,7 @@ function doIntroSectionInit() {
   mq1300.addEventListener("change", (e) => {
     if (!e.matches) {
       const realIndex = intro_slider_center.realIndex;
+      intro_slider_center.slideToLoop(realIndex, 0);
       intro_slider_right.slideToLoop(realIndex, 0);
       intro_slider_left.slideToLoop(realIndex, 0);
     }
