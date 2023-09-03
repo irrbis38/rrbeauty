@@ -2062,9 +2062,17 @@ button {
   padding-bottom: 27px;
   border-bottom: 1px solid #d9d9d9
 }
+.popularCategories__item:hover img {
+  scale: 1.1
+}
+.popularCategories__link {
+  display: block;
+  height: 100%
+}
 .popularCategories__img {
   position: relative;
-  margin-bottom: 27px
+  margin-bottom: 27px;
+  overflow: hidden
 }
 .popularCategories__img::after {
   content: "";
@@ -2079,7 +2087,8 @@ button {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover
+  object-fit: cover;
+  transition: all .5s ease-out
 }
 .popularCategories__name {
   font-size: 20px;
