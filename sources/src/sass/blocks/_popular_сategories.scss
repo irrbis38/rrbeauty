@@ -1,7 +1,7 @@
 .popularCategories {
   margin-top: 159px;
 
-  @include xs {
+  @include sm {
     margin-top: 100px;
   }
 }

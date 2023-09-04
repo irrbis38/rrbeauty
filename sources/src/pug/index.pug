@@ -74,14 +74,92 @@ block page
         .brandsSection__autoscroll.autoscroll__block.splide
             .splide__track
                 ul.splide__list
-                    li.splide__slide: h2.brandsSection__title.autoscroll__title бренды
-                    li.splide__slide: h2.brandsSection__title.autoscroll__title бренды
-                    li.splide__slide: h2.brandsSection__title.autoscroll__title бренды
+                    li.splide__slide: h2.autoscroll__title бренды
+                    li.splide__slide: h2.autoscroll__title бренды
+                    li.splide__slide: h2.autoscroll__title бренды
 
         .container 
-            ul.brandsSection__list 
-                li.brandsSection__item
-                    a(href="#") 
+            ul.brandsSection__list
+
+                - const brands_items = [1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1]
+
+                each number in brands_items 
+                    +brandSectionItem(number)
+
+            button.brandsSection__btn.showmore__btn Показать еще
+
+
+    section.promotionsSection
+        .promotionsSection__autoscroll.autoscroll__block.splide
+            .splide__track
+                ul.splide__list
+                    li.splide__slide: h2.autoscroll__title акции
+                    li.splide__slide: h2.autoscroll__title акции
+                    li.splide__slide: h2.autoscroll__title акции
+
+
+        .promotionsSection__container
+            .promotionsSection__wrapper
+
+                .promotionsSection__block.promotionsSection__block--first
+
+                    .promotionsSection__item
+                        .promotionsSection__img
+                            img(src="./images/promotions-slide-1.png" alt="")
+                            span.promotionsSection__sticker.sticker__blue 15.09 - 15.10
+                        h3.promotionsSection__name
+                            a(href="#") Скидка 15% на пигменты#[br]AS company
+
+                    .promotionsSection__item.promotionsSection__over.over
+                        .over__overlay
+                        .over__fragment
+                            .over__picture
+                                img(src="./images/over-slide-1.png" alt="Жидкая матовая помада")
+                                span.over__sticker.stiker__azure -15%
+                            .over__descr 
+                                .over__price 
+                                    span.over__priceNew 3 800₸
+                                    span.over__priceOld 6 800₸
+                                h3.over__name: a(href="#") SHISEIDO
+                                p.over__about MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада
+                        .over__fragment
+                            .over__picture
+                                img(src="./images/over-slide-1.png" alt="Жидкая матовая помада")
+                            .over__descr 
+                                .over__price 
+                                    span.over__priceNew 3 800₸
+                                    span.over__priceOld 6 800₸
+                                h3.over__name: a(href="#") SHISEIDO
+                                p.over__about MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада
+
+
+                .promotionsSection__block.promotionsSection__block--second
+
+                    .promotionsSection__item
+                        .promotionsSection__img
+                            img(src="./images/promotions-slide-2.png" alt="")
+                            span.promotionsSection__sticker.sticker__green 15.09 - 15.10
+                        h3.promotionsSection__name
+                            a(href="#") Подарок от#[br]La Roche-Posay
+
+                    .promotionsSection__item
+                        .promotionsSection__img
+                            img(src="./images/promotions-slide-3.png" alt="")
+                            span.promotionsSection__sticker.sticker__red 15.09 - 15.10
+                        h3.promotionsSection__name
+                            a(href="#") 305 by Miami Stylists#[br]до −35%
+
+
+        .promotionsSection__nav.intro__nav
+
+            button.intro__btn.intro__prev(type="button" aria-label="")
+                svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                    path(d="M20.0002 11.0001V13.0001H8.00016L13.5002 18.5001L12.0802 19.9201L4.16016 12.0001L12.0802 4.08008L13.5002 5.50008L8.00016 11.0001H20.0002Z" fill="#000")
+
+            button.intro__btn.intro__next(type="button" aria-label="")
+                svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                    path(d="M3.99984 11.0001V13.0001H15.9998L10.4998 18.5001L11.9198 19.9201L19.8398 12.0001L11.9198 4.08008L10.4998 5.50008L15.9998 11.0001H3.99984Z" fill="#000")
+
 
 
 

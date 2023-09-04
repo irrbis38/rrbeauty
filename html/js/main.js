@@ -9,15 +9,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doIntroSectionInit();
   }
 
-  new Splide(".brandsSection__autoscroll", {
-    type: "loop",
-    perPage: 2,
-    arrows: false,
-    pagination: false,
-    autoScroll: {
-      speed: 1,
-    },
-  }).mount(window.splide.Extensions);
+  const autoscroll_blocks_all = document.querySelectorAll(".autoscroll__block");
+
+  autoscroll_blocks_all.forEach((slider) => {
+    new Splide(slider, {
+      type: "loop",
+      arrows: false,
+      pagination: false,
+      perPage: 2,
+      gap: "120px",
+      breakpoints: {
+        767: {
+          perPage: 3,
+          gap: "200px",
+        },
+        575: {
+          perPage: 2,
+        },
+      },
+
+      autoScroll: {
+        speed: 0.5,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+      },
+    }).mount(window.splide.Extensions);
+  });
 
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
