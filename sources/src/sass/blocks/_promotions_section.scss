@@ -1,10 +1,8 @@
 .promotionsSection {
   position: relative;
-  margin-top: 232px;
   margin-top: 265px;
   overflow: hidden;
-
-  padding-bottom: 200px;
+  padding-bottom: 232px;
 
   @include xl {
     margin-top: 202px;
@@ -30,6 +28,14 @@
   max-width: 1920px;
   margin: 0 auto;
   // overflow: hidden;
+
+  @include xs {
+    padding: 0 40px;
+  }
+
+  @include xxs {
+    padding: 0 20px;
+  }
 }
 
 .promotionsSection__wrapper {
@@ -56,12 +62,8 @@
     width: 100%;
     max-width: 546px;
     margin: 0 auto;
+    padding: 0;
     display: block;
-    padding: 0 40px;
-  }
-
-  @include xxs {
-    padding: 0 20px;
   }
 }
 
@@ -117,22 +119,6 @@
   @include sm {
     padding: 8px 17px;
   }
-}
-
-.sticker__blue {
-  background-color: #001bc6;
-}
-
-.sticker__green {
-  background-color: #65d80d;
-}
-
-.stiker__azure {
-  background-color: rgb(46, 132, 154);
-}
-
-.sticker__red {
-  background-color: #9c0029;
 }
 
 .promotionsSection__name {
@@ -403,20 +389,6 @@
   @include sm {
     height: 150px;
   }
-}
-
-.over__sticker {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-  padding: 8px 14px;
-
-  text-align: center;
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: 0.85px;
-  color: #fff;
 }
 
 .over__priceNew,

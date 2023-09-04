@@ -115,7 +115,7 @@ block page
                         .over__fragment
                             .over__picture
                                 img(src="./images/over-slide-1.png" alt="Жидкая матовая помада")
-                                span.over__sticker.stiker__azure -15%
+                                span.sticker__sale.stiker__azure -15%
                             .over__descr 
                                 .over__price 
                                     span.over__priceNew 3 800₸
@@ -150,6 +150,10 @@ block page
                             a(href="#") 305 by Miami Stylists#[br]до −35%
 
 
+
+            button.brandsSection__btn.showmore__btn Показать еще
+
+
         .promotionsSection__nav.intro__nav
 
             button.intro__btn.intro__prev(type="button" aria-label="")
@@ -159,6 +163,82 @@ block page
             button.intro__btn.intro__next(type="button" aria-label="")
                 svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
                     path(d="M3.99984 11.0001V13.0001H15.9998L10.4998 18.5001L11.9198 19.9201L19.8398 12.0001L11.9198 4.08008L10.4998 5.50008L15.9998 11.0001H3.99984Z" fill="#000")
+
+
+
+
+    section.discountedProducts
+
+        .discountedProducts__bg 
+            .discountedProducts__textLine.textLline__first
+                .discountedProducts__inner
+                    span товары
+                    span товары
+                    span товары
+            .discountedProducts__textLine.textLline__second
+                .discountedProducts__inner
+                    span со скидкой
+                    span со скидкой
+                    span со скидкой
+
+        .container
+            h2.discountedProducts__title товары со скидкой
+
+            .goodsCard__wrapper
+
+                include ./blocks/_goods-card-items
+
+            button.brandsSection__btn.showmore__btn Показать еще
+
+
+
+
+    section.popularGoods.goodsSection
+
+        .container
+            h2.goodsSection__title популярные товары
+
+            .goodsCard__wrapper
+
+                include ./blocks/_goods-card-items
+
+            button.brandsSection__btn.showmore__btn Показать еще
+
+
+
+
+    section.newGoods.goodsSection
+
+        .container
+            h2.goodsSection__title новинки
+
+            .goodsCard__wrapper
+
+                include ./blocks/_goods-card-items
+
+            button.brandsSection__btn.showmore__btn Показать еще
+
+
+
+
+    section.ourGoods.goodsSection
+
+        .container
+            h2.goodsSection__title наша продукция
+
+            .goodsCard__wrapper
+
+                include ./blocks/_goods-card-items
+
+            button.brandsSection__btn.showmore__btn Показать еще
+
+
+
+    section.promotionsSection
+        .promotionsSection__autoscroll.autoscroll__block.splide
+            .splide__track
+                ul.splide__list
+                    li.splide__slide: h2.autoscroll__title наши магазины
 
 
 

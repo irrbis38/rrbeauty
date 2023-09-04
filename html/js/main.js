@@ -286,4 +286,17 @@ function doIntroSectionInit() {
       intro_slider_left.slideToLoop(realIndex, 0);
     }
   });
+
+  // addToFavorite button
+
+  const goodsCard_addToFavorites_buttons = document.querySelectorAll(
+    ".goodsCard__addToFavorites"
+  );
+
+  goodsCard_addToFavorites_buttons.forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      const button = e.target.closest(".goodsCard__addToFavorites");
+      button.classList.toggle("addedToFavorites");
+    })
+  );
 }
