@@ -573,8 +573,8 @@
           <button class="brandsSection__btn showmore__btn">Показать еще</button>
         </div>
       </section>
-      <section class="promotionsSection">
-        <div class="promotionsSection__autoscroll autoscroll__block splide">
+      <section class="mapSection">
+        <div class="map__autoscroll autoscroll__block splide">
           <div class="splide__track">
             <ul class="splide__list">
               <li class="splide__slide">
@@ -583,7 +583,42 @@
             </ul>
           </div>
         </div>
+        <div class="mapSection__container">
+          <div class="map__info">
+            <select class="map__stores" name="stores" aria-label="Выбрать магазин"> 
+              <option value="Almaty">Алматы</option>
+              <option value="Astana">Астана</option>
+              <option value="Moscow">Москва</option>
+            </select>
+            <div class="map__description">
+              <div class="map__description-wrapper">
+                <h3 class="map__storeName">магазин №214</h3>
+                <div class="map__data">
+                  <p class="map__name">Адрес</p>
+                  <p class="map__value">Краснодар, В. Головатого, 313</p>
+                </div>
+                <div class="map__data">
+                  <p class="map__name">График работы</p>
+                  <p class="map__value">Ежедневно, 10:00 — 22:00</p>
+                </div>
+                <div class="map__data">
+                  <p class="map__name">Горячая линия</p>
+                  <p class="map__value"><a href="tel:88008805060">8 800 880 50 60</a></p>
+                </div>
+                <div class="map__data">
+                  <p class="map__name">Почта</p>
+                  <p class="map__value"><a href="mailto:rr@gmail.com">rr@gmail.com</a></p>
+                </div>
+              </div>
+              <button class="map__close" type="button" aria-label="Закрыть окно с описанием магазина">Закрыть</button>
+            </div>
+          </div>
+          <div class="mapSection__wrapper" id="map-section-wrapper">
+            <div class="mapSection__overlay"></div>
+          </div>
+        </div>
       </section>
+      <script src="https://api-maps.yandex.ru/2.1/?apikey=key&amp;lang=ru_RU"></script>
     </main>
     <footer class="footer">
       <div class="container">Footer</div>

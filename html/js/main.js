@@ -7,34 +7,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
     doIntroSectionInit();
+    doInitMap();
+    doRemoveMapOverlayByClick();
+    doInitMapStoresSelect();
+    doAddMapStoresListener();
+    doHideMapDescription();
   }
-
-  const autoscroll_blocks_all = document.querySelectorAll(".autoscroll__block");
-
-  autoscroll_blocks_all.forEach((slider) => {
-    new Splide(slider, {
-      type: "loop",
-      arrows: false,
-      pagination: false,
-      perPage: 2,
-      gap: "120px",
-      breakpoints: {
-        767: {
-          perPage: 3,
-          gap: "200px",
-        },
-        575: {
-          perPage: 2,
-        },
-      },
-
-      autoScroll: {
-        speed: 0.5,
-        pauseOnHover: false,
-        pauseOnFocus: false,
-      },
-    }).mount(window.splide.Extensions);
-  });
 
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -299,4 +277,135 @@ function doIntroSectionInit() {
       button.classList.toggle("addedToFavorites");
     })
   );
+
+  // init autoscroll blocks
+
+  const brandsSection_autoscroll = document.querySelector(
+    ".brandsSection__autoscroll"
+  );
+  const promotionsSection_autoscroll = document.querySelector(
+    ".promotionsSection__autoscroll"
+  );
+  const map_autoscroll = document.querySelector(".map__autoscroll");
+
+  [brandsSection_autoscroll, promotionsSection_autoscroll].forEach((slider) => {
+    new Splide(slider, {
+      type: "loop",
+      arrows: false,
+      pagination: false,
+      perPage: 2,
+      gap: "120px",
+      breakpoints: {
+        767: {
+          perPage: 3,
+          gap: "200px",
+        },
+        575: {
+          perPage: 2,
+        },
+      },
+
+      autoScroll: {
+        speed: 0.5,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+      },
+    }).mount(window.splide.Extensions);
+  });
+
+  [map_autoscroll].forEach((slider) => {
+    new Splide(slider, {
+      type: "loop",
+      arrows: false,
+      pagination: false,
+      perPage: 1,
+      gap: "120px",
+      breakpoints: {
+        575: {
+          gap: "200px",
+        },
+      },
+      autoScroll: {
+        speed: 0.5,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+      },
+    }).mount(window.splide.Extensions);
+  });
+}
+
+// init map on main page
+
+function doInitMap() {
+  const mark_link = "/images/map-current-mark.svg";
+  function init() {
+    let center = [51.158562572612595, 71.43921449999996];
+    let map = new ymaps.Map("map-section-wrapper", {
+      center: center,
+      zoom: 17,
+    });
+
+    let mark = new ymaps.Placemark(
+      center,
+      {},
+      {
+        iconLayout: "default#image",
+        iconImageHref: mark_link,
+        iconImageSize: [40, 40],
+        iconImageOffset: [-15, -5],
+      }
+    );
+
+    map.controls.remove("geolocationControl"); // удаляем геолокацию
+    map.controls.remove("searchControl"); // удаляем поиск
+    map.controls.remove("trafficControl"); // удаляем контроль трафика
+    map.controls.remove("typeSelector"); // удаляем тип
+    map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
+    map.controls.remove("zoomControl"); // удаляем контрол зуммирования
+    map.controls.remove("rulerControl"); // удаляем контрол правил
+    //map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
+
+    map.geoObjects.add(mark);
+  }
+  ymaps.ready(init);
+}
+
+function doRemoveMapOverlayByClick() {
+  const mapSection_overlay = document.querySelector(".mapSection__overlay");
+
+  mapSection_overlay.addEventListener("click", () => {
+    mapSection_overlay.classList.add("hidden");
+  });
+}
+
+// init map__stores select
+
+function doInitMapStoresSelect() {
+  const select = document.querySelector(".map__stores");
+  const choices = new Choices(select, {
+    silent: false,
+    searchEnabled: false,
+  });
+}
+
+// add listeners to .map__stores select element
+
+function doAddMapStoresListener() {
+  const select = document.querySelector(".map__stores");
+  const map_description = document.querySelector(".map__description");
+
+  select.addEventListener("change", (e) => {
+    map_description.classList.remove("hidden");
+  });
+}
+
+// hide map__description
+
+function doHideMapDescription() {
+  const map_description = document.querySelector(".map__description");
+  const map_close_btn = document.querySelector(".map__close");
+
+  map_close_btn.addEventListener("click", () => {
+    map_description.classList.add("hidden");
+  });
 }

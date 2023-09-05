@@ -8,6 +8,7 @@
 //@import "../libs/LIB_NAME/path/to/style.scss"
 @import "../libs/swiper/swiper-bundle.min.css";
 @import "../libs/splide/splide.min.css";
+@import "../libs/choices/choices.min.css";
 
 /*===== global styles =====*/
 * {
@@ -446,4 +447,9 @@ button {
   @include xs {
     padding: 0 20px;
   }
+}
+
+// reset copyright of yandex map
+[class*="copyrights-pane"] {
+  display: none !important;
 }

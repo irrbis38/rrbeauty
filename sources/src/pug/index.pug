@@ -234,11 +234,46 @@ block page
 
 
 
-    section.promotionsSection
-        .promotionsSection__autoscroll.autoscroll__block.splide
+    section.mapSection
+        .map__autoscroll.autoscroll__block.splide
             .splide__track
                 ul.splide__list
                     li.splide__slide: h2.autoscroll__title наши магазины
+
+        .mapSection__container
+
+            .map__info
+                select.map__stores(name="stores" aria-label="Выбрать магазин") 
+                    option(value="Almaty") Алматы
+                    option(value="Astana") Астана
+                    option(value="Moscow") Москва
+
+                .map__description
+                    .map__description-wrapper
+                        h3.map__storeName магазин №214
+                        .map__data
+                            p.map__name Адрес
+                            p.map__value Краснодар, В. Головатого, 313
+                        .map__data
+                            p.map__name График работы
+                            p.map__value Ежедневно, 10:00 — 22:00
+                        .map__data
+                            p.map__name Горячая линия
+                            p.map__value: a(href="tel:88008805060") 8 800 880 50 60
+                        .map__data
+                            p.map__name Почта
+                            p.map__value: a(href="mailto:rr@gmail.com") rr@gmail.com
+
+                    button.map__close(type="button" aria-label="Закрыть окно с описанием магазина") Закрыть
+
+
+            .mapSection__wrapper#map-section-wrapper
+
+                .mapSection__overlay
+
+
+
+    script(src="https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU")
 
 
 
