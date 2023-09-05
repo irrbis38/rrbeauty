@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doInitMapStoresSelect();
     doAddMapStoresListener();
     doHideMapDescription();
+    doToggleFooterAccordion();
   }
 
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -407,5 +408,70 @@ function doHideMapDescription() {
 
   map_close_btn.addEventListener("click", () => {
     map_description.classList.add("hidden");
+  });
+}
+
+// footer accordion for <= 767px
+
+function doToggleFooterAccordion() {
+  // check on load
+  if (window.innerWidth <= 575) {
+    doAddListenersToFooterAccordions();
+  }
+
+  // check by resize
+  const mq575 = window.matchMedia("(max-width: 575px)");
+
+  mq575.addEventListener("change", (e) => {
+    // console.log("asdfasg;qweoqwhe");
+    if (e.matches) {
+      doAddListenersToFooterAccordions();
+    } else {
+      doRemoveListenersToFooterAccordions();
+    }
+  });
+}
+
+// footer accordion handler
+
+function handleFooterAccordions(e) {
+  const column = e.target.closest(".footer__column");
+  const wrapper = column.children[1];
+
+  column.classList.toggle("active");
+  const isColumnActive = column.classList.contains("active");
+
+  if (isColumnActive) {
+    wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+  } else {
+    wrapper.style.maxHeight = null;
+  }
+}
+
+// add listeners to footer accordions
+
+function doAddListenersToFooterAccordions() {
+  const footer_columns = document.querySelectorAll(".footer__column");
+
+  footer_columns.forEach((column) => {
+    const title = column.children[0];
+
+    title.addEventListener("click", handleFooterAccordions);
+  });
+}
+
+// remove listeners to footer accordions
+
+function doRemoveListenersToFooterAccordions() {
+  const footer_columns = document.querySelectorAll(".footer__column");
+
+  footer_columns.forEach((column) => {
+    const title = column.children[0];
+    const wrapper = column.children[1];
+
+    title.removeEventListener("click", handleFooterAccordions);
+
+    column.classList.remove("active");
+    wrapper.style.maxHeight = null;
   });
 }

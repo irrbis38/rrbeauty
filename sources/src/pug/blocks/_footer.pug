@@ -1,2 +1,57 @@
 footer.footer
-    .container Footer
+    .footer__main 
+        .container
+            .footer__main-wrapper
+                .footer__column 
+                    h3.footer__title Компания
+                    .footer__wrapper
+                        ul.footer__list 
+                            li: a(href="#") Каталог товаров
+                            li: a(href="#") Каталог товаров
+                            li: a(href="#") Каталог товаров
+                            li: a(href="#") Каталог товаров
+                .footer__column 
+                    h3.footer__title Покупателям
+                    .footer__wrapper
+                        ul.footer__list 
+                            li: a(href="#") Оплата
+                            li: a(href="#") Доставка
+                            li: a(href="#") Оплата лучшей цены
+                            li: a(href="#") Оплата лучшей цены
+                .footer__column 
+                    h3.footer__title Информация
+                    .footer__wrapper
+                        ul.footer__list 
+                            li: a(href="#") Акции
+                            li: a(href="#") Сезонные предложения
+                            li: a(href="#") Сезонные предложения
+                            li: a(href="#") Сезонные предложения
+                .footer__column
+                    h3.footer__title Контакты
+                    .footer__wrapper
+                        ul.footer__list 
+                            li: a(href="mailto:rrbeauty@gmail.com") rrbeauty@gmail.com
+
+                            li: a(href="tel:88008805060") 8 800 880 50 60
+
+                        ul.footer__social 
+                            li: a(href="#")
+                                include ./_icon-social-whatsapp
+
+                            li: a(href="#")
+                                include ./_icon-social-instagram
+
+                            li: a(href="#")
+                                include ./_icon-social-telegram
+
+    .footer__copyright
+
+        .container
+
+            .footer__period ©  2014-2022  RR
+
+            a.footer__developedBy(href="#")
+                img(src="./images/art6-logo.svg" alt="Сделано в ART6")
+
+            a.footer__policy(href="#") Политика конфиденциальности
+
