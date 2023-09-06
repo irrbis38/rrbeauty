@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   doHeaderInit();
   doPanelInit();
 
+  // init GSAP ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
   // main page
 
   const intro_section = document.querySelector(".intro");
