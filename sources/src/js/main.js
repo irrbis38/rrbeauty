@@ -415,7 +415,7 @@ function doIntroSectionInit() {
 // init map on main page
 
 function doInitMap() {
-  const mark_link = "/images/map-current-mark.svg";
+  const mark_link = "images/map-current-mark.svg";
   function init() {
     let center = [51.158562572612595, 71.43921449999996];
     let map = new ymaps.Map("map-section-wrapper", {
