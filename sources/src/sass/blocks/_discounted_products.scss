@@ -32,6 +32,7 @@
 }
 
 .discountedProducts__inner {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 31px 0 31px;
@@ -72,10 +73,12 @@
 
 .textLline__first {
   .discountedProducts__inner {
-    transform: translateX(-665px);
+    // transform: translateX(-665px);
+    left: -665px;
 
     @include sm {
-      transform: translateX(-445px);
+      // transform: translateX(-445px);
+      left: -445px;
     }
   }
 }

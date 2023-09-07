@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doAddMapStoresListener();
     doHideMapDescription();
     doToggleFooterAccordion();
+    doParallaxPromotionsSection();
   }
 
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -554,4 +555,69 @@ function doRemoveListenersToFooterAccordions() {
     column.classList.remove("active");
     wrapper.style.maxHeight = null;
   });
+}
+
+// parallax for 'discountedProducts' on main page
+
+function doParallaxPromotionsSection() {
+  const discounted_products = document.querySelector(".discountedProducts");
+  const goods_card_items =
+    discounted_products.querySelectorAll(".goodsCard__item");
+  // console.log(goods_card_items);
+  const TL = gsap.timeline();
+
+  TL.from(".textLline__first", {
+    x: "200px",
+    scrollTrigger: {
+      trigger: ".discountedProducts",
+      markers: true,
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: true,
+    },
+  })
+    .from(
+      ".textLline__second",
+      {
+        x: "-200px",
+        scrollTrigger: {
+          trigger: ".discountedProducts",
+          markers: true,
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      },
+      0
+    )
+    .from(
+      goods_card_items[0],
+      {
+        y: "-232px",
+        ease: Power2.easeOut,
+        scrollTrigger: {
+          trigger: ".goodsCard__wrapper",
+          markers: true,
+          start: "+=200px bottom",
+          end: "bottom+=400px bottom",
+          scrub: true,
+        },
+      },
+      0
+    )
+    .from(
+      goods_card_items[2],
+      {
+        y: "-98px",
+        ease: Power2.easeOut,
+        scrollTrigger: {
+          trigger: ".goodsCard__wrapper",
+          markers: true,
+          start: "+=200px bottom",
+          end: "bottom+=400px bottom",
+          scrub: true,
+        },
+      },
+      0
+    );
 }

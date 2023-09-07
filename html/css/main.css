@@ -3310,6 +3310,7 @@ button {
   border-bottom: 4px solid #1b1b1b
 }
 .discountedProducts__inner {
+  position: relative;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -3352,13 +3353,11 @@ button {
   }
 }
 .textLline__first .discountedProducts__inner {
-  -webkit-transform: translateX(-665px);
-  transform: translateX(-665px)
+  left: -665px
 }
 @media (max-width:991px) {
   .textLline__first .discountedProducts__inner {
-    -webkit-transform: translateX(-445px);
-    transform: translateX(-445px)
+    left: -445px
   }
 }
 .textLline__second {
