@@ -1,4 +1,6 @@
 extends base/_layout
+block vars
+    - var bodyClass = 'index';
 block head
     title RR Beauty - Главная страница
 block page
@@ -145,7 +147,7 @@ block page
                     .promotionsSection__item
                         .promotionsSection__img
                             img(src="./images/promotions-slide-3.png" alt="")
-                            span.promotionsSection__sticker.sticker__red 15.09 - 15.10
+                            span.promotionsSection__sticker.sticker__darkRed 15.09 - 15.10
                         h3.promotionsSection__name
                             a(href="#") 305 by Miami Stylists#[br]до −35%
 
@@ -273,7 +275,6 @@ block page
 
 
 
-    script(src="https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU")
 
 
 

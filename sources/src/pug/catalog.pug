@@ -1,0 +1,42 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'catalog';
+block head
+    title RR Beauty - Каталог
+block page
+
+    include ./blocks/_panel
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title Пигменты
+
+    .catalog
+
+        .container
+
+            .catalog__filters.filters
+
+            .catalog__container
+
+                .catalog__aditionalFilters.aditionalFilters
+
+                    button.aditionalFilters__button Вся косметика
+                    button.aditionalFilters__button Аппараты
+                    button.aditionalFilters__button Все для отрисовки эскиза
+                    button.aditionalFilters__button Дезинфицирующие средства
+                    button.aditionalFilters__button Охлаждающие крема и гели
+                    button.aditionalFilters__button Средства ухода
+
+                .catalog__wrapper
+
+
+
+                .catalog__pagination.pagination

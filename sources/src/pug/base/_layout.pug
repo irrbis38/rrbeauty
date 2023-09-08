@@ -1,5 +1,7 @@
 include _vars
 include _mixins
+block vars
+    - var bodyClass = '';
 doctype html
 html(lang="ru")
     head
@@ -29,7 +31,7 @@ html(lang="ru")
 
         link(rel="stylesheet" href="css/main.min.css")
 
-    body
+    body(class= bodyClass)
         block header
             include ../blocks/_header
 
@@ -38,5 +40,13 @@ html(lang="ru")
 
         block footer
             include ../blocks/_footer
-        block js
-            script(src="js/main.min.js")
+
+            if bodyClass === 'index'
+                block js
+                    script(src="https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU")
+                    script(src="js/main.min.js")
+            else 
+                block js
+                    script(src="js/main.min.js")
+
+

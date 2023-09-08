@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
     doIntroSectionInit();
-    doInitMap();
+    if (typeof ymaps !== "undefined" && ymaps !== null) {
+      doInitMap();
+    }
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -422,33 +424,36 @@ function doInitMap() {
   const mark_link = "images/map-current-mark.svg";
   function init() {
     let center = [51.158562572612595, 71.43921449999996];
-    let map = new ymaps.Map("map-section-wrapper", {
-      center: center,
-      zoom: 17,
-    });
+    if (ymaps) {
+      let map = new ymaps.Map("map-section-wrapper", {
+        center: center,
+        zoom: 17,
+      });
 
-    let mark = new ymaps.Placemark(
-      center,
-      {},
-      {
-        iconLayout: "default#image",
-        iconImageHref: mark_link,
-        iconImageSize: [40, 40],
-        iconImageOffset: [-15, -5],
-      }
-    );
+      let mark = new ymaps.Placemark(
+        center,
+        {},
+        {
+          iconLayout: "default#image",
+          iconImageHref: mark_link,
+          iconImageSize: [40, 40],
+          iconImageOffset: [-15, -5],
+        }
+      );
 
-    map.controls.remove("geolocationControl"); // удаляем геолокацию
-    map.controls.remove("searchControl"); // удаляем поиск
-    map.controls.remove("trafficControl"); // удаляем контроль трафика
-    map.controls.remove("typeSelector"); // удаляем тип
-    map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
-    map.controls.remove("zoomControl"); // удаляем контрол зуммирования
-    map.controls.remove("rulerControl"); // удаляем контрол правил
-    //map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
+      map.controls.remove("geolocationControl"); // удаляем геолокацию
+      map.controls.remove("searchControl"); // удаляем поиск
+      map.controls.remove("trafficControl"); // удаляем контроль трафика
+      map.controls.remove("typeSelector"); // удаляем тип
+      map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
+      map.controls.remove("zoomControl"); // удаляем контрол зуммирования
+      map.controls.remove("rulerControl"); // удаляем контрол правил
+      //map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
 
-    map.geoObjects.add(mark);
+      map.geoObjects.add(mark);
+    }
   }
+
   ymaps.ready(init);
 }
 
@@ -570,7 +575,7 @@ function doParallaxPromotionsSection() {
     x: "200px",
     scrollTrigger: {
       trigger: ".discountedProducts",
-      markers: true,
+      // markers: true,
       start: "top bottom",
       end: "bottom bottom",
       scrub: true,
@@ -582,7 +587,7 @@ function doParallaxPromotionsSection() {
         x: "-200px",
         scrollTrigger: {
           trigger: ".discountedProducts",
-          markers: true,
+          // markers: true,
           start: "top bottom",
           end: "bottom bottom",
           scrub: true,
@@ -597,7 +602,7 @@ function doParallaxPromotionsSection() {
         ease: Power2.easeOut,
         scrollTrigger: {
           trigger: ".goodsCard__wrapper",
-          markers: true,
+          // markers: true,
           start: "+=200px bottom",
           end: "bottom+=400px bottom",
           scrub: true,
@@ -612,9 +617,9 @@ function doParallaxPromotionsSection() {
         ease: Power2.easeOut,
         scrollTrigger: {
           trigger: ".goodsCard__wrapper",
-          markers: true,
+          // markers: true,
           start: "+=200px bottom",
-          end: "bottom+=400px bottom",
+          end: "bottom+=200px bottom",
           scrub: true,
         },
       },
