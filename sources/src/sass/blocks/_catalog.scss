@@ -3,10 +3,20 @@
     display: grid;
     grid-template-columns: 342px 1fr;
   }
+
+  @include r(1199px) {
+    .container {
+      display: block;
+    }
+  }
 }
 
 .catalog__container {
-  padding: 23px 5px 174px 24px;
+  padding: 23px 5px 0 24px;
+
+  @include r(1199px) {
+    padding: 24px 0 0 0;
+  }
 }
 
 .catalog__filters {
@@ -34,5 +44,38 @@
   &:hover {
     background-color: #000;
     color: #fff;
+  }
+}
+
+.catalog__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(332px, 1fr));
+  gap: 41px 24px;
+  margin-bottom: 90px;
+
+  @include lg {
+    grid-template-columns: repeat(auto-fit, minmax(332px, 1fr));
+  }
+
+  @include xs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include xxs {
+    max-width: 335px;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+  }
+
+  // @include xxs {
+  //   display: block;
+  // }
+}
+
+.catalog-page {
+  .goodsCard__item {
+    @include xxs {
+      display: block;
+    }
   }
 }

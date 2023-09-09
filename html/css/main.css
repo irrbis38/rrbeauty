@@ -1432,8 +1432,13 @@ template {
   font-weight: 600;
   src: url(../fonts/montserrat-v25-cyrillic_latin-600.woff2) format("woff2"),url(../fonts/montserrat-v25-cyrillic_latin-600.ttf) format("truetype")
 }
-* {
+html {
   box-sizing: border-box
+}
+*,
+::after,
+::before {
+  box-sizing: inherit
 }
 body {
   width: 100%;
@@ -1668,7 +1673,7 @@ button {
 @media (max-width:767px) {
   .goodsCard__wrapper {
     gap: 30px 20px;
-    padding: 0 40px
+    padding: 0
   }
 }
 @media (max-width:575px) {
@@ -1695,15 +1700,11 @@ button {
   flex-wrap: wrap;
   background-color: #fff
 }
-.goodsCard__descr {
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1
-}
 .goodsCard__img {
   position: relative;
   width: 100%;
-  margin-bottom: 24px
+  margin-bottom: 24px;
+  border: 1px solid #d9d9d9
 }
 .goodsCard__img::after {
   content: "";
@@ -3766,8 +3767,18 @@ button {
   display: grid;
   grid-template-columns: 342px 1fr
 }
+@media only screen and (max-width:1199px) {
+  .catalog .container {
+    display: block
+  }
+}
 .catalog__container {
-  padding: 23px 5px 174px 24px
+  padding: 23px 5px 0 24px
+}
+@media only screen and (max-width:1199px) {
+  .catalog__container {
+    padding: 24px 0 0 0
+  }
 }
 .catalog__filters {
   background-color: beige
@@ -3797,6 +3808,34 @@ button {
 .aditionalFilters__button:hover {
   background-color: #000;
   color: #fff
+}
+.catalog__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(332px,1fr));
+  gap: 41px 24px;
+  margin-bottom: 90px
+}
+@media (max-width:1300px) {
+  .catalog__wrapper {
+    grid-template-columns: repeat(auto-fit,minmax(332px,1fr))
+  }
+}
+@media (max-width:767px) {
+  .catalog__wrapper {
+    grid-template-columns: repeat(2,1fr)
+  }
+}
+@media (max-width:575px) {
+  .catalog__wrapper {
+    max-width: 335px;
+    margin: 0 auto;
+    grid-template-columns: 1fr
+  }
+}
+@media (max-width:575px) {
+  .catalog-page .goodsCard__item {
+    display: block
+  }
 }
 .footer {
   padding-top: 71px

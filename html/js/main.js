@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   doHeaderInit();
   doPanelInit();
+  doToggleFooterAccordion();
 
   // init GSAP ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doInitMapStoresSelect();
     doAddMapStoresListener();
     doHideMapDescription();
-    doToggleFooterAccordion();
     doParallaxPromotionsSection();
   }
 

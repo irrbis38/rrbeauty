@@ -1,6 +1,6 @@
 extends base/_layout
 block vars
-    - var bodyClass = 'catalog';
+    - var bodyClass = 'catalog-page';
 block head
     title RR Beauty - Каталог
 block page
@@ -36,6 +36,94 @@ block page
                     button.aditionalFilters__button Средства ухода
 
                 .catalog__wrapper
+
+                    -
+                        var goodsList = [
+                            {
+                                imgUrl: './images/goods-card-4.png',
+                                isSale: true,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: '4 800₸',
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для губ Nut pie (Ореховое пралине), 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-5.png',
+                                isSale: false,
+                                isHit: true,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-7.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: '4 800₸',
+                                name: 'AS COMPANY',
+                                descr: 'MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада'
+                            },
+                            {
+                                imgUrl: './images/goods-card-5.png',
+                                isSale: false,
+                                isHit: true,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл'
+                            },
+                        ]
+
+                    each good in goodsList
+                        +goodsCardItem(good.imgUrl, good.isSale, good.isHit, good.price, good.oldPrice, good.name, good.descr)
 
 
 

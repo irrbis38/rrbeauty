@@ -11,8 +11,14 @@
 @import "../libs/choices/choices.min.css";
 
 /*===== global styles =====*/
-* {
+
+html {
   box-sizing: border-box;
+}
+*,
+::after,
+::before {
+  box-sizing: inherit;
 }
 // min-height: 0.001vw; // — Fixes Safari bug with viewport units in calc()
 
@@ -255,7 +261,7 @@ button {
 
   @include xs {
     gap: 30px 20px;
-    padding: 0 40px;
+    padding: 0;
   }
 
   @include xxs {
@@ -275,14 +281,15 @@ button {
   background-color: #fff;
 }
 
-.goodsCard__descr {
-  flex-grow: 1;
-}
+// .goodsCard__descr {
+//   flex-grow: 1;
+// }
 
 .goodsCard__img {
   position: relative;
   width: 100%;
   margin-bottom: 24px;
+  border: 1px solid #d9d9d9;
 
   &::after {
     content: "";
