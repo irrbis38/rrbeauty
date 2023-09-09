@@ -92,3 +92,15 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr)
             p.goodsCard__about #{descr}
 
         button.goodsCard__addToCart(type="button" aria-label="Добавить товар в корзину") В корзину
+
+
+
+mixin pagination(customClass)
+    ul.pagination(class= customClass)
+
+        li.pagination__current: a(href="#") 1
+        li: a(href="#") 2
+        li: a(href="#") 3
+        li.pagination__dots: span ...
+        li: a(href="#") 32
+

@@ -20,11 +20,25 @@ block page
 
     .catalog
 
-        .container
+        .container.catalog__container
 
-            .catalog__filters.filters
+            .catalog__options.options
 
-            .catalog__container
+                .options__nav
+                    button.options__filtersToggleBtn
+                        include blocks/_icon-filter
+                        span Фильтр
+                    button.options__sortToggleBtn
+                        span.options__current По популярности
+                        span.options__currentSmall Сортировка
+                        include ./blocks/_icon-sort
+
+                .options__sortList.sort
+
+                .options__filtersList.filters
+
+            .catalog__content
+
 
                 .catalog__aditionalFilters.aditionalFilters
 
@@ -127,4 +141,6 @@ block page
 
 
 
-                .catalog__pagination.pagination
+                +pagination('catalog__pagination')
+
+                button.catalog__btn.showmore__btn Показать еще

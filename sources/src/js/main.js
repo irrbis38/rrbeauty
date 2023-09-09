@@ -18,7 +18,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doInitMapStoresSelect();
     doAddMapStoresListener();
     doHideMapDescription();
+    doToggleFavoritesIcons();
     doParallaxPromotionsSection();
+  }
+
+  // catalog page
+  const catalog_page = document.querySelector(".catalog-page");
+
+  if (catalog_page) {
+    doToggleFavoritesIcons();
   }
 
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -271,19 +279,6 @@ function doIntroSectionInit() {
       intro_slider_left.slideToLoop(realIndex, 0);
     }
   });
-
-  // addToFavorite button
-
-  const goodsCard_addToFavorites_buttons = document.querySelectorAll(
-    ".goodsCard__addToFavorites"
-  );
-
-  goodsCard_addToFavorites_buttons.forEach((btn) =>
-    btn.addEventListener("click", (e) => {
-      const button = e.target.closest(".goodsCard__addToFavorites");
-      button.classList.toggle("addedToFavorites");
-    })
-  );
 
   // init autoscroll blocks
 
@@ -560,6 +555,23 @@ function doRemoveListenersToFooterAccordions() {
     column.classList.remove("active");
     wrapper.style.maxHeight = null;
   });
+}
+
+// toggle addToFavorites buttons
+
+function doToggleFavoritesIcons() {
+  // addToFavorite button
+
+  const goodsCard_addToFavorites_buttons = document.querySelectorAll(
+    ".goodsCard__addToFavorites"
+  );
+
+  goodsCard_addToFavorites_buttons.forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      const button = e.target.closest(".goodsCard__addToFavorites");
+      button.classList.toggle("addedToFavorites");
+    })
+  );
 }
 
 // parallax for 'discountedProducts' on main page
