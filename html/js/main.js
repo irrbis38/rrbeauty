@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   if (catalog_page) {
     doToggleFavoritesIcons();
+    doSortMenuLogic();
   }
 
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -637,4 +638,61 @@ function doParallaxPromotionsSection() {
       },
       0
     );
+}
+
+// show sort menu
+
+function doSortMenuLogic() {
+  const body = document.body;
+  const options_sort_toggle_btn = document.querySelector(
+    ".options__sortToggleBtn"
+  );
+  const options_overlay = document.querySelector(".options__overlay");
+  const options_buttons = Array.from(
+    document.querySelectorAll(".options__sortList li button")
+  );
+  const elements = [].concat(options_overlay, ...options_buttons);
+  const options_current = document.querySelector(".options__current");
+
+  // init functions
+  doOpenSortMenu();
+
+  // show sort menu
+  function doOpenSortMenu() {
+    options_sort_toggle_btn.addEventListener("click", () => {
+      body.classList.add("sort-list-open");
+      elements.forEach((el) =>
+        el.addEventListener("click", handleHideSortMenu)
+      );
+      doChangeCurrentSortOption();
+    });
+  }
+
+  // hide sort menu
+  function handleHideSortMenu() {
+    body.classList.remove("sort-list-open");
+    elements.forEach((el) =>
+      el.removeEventListener("click", handleHideSortMenu)
+    );
+  }
+
+  // change current sort option
+  function doChangeCurrentSortOption() {
+    options_buttons.forEach((btn) =>
+      btn.addEventListener("click", handleSortButtons)
+    );
+  }
+
+  function handleSortButtons(e) {
+    let currentSortType = options_sort_toggle_btn.dataset.sortType;
+    const clickedSortButton = e.target.closest(".options__sortList button");
+    let newSortType = clickedSortButton.dataset.sortType;
+
+    if (currentSortType !== newSortType) {
+      // place to send a request when changing sort type
+
+      options_current.textContent = clickedSortButton.children[0].textContent;
+      options_sort_toggle_btn.dataset.sortType = newSortType;
+    }
+  }
 }

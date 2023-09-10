@@ -1,4 +1,5 @@
 .options {
+  position: relative;
   border-right: 1px solid #d9d9d9;
 
   @include r(1199px) {
@@ -96,5 +97,45 @@
 
   @include xxs {
     display: block;
+  }
+}
+
+.options__overlay {
+  // display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-out;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.options__sortList {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 12;
+  background-color: #fff;
+  transition: all 0.2s ease-out;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 24px 29px;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
   }
 }

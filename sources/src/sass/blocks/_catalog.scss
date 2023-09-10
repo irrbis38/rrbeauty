@@ -1,3 +1,25 @@
+.catalog-page.sort-list-open {
+  .catalog {
+    position: relative;
+    z-index: 11;
+  }
+
+  .options__overlay {
+    // display: block;
+    z-index: 11;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .options__sortList {
+    // display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
 .catalog__container {
   display: grid;
   grid-template-columns: 342px 1fr;
@@ -7,7 +29,14 @@
   }
 }
 
+.catalog__options {
+  position: relative;
+  z-index: 3;
+}
+
 .catalog__content {
+  position: relative;
+  z-index: 2;
   padding: 23px 5px 174px 24px;
 
   @include r(1199px) {

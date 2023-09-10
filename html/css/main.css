@@ -1690,16 +1690,13 @@ button {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   background-color: #fff
+}
+.goodsCard__descr {
+  width: 100%
 }
 .goodsCard__img {
   position: relative;
@@ -1800,6 +1797,9 @@ button {
   }
 }
 .goodsCard__addToCart {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
   display: block;
   width: 100%;
   padding: 17px 30px;
@@ -3762,6 +3762,21 @@ button {
     letter-spacing: 1.4px
   }
 }
+.catalog-page.sort-list-open .catalog {
+  position: relative;
+  z-index: 11
+}
+.catalog-page.sort-list-open .options__overlay {
+  z-index: 11;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all
+}
+.catalog-page.sort-list-open .options__sortList {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all
+}
 .catalog__container {
   display: grid;
   grid-template-columns: 342px 1fr
@@ -3771,7 +3786,13 @@ button {
     display: block
   }
 }
+.catalog__options {
+  position: relative;
+  z-index: 3
+}
 .catalog__content {
+  position: relative;
+  z-index: 2;
   padding: 23px 5px 174px 24px
 }
 @media only screen and (max-width:1199px) {
@@ -3892,6 +3913,7 @@ button {
   cursor: default
 }
 .options {
+  position: relative;
   border-right: 1px solid #d9d9d9
 }
 @media only screen and (max-width:1199px) {
@@ -4019,6 +4041,47 @@ button {
   .options__currentSmall {
     display: block
   }
+}
+.options__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.25);
+  transition: all .2s ease-out;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none
+}
+.options__sortList {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 12;
+  background-color: #fff;
+  transition: all .2s ease-out;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none
+}
+.options__sortList button {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 28px 24px 29px
+}
+.options__sortList button:hover {
+  background-color: #f1f1f1
 }
 .footer {
   padding-top: 71px;

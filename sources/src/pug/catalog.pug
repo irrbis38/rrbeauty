@@ -25,15 +25,27 @@ block page
             .catalog__options.options
 
                 .options__nav
-                    button.options__filtersToggleBtn
+                    button.options__filtersToggleBtn(aria-label="Показать / скрыть фильтры" type="button")
                         include blocks/_icon-filter
                         span Фильтр
-                    button.options__sortToggleBtn
+                    button.options__sortToggleBtn(aria-label="Показать / скрыть сортировку" type="button" data-sort-type="popularity")
                         span.options__current По популярности
                         span.options__currentSmall Сортировка
                         include ./blocks/_icon-sort
 
-                .options__sortList.sort
+                .options__overlay
+
+                ul.options__sortList.sort
+
+                    li: button(type="button" aria-label="Сортировать по популярности" data-sort-type="popularity")
+                        span По популярности
+                        img(src="./images/icon-popularity.svg" alt="")
+                    li: button(type="button" aria-label="Сортировать по возрастанию цены" data-sort-type="increase")
+                        span По возрастанию цены
+                        img(src="./images/icon-increase.svg" alt="")
+                    li: button(type="button" aria-label="Сортировать по по убыванию цены" data-sort-type="decrease")
+                        span По убыванию цены
+                        img(src="./images/icon-decrease.svg" alt="")
 
                 .options__filtersList.filters
 

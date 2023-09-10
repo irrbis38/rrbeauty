@@ -276,15 +276,13 @@ button {
 
 .goodsCard__item {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   flex-wrap: wrap;
   background-color: #fff;
 }
 
-// .goodsCard__descr {
-//   flex-grow: 1;
-// }
+.goodsCard__descr {
+  width: 100%;
+}
 
 .goodsCard__img {
   position: relative;
@@ -396,6 +394,7 @@ button {
 }
 
 .goodsCard__addToCart {
+  align-self: flex-end;
   display: block;
   width: 100%;
   padding: 17px 30px;
