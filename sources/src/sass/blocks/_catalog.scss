@@ -117,6 +117,30 @@
   }
 }
 
+// catalog favorites page
+
+.catalog-favorites-page {
+  .catalog__container {
+    display: block;
+  }
+
+  .catalog__content {
+    padding: 23px 5px 174px;
+  }
+
+  @include xs {
+    .catalog__pagination {
+      display: none;
+    }
+  }
+
+  @include xxs {
+    .goodsCard__item {
+      display: block;
+    }
+  }
+}
+
 // brand descriptions block
 
 .catalog-brand-page {

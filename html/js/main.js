@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     handleAllInputRange();
   }
 
-  // catalog page
+  // catalog brand page
   const catalog_brand_page = document.querySelector(".catalog-brand-page");
 
   if (catalog_brand_page) {
@@ -41,6 +41,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doFiltersMenuLogic();
     handleAllInputRange();
     doToggleBrandDescription();
+  }
+
+  // catalog favorites page
+  const catalog_favorites_page = document.querySelector(
+    ".catalog-favorites-page"
+  );
+
+  if (catalog_favorites_page) {
+    doToggleFavoritesIcons();
   }
 
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -581,7 +590,7 @@ function doToggleFavoritesIcons() {
 
   goodsCard_addToFavorites_buttons.forEach((btn) =>
     btn.addEventListener("click", (e) => {
-      const button = e.target.closest(".goodsCard__addToFavorites");
+      const button = e.target.closest(".goodsCard__item");
       button.classList.toggle("addedToFavorites");
     })
   );

@@ -330,7 +330,7 @@ button {
     }
   }
 
-  &.addedToFavorites {
+  .goodsCard__item.addedToFavorites & {
     img {
       &:nth-child(1) {
         display: none;

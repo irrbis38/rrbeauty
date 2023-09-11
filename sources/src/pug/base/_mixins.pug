@@ -72,8 +72,8 @@ mixin brandSectionItem(numberOfIcon)
             img(src= "./images/icon-brand-" + numberOfIcon + ".svg" alt="")
 
 
-mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr)
-    .goodsCard__item
+mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAddedToFavorites)
+    .goodsCard__item(class=isAddedToFavorites ? 'addedToFavorites' : '')
         .goodsCard__descr
             .goodsCard__img
                 img(src= imgUrl alt= name)

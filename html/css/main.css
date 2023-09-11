@@ -1740,10 +1740,10 @@ button {
 .goodsCard__addToFavorites img:nth-child(2) {
   display: none
 }
-.goodsCard__addToFavorites.addedToFavorites img:nth-child(1) {
+.goodsCard__item.addedToFavorites .goodsCard__addToFavorites img:nth-child(1) {
   display: none
 }
-.goodsCard__addToFavorites.addedToFavorites img:nth-child(2) {
+.goodsCard__item.addedToFavorites .goodsCard__addToFavorites img:nth-child(2) {
   display: block
 }
 .goodsCard__price {
@@ -3872,6 +3872,22 @@ button {
 }
 @media (max-width:575px) {
   .catalog-page .goodsCard__item {
+    display: block
+  }
+}
+.catalog-favorites-page .catalog__container {
+  display: block
+}
+.catalog-favorites-page .catalog__content {
+  padding: 23px 5px 174px
+}
+@media (max-width:767px) {
+  .catalog-favorites-page .catalog__pagination {
+    display: none
+  }
+}
+@media (max-width:575px) {
+  .catalog-favorites-page .goodsCard__item {
     display: block
   }
 }
