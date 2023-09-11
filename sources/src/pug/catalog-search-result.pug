@@ -1,0 +1,140 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'catalog-search-result-page';
+block head
+    title RR Beauty - Каталог
+block page
+
+    include ./blocks/_panel
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            .top__search.panel__search
+                img(src="./images/icon-search.svg" alt="")
+                input.panel__input(type="text" aria-label="Поиск" placeholder="Поиск")
+                svg.panel__clear(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label='Очистить поле поиска')
+                    path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+
+            h2.top__title
+                span Найдено
+                span.top__amount 214
+
+            p.top__subtitle По запросу «Пигмент для бровей Brown haired»
+
+    .catalog
+
+        .container.catalog__container
+
+            .catalog__content
+
+                .catalog__wrapper
+
+                    -
+                        var goodsList = [
+                            {
+                                imgUrl: './images/goods-card-4.png',
+                                isSale: true,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: '4 800₸',
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для губ Nut pie (Ореховое пралине), 6 мл',
+                                isAddedToFavorites: false
+                            },
+                            {
+                                imgUrl: './images/goods-card-5.png',
+                                isSale: false,
+                                isHit: true,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл',
+                                isAddedToFavorites: true
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл',
+                                isAddedToFavorites: false
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл',
+                                isAddedToFavorites: false
+                            },
+                            {
+                                imgUrl: './images/goods-card-7.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл',
+                                isAddedToFavorites: false
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл',
+                                isAddedToFavorites: true
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: '4 800₸',
+                                name: 'AS COMPANY',
+                                descr: 'MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада',
+                                isAddedToFavorites: false
+                            },
+                            {
+                                imgUrl: './images/goods-card-5.png',
+                                isSale: false,
+                                isHit: true,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл',
+                                isAddedToFavorites: false
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл',
+                                isAddedToFavorites: false
+                            },
+                        ]
+
+                    each good in goodsList
+                        +goodsCardItem(good.imgUrl, good.isSale, good.isHit, good.price, good.oldPrice, good.name, good.descr, good.isAddedToFavorites)
+
+
+
+                +pagination('catalog__pagination')
+
+                button.catalog__btn.showmore__btn Показать еще

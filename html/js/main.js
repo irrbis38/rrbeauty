@@ -52,6 +52,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
   }
 
+  // catalog favorites page
+  const catalog_search_result_page = document.querySelector(
+    ".catalog-search-result-page"
+  );
+
+  if (catalog_search_result_page) {
+    doToggleFavoritesIcons();
+  }
+
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
