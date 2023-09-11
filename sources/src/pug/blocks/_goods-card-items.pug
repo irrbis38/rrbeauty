@@ -7,7 +7,8 @@
             price: '3 800₸',
             oldPrice: '4 800₸',
             name: 'GIVENCHY',
-            descr: 'Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet '
+            descr: 'Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet',
+            isAddedToFavorites: false
         },
         {
             imgUrl: './images/goods-card-2.png',
@@ -16,7 +17,8 @@
             price: '3 800₸',
             oldPrice: false,
             name: 'SHISEIDO',
-            descr: 'MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада'
+            descr: 'MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада',
+            isAddedToFavorites: false
         },
         {
             imgUrl: './images/goods-card-3.png',
@@ -25,7 +27,8 @@
             price: '3 800₸',
             oldPrice: false,
             name: 'LUXVISAGE',
-            descr: 'Помада для губ с невесомым покрытием Visionairy Gel'
+            descr: 'Помада для губ с невесомым покрытием Visionairy Gel',
+            isAddedToFavorites: false
         },
         {
             imgUrl: './images/goods-card-1.png',
@@ -34,12 +37,13 @@
             price: '3 800₸',
             oldPrice: '4 800₸',
             name: 'GIVENCHY',
-            descr: 'Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet'
+            descr: 'Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet',
+            isAddedToFavorites: false
         },
     ]
 
 each good in goodsList
-    +goodsCardItem(good.imgUrl, good.isSale, good.isHit, good.price, good.oldPrice, good.name, good.descr)
+    +goodsCardItem(good.imgUrl, good.isSale, good.isHit, good.price, good.oldPrice, good.name, good.descr, good.isAddedToFavorites)
 
 .goodsCard__nav
     .goodsCard__nav-wrapper
