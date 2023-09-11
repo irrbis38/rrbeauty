@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (catalog_page) {
     doToggleFavoritesIcons();
     doSortMenuLogic();
+    doFiltersMenuLogic();
+    handleAllInputRange();
   }
 
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -505,7 +507,6 @@ function doToggleFooterAccordion() {
   const mq575 = window.matchMedia("(max-width: 575px)");
 
   mq575.addEventListener("change", (e) => {
-    // console.log("asdfasg;qweoqwhe");
     if (e.matches) {
       doAddListenersToFooterAccordions();
     } else {
@@ -581,7 +582,6 @@ function doParallaxPromotionsSection() {
   const discounted_products = document.querySelector(".discountedProducts");
   const goods_card_items =
     discounted_products.querySelectorAll(".goodsCard__item");
-  // console.log(goods_card_items);
   const TL = gsap.timeline();
 
   TL.from(".textLline__first", {
@@ -640,7 +640,7 @@ function doParallaxPromotionsSection() {
     );
 }
 
-// show sort menu
+// sort menu logic
 
 function doSortMenuLogic() {
   const body = document.body;
@@ -693,6 +693,214 @@ function doSortMenuLogic() {
 
       options_current.textContent = clickedSortButton.children[0].textContent;
       options_sort_toggle_btn.dataset.sortType = newSortType;
+    }
+  }
+}
+
+// filters menu logic
+
+function doFiltersMenuLogic() {
+  const options_nav = document.querySelector(".options__nav");
+  const options_filters_toggle_btn = document.querySelector(
+    ".options__filtersToggleBtn"
+  );
+  const filters_buttons = Array.from(
+    document.querySelectorAll(".filters__button")
+  );
+  const filters = document.querySelector(".filters");
+
+  options_filters_toggle_btn.addEventListener("click", () => {
+    options_nav.classList.toggle("filters-opened");
+    filters.classList.toggle("filters-opened");
+  });
+
+  filters_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const filter_block = btn.closest(".filters__block");
+      const filter_wrapper = filter_block.querySelector(".filters__wrapper");
+
+      // toggle filters_list
+      filter_block.classList.toggle("filters-block-opened");
+
+      if (filter_block.classList.contains("filters-block-opened")) {
+        filter_wrapper.style.maxHeight = filter_wrapper.scrollHeight + "px";
+      } else {
+        filter_wrapper.style.maxHeight = null;
+      }
+    })
+  );
+}
+
+function handleAllInputRange() {
+  // handle all input range in filters
+
+  const filters_range_inputs = document.querySelectorAll(".filters__range");
+
+  filters_range_inputs.forEach((rangeInput) =>
+    rangeInput.addEventListener("input", doHandleRangeInputs)
+  );
+
+  function doHandleRangeInputs(e) {
+    // get current inputs - min and max
+    let minInputRange, maxInputRange;
+    const isMinInputRange = e.target.classList.contains("filters__inputMin");
+    const isMaxInputRange = e.target.classList.contains("filters__inputMax");
+    if (isMinInputRange) {
+      minInputRange = e.target;
+      maxInputRange = minInputRange.nextElementSibling;
+    } else if (isMaxInputRange) {
+      maxInputRange = e.target;
+      minInputRange = maxInputRange.previousElementSibling;
+    }
+
+    // get elements
+    const filter_wrapper = minInputRange.closest(".filters__wrapper");
+    const track = filter_wrapper.querySelector(".filters__track");
+    const min = filter_wrapper.querySelector(".filters__valueMin");
+    const max = filter_wrapper.querySelector(".filters__valueMax");
+
+    // convert values to number
+    let minValue = parseInt(minInputRange.value);
+    let maxValue = parseInt(maxInputRange.value);
+
+    // minDifference is the minimum value by which min and max can converge
+    let minDifference;
+
+    if (parseInt(maxInputRange.max) - parseInt(minInputRange.min) <= 10) {
+      minDifference = 1;
+    } else if (
+      parseInt(maxInputRange.max) - parseInt(minInputRange.min) <=
+      100
+    ) {
+      minDifference = 10;
+    } else {
+      minDifference = 50;
+    }
+
+    // if the input cannot be moved further
+    if (maxValue - minValue < minDifference) {
+      if (isMinInputRange) {
+        minInputRange.value = maxValue - minDifference;
+      } else {
+        maxInputRange.value = minValue + minDifference;
+      }
+    } else {
+      // otherwise calculates the value of the  two curret inputs and displays their values
+      min.value = `${minValue}`;
+      max.value = `${maxValue}`;
+      let left =
+        ((minValue - minInputRange.min) * 100) /
+          (minInputRange.max - minInputRange.min) +
+        "%";
+      let right =
+        ((maxInputRange.max - maxValue) * 100) /
+          (maxInputRange.max - maxInputRange.min) +
+        "%";
+      track.style.left = left;
+      track.style.right = right;
+    }
+  }
+
+  // handle all min and max value
+  const filters_value_min = Array.from(
+    document.querySelectorAll(".filters__valueMin")
+  );
+
+  const filters_value_max = Array.from(
+    document.querySelectorAll(".filters__valueMax")
+  );
+
+  filters_value_min.forEach((input) =>
+    input.addEventListener("change", handleInputMinMax)
+  );
+
+  filters_value_max.forEach((input) =>
+    input.addEventListener("change", handleInputMinMax)
+  );
+
+  filters_value_min.forEach((input) =>
+    input.addEventListener("blur", handleInputMinMax)
+  );
+
+  filters_value_max.forEach((input) =>
+    input.addEventListener("blur", handleInputMinMax)
+  );
+
+  function handleInputMinMax(e) {
+    const input = e.target;
+    const filters_wrapper = input.closest(".filters__wrapper");
+    const input_min_range = filters_wrapper.querySelector(".filters__inputMin");
+    const input_max_range = filters_wrapper.querySelector(".filters__inputMax");
+    let input_range = null;
+
+    const isMinFiltersInput = input.classList.contains("filters__valueMin");
+    const isMaxFiltersInput = input.classList.contains("filters__valueMax");
+
+    const track = filters_wrapper.querySelector(".filters__track");
+
+    // minDifference is the minimum value by which min and max can converge
+    let minDifference;
+
+    if (input_max_range.max - input_min_range.min <= 10) {
+      minDifference = 1;
+    } else if (input_max_range.max - input_min_range.min <= 100) {
+      minDifference = 10;
+    } else {
+      minDifference = 50;
+    }
+
+    let value = parseInt(input.value);
+
+    // for min
+    if (isMinFiltersInput) {
+      if (value < input.min || Number.isNaN(value)) {
+        // input.value = parseInt(input.min);
+        input.value = "";
+        input_min_range.value = parseInt(input.min);
+        track.style.left = 0;
+      } else if (value > input_max_range.value - minDifference) {
+        input.value = parseInt(input_max_range.value) - minDifference;
+        input_min_range.value = parseInt(input_max_range.value) - minDifference;
+        doSetTrackLeft();
+      } else {
+        input.value = value;
+        input_min_range.value = value;
+        doSetTrackLeft();
+      }
+    }
+
+    function doSetTrackLeft() {
+      let left =
+        ((value - input_min_range.min) * 100) /
+          (input_min_range.max - input_min_range.min) +
+        "%";
+      track.style.left = left;
+    }
+
+    // for max
+    if (isMaxFiltersInput) {
+      if (value > parseInt(input.max) || Number.isNaN(value)) {
+        input.value = "";
+        input_max_range.value = parseInt(input.max);
+        track.style.right = "0";
+        console;
+      } else if (value < parseInt(input_min_range.value) + minDifference) {
+        input.value = parseInt(input_min_range.value) + minDifference;
+        input_max_range.value = parseInt(input_min_range.value) + minDifference;
+        doSetTrackRight();
+      } else {
+        input.value = value;
+        input_max_range.value = value;
+        doSetTrackRight();
+      }
+    }
+
+    function doSetTrackRight() {
+      let right =
+        ((input_max_range.max - value) * 100) /
+          (input_max_range.max - input_max_range.min) +
+        "%";
+      track.style.right = right;
     }
   }
 }

@@ -104,3 +104,12 @@ mixin pagination(customClass)
         li.pagination__dots: span ...
         li: a(href="#") 32
 
+
+
+mixin filtersItem(value)
+    li.filters__item 
+        label.filters__label
+            input.filters__checkbox(type="checkbox")
+            span
+            span= value
+

@@ -84,11 +84,15 @@
   margin-bottom: 90px;
 
   @include lg {
-    grid-template-columns: repeat(auto-fit, minmax(332px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @include xs {
-    grid-template-columns: repeat(2, 1fr);
+    // grid-template-columns: repeat(2, 1fr);
     margin-bottom: 48px;
   }
 
