@@ -32,6 +32,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     handleAllInputRange();
   }
 
+  // catalog page
+  const catalog_brand_page = document.querySelector(".catalog-brand-page");
+
+  if (catalog_brand_page) {
+    doToggleFavoritesIcons();
+    doSortMenuLogic();
+    doFiltersMenuLogic();
+    handleAllInputRange();
+    doToggleBrandDescription();
+  }
+
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -903,4 +914,26 @@ function handleAllInputRange() {
       track.style.right = right;
     }
   }
+}
+
+// accordion for brandDescription on catalog-brand-page
+function doToggleBrandDescription() {
+  const brand_description = document.querySelector(".brandDescription");
+  const brand_description_title = document.querySelector(
+    ".brandDescription__title"
+  );
+  const brand_description_info = document.querySelector(
+    ".brandDescription__info"
+  );
+
+  brand_description_title.addEventListener("click", () => {
+    brand_description.classList.toggle("brand-description-opened");
+
+    if (brand_description.classList.contains("brand-description-opened")) {
+      brand_description_info.style.maxHeight =
+        brand_description_info.scrollHeight + "px";
+    } else {
+      brand_description_info.style.maxHeight = null;
+    }
+  });
 }

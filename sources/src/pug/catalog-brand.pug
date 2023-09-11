@@ -1,0 +1,236 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'catalog-brand-page';
+block head
+    title RR Beauty - Каталог
+block page
+
+    include ./blocks/_panel
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title Dolce & Gabbana
+
+    .catalog
+
+        .container.catalog__container
+
+            .catalog__options.options
+
+                .options__nav
+                    button.options__filtersToggleBtn(aria-label="Показать / скрыть фильтры" type="button")
+                        include ./blocks/_icon-filter
+                        span Фильтр
+                        include ./blocks/_icon-close
+                    button.options__sortToggleBtn(aria-label="Показать / скрыть сортировку" type="button" data-sort-type="popularity")
+                        span.options__current По популярности
+                        span.options__currentSmall Сортировка
+                        include ./blocks/_icon-sort
+
+                .options__overlay
+
+                ul.options__sortList
+
+                    li: button(type="button" aria-label="Сортировать по популярности" data-sort-type="popularity")
+                        span По популярности
+                        img(src="./images/icon-popularity.svg" alt="")
+                    li: button(type="button" aria-label="Сортировать по возрастанию цены" data-sort-type="increase")
+                        span По возрастанию цены
+                        img(src="./images/icon-increase.svg" alt="")
+                    li: button(type="button" aria-label="Сортировать по по убыванию цены" data-sort-type="decrease")
+                        span По убыванию цены
+                        img(src="./images/icon-decrease.svg" alt="")
+
+                form.options__filters.filters
+
+
+                    .filters__block
+                        button.filters__button(type="button" aria-label=" Показать / скрыть категорию фильтров") Стоимость
+                            include ./blocks/_icon-plus
+                            include ./blocks/_icon-minus
+                        .filters__wrapper
+
+                            .filters__values
+                                input.filters__valueMin(type="number" placeholder="0₽" min="0" max="1000") 
+                                input.filters__valueMax(type="number" placeholder="1000₽" min="0" max="1000")
+
+                            .filters__set
+                                .filters__slider
+                                    .filters__track
+                                .filters__inputs
+                                    input.filters__inputMin.filters__range(type='range' min="0" max="1000" value="0" step="1")
+                                    input.filters__inputMax.filters__range(type='range' min="0" max="1000" value="1000" step="1")
+
+
+                    -
+                        const filtersData1 = [
+                            'Объём',
+                            'Объём',
+                            'Объём',
+                            'Объём',
+                        ]
+
+
+                    .filters__block
+                        button.filters__button(type="button" aria-label=" Показать / скрыть категорию фильтров") Критерий
+                            include ./blocks/_icon-plus
+                            include ./blocks/_icon-minus
+                        .filters__wrapper
+                            ul.filters__list
+
+                                each filtersItem in filtersData1
+                                    +filtersItem(filtersItem)
+
+                    .filters__block
+                        button.filters__button(type="button" aria-label=" Показать / скрыть категорию фильтров") Критерий
+                            include ./blocks/_icon-plus
+                            include ./blocks/_icon-minus
+                        .filters__wrapper
+                            ul.filters__list
+
+                                each filtersItem in filtersData1
+                                    +filtersItem(filtersItem)
+
+                    .filters__block
+                        button.filters__button(type="button" aria-label=" Показать / скрыть категорию фильтров") Критерий
+                            include ./blocks/_icon-plus
+                            include ./blocks/_icon-minus
+                        .filters__wrapper
+                            ul.filters__list
+
+                                each filtersItem in filtersData1
+                                    +filtersItem(filtersItem)
+
+
+
+
+
+
+                    input.filters__submit(type="submit" aria-label="Применить фильтры" value="Применить") 
+                    input.filters__reset(type="reset" aria-label="Сбросить все фильтры" value="Сбросить")
+
+
+
+            .catalog__content
+
+
+                .catalog__aditionalFilters.aditionalFilters
+
+                    button.aditionalFilters__button Вся косметика
+                    button.aditionalFilters__button Аппараты
+                    button.aditionalFilters__button Все для отрисовки эскиза
+                    button.aditionalFilters__button Дезинфицирующие средства
+                    button.aditionalFilters__button Охлаждающие крема и гели
+                    button.aditionalFilters__button Средства ухода
+
+                .catalog__wrapper
+
+                    -
+                        var goodsList = [
+                            {
+                                imgUrl: './images/goods-card-4.png',
+                                isSale: true,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: '4 800₸',
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для губ Nut pie (Ореховое пралине), 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-5.png',
+                                isSale: false,
+                                isHit: true,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-7.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: '4 800₸',
+                                name: 'AS COMPANY',
+                                descr: 'MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада'
+                            },
+                            {
+                                imgUrl: './images/goods-card-5.png',
+                                isSale: false,
+                                isHit: true,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл'
+                            },
+                            {
+                                imgUrl: './images/goods-card-6.png',
+                                isSale: false,
+                                isHit: false,
+                                price: '3 800₸',
+                                oldPrice: false,
+                                name: 'AS COMPANY',
+                                descr: 'Пигмент для бровей Brown haired (Шатен), 6 мл'
+                            },
+                        ]
+
+                    each good in goodsList
+                        +goodsCardItem(good.imgUrl, good.isSale, good.isHit, good.price, good.oldPrice, good.name, good.descr)
+
+
+
+                +pagination('catalog__pagination')
+
+                button.catalog__btn.showmore__btn Показать еще
+
+                .catalog__brandDescription.brandDescription
+
+                    h3.brandDescription__title(aria-label=" Показать / скрыть категорию фильтров")
+                        include ./blocks/_icon-plus
+                        include ./blocks/_icon-minus
+                        span О бренде Dolce & Gabbana
+
+                    p.brandDescription__info Смейный бренд органической косметики ручной работы. Его история уходит корнями в 1997 год, а над модернизацией производства работали 2 поколения одной семьи. При производстве нашей продукции используются только натуральные компоненты. В ассортимент входят коллекция ароматических соевых свечей, восковых свечей, диффузоров, бомбочек и соли для ванны. Полезно, вкусно, красиво — формула продуктов Dolce & Gabbana
