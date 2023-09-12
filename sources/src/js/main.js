@@ -19,7 +19,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doAddMapStoresListener();
     doHideMapDescription();
     doToggleFavoritesIcons();
-    doParallaxPromotionsSection();
+
+    // animation by scroll
+    initParallaxPromotionsSection();
+    initAnimateTextPromotionsSection();
   }
 
   // catalog page
@@ -605,70 +608,6 @@ function doToggleFavoritesIcons() {
   );
 }
 
-// parallax for 'discountedProducts' on main page
-
-function doParallaxPromotionsSection() {
-  const discounted_products = document.querySelector(".discountedProducts");
-  const goods_card_items =
-    discounted_products.querySelectorAll(".goodsCard__item");
-  const TL = gsap.timeline();
-
-  TL.from(".textLline__first", {
-    x: "200px",
-    scrollTrigger: {
-      trigger: ".discountedProducts",
-      // markers: true,
-      start: "top bottom",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  })
-    .from(
-      ".textLline__second",
-      {
-        x: "-200px",
-        scrollTrigger: {
-          trigger: ".discountedProducts",
-          // markers: true,
-          start: "top bottom",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      },
-      0
-    )
-    .from(
-      goods_card_items[0],
-      {
-        y: "-232px",
-        ease: Power2.easeOut,
-        scrollTrigger: {
-          trigger: ".goodsCard__wrapper",
-          // markers: true,
-          start: "+=200px bottom",
-          end: "bottom+=400px bottom",
-          scrub: true,
-        },
-      },
-      0
-    )
-    .from(
-      goods_card_items[2],
-      {
-        y: "-98px",
-        ease: Power2.easeOut,
-        scrollTrigger: {
-          trigger: ".goodsCard__wrapper",
-          // markers: true,
-          start: "+=200px bottom",
-          end: "bottom+=200px bottom",
-          scrub: true,
-        },
-      },
-      0
-    );
-}
-
 // sort menu logic
 
 function doSortMenuLogic() {
@@ -954,4 +893,114 @@ function doToggleBrandDescription() {
       brand_description_info.style.maxHeight = null;
     }
   });
+}
+
+// parallax for 'discountedProducts' on main page
+
+function initParallaxPromotionsSection() {
+  const discounted_products = document.querySelector(".discountedProducts");
+  const goods_card_items =
+    discounted_products.querySelectorAll(".goodsCard__item");
+
+  let mm = gsap.matchMedia(),
+    breakPoint = 992;
+
+  mm.add(
+    {
+      // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+      isDesktop: `(min-width: ${breakPoint}px) and (prefers-reduced-motion: no-preference)`,
+      isMobile: `(max-width: ${
+        breakPoint - 1
+      }px) and (prefers-reduced-motion: no-preference)`,
+    },
+    (context) => {
+      // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+      let { isDesktop, isMobile } = context.conditions;
+
+      const TL = gsap.timeline();
+      if (isDesktop) {
+        TL.from(
+          goods_card_items[0],
+          {
+            y: "-232px",
+            ease: Power2.easeOut,
+            scrollTrigger: {
+              trigger: ".goodsCard__wrapper",
+              // markers: true,
+              start: "+=200px bottom",
+              end: "bottom+=400px bottom",
+              scrub: true,
+            },
+          },
+          0
+        ).from(
+          goods_card_items[2],
+          {
+            y: "-98px",
+            ease: Power2.easeOut,
+            scrollTrigger: {
+              trigger: ".goodsCard__wrapper",
+              // markers: true,
+              start: "+=200px bottom",
+              end: "bottom+=200px bottom",
+              scrub: true,
+            },
+          },
+          0
+        );
+      }
+
+      return () => {
+        // optionally return a cleanup function that will be called when the media query no longer matches
+      };
+    }
+  );
+}
+
+// animate text for 'discountedProducts' on main page
+
+function initAnimateTextPromotionsSection() {
+  let mm = gsap.matchMedia(),
+    breakPoint = 768;
+
+  mm.add(
+    {
+      // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+      isDesktop: `(min-width: ${breakPoint}px) and (prefers-reduced-motion: no-preference)`,
+      isMobile: `(max-width: ${
+        breakPoint - 1
+      }px) and (prefers-reduced-motion: no-preference)`,
+    },
+    (context) => {
+      // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+      let { isDesktop, isMobile } = context.conditions;
+
+      const TL = gsap.timeline();
+      if (isDesktop) {
+        TL.from(".textLline__first", {
+          x: "200px",
+          scrollTrigger: {
+            trigger: ".discountedProducts",
+            // markers: true,
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        }).from(
+          ".textLline__second",
+          {
+            x: "-200px",
+            scrollTrigger: {
+              trigger: ".discountedProducts",
+              // markers: true,
+              start: "top bottom",
+              end: "bottom bottom",
+              scrub: true,
+            },
+          },
+          0
+        );
+      }
+    }
+  );
 }
