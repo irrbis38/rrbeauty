@@ -1506,7 +1506,8 @@ input {
   -moz-appearance: none;
   appearance: none;
   outline: 0;
-  background-color: transparent
+  background-color: transparent;
+  color: #000
 }
 button {
   cursor: pointer
@@ -2559,7 +2560,7 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 2;
+  z-index: 4;
   width: 75%;
   max-width: 1440px;
   -webkit-transform: translate(-50%,-50%);
@@ -2991,7 +2992,8 @@ button {
   font-size: 28px;
   font-weight: 600;
   line-height: 128%;
-  transition: color .2s ease-out
+  transition: color .2s ease-out;
+  background-color: #fff
 }
 .promotionsSection__name a {
   display: block;
@@ -3108,10 +3110,15 @@ button {
 .over {
   position: absolute;
   top: calc(50% - 33px);
-  right: 0;
-  width: 488px;
-  padding: 28px 14px 28px 24px;
-  border: none
+  right: 1px;
+  z-index: 3;
+  width: 487px;
+  padding: 28px 13px 28px 24px;
+  border: none;
+  background-color: #fff
+}
+.over .promotionsSection__sliderWrapper {
+  overflow: hidden
 }
 .over:hover .over__overlay {
   visibility: hidden;
@@ -3282,6 +3289,51 @@ button {
   .promotionsSection__nav.intro__nav {
     display: none
   }
+}
+.promotionsSection .intro__next,
+.promotionsSection .intro__prev {
+  transition: opacity .2s ease-out
+}
+.promotionsSection .intro__next.disabled,
+.promotionsSection .intro__prev.disabled {
+  pointer-events: none
+}
+.promotionsSection.slider-start .intro__prev {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none
+}
+.promotionsSection.slider-finish .intro__next {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none
+}
+.promotionsSection__item {
+  overflow: hidden
+}
+.promotionsSection__sliderWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr
+}
+.promotionsSection__slide {
+  position: relative;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: #fff;
+  overflow: hidden
+}
+.promotionsSection__slide:not(:first-child) {
+  left: 100%
+}
+.promotionsSection__slide:not(:first-child) .over__fragment,
+.promotionsSection__slide:not(:first-child) .promotionsSection__img,
+.promotionsSection__slide:not(:first-child) .promotionsSection__name {
+  -webkit-transform: translateX(-90%);
+  transform: translateX(-90%)
 }
 .discountedProducts {
   position: relative;

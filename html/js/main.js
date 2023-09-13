@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (intro_section) {
     doIntroSectionInit();
     if (typeof ymaps !== "undefined" && ymaps !== null) {
-      doInitMap();
+      setTimeout(doInitMap, 0);
     }
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // animation by scroll
     initParallaxPromotionsSection();
     initAnimateTextPromotionsSection();
+
+    // slider in promotions section
+    initPromotionsSectionSlider();
   }
 
   // catalog page
@@ -450,7 +453,7 @@ function doIntroSectionInit() {
 
 // init map on main page
 
-function doInitMap() {
+async function doInitMap() {
   const mark_link = "images/map-current-mark.svg";
   function init() {
     let center = [51.158562572612595, 71.43921449999996];
@@ -851,7 +854,6 @@ function handleAllInputRange() {
         input.value = "";
         input_max_range.value = parseInt(input.max);
         track.style.right = "0";
-        console;
       } else if (value < parseInt(input_min_range.value) + minDifference) {
         input.value = parseInt(input_min_range.value) + minDifference;
         input_max_range.value = parseInt(input_min_range.value) + minDifference;
@@ -1003,4 +1005,236 @@ function initAnimateTextPromotionsSection() {
       }
     }
   );
+}
+
+// promotionsSection slider
+
+function initPromotionsSectionSlider() {
+  let counter = 0;
+  const promotions_section = document.querySelector(".promotionsSection");
+  const sliders_wrappers = Array.from(
+    document.querySelectorAll(".promotionsSection__sliderWrapper")
+  );
+  const prev_btn = document.querySelector(
+    ".promotionsSection__nav .intro__prev"
+  );
+  const next_btn = document.querySelector(
+    ".promotionsSection__nav .intro__next"
+  );
+
+  const slidesAmount = sliders_wrappers[0].children.length;
+
+  if (window.innerWidth >= 768) {
+    // set inline style to correct sliders work
+    sliders_wrappers.forEach((wrapper) => doSetInitSettings(wrapper));
+    // init slider
+    doAddSliderListeners();
+  }
+
+  const mq767 = window.matchMedia("(max-width: 767px)");
+
+  mq767.addEventListener("change", (e) => {
+    // became less than 767px
+    if (e.matches) {
+      // reset all slides offsets
+      counter = 0;
+      promotions_section.classList.add("slider-start");
+      promotions_section.classList.remove("slider-finish");
+      sliders_wrappers.forEach((wrapper) => doSetInitSettings(wrapper));
+      // remove all listeners
+      doRemoveSliderListeners();
+    }
+    // became larger than 767px
+    else {
+      // remove all items, that have been added by ".showmore__btn" button
+      const promotions_section_items = Array.from(
+        document.querySelectorAll(".promotionsSection__item")
+      );
+      doRemoveAllAddedElements(promotions_section_items, 4);
+
+      // init slider
+      doAddSliderListeners();
+    }
+  });
+
+  // add listeners for next and prev buttons
+  function doAddSliderListeners() {
+    next_btn.addEventListener("click", handleNextButton);
+    prev_btn.addEventListener("click", handlePrevButton);
+  }
+
+  // remove listeners for next and prev buttons
+  function doRemoveSliderListeners() {
+    next_btn.removeEventListener("click", handleNextButton);
+    prev_btn.removeEventListener("click", handlePrevButton);
+  }
+
+  // next button handlers
+  function handleNextButton() {
+    sliders_wrappers.forEach((wrapper) =>
+      handlePromotionsSectionNextButton(wrapper, counter, prev_btn, next_btn)
+    );
+    counter += 1;
+    doCheckCounter(counter, promotions_section, slidesAmount);
+  }
+  // prev button handlers
+  function handlePrevButton() {
+    sliders_wrappers.forEach((wrapper) =>
+      handlePromotionsSectionPrevButton(wrapper, counter, prev_btn, next_btn)
+    );
+    counter -= 1;
+    doCheckCounter(counter, promotions_section, slidesAmount);
+  }
+}
+
+// custom sliders logic
+
+// wrapper is container with slides which need to remove
+// index is the index of the element from which the deletion starts
+function doRemoveAllAddedElements(items, index) {
+  // const slides = Array.from(wrapper.children);
+  items.forEach((item, idx) => {
+    if (idx >= index) {
+      item.remove();
+    }
+  });
+}
+
+function doSetInitSettings(wrapper) {
+  const slides = Array.from(wrapper.children);
+  slides.forEach((slide, idx) => {
+    if (idx === 0) {
+      slide.style.left = "0%";
+      Array.from(slide.children).forEach(
+        (item) => (item.style.transform = "translate(0, 0)")
+      );
+    } else {
+      slide.style.left = "100%";
+      Array.from(slide.children).forEach(
+        (item) => (item.style.transform = "translate(-90%, 0)")
+      );
+    }
+  });
+}
+
+function doCheckCounter(counter, section, slidesAmount) {
+  if (counter < 1) {
+    section.classList.add("slider-start");
+  } else if (counter >= 1 && counter < slidesAmount - 1) {
+    section.classList.remove("slider-start", "slider-finish");
+  } else {
+    section.classList.add("slider-finish");
+  }
+}
+
+function doAddClassToButtons(...buttons) {
+  buttons.forEach((btn) => btn.classList.add("disabled"));
+}
+
+function doRemoveClassToButtons(...buttons) {
+  buttons.forEach((btn) => btn.classList.remove("disabled"));
+}
+
+function handlePromotionsSectionNextButton(
+  wrapper,
+  counter,
+  prev_btn,
+  next_btn
+) {
+  const slides = wrapper.children;
+  const currentSlide = slides[counter];
+  const currentSlideInner = currentSlide.children;
+  const currentSlideName = currentSlideInner[1];
+  const nextSlide = slides[counter + 1];
+  const nextSlideInner = nextSlide.children;
+
+  const TL = gsap.timeline();
+  TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .set(currentSlideName, {
+      opacity: 0,
+    })
+    .set(currentSlide, { zIndex: 1 })
+    .set(nextSlide, { zIndex: 2 })
+    .to(currentSlide, {
+      left: "-5%",
+      duration: 0.4,
+    })
+    .to(
+      nextSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      nextSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: "-100%",
+    })
+    .set(currentSlideName, {
+      opacity: 1,
+    })
+    .set(currentSlideInner, {
+      x: "90%",
+    })
+    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
+}
+
+function handlePromotionsSectionPrevButton(
+  wrapper,
+  counter,
+  prev_btn,
+  next_btn
+) {
+  const slides = wrapper.children;
+  const currentSlide = slides[counter];
+  const currentSlideInner = currentSlide.children;
+  const currentSlideName = currentSlideInner[1];
+  const prevSlide = slides[counter - 1];
+  const prevSlideInner = prevSlide.children;
+
+  const TL = gsap.timeline();
+  TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .set(currentSlideName, {
+      opacity: 0,
+    })
+    .set(currentSlide, { zIndex: 1 })
+    .set(prevSlide, { zIndex: 2 })
+    .to(currentSlide, {
+      left: "5%",
+      duration: 0.4,
+    })
+    .to(
+      prevSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      prevSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: "100%",
+    })
+    .set(currentSlideName, {
+      opacity: 1,
+    })
+    .set(currentSlideInner, {
+      x: "-90%",
+    })
+    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
 }
