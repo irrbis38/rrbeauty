@@ -1007,7 +1007,7 @@ function initAnimateTextPromotionsSection() {
   );
 }
 
-// promotionsSection slider
+// init promotionsSection slider
 
 function initPromotionsSectionSlider() {
   let counter = 0;
@@ -1023,6 +1023,30 @@ function initPromotionsSectionSlider() {
   );
 
   const slidesAmount = sliders_wrappers[0].children.length;
+
+  const params = {
+    counter,
+    promotions_section,
+    sliders_wrappers,
+    prev_btn,
+    next_btn,
+    slidesAmount,
+  };
+
+  doInitGeneralSliderLogic(params);
+}
+
+// === SLIDER LOGIC ===
+
+function doInitGeneralSliderLogic(params) {
+  let {
+    counter,
+    promotions_section,
+    sliders_wrappers,
+    prev_btn,
+    next_btn,
+    slidesAmount,
+  } = params;
 
   if (window.innerWidth >= 768) {
     // set inline style to correct sliders work
@@ -1059,40 +1083,53 @@ function initPromotionsSectionSlider() {
 
   // add listeners for next and prev buttons
   function doAddSliderListeners() {
-    next_btn.addEventListener("click", handleNextButton);
-    prev_btn.addEventListener("click", handlePrevButton);
+    next_btn.addEventListener("click", handleSliderButtonClick);
+    prev_btn.addEventListener("click", handleSliderButtonClick);
   }
 
   // remove listeners for next and prev buttons
   function doRemoveSliderListeners() {
-    next_btn.removeEventListener("click", handleNextButton);
-    prev_btn.removeEventListener("click", handlePrevButton);
+    next_btn.removeEventListener("click", handleSliderButtonClick);
+    prev_btn.removeEventListener("click", handleSliderButtonClick);
   }
 
-  // next button handlers
-  function handleNextButton() {
-    sliders_wrappers.forEach((wrapper) =>
-      handlePromotionsSectionNextButton(wrapper, counter, prev_btn, next_btn)
-    );
-    counter += 1;
-    doCheckCounter(counter, promotions_section, slidesAmount);
-  }
-  // prev button handlers
-  function handlePrevButton() {
-    sliders_wrappers.forEach((wrapper) =>
-      handlePromotionsSectionPrevButton(wrapper, counter, prev_btn, next_btn)
-    );
-    counter -= 1;
-    doCheckCounter(counter, promotions_section, slidesAmount);
+  // handle prev and next button
+  function handleSliderButtonClick(e) {
+    // if next button clicked
+    if (e.currentTarget.classList.contains("intro__next")) {
+      const typeOfButton = "next";
+      sliders_wrappers.forEach((wrapper) =>
+        handleSliderNavButtons(
+          wrapper,
+          counter,
+          prev_btn,
+          next_btn,
+          typeOfButton
+        )
+      );
+      counter += 1;
+      doCheckCounter(counter, promotions_section, slidesAmount);
+    } else if (e.currentTarget.classList.contains("intro__prev")) {
+      const typeOfButton = "prev";
+      sliders_wrappers.forEach((wrapper) =>
+        handleSliderNavButtons(
+          wrapper,
+          counter,
+          prev_btn,
+          next_btn,
+          typeOfButton
+        )
+      );
+      counter -= 1;
+      doCheckCounter(counter, promotions_section, slidesAmount);
+    }
   }
 }
 
-// custom sliders logic
-
-// wrapper is container with slides which need to remove
-// index is the index of the element from which the deletion starts
+// remove all added elements by resize from '<=767px' to '>767px'
 function doRemoveAllAddedElements(items, index) {
-  // const slides = Array.from(wrapper.children);
+  // wrapper is container with slides which need to remove
+  // index is the index of the element from which the deletion starts
   items.forEach((item, idx) => {
     if (idx >= index) {
       item.remove();
@@ -1117,6 +1154,8 @@ function doSetInitSettings(wrapper) {
   });
 }
 
+// show / hide slider nav buttons depend what slide is current
+
 function doCheckCounter(counter, section, slidesAmount) {
   if (counter < 1) {
     section.classList.add("slider-start");
@@ -1127,6 +1166,8 @@ function doCheckCounter(counter, section, slidesAmount) {
   }
 }
 
+// disable / enable nav buttons
+
 function doAddClassToButtons(...buttons) {
   buttons.forEach((btn) => btn.classList.add("disabled"));
 }
@@ -1135,18 +1176,35 @@ function doRemoveClassToButtons(...buttons) {
   buttons.forEach((btn) => btn.classList.remove("disabled"));
 }
 
-function handlePromotionsSectionNextButton(
+// slider animation
+function handleSliderNavButtons(
   wrapper,
   counter,
   prev_btn,
-  next_btn
+  next_btn,
+  typeOfButton
 ) {
   const slides = wrapper.children;
   const currentSlide = slides[counter];
   const currentSlideInner = currentSlide.children;
   const currentSlideName = currentSlideInner[1];
-  const nextSlide = slides[counter + 1];
-  const nextSlideInner = nextSlide.children;
+  let newSlide = null;
+  let firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset;
+
+  if (typeOfButton === "next") {
+    newSlide = slides[counter + 1];
+    firstCurrentSlideOffsset = "-5%";
+    lastCurrentSlideOffset = "-100%";
+    lastCurrentSlideInnerOffset = "90%";
+  } else {
+    newSlide = slides[counter - 1];
+    firstCurrentSlideOffsset = "5%";
+    lastCurrentSlideOffset = "100%";
+    lastCurrentSlideInnerOffset = "-90%";
+  }
+  const newSlideInner = newSlide.children;
 
   const TL = gsap.timeline();
   TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
@@ -1154,13 +1212,13 @@ function handlePromotionsSectionNextButton(
       opacity: 0,
     })
     .set(currentSlide, { zIndex: 1 })
-    .set(nextSlide, { zIndex: 2 })
+    .set(newSlide, { zIndex: 2 })
     .to(currentSlide, {
-      left: "-5%",
+      left: firstCurrentSlideOffsset,
       duration: 0.4,
     })
     .to(
-      nextSlide,
+      newSlide,
       {
         left: "0%",
         duration: 0.4,
@@ -1168,7 +1226,7 @@ function handlePromotionsSectionNextButton(
       0
     )
     .to(
-      nextSlideInner,
+      newSlideInner,
       {
         x: "0%",
         duration: 0.4,
@@ -1176,65 +1234,15 @@ function handlePromotionsSectionNextButton(
       0
     )
     .set(currentSlide, {
-      left: "-100%",
+      left: lastCurrentSlideOffset,
     })
     .set(currentSlideName, {
       opacity: 1,
     })
     .set(currentSlideInner, {
-      x: "90%",
+      x: lastCurrentSlideInnerOffset,
     })
     .call(doRemoveClassToButtons, [prev_btn, next_btn]);
 }
 
-function handlePromotionsSectionPrevButton(
-  wrapper,
-  counter,
-  prev_btn,
-  next_btn
-) {
-  const slides = wrapper.children;
-  const currentSlide = slides[counter];
-  const currentSlideInner = currentSlide.children;
-  const currentSlideName = currentSlideInner[1];
-  const prevSlide = slides[counter - 1];
-  const prevSlideInner = prevSlide.children;
-
-  const TL = gsap.timeline();
-  TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
-    .set(currentSlideName, {
-      opacity: 0,
-    })
-    .set(currentSlide, { zIndex: 1 })
-    .set(prevSlide, { zIndex: 2 })
-    .to(currentSlide, {
-      left: "5%",
-      duration: 0.4,
-    })
-    .to(
-      prevSlide,
-      {
-        left: "0%",
-        duration: 0.4,
-      },
-      0
-    )
-    .to(
-      prevSlideInner,
-      {
-        x: "0%",
-        duration: 0.4,
-      },
-      0
-    )
-    .set(currentSlide, {
-      left: "100%",
-    })
-    .set(currentSlideName, {
-      opacity: 1,
-    })
-    .set(currentSlideInner, {
-      x: "-90%",
-    })
-    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
-}
+// === END OF SLIDER LOGIC ===
