@@ -1007,11 +1007,14 @@ function initAnimateTextPromotionsSection() {
   );
 }
 
+// ===== SLIDERS =====
+
 // init promotionsSection slider
 
 function initPromotionsSectionSlider() {
   let counter = 0;
-  const promotions_section = document.querySelector(".promotionsSection");
+  const section = document.querySelector(".promotionsSection");
+  const sectionItemsClassName = ".promotionsSection__item";
   const sliders_wrappers = Array.from(
     document.querySelectorAll(".promotionsSection__sliderWrapper")
   );
@@ -1026,11 +1029,12 @@ function initPromotionsSectionSlider() {
 
   const params = {
     counter,
-    promotions_section,
+    section,
     sliders_wrappers,
     prev_btn,
     next_btn,
     slidesAmount,
+    sectionItemsClassName,
   };
 
   doInitGeneralSliderLogic(params);
@@ -1041,11 +1045,12 @@ function initPromotionsSectionSlider() {
 function doInitGeneralSliderLogic(params) {
   let {
     counter,
-    promotions_section,
+    section,
     sliders_wrappers,
     prev_btn,
     next_btn,
     slidesAmount,
+    sectionItemsClassName,
   } = params;
 
   if (window.innerWidth >= 768) {
@@ -1062,8 +1067,8 @@ function doInitGeneralSliderLogic(params) {
     if (e.matches) {
       // reset all slides offsets
       counter = 0;
-      promotions_section.classList.add("slider-start");
-      promotions_section.classList.remove("slider-finish");
+      section.classList.add("slider-start");
+      section.classList.remove("slider-finish");
       sliders_wrappers.forEach((wrapper) => doSetInitSettings(wrapper));
       // remove all listeners
       doRemoveSliderListeners();
@@ -1071,10 +1076,10 @@ function doInitGeneralSliderLogic(params) {
     // became larger than 767px
     else {
       // remove all items, that have been added by ".showmore__btn" button
-      const promotions_section_items = Array.from(
-        document.querySelectorAll(".promotionsSection__item")
+      const section_items = Array.from(
+        document.querySelectorAll(sectionItemsClassName)
       );
-      doRemoveAllAddedElements(promotions_section_items, 4);
+      doRemoveAllAddedElements(section_items, 4);
 
       // init slider
       doAddSliderListeners();
@@ -1108,7 +1113,7 @@ function doInitGeneralSliderLogic(params) {
         )
       );
       counter += 1;
-      doCheckCounter(counter, promotions_section, slidesAmount);
+      doCheckCounter(counter, section, slidesAmount);
     } else if (e.currentTarget.classList.contains("intro__prev")) {
       const typeOfButton = "prev";
       sliders_wrappers.forEach((wrapper) =>
@@ -1121,7 +1126,7 @@ function doInitGeneralSliderLogic(params) {
         )
       );
       counter -= 1;
-      doCheckCounter(counter, promotions_section, slidesAmount);
+      doCheckCounter(counter, section, slidesAmount);
     }
   }
 }
