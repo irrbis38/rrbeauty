@@ -10,10 +10,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
-    doIntroSectionInit();
-    if (typeof ymaps !== "undefined" && ymaps !== null) {
-      setTimeout(doInitMap, 0);
-    }
+    // doIntroSectionInit();
+
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -27,8 +25,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // slider in promotions section
     initPromotionsSectionSlider();
 
-    // slider in popularGoods section
+    // sliders in goodsCard sections
     initAllGoodsSectionsSliders();
+
+    if (typeof ymaps !== "undefined" && ymaps !== null) {
+      setTimeout(doInitMap, 0);
+    }
   }
 
   // catalog page
