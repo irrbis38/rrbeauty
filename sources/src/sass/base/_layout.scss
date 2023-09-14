@@ -466,3 +466,65 @@ button {
 [class*="copyrights-pane"] {
   display: none !important;
 }
+
+// === layout for animation
+
+.discountedProducts {
+  .intro__prev,
+  .intro__next {
+    transition: opacity 0.2s ease-out;
+
+    &.disabled {
+      pointer-events: none;
+    }
+  }
+
+  &.slider-start {
+    .intro__prev {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
+  &.slider-finish {
+    .intro__next {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+}
+
+// .goodsCard__item {
+//   overflow: hidden;
+// }
+
+.goodsCard__sliderWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+}
+
+.goodsCard__slide {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: #fff;
+  overflow: hidden;
+
+  &:not(:first-child) {
+    left: 100%;
+
+    .goodsCard__descr,
+    .goodsCard__addToCart {
+      transform: translateX(-90%);
+    }
+  }
+}

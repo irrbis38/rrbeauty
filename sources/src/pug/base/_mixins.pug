@@ -74,24 +74,45 @@ mixin brandSectionItem(numberOfIcon)
 
 mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAddedToFavorites)
     .goodsCard__item(class=isAddedToFavorites ? 'addedToFavorites' : '')
-        .goodsCard__descr
-            .goodsCard__img
-                img(src= imgUrl alt= name)
-                button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
-                    img(src="./images/heart-icon.svg" alt="Добавить в избранное")
-                    img(src="./images/heart-icon-black.svg" alt="Убрать из избранного")
-                if isSale
-                    span.sticker__sale.stiker__azure -10%
-                if isHit
-                    span.sticker__sale.sticker__red Хит
-            .goodsCard__price
-                span.goods__priceNew #{price}
-                if oldPrice
-                    span.goods__priceOld #{oldPrice}
-            h3.goodsCard__name #{name} 
-            p.goodsCard__about #{descr}
+        .goodsCard__sliderWrapper 
+            .goodsCard__slide
+                .goodsCard__descr
+                    .goodsCard__img
+                        img(src= imgUrl alt= name)
+                        button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
+                            img(src="./images/heart-icon.svg" alt="Добавить в избранное")
+                            img(src="./images/heart-icon-black.svg" alt="Убрать из избранного")
+                        if isSale
+                            span.sticker__sale.stiker__azure -10%
+                        if isHit
+                            span.sticker__sale.sticker__red Хит
+                    .goodsCard__price
+                        span.goods__priceNew #{price}
+                        if oldPrice
+                            span.goods__priceOld #{oldPrice}
+                    h3.goodsCard__name #{name} 
+                    p.goodsCard__about #{descr}
 
-        button.goodsCard__addToCart(type="button" aria-label="Добавить товар в корзину") В корзину
+                button.goodsCard__addToCart(type="button" aria-label="Добавить товар в корзину") В корзину
+            .goodsCard__slide
+                .goodsCard__descr
+                    .goodsCard__img
+                        img(src= imgUrl alt= name)
+                        button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
+                            img(src="./images/heart-icon.svg" alt="Добавить в избранное")
+                            img(src="./images/heart-icon-black.svg" alt="Убрать из избранного")
+                        if isSale
+                            span.sticker__sale.stiker__azure -10%
+                        if isHit
+                            span.sticker__sale.sticker__red Хит
+                    .goodsCard__price
+                        span.goods__priceNew #{price}
+                        if oldPrice
+                            span.goods__priceOld #{oldPrice}
+                    h3.goodsCard__name #{name} 
+                    p.goodsCard__about #{descr}
+
+                button.goodsCard__addToCart(type="button" aria-label="Добавить товар в корзину") В корзину
 
 
 

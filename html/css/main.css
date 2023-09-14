@@ -1874,6 +1874,50 @@ button {
 [class*=copyrights-pane] {
   display: none!important
 }
+.discountedProducts .intro__next,
+.discountedProducts .intro__prev {
+  transition: opacity .2s ease-out
+}
+.discountedProducts .intro__next.disabled,
+.discountedProducts .intro__prev.disabled {
+  pointer-events: none
+}
+.discountedProducts.slider-start .intro__prev {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none
+}
+.discountedProducts.slider-finish .intro__next {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none
+}
+.goodsCard__sliderWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden
+}
+.goodsCard__slide {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: #fff;
+  overflow: hidden
+}
+.goodsCard__slide:not(:first-child) {
+  left: 100%
+}
+.goodsCard__slide:not(:first-child) .goodsCard__addToCart,
+.goodsCard__slide:not(:first-child) .goodsCard__descr {
+  -webkit-transform: translateX(-90%);
+  transform: translateX(-90%)
+}
 .header {
   position: relative;
   z-index: 10;
@@ -3481,6 +3525,9 @@ button {
   padding-bottom: 101px;
   background-color: #000
 }
+.discountedProducts .goodsCard__item .goodsCard__slide {
+  background-color: #000
+}
 .discountedProducts .goodsCard__item::after {
   content: "";
   position: absolute;
@@ -3495,6 +3542,9 @@ button {
 }
 @media (max-width:767px) {
   .discountedProducts .goodsCard__item {
+    background-color: #fff
+  }
+  .discountedProducts .goodsCard__item .goodsCard__slide {
     background-color: #fff
   }
   .discountedProducts .goodsCard__item::after {
