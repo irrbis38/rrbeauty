@@ -1025,19 +1025,31 @@ function initPromotionsSectionSlider() {
     ".promotionsSection__nav .intro__next"
   );
 
-  const slidesAmount = sliders_wrappers[0].children.length;
+  // const slidesAmount = sliders_wrappers[0].children.length;
+  let slidesAmount = 0;
+  let slidesAmountsArray = [];
+  sliders_wrappers.forEach((wrapper) => {
+    slidesAmountsArray.push(wrapper.children.length);
+  });
+  let minSlidesAmount = Math.min(...slidesAmountsArray);
+  console.log(minSlidesAmount);
 
-  const params = {
-    counter,
-    section,
-    sliders_wrappers,
-    prev_btn,
-    next_btn,
-    slidesAmount,
-    sectionItemsClassName,
-  };
+  if (minSlidesAmount > 1) {
+    slidesAmount = minSlidesAmount;
+    const params = {
+      counter,
+      section,
+      sliders_wrappers,
+      prev_btn,
+      next_btn,
+      slidesAmount,
+      sectionItemsClassName,
+    };
 
-  doInitGeneralSliderLogic(params);
+    doInitGeneralSliderLogic(params);
+  } else {
+    section.classList.add("slider-start", "slider-finish");
+  }
 }
 
 // === SLIDER LOGIC ===
@@ -1162,11 +1174,16 @@ function doSetInitSettings(wrapper) {
 // show / hide slider nav buttons depend what slide is current
 
 function doCheckCounter(counter, section, slidesAmount) {
-  if (counter < 1) {
+  if (counter === 0) {
     section.classList.add("slider-start");
-  } else if (counter >= 1 && counter < slidesAmount - 1) {
+    section.classList.remove("slider-finish");
+  } else if (counter > 0 && slidesAmount === 2) {
+    section.classList.add("slider-finish");
+    section.classList.remove("slider-start");
+  } else if (counter > 0 && counter < slidesAmount - 1) {
     section.classList.remove("slider-start", "slider-finish");
   } else {
+    section.classList.remove("slider-start");
     section.classList.add("slider-finish");
   }
 }
