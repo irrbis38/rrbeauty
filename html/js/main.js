@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     // slider in promotions section
     initPromotionsSectionSlider();
+
+    // slider in popularGoods section
+    initAllGoodsSectionsSliders();
   }
 
   // catalog page
@@ -1037,6 +1040,39 @@ function initPromotionsSectionSlider() {
   doCheckSlidesAmount(params);
 }
 
+// init popularGoods slider
+
+function initAllGoodsSectionsSliders() {
+  const goods_sections = Array.from(document.querySelectorAll(".goodsSection"));
+  // const section = document.querySelector(".popularGoods");
+  const discounted_products_section = document.querySelector(
+    ".discountedProducts"
+  );
+
+  sections = [].concat(goods_sections, [discounted_products_section]);
+
+  sections.forEach((section) => {
+    let counter = 0;
+    const sectionItemsClassName = ".goodsCard__item";
+    const sliders_wrappers = Array.from(
+      section.querySelectorAll(".goodsCard__sliderWrapper")
+    );
+    const prev_btn = section.querySelector(".intro__prev");
+    const next_btn = section.querySelector(".intro__next");
+
+    const params = {
+      counter,
+      section,
+      sectionItemsClassName,
+      sliders_wrappers,
+      prev_btn,
+      next_btn,
+    };
+
+    doCheckSlidesAmount(params);
+  });
+}
+
 // === SLIDER LOGIC ===
 
 function doCheckSlidesAmount(params) {
@@ -1109,7 +1145,7 @@ function doInitGeneralSliderLogic(params) {
     else {
       // remove all items, that have been added by ".showmore__btn" button
       const section_items = Array.from(
-        document.querySelectorAll(sectionItemsClassName)
+        section.querySelectorAll(sectionItemsClassName)
       );
       doRemoveAllAddedElements(section_items, 4);
 
@@ -1230,6 +1266,7 @@ function handleSliderNavButtons(
   const currentSlide = slides[counter];
   const currentSlideInner = currentSlide.children;
   const currentSlideName = currentSlideInner[1];
+
   let newSlide = null;
   let firstCurrentSlideOffsset,
     lastCurrentSlideOffset,
@@ -1248,8 +1285,52 @@ function handleSliderNavButtons(
   }
   const newSlideInner = newSlide.children;
 
+  if (currentSlideName) {
+    const params = {
+      prev_btn,
+      next_btn,
+      currentSlideName,
+      currentSlide,
+      currentSlideInner,
+      newSlide,
+      newSlideInner,
+      firstCurrentSlideOffsset,
+      lastCurrentSlideOffset,
+      lastCurrentSlideInnerOffset,
+    };
+    gsapAnimationForPromotionsSlider(params);
+  } else {
+    const params = {
+      prev_btn,
+      next_btn,
+      currentSlide,
+      currentSlideInner,
+      newSlide,
+      newSlideInner,
+      firstCurrentSlideOffsset,
+      lastCurrentSlideOffset,
+      lastCurrentSlideInnerOffset,
+    };
+    gsapAnimationForGoodsSectionSlider(params);
+  }
+}
+
+function gsapAnimationForPromotionsSlider(params) {
+  const {
+    prev_btn,
+    next_btn,
+    currentSlideName,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = params;
+
   const TL = gsap.timeline();
-  TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
     .set(currentSlideName, {
       opacity: 0,
     })
@@ -1280,6 +1361,52 @@ function handleSliderNavButtons(
     })
     .set(currentSlideName, {
       opacity: 1,
+    })
+    .set(currentSlideInner, {
+      x: lastCurrentSlideInnerOffset,
+    })
+    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
+}
+
+function gsapAnimationForGoodsSectionSlider(params) {
+  const {
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = params;
+
+  const TL = gsap.timeline();
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .set(currentSlide, { zIndex: 1 })
+    .set(newSlide, { zIndex: 2 })
+    .to(currentSlide, {
+      left: firstCurrentSlideOffsset,
+      duration: 0.4,
+    })
+    .to(
+      newSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      newSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: lastCurrentSlideOffset,
     })
     .set(currentSlideInner, {
       x: lastCurrentSlideInnerOffset,

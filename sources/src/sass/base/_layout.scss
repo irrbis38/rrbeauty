@@ -469,6 +469,7 @@ button {
 
 // === layout for animation
 
+.goodsSection,
 .discountedProducts {
   .intro__prev,
   .intro__next {
@@ -496,10 +497,6 @@ button {
   }
 }
 
-// .goodsCard__item {
-//   overflow: hidden;
-// }
-
 .goodsCard__sliderWrapper {
   width: 100%;
   display: grid;
@@ -519,11 +516,15 @@ button {
   background-color: #fff;
   overflow: hidden;
 
+  .goodsCard__inner {
+    height: 100%;
+    display: grid;
+  }
+
   &:not(:first-child) {
     left: 100%;
 
-    .goodsCard__descr,
-    .goodsCard__addToCart {
+    .goodsCard__inner {
       transform: translateX(-90%);
     }
   }

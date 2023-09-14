@@ -1875,19 +1875,25 @@ button {
   display: none!important
 }
 .discountedProducts .intro__next,
-.discountedProducts .intro__prev {
+.discountedProducts .intro__prev,
+.goodsSection .intro__next,
+.goodsSection .intro__prev {
   transition: opacity .2s ease-out
 }
 .discountedProducts .intro__next.disabled,
-.discountedProducts .intro__prev.disabled {
+.discountedProducts .intro__prev.disabled,
+.goodsSection .intro__next.disabled,
+.goodsSection .intro__prev.disabled {
   pointer-events: none
 }
-.discountedProducts.slider-start .intro__prev {
+.discountedProducts.slider-start .intro__prev,
+.goodsSection.slider-start .intro__prev {
   opacity: 0;
   visibility: hidden;
   pointer-events: none
 }
-.discountedProducts.slider-finish .intro__next {
+.discountedProducts.slider-finish .intro__next,
+.goodsSection.slider-finish .intro__next {
   opacity: 0;
   visibility: hidden;
   pointer-events: none
@@ -1910,11 +1916,14 @@ button {
   background-color: #fff;
   overflow: hidden
 }
+.goodsCard__slide .goodsCard__inner {
+  height: 100%;
+  display: grid
+}
 .goodsCard__slide:not(:first-child) {
   left: 100%
 }
-.goodsCard__slide:not(:first-child) .goodsCard__addToCart,
-.goodsCard__slide:not(:first-child) .goodsCard__descr {
+.goodsCard__slide:not(:first-child) .goodsCard__inner {
   -webkit-transform: translateX(-90%);
   transform: translateX(-90%)
 }
