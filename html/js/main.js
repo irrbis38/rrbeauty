@@ -1025,14 +1025,36 @@ function initPromotionsSectionSlider() {
     ".promotionsSection__nav .intro__next"
   );
 
-  // const slidesAmount = sliders_wrappers[0].children.length;
+  const params = {
+    counter,
+    section,
+    sectionItemsClassName,
+    sliders_wrappers,
+    prev_btn,
+    next_btn,
+  };
+
+  doCheckSlidesAmount(params);
+}
+
+// === SLIDER LOGIC ===
+
+function doCheckSlidesAmount(params) {
+  let {
+    counter,
+    section,
+    sectionItemsClassName,
+    sliders_wrappers,
+    prev_btn,
+    next_btn,
+  } = params;
+
   let slidesAmount = 0;
   let slidesAmountsArray = [];
   sliders_wrappers.forEach((wrapper) => {
     slidesAmountsArray.push(wrapper.children.length);
   });
   let minSlidesAmount = Math.min(...slidesAmountsArray);
-  console.log(minSlidesAmount);
 
   if (minSlidesAmount > 1) {
     slidesAmount = minSlidesAmount;
@@ -1051,8 +1073,6 @@ function initPromotionsSectionSlider() {
     section.classList.add("slider-start", "slider-finish");
   }
 }
-
-// === SLIDER LOGIC ===
 
 function doInitGeneralSliderLogic(params) {
   let {
