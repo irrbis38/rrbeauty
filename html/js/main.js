@@ -1057,6 +1057,8 @@ function initIntroSlider() {
       requestAnimationFrame(() => handleIntroBtn(direction, params));
     });
   });
+
+  // TODO: perform handleIntroBtn by setInterval
 }
 
 function handleIntroBtn(direction, params) {
@@ -1095,7 +1097,7 @@ function doAddInitSettingsToIntroSlider(slider) {
   slides.forEach((slide, idx) => {
     if (idx < 2) {
       slide.style.left = "-100%";
-      slide.children[0].style.transform = "translate(90px, 0)";
+      slide.children[0].style.transform = "translate(90%, 0)";
     } else if (idx === 2) {
       slide.style.left = "0";
       slide.children[0].style.transform = "translate(0, 0)";
