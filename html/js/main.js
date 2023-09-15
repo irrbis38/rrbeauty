@@ -1047,27 +1047,33 @@ function initIntroSlider() {
 
   // add listenerst to sliders nav button
   [prev_btn, next_btn].forEach((btn) => {
+    let direction = "";
+    if (btn.classList.contains("intro__next")) {
+      direction = "to_left";
+    } else {
+      direction = "to_right";
+    }
     btn.addEventListener("click", () => {
-      requestAnimationFrame(() => handleIntroBtn(btn, params));
+      requestAnimationFrame(() => handleIntroBtn(direction, params));
     });
   });
 }
 
-function handleIntroBtn(btn, params) {
-  const { intro_sliders, prev_btn, next_btn } = params;
+function handleIntroBtn(direction, params) {
+  const { intro_sliders } = params;
 
   intro_sliders.forEach((slider) => {
     // start animation
-    doIntroSliderAnimation(slider, params, btn);
+    doIntroSliderAnimation(slider, params, direction);
   });
 }
 
 function doReplaceIntroSliderElements(...props) {
-  const [slider, btn] = props;
+  const [slider, direction] = props;
   const wrapper = slider.querySelector(".intro__sliderWrapper");
   const slides = Array.from(slider.querySelectorAll(".intro__slide"));
 
-  if (btn.classList.contains("intro__next")) {
+  if (direction === "to_left") {
     const clonedElement = slides[slides.length - 3];
     const clone = clonedElement.cloneNode(true);
     const deletedElement = slides[0];
@@ -1101,7 +1107,7 @@ function doAddInitSettingsToIntroSlider(slider) {
 }
 
 // performing slider animation
-function doIntroSliderAnimation(slider, params, btn) {
+function doIntroSliderAnimation(slider, params, direction) {
   const { prev_btn, next_btn, pagination } = params;
 
   const currentSlide = slider.querySelector(".current-slide");
@@ -1113,7 +1119,7 @@ function doIntroSliderAnimation(slider, params, btn) {
     lastCurrentSlideOffset,
     lastCurrentSlideInnerOffset;
 
-  if (btn === next_btn) {
+  if (direction === "to_left") {
     newSlide = currentSlide.nextElementSibling;
     newSlideInner = newSlide.children[0];
     firstCurrentSlideOffsset = "-5%";
@@ -1129,7 +1135,7 @@ function doIntroSliderAnimation(slider, params, btn) {
 
   const props = {
     slider,
-    btn,
+    direction,
     prev_btn,
     next_btn,
     currentSlide,
@@ -1151,7 +1157,7 @@ function doIntroSliderAnimation(slider, params, btn) {
 function gsapAnimationIntroSlider(props) {
   const {
     slider,
-    btn,
+    direction,
     prev_btn,
     next_btn,
     currentSlide,
@@ -1194,7 +1200,7 @@ function gsapAnimationIntroSlider(props) {
       x: lastCurrentSlideInnerOffset,
     })
     .call(doRemoveClassToButtons, [prev_btn, next_btn])
-    .call(doReplaceIntroSliderElements, [slider, btn])
+    .call(doReplaceIntroSliderElements, [slider, direction])
     .call(doAddInitSettingsToIntroSlider, [slider]);
 }
 
