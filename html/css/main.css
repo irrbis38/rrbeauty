@@ -2712,6 +2712,10 @@ button {
     border: none;
     background-color: transparent
   }
+  .intro .intro__btn,
+  .intro .intro__btn path {
+    transition: none
+  }
   .intro .intro__btn svg {
     visibility: hidden;
     pointer-events: none
