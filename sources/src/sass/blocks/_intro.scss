@@ -202,13 +202,13 @@
   align-items: center;
   gap: 0 10px;
 
-  span {
+  li {
     position: relative;
     width: 100%;
     max-width: 24px;
     height: 12px;
-    cursor: pointer;
-    border-radius: unset;
+    // cursor: pointer;
+    // border-radius: unset;
     transition: all 0.4s ease-out;
     overflow: hidden;
     background-color: transparent;
@@ -228,7 +228,7 @@
       content: "";
       position: absolute;
       top: 4px;
-      left: 0;
+      left: -100%;
       z-index: 3;
       height: 4px;
       width: 100%;
@@ -237,12 +237,12 @@
     }
   }
 
-  .swiper-pagination-bullet-active {
+  li.active {
     max-width: 98px;
 
-    &::after {
-      animation: sliderProgress 5s linear;
-    }
+    // &::after {
+    //   animation: sliderProgress 5s linear;
+    // }
   }
 
   @include xs {
@@ -250,11 +250,11 @@
   }
 }
 
-@keyframes sliderProgress {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+// @keyframes sliderProgress {
+//   0% {
+//     transform: translateX(-100%);
+//   }
+//   100% {
+//     transform: translateX(0);
+//   }
+// }

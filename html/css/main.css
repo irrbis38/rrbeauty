@@ -2739,18 +2739,16 @@ button {
   align-items: center;
   gap: 0 10px
 }
-.intro__pagination span {
+.intro__pagination li {
   position: relative;
   width: 100%;
   max-width: 24px;
   height: 12px;
-  cursor: pointer;
-  border-radius: unset;
   transition: all .4s ease-out;
   overflow: hidden;
   background-color: transparent
 }
-.intro__pagination span::before {
+.intro__pagination li::before {
   content: "";
   position: absolute;
   top: 4px;
@@ -2760,47 +2758,23 @@ button {
   width: 100%;
   background-color: rgba(255,255,255,.5)
 }
-.intro__pagination span::after {
+.intro__pagination li::after {
   content: "";
   position: absolute;
   top: 4px;
-  left: 0;
+  left: -100%;
   z-index: 3;
   height: 4px;
   width: 100%;
   background-color: #fff;
   transition: all 5s linear
 }
-.intro__pagination .swiper-pagination-bullet-active {
+.intro__pagination li.active {
   max-width: 98px
-}
-.intro__pagination .swiper-pagination-bullet-active::after {
-  -webkit-animation: sliderProgress 5s linear;
-  animation: sliderProgress 5s linear
 }
 @media (max-width:767px) {
   .intro__pagination {
     bottom: 34px!important
-  }
-}
-@-webkit-keyframes sliderProgress {
-  0% {
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%)
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0)
-  }
-}
-@keyframes sliderProgress {
-  0% {
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%)
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0)
   }
 }
 .popularCategories {
