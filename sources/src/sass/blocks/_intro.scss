@@ -61,16 +61,41 @@
   }
 }
 
-.intro__slider,
-.intro__slider ul {
+.intro__slider {
   height: 100%;
 }
 
-.intro__slide {
+.intro__sliderWrapper {
   height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+}
 
-  @include lg {
-    height: 600px;
+.intro__slide {
+  position: relative;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  overflow: hidden;
+
+  &:nth-child(1),
+  &:nth-child(2) {
+    left: -100%;
+
+    img {
+      transform: translateX(90%);
+    }
+  }
+
+  &:nth-child(n + 4) {
+    left: 100%;
+
+    img {
+      transform: translateX(-90%);
+    }
   }
 }
 
@@ -128,6 +153,33 @@
 
 .intro__next {
   border-right: 2px solid #000;
+}
+
+.intro {
+  .intro__btn.disabled {
+    pointer-events: none;
+  }
+
+  @include md {
+    .intro__nav {
+      display: flex;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0);
+      height: 100%;
+    }
+
+    .intro__btn {
+      width: 30%;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+      svg {
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+  }
 }
 
 // paggination

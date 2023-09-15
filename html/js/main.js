@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
-    doIntroSectionInit();
-    if (typeof ymaps !== "undefined" && ymaps !== null) {
-      setTimeout(doInitMap, 0);
-    }
+    initIntroSlider();
+    // doIntroSectionInit();
+    initAutoscrollBlocks();
+
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -27,8 +27,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // slider in promotions section
     initPromotionsSectionSlider();
 
-    // slider in popularGoods section
+    // sliders in goodsCard sections
     initAllGoodsSectionsSliders();
+
+    if (typeof ymaps !== "undefined" && ymaps !== null) {
+      setTimeout(doInitMap, 0);
+    }
   }
 
   // catalog page
@@ -197,7 +201,7 @@ function doPanelInit() {
   }
 }
 
-//=== intro section logic
+//=== intro section logic OLD
 
 function doIntroSectionInit() {
   // separate initialization of each individual slider for correct operation of sliders
@@ -320,7 +324,9 @@ function doIntroSectionInit() {
       intro_slider_left.slideToLoop(realIndex, 0);
     }
   });
+}
 
+function initAutoscrollBlocks() {
   // init autoscroll blocks
 
   const brandsSection_autoscroll = document.querySelector(
@@ -1011,6 +1017,186 @@ function initAnimateTextPromotionsSection() {
 }
 
 // ===== SLIDERS =====
+
+// === INTRO SLIDER
+
+function initIntroSlider() {
+  const intro = document.querySelector(".intro");
+  const intro_sliders = intro.querySelectorAll(".intro__slider");
+  const prev_btn = intro.querySelector(".intro__prev");
+  const next_btn = intro.querySelector(".intro__next");
+  const pagination = intro.querySelector(".intro__pagination");
+
+  // set class 'current-slide' to every slide with index "2"
+  intro_sliders.forEach((slider) => {
+    const currentSlide = slider.querySelectorAll(".intro__slide")[2];
+    currentSlide.classList.add("current-slide");
+
+    // add basic settings to every slide
+    doAddInitSettingsToIntroSlider(slider);
+  });
+
+  // group all nesessary elements to object
+  const params = {
+    intro,
+    intro_sliders,
+    prev_btn,
+    next_btn,
+    pagination,
+  };
+
+  // add listenerst to sliders nav button
+  [prev_btn, next_btn].forEach((btn) => {
+    btn.addEventListener("click", () => {
+      requestAnimationFrame(() => handleIntroBtn(btn, params));
+    });
+  });
+}
+
+function handleIntroBtn(btn, params) {
+  const { intro_sliders, prev_btn, next_btn } = params;
+
+  intro_sliders.forEach((slider) => {
+    // start animation
+    doIntroSliderAnimation(slider, params, btn);
+  });
+}
+
+function doReplaceIntroSliderElements(...props) {
+  const [slider, btn] = props;
+  const wrapper = slider.querySelector(".intro__sliderWrapper");
+  const slides = Array.from(slider.querySelectorAll(".intro__slide"));
+
+  if (btn.classList.contains("intro__next")) {
+    const clonedElement = slides[slides.length - 3];
+    const clone = clonedElement.cloneNode(true);
+    const deletedElement = slides[0];
+    deletedElement.remove();
+    wrapper.append(clone);
+  } else {
+    const clonedElement = slides[slides.length - 3];
+    const clone = clonedElement.cloneNode(true);
+    const deletedElement = slides[slides.length - 1];
+    deletedElement.remove();
+    wrapper.prepend(clone);
+  }
+}
+
+// prepare of slider settings
+function doAddInitSettingsToIntroSlider(slider) {
+  const slides = Array.from(slider.querySelectorAll(".intro__slide"));
+
+  slides.forEach((slide, idx) => {
+    if (idx < 2) {
+      slide.style.left = "-100%";
+      slide.children[0].style.transform = "translate(90px, 0)";
+    } else if (idx === 2) {
+      slide.style.left = "0";
+      slide.children[0].style.transform = "translate(0, 0)";
+    } else {
+      slide.style.left = "100%";
+      slide.children[0].style.transform = "translate(-90%, 0)";
+    }
+  });
+}
+
+// performing slider animation
+function doIntroSliderAnimation(slider, params, btn) {
+  const { prev_btn, next_btn, pagination } = params;
+
+  const currentSlide = slider.querySelector(".current-slide");
+  const currentSlideInner = currentSlide.children[0];
+  let newSlide = null,
+    newSlideInner = null;
+
+  let firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset;
+
+  if (btn === next_btn) {
+    newSlide = currentSlide.nextElementSibling;
+    newSlideInner = newSlide.children[0];
+    firstCurrentSlideOffsset = "-5%";
+    lastCurrentSlideOffset = "-100%";
+    lastCurrentSlideInnerOffset = "90%";
+  } else {
+    newSlide = currentSlide.previousElementSibling;
+    newSlideInner = newSlide.children[0];
+    firstCurrentSlideOffsset = "5%";
+    lastCurrentSlideOffset = "100%";
+    lastCurrentSlideInnerOffset = "-90%";
+  }
+
+  const props = {
+    slider,
+    btn,
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  };
+
+  gsapAnimationIntroSlider(props);
+
+  // change current slide
+  currentSlide.classList.remove("current-slide");
+  newSlide.classList.add("current-slide");
+}
+
+function gsapAnimationIntroSlider(props) {
+  const {
+    slider,
+    btn,
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = props;
+
+  const TL = gsap.timeline();
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .set(currentSlide, { zIndex: 1 })
+    .set(newSlide, { zIndex: 2 })
+    .to(currentSlide, {
+      left: firstCurrentSlideOffsset,
+      duration: 0.4,
+    })
+    .to(
+      newSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      newSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: lastCurrentSlideOffset,
+    })
+    .set(currentSlideInner, {
+      x: lastCurrentSlideInnerOffset,
+    })
+    .call(doRemoveClassToButtons, [prev_btn, next_btn])
+    .call(doReplaceIntroSliderElements, [slider, btn])
+    .call(doAddInitSettingsToIntroSlider, [slider]);
+}
 
 // init promotionsSection slider
 

@@ -14,34 +14,46 @@ block page
                 .intro__block
                     .intro__frame
                         .intro__slider(data-name="intro_slider_left")
-                            ul
-                                li.intro__slide
-                                    img(src="./images/intro-3.png" alt="")
-                                li.intro__slide
+                            ul.intro__sliderWrapper
+                                li.intro__slide.slide-2
                                     img(src="./images/intro-1.png" alt="")
-                                li.intro__slide
+                                li.intro__slide.slide-3
+                                    img(src="./images/intro-2.png" alt="")
+                                li.intro__slide.slide-1
+                                    img(src="./images/intro-3.png" alt="")
+                                li.intro__slide.slide-2
+                                    img(src="./images/intro-1.png" alt="")
+                                li.intro__slide.slide-3
                                     img(src="./images/intro-2.png" alt="")
 
                 .intro__block
                     .intro__frame
-                        .intro__slider.swiper(data-name="intro_slider_center")
-                            ul
-                                li.intro__slide
-                                    img(src="./images/intro-1.png" alt="")
-                                li.intro__slide
+                        .intro__slider(data-name="intro_slider_center")
+                            ul.intro__sliderWrapper
+                                li.intro__slide.slide-2
                                     img(src="./images/intro-2.png" alt="")
-                                li.intro__slide
+                                li.intro__slide.slide-3
+                                    img(src="./images/intro-3.png" alt="")
+                                li.intro__slide.slide-1
+                                    img(src="./images/intro-1.png" alt="")
+                                li.intro__slide.slide-2
+                                    img(src="./images/intro-2.png" alt="")
+                                li.intro__slide.slide-3
                                     img(src="./images/intro-3.png" alt="")
 
                 .intro__block
                     .intro__frame
                         .intro__slider(data-name="intro_slider_right")
-                            ul
-                                li.intro__slide
-                                    img(src="./images/intro-2.png" alt="")
-                                li.intro__slide
+                            ul.intro__sliderWrapper
+                                li.intro__slide.slide-2
                                     img(src="./images/intro-3.png" alt="")
-                                li.intro__slide
+                                li.intro__slide.slide-3
+                                    img(src="./images/intro-1.png" alt="")
+                                li.intro__slide.slide-1
+                                    img(src="./images/intro-2.png" alt="")
+                                li.intro__slide.slide-2
+                                    img(src="./images/intro-3.png" alt="")
+                                li.intro__slide.slide-3
                                     img(src="./images/intro-1.png" alt="")
 
             .intro__nav
@@ -55,7 +67,7 @@ block page
                         path(d="M3.99984 11.0001V13.0001H15.9998L10.4998 18.5001L11.9198 19.9201L19.8398 12.0001L11.9198 4.08008L10.4998 5.50008L15.9998 11.0001H3.99984Z" fill="#000")
 
 
-            .intro__pagination.swiper-pagination
+            .intro__pagination
                 button.intro__paginationItem(type="button" aria-label="Пагинация слайдера")
                 button.intro__paginationItem(type="button" aria-label="Пагинация слайдера")
                 button.intro__paginationItem(type="button" aria-label="Пагинация слайдера")
