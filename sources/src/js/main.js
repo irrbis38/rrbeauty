@@ -1045,6 +1045,26 @@ function initIntroSlider() {
     pagination,
   };
 
+  // autoslide introSlider
+  // TODO: start animate of pagination
+
+  const direction = "to_left";
+
+  const doAutoSlide = () => {
+    handleIntroBtn(direction, params);
+  };
+
+  function startAutoSlide() {
+    return gsap.set(doAutoSlide, {
+      delay: 0,
+      onRepeat: doAutoSlide,
+      repeat: -1,
+      repeatDelay: 5,
+    });
+  }
+
+  let autoSlide = startAutoSlide();
+
   // add listenerst to sliders nav button
   [prev_btn, next_btn].forEach((btn) => {
     let direction = "";
@@ -1054,11 +1074,17 @@ function initIntroSlider() {
       direction = "to_right";
     }
     btn.addEventListener("click", () => {
-      requestAnimationFrame(() => handleIntroBtn(direction, params));
+      // reset autoSlide animation
+      autoSlide.kill();
+
+      requestAnimationFrame(() => {
+        handleIntroBtn(direction, params);
+      });
+
+      // move autoSlide animation again
+      autoSlide = startAutoSlide();
     });
   });
-
-  // TODO: perform handleIntroBtn by setInterval
 }
 
 function handleIntroBtn(direction, params) {
