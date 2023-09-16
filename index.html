@@ -25,26 +25,26 @@
   <body class="index">
     <header class="header">
       <div class="header__container">
-        <button class="header__btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M7 10L12 15L17 10H7Z" fill="#838383"></path>
-          </svg><span>Информация</span>
-        </button>
-        <nav class="header__menu">
-          <ul>
-            <li><a href="#">Бренды</a></li>
-            <li><a href="#">Наши магазины</a></li>
-            <li><a href="#">Акции</a></li>
-            <li><a href="#">О компании</a></li>
-            <li><a href="#">Доставка и оплата</a></li>
-            <li><a href="#">Новости</a></li>
-            <li><a href="#">Гарантия и возврат товара</a></li>
-            <li><a href="#">Контакты</a></li>
-          </ul>
-        </nav>
+        <div class="container">
+          <button class="header__btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7 10L12 15L17 10H7Z" fill="#838383"></path>
+            </svg><span>Информация</span>
+          </button>
+          <nav class="header__menu">
+            <ul>
+              <li><a href="#">Бренды</a></li>
+              <li><a href="#">Наши магазины</a></li>
+              <li><a href="#">Акции</a></li>
+              <li><a href="#">О компании</a></li>
+              <li><a href="#">Доставка и оплата</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Гарантия и возврат товара</a></li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </header>
-    <main class="main">
       <div class="panel">
         <div class="panel__container"> 
           <div class="panel__nav">
@@ -111,38 +111,46 @@
         </nav>
       </div>
       <div class="menu__overlay" id="menu-overlay"></div>
+    </header>
+    <main class="main">
       <div class="intro">
         <div class="intro__container"> 
           <div class="intro__wrapper">
             <div class="intro__block">
               <div class="intro__frame">
-                <div class="intro__slider swiper" id="intro-slider-left" data-name="intro_slider_left">
-                  <ul class="swiper-wrapper">
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-3.png" alt=""></li>
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-1.png" alt=""></li>
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-2.png" alt=""></li>
+                <div class="intro__slider" data-name="intro_slider_left">
+                  <ul class="intro__sliderWrapper">
+                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide slide-1" data-slide-number="1"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-2.png" alt=""></li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="intro__block">
               <div class="intro__frame">
-                <div class="intro__slider swiper" id="intro-slider-center" data-name="intro_slider_center">
-                  <ul class="swiper-wrapper">
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-1.png" alt=""></li>
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-2.png" alt=""></li>
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-3.png" alt=""></li>
+                <div class="intro__slider" data-name="intro_slider_center">
+                  <ul class="intro__sliderWrapper">
+                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide slide-1" data-slide-number="1"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-3.png" alt=""></li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="intro__block">
               <div class="intro__frame">
-                <div class="intro__slider swiper" id="intro-slider-right" data-name="intro_slider_right">
-                  <ul class="swiper-wrapper">
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-2.png" alt=""></li>
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-3.png" alt=""></li>
-                    <li class="intro__slide swiper-slide"><img src="./images/intro-1.png" alt=""></li>
+                <div class="intro__slider" data-name="intro_slider_right">
+                  <ul class="intro__sliderWrapper">
+                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide slide-1" data-slide-number="1"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-1.png" alt=""></li>
                   </ul>
                 </div>
               </div>
@@ -160,11 +168,7 @@
               </svg>
             </button>
           </div>
-          <div class="intro__pagination swiper-pagination">
-            <button class="intro__paginationItem" type="button" aria-label="Пагинация слайдера"></button>
-            <button class="intro__paginationItem" type="button" aria-label="Пагинация слайдера"></button>
-            <button class="intro__paginationItem" type="button" aria-label="Пагинация слайдера"></button>
-          </div>
+          <ul class="intro__pagination"></ul>
         </div>
       </div>
       <section class="popularCategories">
@@ -232,7 +236,7 @@
           <button class="brandsSection__btn showmore__btn">Показать еще</button>
         </div>
       </section>
-      <section class="promotionsSection">
+      <section class="promotionsSection slider-start">
         <div class="promotionsSection__autoscroll autoscroll__block splide">
           <div class="splide__track">
             <ul class="splide__list">
@@ -252,37 +256,113 @@
           <div class="promotionsSection__wrapper">
             <div class="promotionsSection__block promotionsSection__block--first">
               <div class="promotionsSection__item">
-                <div class="promotionsSection__img"><img src="./images/promotions-slide-1.png" alt=""><span class="promotionsSection__sticker sticker__blue">15.09 - 15.10</span></div>
-                <h3 class="promotionsSection__name"><a href="#">Скидка 15% на пигменты<br>AS company</a></h3>
+                <div class="promotionsSection__sliderWrapper">
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-1.png" alt=""><span class="promotionsSection__sticker sticker__blue">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">Скидка 15% на пигменты<br>AS company</a></h3>
+                  </div>
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-2.png" alt=""><span class="promotionsSection__sticker sticker__blue">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">Подарок от<br>La Roche-Posay</a></h3>
+                  </div>
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-3.png" alt=""><span class="promotionsSection__sticker sticker__blue">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">305 by Miami Stylists<br>до −35%</a></h3>
+                  </div>
+                </div>
               </div>
               <div class="promotionsSection__item promotionsSection__over over">
                 <div class="over__overlay"></div>
-                <div class="over__fragment">
-                  <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"><span class="sticker__sale stiker__azure">-15%</span></div>
-                  <div class="over__descr"> 
-                    <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
-                    <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
-                    <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                <div class="promotionsSection__sliderWrapper">
+                  <div class="promotionsSection__slide">
+                    <div class="over__fragment">
+                      <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"><span class="sticker__sale stiker__azure">-15%</span></div>
+                      <div class="over__descr"> 
+                        <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
+                        <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
+                        <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                    </div>
+                    <div class="over__fragment">
+                      <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"></div>
+                      <div class="over__descr"> 
+                        <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
+                        <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
+                        <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="over__fragment">
-                  <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"></div>
-                  <div class="over__descr"> 
-                    <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
-                    <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
-                    <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                  <div class="promotionsSection__slide">
+                    <div class="over__fragment">
+                      <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"><span class="sticker__sale stiker__azure">-15%</span></div>
+                      <div class="over__descr"> 
+                        <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
+                        <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
+                        <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                    </div>
+                    <div class="over__fragment">
+                      <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"></div>
+                      <div class="over__descr"> 
+                        <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
+                        <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
+                        <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="promotionsSection__slide">
+                    <div class="over__fragment">
+                      <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"><span class="sticker__sale stiker__azure">-15%</span></div>
+                      <div class="over__descr"> 
+                        <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
+                        <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
+                        <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                    </div>
+                    <div class="over__fragment">
+                      <div class="over__picture"><img src="./images/over-slide-1.png" alt="Жидкая матовая помада"></div>
+                      <div class="over__descr"> 
+                        <div class="over__price"> <span class="over__priceNew">3 800₸</span><span class="over__priceOld">6 800₸</span></div>
+                        <h3 class="over__name"><a href="#">SHISEIDO</a></h3>
+                        <p class="over__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="promotionsSection__block promotionsSection__block--second">
               <div class="promotionsSection__item">
-                <div class="promotionsSection__img"><img src="./images/promotions-slide-2.png" alt=""><span class="promotionsSection__sticker sticker__green">15.09 - 15.10</span></div>
-                <h3 class="promotionsSection__name"><a href="#">Подарок от<br>La Roche-Posay</a></h3>
+                <div class="promotionsSection__sliderWrapper">
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-2.png" alt=""><span class="promotionsSection__sticker sticker__green">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">Подарок от<br>La Roche-Posay</a></h3>
+                  </div>
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-3.png" alt=""><span class="promotionsSection__sticker sticker__green">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">305 by Miami Stylists<br>до −35%</a></h3>
+                  </div>
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-1.png" alt=""><span class="promotionsSection__sticker sticker__green">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">Скидка 15% на пигменты<br>AS company</a></h3>
+                  </div>
+                </div>
               </div>
               <div class="promotionsSection__item">
-                <div class="promotionsSection__img"><img src="./images/promotions-slide-3.png" alt=""><span class="promotionsSection__sticker sticker__darkRed">15.09 - 15.10</span></div>
-                <h3 class="promotionsSection__name"><a href="#">305 by Miami Stylists<br>до −35%</a></h3>
+                <div class="promotionsSection__sliderWrapper">
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-3.png" alt=""><span class="promotionsSection__sticker sticker__darkRed">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">305 by Miami Stylists<br>до −35%</a></h3>
+                  </div>
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-1.png" alt=""><span class="promotionsSection__sticker sticker__darkRed">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">Скидка 15% на пигменты<br>AS company</a></h3>
+                  </div>
+                  <div class="promotionsSection__slide">
+                    <div class="promotionsSection__img"><img src="./images/promotions-slide-2.png" alt=""><span class="promotionsSection__sticker sticker__darkRed">15.09 - 15.10</span></div>
+                    <h3 class="promotionsSection__name"><a href="#">Подарок от<br>La Roche-Posay</a></h3>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -301,7 +381,7 @@
           </button>
         </div>
       </section>
-      <section class="discountedProducts">
+      <section class="discountedProducts slider-start">
         <div class="discountedProducts__bg"> 
           <div class="discountedProducts__textLine textLline__first">
             <div class="discountedProducts__inner"><span>товары</span><span>товары</span><span>товары</span></div>
@@ -314,52 +394,188 @@
           <h2 class="discountedProducts__title">товары со скидкой</h2>
           <div class="goodsCard__wrapper">
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">SHISEIDO </h3>
-                <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">LUXVISAGE </h3>
-                <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__nav">
               <div class="goodsCard__nav-wrapper">
@@ -379,57 +595,193 @@
           <button class="brandsSection__btn showmore__btn">Показать еще</button>
         </div>
       </section>
-      <section class="popularGoods goodsSection">
+      <section class="popularGoods goodsSection slider-start">
         <div class="container">
           <h2 class="goodsSection__title">популярные товары</h2>
           <div class="goodsCard__wrapper">
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">SHISEIDO </h3>
-                <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">LUXVISAGE </h3>
-                <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__nav">
               <div class="goodsCard__nav-wrapper">
@@ -449,57 +801,193 @@
           <button class="brandsSection__btn showmore__btn">Показать еще</button>
         </div>
       </section>
-      <section class="newGoods goodsSection">
+      <section class="newGoods goodsSection slider-start">
         <div class="container">
           <h2 class="goodsSection__title">новинки</h2>
           <div class="newGoods__wrapper goodsCard__wrapper">
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">SHISEIDO </h3>
-                <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">LUXVISAGE </h3>
-                <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__nav">
               <div class="goodsCard__nav-wrapper">
@@ -519,57 +1007,193 @@
           <button class="brandsSection__btn showmore__btn">Показать еще</button>
         </div>
       </section>
-      <section class="ourGoods goodsSection">
+      <section class="ourGoods goodsSection slider-start">
         <div class="container">
           <h2 class="goodsSection__title">наша продукция</h2>
           <div class="goodsCard__wrapper">
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">SHISEIDO </h3>
-                <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-2.png" alt="SHISEIDO"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">SHISEIDO </h3>
+                      <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">LUXVISAGE </h3>
-                <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-3.png" alt="LUXVISAGE"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">LUXVISAGE </h3>
+                      <p class="goodsCard__about">Помада для губ с невесомым покрытием Visionairy Gel</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__item">
-              <div class="goodsCard__descr">
-                <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
-                  <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+              <div class="goodsCard__sliderWrapper"> 
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
                 </div>
-                <h3 class="goodsCard__name">GIVENCHY </h3>
-                <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                <div class="goodsCard__slide">
+                  <div class="goodsCard__inner">
+                    <div class="goodsCard__descr">
+                      <div class="goodsCard__img"><img src="./images/goods-card-1.png" alt="GIVENCHY"/>
+                        <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                      </div>
+                      <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                      </div>
+                      <h3 class="goodsCard__name">GIVENCHY </h3>
+                      <p class="goodsCard__about">Легкая увлажняющая губная помада с мягким финишем Le Rouge Sheer Velvet</p>
+                    </div>
+                    <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                  </div>
+                </div>
               </div>
-              <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
             </div>
             <div class="goodsCard__nav">
               <div class="goodsCard__nav-wrapper">

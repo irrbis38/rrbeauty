@@ -25,26 +25,26 @@
   <body class="catalog-brand-page">
     <header class="header">
       <div class="header__container">
-        <button class="header__btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M7 10L12 15L17 10H7Z" fill="#838383"></path>
-          </svg><span>Информация</span>
-        </button>
-        <nav class="header__menu">
-          <ul>
-            <li><a href="#">Бренды</a></li>
-            <li><a href="#">Наши магазины</a></li>
-            <li><a href="#">Акции</a></li>
-            <li><a href="#">О компании</a></li>
-            <li><a href="#">Доставка и оплата</a></li>
-            <li><a href="#">Новости</a></li>
-            <li><a href="#">Гарантия и возврат товара</a></li>
-            <li><a href="#">Контакты</a></li>
-          </ul>
-        </nav>
+        <div class="container">
+          <button class="header__btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7 10L12 15L17 10H7Z" fill="#838383"></path>
+            </svg><span>Информация</span>
+          </button>
+          <nav class="header__menu">
+            <ul>
+              <li><a href="#">Бренды</a></li>
+              <li><a href="#">Наши магазины</a></li>
+              <li><a href="#">Акции</a></li>
+              <li><a href="#">О компании</a></li>
+              <li><a href="#">Доставка и оплата</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Гарантия и возврат товара</a></li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </header>
-    <main class="main">
       <div class="panel">
         <div class="panel__container"> 
           <div class="panel__nav">
@@ -111,6 +111,8 @@
         </nav>
       </div>
       <div class="menu__overlay" id="menu-overlay"></div>
+    </header>
+    <main class="main">
       <section class="top">
         <div class="container">
           <ul class="top__breadcrumps">
@@ -283,112 +285,418 @@
             </div>
             <div class="catalog__wrapper">
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-4.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-4.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для губ Nut pie (Ореховое пралине), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-4.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для губ Nut pie (Ореховое пралине), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Пигмент для губ Nut pie (Ореховое пралине), 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-4.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для губ Nut pie (Ореховое пралине), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-7.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-7.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-7.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-7.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span><span class="goods__priceOld">4 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
               <div class="goodsCard__item">
-                <div class="goodsCard__descr">
-                  <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
-                    <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                <div class="goodsCard__sliderWrapper"> 
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
                   </div>
-                  <h3 class="goodsCard__name">AS COMPANY </h3>
-                  <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                  <div class="goodsCard__slide">
+                    <div class="goodsCard__inner">
+                      <div class="goodsCard__descr">
+                        <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
+                          <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Убрать из избранного"/></button>
+                        </div>
+                        <div class="goodsCard__price"><span class="goods__priceNew">3 800₸</span>
+                        </div>
+                        <h3 class="goodsCard__name">AS COMPANY </h3>
+                        <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
+                      </div>
+                      <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
+                    </div>
+                  </div>
                 </div>
-                <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
               </div>
             </div>
             <ul class="pagination catalog__pagination">

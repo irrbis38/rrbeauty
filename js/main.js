@@ -10,16 +10,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
-    doIntroSectionInit();
-    if (typeof ymaps !== "undefined" && ymaps !== null) {
-      doInitMap();
-    }
+    initIntroSlider();
+    // doIntroSectionInit();
+    initAutoscrollBlocks();
+
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
     doHideMapDescription();
     doToggleFavoritesIcons();
-    doParallaxPromotionsSection();
+
+    // animation by scroll
+    initParallaxPromotionsSection();
+    initAnimateTextPromotionsSection();
+
+    // slider in promotions section
+    initPromotionsSectionSlider();
+
+    // sliders in goodsCard sections
+    initAllGoodsSectionsSliders();
+
+    if (typeof ymaps !== "undefined" && ymaps !== null) {
+      setTimeout(doInitMap, 0);
+    }
   }
 
   // catalog page
@@ -158,6 +171,7 @@ function doPanelInit() {
 
   // menu logic
 
+  const body = document.body;
   const show_menu_button = document.getElementById("show-menu");
   const menu_overlay = document.getElementById("menu-overlay");
   const menu = document.getElementById("menu");
@@ -170,6 +184,7 @@ function doPanelInit() {
       [menu_overlay, menu, show_categories_button].forEach((el) =>
         el.classList.toggle("active")
       );
+      body.classList.toggle("lock");
       panel_input.forEach((el) => doResetSearchInput(el));
     });
   });
@@ -179,6 +194,7 @@ function doPanelInit() {
       [menu_overlay, menu, show_categories_button].forEach((el) =>
         el.classList.remove("active")
       );
+      body.classList.remove("lock");
       panel_input.forEach((el) => doResetSearchInput(el));
     });
   });
@@ -188,130 +204,9 @@ function doPanelInit() {
   }
 }
 
-//=== intro section logic
+// init all autoscroll blocks
 
-function doIntroSectionInit() {
-  // separate initialization of each individual slider for correct operation of sliders
-  const intro_slider_left = new Swiper("#intro-slider-left", {
-    // Optional parameters
-    loop: true,
-    grab: false,
-    allowTouchMove: false,
-
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    // hashNavigation: {
-    //   watchState: true,
-    // },
-
-    // pagination
-    pagination: {
-      el: ".intro__pagination",
-      clickable: true,
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".intro__next",
-      prevEl: ".intro__prev",
-    },
-  });
-
-  const intro_slider_center = new Swiper("#intro-slider-center", {
-    // Optional parameters
-    loop: true,
-    grab: false,
-    allowTouchMove: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    // hashNavigation: {
-    //   watchState: true,
-    // },
-
-    // pagination
-    pagination: {
-      el: ".intro__pagination",
-      clickable: true,
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".intro__next",
-      prevEl: ".intro__prev",
-    },
-
-    breakpoints: {
-      1301: {
-        allowTouchMove: false,
-      },
-    },
-  });
-
-  const intro_slider_right = new Swiper("#intro-slider-right", {
-    // Optional parameters
-    loop: true,
-    grab: false,
-    allowTouchMove: false,
-
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    // hashNavigation: {
-    //   watchState: true,
-    // },
-
-    // pagination
-    pagination: {
-      el: ".intro__pagination",
-      clickable: true,
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".intro__next",
-      prevEl: ".intro__prev",
-    },
-  });
-
-  const intro_pagination = Array.from(
-    document.querySelectorAll(".intro__pagination span")
-  );
-  // add listeners to central slider
-  intro_slider_center.on("slideChange", doUpdateActiveIntroSliderBullet);
-
-  function doUpdateActiveIntroSliderBullet() {
-    // get index of current slide
-    const realIndex = intro_slider_center.realIndex;
-
-    // reset current active bullet
-    intro_pagination.forEach((bullet) => {
-      bullet.classList.remove("swiper-pagination-bullet-active");
-    });
-
-    // set new active bullet
-    intro_pagination[realIndex].classList.add(
-      "swiper-pagination-bullet-active"
-    );
-  }
-
-  // create mediaQuery
-  const mq1300 = window.matchMedia("(max-width: 1300px)");
-
-  // update left and right sliders after risize from '1300px<=' size to '>1300px' size
-  mq1300.addEventListener("change", (e) => {
-    if (!e.matches) {
-      const realIndex = intro_slider_center.realIndex;
-      intro_slider_center.slideToLoop(realIndex, 0);
-      intro_slider_right.slideToLoop(realIndex, 0);
-      intro_slider_left.slideToLoop(realIndex, 0);
-    }
-  });
-
+function initAutoscrollBlocks() {
   // init autoscroll blocks
 
   const brandsSection_autoscroll = document.querySelector(
@@ -447,7 +342,7 @@ function doIntroSectionInit() {
 
 // init map on main page
 
-function doInitMap() {
+async function doInitMap() {
   const mark_link = "images/map-current-mark.svg";
   function init() {
     let center = [51.158562572612595, 71.43921449999996];
@@ -603,70 +498,6 @@ function doToggleFavoritesIcons() {
       button.classList.toggle("addedToFavorites");
     })
   );
-}
-
-// parallax for 'discountedProducts' on main page
-
-function doParallaxPromotionsSection() {
-  const discounted_products = document.querySelector(".discountedProducts");
-  const goods_card_items =
-    discounted_products.querySelectorAll(".goodsCard__item");
-  const TL = gsap.timeline();
-
-  TL.from(".textLline__first", {
-    x: "200px",
-    scrollTrigger: {
-      trigger: ".discountedProducts",
-      // markers: true,
-      start: "top bottom",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  })
-    .from(
-      ".textLline__second",
-      {
-        x: "-200px",
-        scrollTrigger: {
-          trigger: ".discountedProducts",
-          // markers: true,
-          start: "top bottom",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      },
-      0
-    )
-    .from(
-      goods_card_items[0],
-      {
-        y: "-232px",
-        ease: Power2.easeOut,
-        scrollTrigger: {
-          trigger: ".goodsCard__wrapper",
-          // markers: true,
-          start: "+=200px bottom",
-          end: "bottom+=400px bottom",
-          scrub: true,
-        },
-      },
-      0
-    )
-    .from(
-      goods_card_items[2],
-      {
-        y: "-98px",
-        ease: Power2.easeOut,
-        scrollTrigger: {
-          trigger: ".goodsCard__wrapper",
-          // markers: true,
-          start: "+=200px bottom",
-          end: "bottom+=200px bottom",
-          scrub: true,
-        },
-      },
-      0
-    );
 }
 
 // sort menu logic
@@ -912,7 +743,6 @@ function handleAllInputRange() {
         input.value = "";
         input_max_range.value = parseInt(input.max);
         track.style.right = "0";
-        console;
       } else if (value < parseInt(input_min_range.value) + minDifference) {
         input.value = parseInt(input_min_range.value) + minDifference;
         input_max_range.value = parseInt(input_min_range.value) + minDifference;
@@ -955,3 +785,788 @@ function doToggleBrandDescription() {
     }
   });
 }
+
+// parallax for 'discountedProducts' on main page
+
+function initParallaxPromotionsSection() {
+  const discounted_products = document.querySelector(".discountedProducts");
+  const goods_card_items =
+    discounted_products.querySelectorAll(".goodsCard__item");
+
+  let mm = gsap.matchMedia(),
+    breakPoint = 992;
+
+  mm.add(
+    {
+      // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+      isDesktop: `(min-width: ${breakPoint}px) and (prefers-reduced-motion: no-preference)`,
+      isMobile: `(max-width: ${
+        breakPoint - 1
+      }px) and (prefers-reduced-motion: no-preference)`,
+    },
+    (context) => {
+      // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+      let { isDesktop, isMobile } = context.conditions;
+
+      const TL = gsap.timeline();
+      if (isDesktop) {
+        TL.from(
+          goods_card_items[0],
+          {
+            y: "-232px",
+            ease: Power2.easeOut,
+            scrollTrigger: {
+              trigger: ".goodsCard__wrapper",
+              // markers: true,
+              start: "+=200px bottom",
+              end: "bottom+=400px bottom",
+              scrub: true,
+            },
+          },
+          0
+        ).from(
+          goods_card_items[2],
+          {
+            y: "-98px",
+            ease: Power2.easeOut,
+            scrollTrigger: {
+              trigger: ".goodsCard__wrapper",
+              // markers: true,
+              start: "+=200px bottom",
+              end: "bottom+=200px bottom",
+              scrub: true,
+            },
+          },
+          0
+        );
+      }
+
+      return () => {
+        // optionally return a cleanup function that will be called when the media query no longer matches
+      };
+    }
+  );
+}
+
+// animate text for 'discountedProducts' on main page
+
+function initAnimateTextPromotionsSection() {
+  let mm = gsap.matchMedia(),
+    breakPoint = 768;
+
+  mm.add(
+    {
+      // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+      isDesktop: `(min-width: ${breakPoint}px) and (prefers-reduced-motion: no-preference)`,
+      isMobile: `(max-width: ${
+        breakPoint - 1
+      }px) and (prefers-reduced-motion: no-preference)`,
+    },
+    (context) => {
+      // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+      let { isDesktop, isMobile } = context.conditions;
+
+      const TL = gsap.timeline();
+      if (isDesktop) {
+        TL.from(".textLline__first", {
+          x: "200px",
+          scrollTrigger: {
+            trigger: ".discountedProducts",
+            // markers: true,
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        }).from(
+          ".textLline__second",
+          {
+            x: "-200px",
+            scrollTrigger: {
+              trigger: ".discountedProducts",
+              // markers: true,
+              start: "top bottom",
+              end: "bottom bottom",
+              scrub: true,
+            },
+          },
+          0
+        );
+      }
+    }
+  );
+}
+
+// ===== SLIDERS =====
+
+// === INTRO SLIDER
+
+function initIntroSlider() {
+  const intro = document.querySelector(".intro");
+  const intro_sliders = intro.querySelectorAll(".intro__slider");
+  const prev_btn = intro.querySelector(".intro__prev");
+  const next_btn = intro.querySelector(".intro__next");
+  const pagination = intro.querySelector(".intro__pagination");
+
+  function doCreatePagination() {
+    const uniqueSlidesAmount = intro_sliders[0].children[0].children.length - 2;
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < uniqueSlidesAmount; i++) {
+      let li = document.createElement("LI");
+      if (i === 0) {
+        li.classList.add("intro__paginationItem", "active");
+      } else {
+        li.classList.add("intro__paginationItem");
+      }
+      li.innerHTML = `<span></span>`;
+      fragment.append(li);
+    }
+    pagination.append(fragment);
+  }
+
+  doCreatePagination();
+
+  // set class 'current-slide' to every slide with index "2"
+  intro_sliders.forEach((slider) => {
+    const currentSlide = slider.querySelectorAll(".intro__slide")[2];
+    currentSlide.classList.add("current-slide");
+
+    // add basic settings to every slide
+    doAddInitSettingsToIntroSlider(slider);
+  });
+
+  // group all nesessary elements to object
+  const params = {
+    intro,
+    intro_sliders,
+    prev_btn,
+    next_btn,
+    pagination,
+  };
+
+  // autoslide introSlider
+
+  // base parameters of intro slider
+  const direction = "to_left";
+  const duration = 5;
+
+  // start animation for the first time
+  // doAnimatePagination();
+
+  const doAutoSlide = () => {
+    handleIntroBtn(direction, params);
+    // doAnimatePagination();
+  };
+
+  function startAutoSlide() {
+    const TL = gsap.timeline();
+    return TL.set(
+      doAutoSlide,
+      {
+        delay: duration,
+        onRepeat: doAutoSlide,
+        repeat: -1,
+        repeatDelay: duration,
+      },
+      0
+    );
+  }
+
+  // function doAnimatePagination() {
+  //   const TL = gsap.timeline();
+  //   return TL.fromTo(
+  //     ".intro__paginationItem.active span",
+  //     { x: "-100%" },
+  //     {
+  //       x: "0%",
+  //       duration: duration,
+  //     },
+  //     0
+  //   ).to(".intro__paginationItem span", {
+  //     x: "-100%",
+  //   });
+  // }
+
+  let autoSlide = startAutoSlide();
+  // let autoPagination = doAnimatePagination();
+
+  // add listeners to sliders nav button
+  [prev_btn, next_btn].forEach((btn) => {
+    let direction = "";
+    if (btn.classList.contains("intro__next")) {
+      direction = "to_left";
+    } else {
+      direction = "to_right";
+    }
+    btn.addEventListener("click", () => {
+      // reset autoSlide animation
+      autoSlide.kill();
+      // autoPagination.kill();
+
+      requestAnimationFrame(() => {
+        handleIntroBtn(direction, params);
+      });
+
+      // move autoSlide animation again
+      autoSlide = startAutoSlide();
+    });
+  });
+}
+
+function handleIntroBtn(direction, params) {
+  const { intro_sliders, pagination } = params;
+
+  intro_sliders.forEach((slider) => {
+    // start animation
+    doIntroSliderAnimation(slider, params, direction);
+  });
+
+  // changing the active paginationItem depending on the current slide
+  const slideNumber =
+    intro_sliders[0].querySelector(".current-slide").dataset.slideNumber;
+
+  Array.from(pagination.children).forEach((item) =>
+    item.classList.remove("active")
+  );
+  pagination.children[slideNumber - 1].classList.add("active");
+}
+
+function doReplaceIntroSliderElements(...props) {
+  const [slider, direction] = props;
+  const wrapper = slider.querySelector(".intro__sliderWrapper");
+  const slides = Array.from(slider.querySelectorAll(".intro__slide"));
+
+  if (direction === "to_left") {
+    const clonedElement = slides[slides.length - 3];
+    const clone = clonedElement.cloneNode(true);
+    const deletedElement = slides[0];
+    deletedElement.remove();
+    wrapper.append(clone);
+  } else {
+    const clonedElement = slides[slides.length - 3];
+    const clone = clonedElement.cloneNode(true);
+    const deletedElement = slides[slides.length - 1];
+    deletedElement.remove();
+    wrapper.prepend(clone);
+  }
+}
+
+// prepare of slider settings
+function doAddInitSettingsToIntroSlider(slider) {
+  const slides = Array.from(slider.querySelectorAll(".intro__slide"));
+
+  slides.forEach((slide, idx) => {
+    if (idx < 2) {
+      slide.style.left = "-100%";
+      slide.children[0].style.transform = "translate(90%, 0)";
+    } else if (idx === 2) {
+      slide.style.left = "0";
+      slide.children[0].style.transform = "translate(0, 0)";
+    } else {
+      slide.style.left = "100%";
+      slide.children[0].style.transform = "translate(-90%, 0)";
+    }
+  });
+}
+
+// performing slider animation
+function doIntroSliderAnimation(slider, params, direction) {
+  const { prev_btn, next_btn } = params;
+
+  const currentSlide = slider.querySelector(".current-slide");
+  const currentSlideInner = currentSlide.children[0];
+  let newSlide = null,
+    newSlideInner = null;
+
+  let firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset;
+
+  if (direction === "to_left") {
+    newSlide = currentSlide.nextElementSibling;
+    newSlideInner = newSlide.children[0];
+    firstCurrentSlideOffsset = "-5%";
+    lastCurrentSlideOffset = "-100%";
+    lastCurrentSlideInnerOffset = "90%";
+  } else {
+    newSlide = currentSlide.previousElementSibling;
+    newSlideInner = newSlide.children[0];
+    firstCurrentSlideOffsset = "5%";
+    lastCurrentSlideOffset = "100%";
+    lastCurrentSlideInnerOffset = "-90%";
+  }
+
+  const props = {
+    slider,
+    direction,
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  };
+
+  gsapAnimationIntroSlider(props);
+
+  // change current slide
+  currentSlide.classList.remove("current-slide");
+  newSlide.classList.add("current-slide");
+  // console.log(newSlide.dataset.slideNumber);
+}
+
+function gsapAnimationIntroSlider(props) {
+  const {
+    slider,
+    direction,
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = props;
+
+  const TL = gsap.timeline();
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .set(currentSlide, { zIndex: 1 })
+    .set(newSlide, { zIndex: 2 })
+    .to(currentSlide, {
+      left: firstCurrentSlideOffsset,
+      duration: 0.4,
+    })
+    .to(
+      newSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      newSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: lastCurrentSlideOffset,
+    })
+    .set(currentSlideInner, {
+      x: lastCurrentSlideInnerOffset,
+    })
+    .call(doRemoveClassToButtons, [prev_btn, next_btn])
+    .call(doReplaceIntroSliderElements, [slider, direction])
+    .call(doAddInitSettingsToIntroSlider, [slider]);
+}
+
+// init promotionsSection slider
+
+function initPromotionsSectionSlider() {
+  let counter = 0;
+  const section = document.querySelector(".promotionsSection");
+  const sectionItemsClassName = ".promotionsSection__item";
+  const sliders_wrappers = Array.from(
+    document.querySelectorAll(".promotionsSection__sliderWrapper")
+  );
+  const prev_btn = document.querySelector(
+    ".promotionsSection__nav .intro__prev"
+  );
+  const next_btn = document.querySelector(
+    ".promotionsSection__nav .intro__next"
+  );
+
+  const params = {
+    counter,
+    section,
+    sectionItemsClassName,
+    sliders_wrappers,
+    prev_btn,
+    next_btn,
+  };
+
+  doCheckSlidesAmount(params);
+}
+
+// init popularGoods slider
+
+function initAllGoodsSectionsSliders() {
+  const goods_sections = Array.from(document.querySelectorAll(".goodsSection"));
+  // const section = document.querySelector(".popularGoods");
+  const discounted_products_section = document.querySelector(
+    ".discountedProducts"
+  );
+
+  sections = [].concat(goods_sections, [discounted_products_section]);
+
+  sections.forEach((section) => {
+    let counter = 0;
+    const sectionItemsClassName = ".goodsCard__item";
+    const sliders_wrappers = Array.from(
+      section.querySelectorAll(".goodsCard__sliderWrapper")
+    );
+    const prev_btn = section.querySelector(".intro__prev");
+    const next_btn = section.querySelector(".intro__next");
+
+    const params = {
+      counter,
+      section,
+      sectionItemsClassName,
+      sliders_wrappers,
+      prev_btn,
+      next_btn,
+    };
+
+    doCheckSlidesAmount(params);
+  });
+}
+
+// === SLIDER LOGIC ===
+
+function doCheckSlidesAmount(params) {
+  let {
+    counter,
+    section,
+    sectionItemsClassName,
+    sliders_wrappers,
+    prev_btn,
+    next_btn,
+  } = params;
+
+  let slidesAmount = 0;
+  let slidesAmountsArray = [];
+  sliders_wrappers.forEach((wrapper) => {
+    slidesAmountsArray.push(wrapper.children.length);
+  });
+  let minSlidesAmount = Math.min(...slidesAmountsArray);
+
+  if (minSlidesAmount > 1) {
+    slidesAmount = minSlidesAmount;
+    const params = {
+      counter,
+      section,
+      sliders_wrappers,
+      prev_btn,
+      next_btn,
+      slidesAmount,
+      sectionItemsClassName,
+    };
+
+    doInitGeneralSliderLogic(params);
+  } else {
+    section.classList.add("slider-start", "slider-finish");
+  }
+}
+
+function doInitGeneralSliderLogic(params) {
+  let {
+    counter,
+    section,
+    sliders_wrappers,
+    prev_btn,
+    next_btn,
+    slidesAmount,
+    sectionItemsClassName,
+  } = params;
+
+  if (window.innerWidth >= 768) {
+    // set inline style to correct sliders work
+    sliders_wrappers.forEach((wrapper) => doSetInitSettings(wrapper));
+    // init slider
+    doAddSliderListeners();
+  }
+
+  const mq767 = window.matchMedia("(max-width: 767px)");
+
+  mq767.addEventListener("change", (e) => {
+    // became less than 767px
+    if (e.matches) {
+      // reset all slides offsets
+      counter = 0;
+      section.classList.add("slider-start");
+      section.classList.remove("slider-finish");
+      sliders_wrappers.forEach((wrapper) => doSetInitSettings(wrapper));
+      // remove all listeners
+      doRemoveSliderListeners();
+    }
+    // became larger than 767px
+    else {
+      // remove all items, that have been added by ".showmore__btn" button
+      const section_items = Array.from(
+        section.querySelectorAll(sectionItemsClassName)
+      );
+      doRemoveAllAddedElements(section_items, 4);
+
+      // init slider
+      doAddSliderListeners();
+    }
+  });
+
+  // add listeners for next and prev buttons
+  function doAddSliderListeners() {
+    next_btn.addEventListener("click", handleSliderButtonClick);
+    prev_btn.addEventListener("click", handleSliderButtonClick);
+  }
+
+  // remove listeners for next and prev buttons
+  function doRemoveSliderListeners() {
+    next_btn.removeEventListener("click", handleSliderButtonClick);
+    prev_btn.removeEventListener("click", handleSliderButtonClick);
+  }
+
+  // handle prev and next button
+  function handleSliderButtonClick(e) {
+    // if next button clicked
+    if (e.currentTarget.classList.contains("intro__next")) {
+      const typeOfButton = "next";
+      sliders_wrappers.forEach((wrapper) =>
+        handleSliderNavButtons(
+          wrapper,
+          counter,
+          prev_btn,
+          next_btn,
+          typeOfButton
+        )
+      );
+      counter += 1;
+      doCheckCounter(counter, section, slidesAmount);
+    } else if (e.currentTarget.classList.contains("intro__prev")) {
+      const typeOfButton = "prev";
+      sliders_wrappers.forEach((wrapper) =>
+        handleSliderNavButtons(
+          wrapper,
+          counter,
+          prev_btn,
+          next_btn,
+          typeOfButton
+        )
+      );
+      counter -= 1;
+      doCheckCounter(counter, section, slidesAmount);
+    }
+  }
+}
+
+// remove all added elements by resize from '<=767px' to '>767px'
+function doRemoveAllAddedElements(items, index) {
+  // wrapper is container with slides which need to remove
+  // index is the index of the element from which the deletion starts
+  items.forEach((item, idx) => {
+    if (idx >= index) {
+      item.remove();
+    }
+  });
+}
+
+function doSetInitSettings(wrapper) {
+  const slides = Array.from(wrapper.children);
+  slides.forEach((slide, idx) => {
+    if (idx === 0) {
+      slide.style.left = "0%";
+      Array.from(slide.children).forEach(
+        (item) => (item.style.transform = "translate(0, 0)")
+      );
+    } else {
+      slide.style.left = "100%";
+      Array.from(slide.children).forEach(
+        (item) => (item.style.transform = "translate(-90%, 0)")
+      );
+    }
+  });
+}
+
+// show / hide slider nav buttons depend what slide is current
+
+function doCheckCounter(counter, section, slidesAmount) {
+  if (counter === 0) {
+    section.classList.add("slider-start");
+    section.classList.remove("slider-finish");
+  } else if (counter > 0 && slidesAmount === 2) {
+    section.classList.add("slider-finish");
+    section.classList.remove("slider-start");
+  } else if (counter > 0 && counter < slidesAmount - 1) {
+    section.classList.remove("slider-start", "slider-finish");
+  } else {
+    section.classList.remove("slider-start");
+    section.classList.add("slider-finish");
+  }
+}
+
+// disable / enable nav buttons
+
+function doAddClassToButtons(...buttons) {
+  buttons.forEach((btn) => btn.classList.add("disabled"));
+}
+
+function doRemoveClassToButtons(...buttons) {
+  buttons.forEach((btn) => btn.classList.remove("disabled"));
+}
+
+// slider animation
+function handleSliderNavButtons(
+  wrapper,
+  counter,
+  prev_btn,
+  next_btn,
+  typeOfButton
+) {
+  const slides = wrapper.children;
+  const currentSlide = slides[counter];
+  const currentSlideInner = currentSlide.children;
+  const currentSlideName = currentSlideInner[1];
+
+  let newSlide = null;
+  let firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset;
+
+  if (typeOfButton === "next") {
+    newSlide = slides[counter + 1];
+    firstCurrentSlideOffsset = "-5%";
+    lastCurrentSlideOffset = "-100%";
+    lastCurrentSlideInnerOffset = "90%";
+  } else {
+    newSlide = slides[counter - 1];
+    firstCurrentSlideOffsset = "5%";
+    lastCurrentSlideOffset = "100%";
+    lastCurrentSlideInnerOffset = "-90%";
+  }
+  const newSlideInner = newSlide.children;
+
+  if (currentSlideName) {
+    const params = {
+      prev_btn,
+      next_btn,
+      currentSlideName,
+      currentSlide,
+      currentSlideInner,
+      newSlide,
+      newSlideInner,
+      firstCurrentSlideOffsset,
+      lastCurrentSlideOffset,
+      lastCurrentSlideInnerOffset,
+    };
+    gsapAnimationForPromotionsSlider(params);
+  } else {
+    const params = {
+      prev_btn,
+      next_btn,
+      currentSlide,
+      currentSlideInner,
+      newSlide,
+      newSlideInner,
+      firstCurrentSlideOffsset,
+      lastCurrentSlideOffset,
+      lastCurrentSlideInnerOffset,
+    };
+    gsapAnimationForGoodsSectionSlider(params);
+  }
+}
+
+function gsapAnimationForPromotionsSlider(params) {
+  const {
+    prev_btn,
+    next_btn,
+    currentSlideName,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = params;
+
+  const TL = gsap.timeline();
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .set(currentSlideName, {
+      opacity: 0,
+    })
+    .set(currentSlide, { zIndex: 1 })
+    .set(newSlide, { zIndex: 2 })
+    .to(currentSlide, {
+      left: firstCurrentSlideOffsset,
+      duration: 0.4,
+    })
+    .to(
+      newSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      newSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: lastCurrentSlideOffset,
+    })
+    .set(currentSlideName, {
+      opacity: 1,
+    })
+    .set(currentSlideInner, {
+      x: lastCurrentSlideInnerOffset,
+    })
+    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
+}
+
+function gsapAnimationForGoodsSectionSlider(params) {
+  const {
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = params;
+
+  const TL = gsap.timeline();
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .set(currentSlide, { zIndex: 1 })
+    .set(newSlide, { zIndex: 2 })
+    .to(currentSlide, {
+      left: firstCurrentSlideOffsset,
+      duration: 0.4,
+    })
+    .to(
+      newSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      newSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: lastCurrentSlideOffset,
+    })
+    .set(currentSlideInner, {
+      x: lastCurrentSlideInnerOffset,
+    })
+    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
+}
+
+// === END OF SLIDER LOGIC ===
