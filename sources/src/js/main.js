@@ -10,10 +10,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
-    initIntroSlider();
-    // doIntroSectionInit();
+    doStartFirstScreenAnimation();
+    // initIntroSlider();
     initAutoscrollBlocks();
-
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -78,6 +77,101 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 // ========== FUNCTIONS =============
+
+// start animation
+function doStartFirstScreenAnimation() {
+  const TL = gsap.timeline();
+  TL.from(".header__container", {
+    delay: 0.5,
+    opacity: 0,
+    y: "-10px",
+    duration: 0.4,
+  })
+    .from(".header__container .container", {
+      opacity: 0,
+      y: 5,
+      duration: 0.8,
+    })
+    .from(
+      ".panel__line",
+      {
+        width: 0,
+        duration: 0.5,
+      },
+      "-=0.4"
+    )
+    .from(
+      ".panel__title",
+      {
+        opacity: 0,
+        y: -5,
+        scale: 1.3,
+        duration: 0.4,
+      },
+      "-=0.4"
+    )
+    .from(
+      ".panel__nav",
+      {
+        opacity: 0,
+        x: -30,
+        duration: 0.7,
+      },
+      "-=0.1"
+    )
+    .from(
+      ".panel__menu",
+      {
+        opacity: 0,
+        x: 30,
+        duration: 0.7,
+      },
+      "<"
+    )
+    .from(
+      ".intro__block--center",
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+        duration: 0.7,
+      },
+      "<"
+    )
+    .from(
+      ".intro__block--left",
+      {
+        opacity: 0,
+        x: -50,
+        duration: 0.4,
+      },
+      "-=0.2"
+    )
+    .from(
+      ".intro__block--right",
+      {
+        opacity: 0,
+        x: 50,
+        duration: 0.4,
+      },
+      "<"
+    )
+    .from(
+      ".intro__nav",
+      {
+        opacity: 0,
+        duration: 0.4,
+        onComplete: () => initIntroSlider(),
+      },
+      3
+    )
+    .from(".intro__pagination", {
+      opacity: 0,
+      y: 10,
+      duration: 0.4,
+    });
+  // .delayedCall(2, initIntroSlider);
+}
 
 //=== header logic
 
@@ -957,15 +1051,15 @@ function initIntroSlider() {
     // doAnimatePagination();
   };
 
-  function startAutoSlide() {
-    const TL = gsap.timeline();
-    return TL.set(
+  const autoTL = gsap.timeline();
+  function startAutoSlide(delay) {
+    return autoTL.set(
       doAutoSlide,
       {
-        delay: duration,
+        delay: delay,
         onRepeat: doAutoSlide,
         repeat: -1,
-        repeatDelay: duration,
+        repeatDelay: 5,
       },
       0
     );
@@ -986,7 +1080,7 @@ function initIntroSlider() {
   //   });
   // }
 
-  let autoSlide = startAutoSlide();
+  let autoSlide = startAutoSlide(5);
   // let autoPagination = doAnimatePagination();
 
   // add listeners to sliders nav button
@@ -999,15 +1093,17 @@ function initIntroSlider() {
     }
     btn.addEventListener("click", () => {
       // reset autoSlide animation
-      autoSlide.kill();
+      // autoSlide.kill();
       // autoPagination.kill();
 
       requestAnimationFrame(() => {
         handleIntroBtn(direction, params);
       });
 
+      autoTL.restart(true);
+
       // move autoSlide animation again
-      autoSlide = startAutoSlide();
+      // autoSlide = startAutoSlide(1);
     });
   });
 }
