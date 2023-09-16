@@ -224,25 +224,30 @@
       background-color: rgba(255, 255, 255, 0.5);
     }
 
-    &::after {
-      content: "";
+    span {
+      // content: "";
       position: absolute;
       top: 4px;
-      left: -100%;
+      left: 0;
+      // transform: translate(-100%, 0);
       z-index: 3;
       height: 4px;
       width: 100%;
       background-color: #fff;
-      transition: all 5s linear;
+
+      transform: translateX(-98px);
     }
   }
 
   li.active {
     max-width: 98px;
 
-    // &::after {
-    //   animation: sliderProgress 5s linear;
-    // }
+    & span {
+      // transition: all 5s linear;
+
+      // transform: translate(0, 0);
+      animation: sliderProgress 5s linear;
+    }
   }
 
   @include xs {
@@ -250,11 +255,11 @@
   }
 }
 
-// @keyframes sliderProgress {
-//   0% {
-//     transform: translateX(-100%);
-//   }
-//   100% {
-//     transform: translateX(0);
-//   }
-// }
+@keyframes sliderProgress {
+  from {
+    transform: translateX(-98px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

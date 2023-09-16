@@ -201,130 +201,7 @@ function doPanelInit() {
   }
 }
 
-//=== intro section logic OLD
-
-function doIntroSectionInit() {
-  // separate initialization of each individual slider for correct operation of sliders
-  const intro_slider_left = new Swiper("#intro-slider-left", {
-    // Optional parameters
-    loop: true,
-    grab: false,
-    allowTouchMove: false,
-
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    // hashNavigation: {
-    //   watchState: true,
-    // },
-
-    // pagination
-    pagination: {
-      el: ".intro__pagination",
-      clickable: true,
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".intro__next",
-      prevEl: ".intro__prev",
-    },
-  });
-
-  const intro_slider_center = new Swiper("#intro-slider-center", {
-    // Optional parameters
-    loop: true,
-    grab: false,
-    allowTouchMove: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    // hashNavigation: {
-    //   watchState: true,
-    // },
-
-    // pagination
-    pagination: {
-      el: ".intro__pagination",
-      clickable: true,
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".intro__next",
-      prevEl: ".intro__prev",
-    },
-
-    breakpoints: {
-      1301: {
-        allowTouchMove: false,
-      },
-    },
-  });
-
-  const intro_slider_right = new Swiper("#intro-slider-right", {
-    // Optional parameters
-    loop: true,
-    grab: false,
-    allowTouchMove: false,
-
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    // hashNavigation: {
-    //   watchState: true,
-    // },
-
-    // pagination
-    pagination: {
-      el: ".intro__pagination",
-      clickable: true,
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".intro__next",
-      prevEl: ".intro__prev",
-    },
-  });
-
-  const intro_pagination = Array.from(
-    document.querySelectorAll(".intro__pagination span")
-  );
-  // add listeners to central slider
-  intro_slider_center.on("slideChange", doUpdateActiveIntroSliderBullet);
-
-  function doUpdateActiveIntroSliderBullet() {
-    // get index of current slide
-    const realIndex = intro_slider_center.realIndex;
-
-    // reset current active bullet
-    intro_pagination.forEach((bullet) => {
-      bullet.classList.remove("swiper-pagination-bullet-active");
-    });
-
-    // set new active bullet
-    intro_pagination[realIndex].classList.add(
-      "swiper-pagination-bullet-active"
-    );
-  }
-
-  // create mediaQuery
-  const mq1300 = window.matchMedia("(max-width: 1300px)");
-
-  // update left and right sliders after risize from '1300px<=' size to '>1300px' size
-  mq1300.addEventListener("change", (e) => {
-    if (!e.matches) {
-      const realIndex = intro_slider_center.realIndex;
-      intro_slider_center.slideToLoop(realIndex, 0);
-      intro_slider_right.slideToLoop(realIndex, 0);
-      intro_slider_left.slideToLoop(realIndex, 0);
-    }
-  });
-}
+// init all autoscroll blocks
 
 function initAutoscrollBlocks() {
   // init autoscroll blocks
@@ -1027,6 +904,24 @@ function initIntroSlider() {
   const next_btn = intro.querySelector(".intro__next");
   const pagination = intro.querySelector(".intro__pagination");
 
+  function doCreatePagination() {
+    const uniqueSlidesAmount = intro_sliders[0].children[0].children.length - 2;
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < uniqueSlidesAmount; i++) {
+      let li = document.createElement("LI");
+      if (i === 0) {
+        li.classList.add("intro__paginationItem", "active");
+      } else {
+        li.classList.add("intro__paginationItem");
+      }
+      li.innerHTML = `<span></span>`;
+      fragment.append(li);
+    }
+    pagination.append(fragment);
+  }
+
+  doCreatePagination();
+
   // set class 'current-slide' to every slide with index "2"
   intro_sliders.forEach((slider) => {
     const currentSlide = slider.querySelectorAll(".intro__slide")[2];
@@ -1046,26 +941,52 @@ function initIntroSlider() {
   };
 
   // autoslide introSlider
-  // TODO: start animate of pagination
 
+  // base parameters of intro slider
   const direction = "to_left";
+  const duration = 5;
+
+  // start animation for the first time
+  // doAnimatePagination();
 
   const doAutoSlide = () => {
     handleIntroBtn(direction, params);
+    // doAnimatePagination();
   };
 
   function startAutoSlide() {
-    return gsap.set(doAutoSlide, {
-      delay: 0,
-      onRepeat: doAutoSlide,
-      repeat: -1,
-      repeatDelay: 5,
-    });
+    const TL = gsap.timeline();
+    return TL.set(
+      doAutoSlide,
+      {
+        delay: duration,
+        onRepeat: doAutoSlide,
+        repeat: -1,
+        repeatDelay: duration,
+      },
+      0
+    );
   }
 
-  let autoSlide = startAutoSlide();
+  // function doAnimatePagination() {
+  //   const TL = gsap.timeline();
+  //   return TL.fromTo(
+  //     ".intro__paginationItem.active span",
+  //     { x: "-100%" },
+  //     {
+  //       x: "0%",
+  //       duration: duration,
+  //     },
+  //     0
+  //   ).to(".intro__paginationItem span", {
+  //     x: "-100%",
+  //   });
+  // }
 
-  // add listenerst to sliders nav button
+  let autoSlide = startAutoSlide();
+  // let autoPagination = doAnimatePagination();
+
+  // add listeners to sliders nav button
   [prev_btn, next_btn].forEach((btn) => {
     let direction = "";
     if (btn.classList.contains("intro__next")) {
@@ -1076,6 +997,7 @@ function initIntroSlider() {
     btn.addEventListener("click", () => {
       // reset autoSlide animation
       autoSlide.kill();
+      // autoPagination.kill();
 
       requestAnimationFrame(() => {
         handleIntroBtn(direction, params);
@@ -1088,12 +1010,21 @@ function initIntroSlider() {
 }
 
 function handleIntroBtn(direction, params) {
-  const { intro_sliders } = params;
+  const { intro_sliders, pagination } = params;
 
   intro_sliders.forEach((slider) => {
     // start animation
     doIntroSliderAnimation(slider, params, direction);
   });
+
+  // changing the active paginationItem depending on the current slide
+  const slideNumber =
+    intro_sliders[0].querySelector(".current-slide").dataset.slideNumber;
+
+  Array.from(pagination.children).forEach((item) =>
+    item.classList.remove("active")
+  );
+  pagination.children[slideNumber - 1].classList.add("active");
 }
 
 function doReplaceIntroSliderElements(...props) {
@@ -1136,7 +1067,7 @@ function doAddInitSettingsToIntroSlider(slider) {
 
 // performing slider animation
 function doIntroSliderAnimation(slider, params, direction) {
-  const { prev_btn, next_btn, pagination } = params;
+  const { prev_btn, next_btn } = params;
 
   const currentSlide = slider.querySelector(".current-slide");
   const currentSlideInner = currentSlide.children[0];
@@ -1180,6 +1111,7 @@ function doIntroSliderAnimation(slider, params, direction) {
   // change current slide
   currentSlide.classList.remove("current-slide");
   newSlide.classList.add("current-slide");
+  // console.log(newSlide.dataset.slideNumber);
 }
 
 function gsapAnimationIntroSlider(props) {
