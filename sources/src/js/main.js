@@ -171,6 +171,7 @@ function doPanelInit() {
 
   // menu logic
 
+  const body = document.body;
   const show_menu_button = document.getElementById("show-menu");
   const menu_overlay = document.getElementById("menu-overlay");
   const menu = document.getElementById("menu");
@@ -183,6 +184,7 @@ function doPanelInit() {
       [menu_overlay, menu, show_categories_button].forEach((el) =>
         el.classList.toggle("active")
       );
+      body.classList.toggle("lock");
       panel_input.forEach((el) => doResetSearchInput(el));
     });
   });
@@ -192,6 +194,7 @@ function doPanelInit() {
       [menu_overlay, menu, show_categories_button].forEach((el) =>
         el.classList.remove("active")
       );
+      body.classList.remove("lock");
       panel_input.forEach((el) => doResetSearchInput(el));
     });
   });
