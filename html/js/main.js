@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
     doStartFirstScreenAnimation();
+
+    doAnimationByScrollMainPage();
+    doFooterAnimationByScroll();
     // initIntroSlider();
     initAutoscrollBlocks();
     doRemoveMapOverlayByClick();
@@ -912,8 +915,10 @@ function initParallaxPromotionsSection() {
             scrollTrigger: {
               trigger: ".goodsCard__wrapper",
               // markers: true,
-              start: "+=200px bottom",
-              end: "bottom+=400px bottom",
+              // start: "+=200px bottom",
+              // end: "bottom+=400px bottom",
+              start: "top 90%",
+              end: "bottom 90%",
               scrub: true,
             },
           },
@@ -940,6 +945,89 @@ function initParallaxPromotionsSection() {
       };
     }
   );
+}
+
+// function doScrollAnimate() {
+//   return gsap.from(".popularCategories__title", {
+//     x: -50,
+//     duration: 5,
+//   });
+// }
+
+function doAnimationByScrollMainPage() {
+  const animated__title = Array.from(
+    document.querySelectorAll(".animated__title")
+  );
+  const popularCategories__img = Array.from(
+    document.querySelectorAll(".popularCategories__img")
+  );
+  const popularCategories__name = Array.from(
+    document.querySelectorAll(".popularCategories__name")
+  );
+  const brandsSection__item = Array.from(
+    document.querySelectorAll(".brandsSection__item")
+  );
+  const over = Array.from(document.querySelectorAll(".over"));
+  const promotionsSection_block_first = Array.from(
+    document.querySelectorAll(".promotionsSection__block--first")
+  );
+  const promotionsSection_item_first = Array.from(
+    document.querySelectorAll(
+      ".promotionsSection__block--first .promotionsSection__item:first-child"
+    )
+  );
+  const promotionsSection_item_second = Array.from(
+    document.querySelectorAll(
+      ".promotionsSection__block--second .promotionsSection__item"
+    )
+  );
+
+  const goods_slides = Array.from(
+    document.querySelectorAll(".goodsSection .goodsCard__slide")
+  );
+
+  const footer_main_wrapper = Array.from(
+    document.querySelectorAll(".footer__main-wrapper")
+  );
+
+  const animated_elements = [].concat(
+    animated__title,
+    popularCategories__img,
+    popularCategories__name,
+    brandsSection__item,
+    over,
+    promotionsSection_block_first,
+    promotionsSection_item_first,
+    promotionsSection_item_second,
+    goods_slides,
+    footer_main_wrapper
+  );
+  animated_elements.forEach((trigger, i) => {
+    ScrollTrigger.create({
+      trigger: trigger,
+      start: "top 90%",
+      once: true,
+      //toggleActions: "play complete complete complete",
+      toggleClass: "animate",
+    });
+  });
+}
+
+function doFooterAnimationByScroll() {
+  const footer_copyright = Array.from(
+    document.querySelectorAll(".footer__copyright")
+  );
+
+  const footer_elements = [].concat(footer_copyright);
+  footer_elements.forEach((trigger, i) => {
+    ScrollTrigger.create({
+      trigger: trigger,
+      start: "top bottom",
+      once: true,
+      //toggleActions: "play complete complete complete",
+      toggleClass: "animate",
+    });
+  });
 }
 
 // animate text for 'discountedProducts' on main page
@@ -1046,42 +1134,45 @@ function initIntroSlider() {
   // start animation for the first time
   // doAnimatePagination();
 
-  const doAutoSlide = () => {
-    handleIntroBtn(direction, params);
-    // doAnimatePagination();
-  };
+  // const doAutoSlide = () => {
+  //   handleIntroBtn(direction, params);
+  //   // doAnimatePagination();
+  // };
 
-  const autoTL = gsap.timeline();
-  function startAutoSlide(delay) {
-    return autoTL.set(
-      doAutoSlide,
-      {
-        delay: delay,
-        onRepeat: doAutoSlide,
-        repeat: -1,
-        repeatDelay: 5,
-      },
-      0
-    );
-  }
-
-  // function doAnimatePagination() {
-  //   const TL = gsap.timeline();
-  //   return TL.fromTo(
-  //     ".intro__paginationItem.active span",
-  //     { x: "-100%" },
+  // const autoTL = gsap.timeline();
+  // function startAutoSlide(delay) {
+  //   return autoTL.set(
+  //     doAutoSlide,
   //     {
-  //       x: "0%",
-  //       duration: duration,
+  //       delay: delay,
+  //       onRepeat: doAutoSlide,
+  //       repeat: -1,
+  //       repeatDelay: 5,
   //     },
   //     0
-  //   ).to(".intro__paginationItem span", {
-  //     x: "-100%",
-  //   });
+  //   );
   // }
 
-  let autoSlide = startAutoSlide(5);
-  // let autoPagination = doAnimatePagination();
+  function doAnimatePagination() {
+    const TL = gsap.timeline();
+    return TL.to(
+      ".intro__paginationItem.active span",
+      {
+        x: "0%",
+        duration: duration,
+      },
+      0
+    ).to(".intro__paginationItem span", {
+      x: "-100%",
+      duration: 0,
+      onComplete: () => handleIntroBtn(direction, params),
+    });
+  }
+
+  // let autoSlide = startAutoSlide(5);
+  let autoPagination = doAnimatePagination();
+
+  autoPagination.repeat(-1);
 
   // add listeners to sliders nav button
   [prev_btn, next_btn].forEach((btn) => {
@@ -1100,7 +1191,9 @@ function initIntroSlider() {
         handleIntroBtn(direction, params);
       });
 
-      autoTL.restart(true);
+      // autoTL.restart(true);
+      console.log();
+      autoPagination.restart();
 
       // move autoSlide animation again
       // autoSlide = startAutoSlide(1);

@@ -237,7 +237,7 @@ button {
 
 .goodsSection__title {
   padding: 31px 0 35px;
-  border-top: 1px solid rgb(208, 208, 208);
+  // border-top: 1px solid rgb(208, 208, 208);
   color: #000;
   font-size: 32px;
   font-weight: 600;
@@ -315,6 +315,9 @@ button {
   z-index: 3;
   width: 24px;
   height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
     display: block;
@@ -526,6 +529,288 @@ button {
 
     .goodsCard__inner {
       transform: translateX(-90%);
+    }
+  }
+}
+
+// ==== ANIMATED BLOCKS
+
+.animated__title {
+  position: relative;
+  transform: translateX(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #d9d9d9;
+    height: 1px;
+    width: 100%;
+    transform: translateX(-100%);
+    transition: all 0.4s ease-out;
+    transition-delay: 0.5s;
+  }
+
+  &.animate {
+    transform: translate(0);
+    opacity: 1;
+
+    &::after {
+      transform: translateX(0);
+    }
+  }
+}
+
+.popularCategories__img {
+  transform: translateX(40px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+  // transition-delay: 0.2s;
+
+  &.animate {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.popularCategories__name {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.4s ease-out;
+  transition-delay: 0.2s;
+
+  &.animate {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.brandsSection__item {
+  transform: translateX(-20px);
+
+  &.animate {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+}
+
+.over {
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+  transition-delay: 0.3s;
+
+  &.animate {
+    transform: translateY(0);
+  }
+}
+
+.promotionsSection__block--first {
+  &::after {
+    min-height: 0;
+    transition: min-height 1s ease-out;
+    transition-delay: 0.5s;
+  }
+
+  &.animate::after {
+    min-height: calc(100% - 84px);
+  }
+
+  .promotionsSection__item:first-child {
+    position: relative;
+    border-bottom: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      min-width: 0;
+      background-color: #d9d9d9;
+      transition: min-width 1.5s ease-out;
+      transition-delay: 0.5s;
+    }
+  }
+
+  .promotionsSection__item:first-child.animate::after {
+    min-width: 100%;
+  }
+}
+
+.promotionsSection__block--second {
+  .promotionsSection__item {
+    position: relative;
+    border-bottom: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 1px;
+      min-width: 0;
+      background-color: #d9d9d9;
+      transition: min-width 1s ease-out;
+      transition-delay: 0.5s;
+    }
+  }
+
+  .promotionsSection__item:first-child.animate::after {
+    min-width: 100%;
+  }
+}
+
+.goodsSection {
+  .goodsCard__slide {
+    .goodsCard__img {
+      // transform: scale(0.9);
+      transform: translateX(-15px);
+      opacity: 0;
+      transition: all 0.4s ease-out;
+    }
+
+    .goodsCard__addToFavorites {
+      opacity: 0;
+      transition: all 0.4s ease-out;
+      transition-delay: 0.3s;
+    }
+
+    .goodsCard__price {
+      transform: translateX(20px);
+      opacity: 0;
+      transition: all 0.4s ease-out;
+      transition-delay: 0.2s;
+    }
+
+    .goodsCard__name,
+    .goodsCard__about {
+      transform: translateX(20px);
+      opacity: 0;
+      transition: all 0.4s ease-out;
+      transition-delay: 0.4s;
+    }
+
+    // .goodsCard__about {
+    //   transform: translateX(20px);
+    //   opacity: 0;
+    //   transition: all 0.4s ease-out;
+    //   transition-delay: 0.6s;
+    // }
+
+    .goodsCard__addToCart {
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 0.3s ease-out;
+    }
+  }
+
+  .goodsCard__slide.animate {
+    .goodsCard__img {
+      // transform: scale(1);
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .goodsCard__addToFavorites {
+      opacity: 1;
+    }
+
+    .goodsCard__price,
+    .goodsCard__name,
+    .goodsCard__about {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .goodsCard__addToCart {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+.footer__main-wrapper {
+  .footer__column {
+    transform: translateX(20px);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+
+    &:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    &:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+
+    &:nth-child(4) {
+      transition-delay: 0.5s;
+    }
+  }
+
+  &.animate {
+    .footer__column {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+.footer__copyright {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 0;
+    height: 1px;
+    background-color: #d9d9d9;
+    transition: min-width 0.4s ease-out;
+    transition-delay: 0.9s;
+  }
+
+  &.animate::after {
+    min-width: 100%;
+  }
+
+  .footer__developedBy {
+    transform: scale(1.1);
+    opacity: 0;
+    transition: all 0.4s ease-out;
+    transition-delay: 1.1s;
+  }
+
+  .footer__period {
+    transform: translateX(-30px);
+    opacity: 0;
+    transition: all 0.4s ease-out;
+    transition-delay: 1.3s;
+  }
+
+  .footer__policy {
+    transform: translateX(30px);
+    opacity: 0;
+    transition: all 0.4s ease-out;
+    transition-delay: 1.3s;
+  }
+
+  &.animate {
+    .footer__developedBy {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .footer__period,
+    .footer__policy {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 }
