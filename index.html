@@ -46,6 +46,7 @@
         </div>
       </div>
       <div class="panel">
+        <div class="panel__line"></div>
         <div class="panel__container"> 
           <div class="panel__nav">
             <button class="panel__showCategories" id="show-menu" aria-label="Показать или скрыть категории каталога"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,41 +117,41 @@
       <div class="intro">
         <div class="intro__container"> 
           <div class="intro__wrapper">
-            <div class="intro__block">
+            <div class="intro__block intro__block--left">
               <div class="intro__frame">
                 <div class="intro__slider" data-name="intro_slider_left">
                   <ul class="intro__sliderWrapper">
-                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-1.png" alt=""></li>
-                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-2.png" alt=""></li>
-                    <li class="intro__slide slide-1" data-slide-number="1"><img src="./images/intro-3.png" alt=""></li>
-                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-1.png" alt=""></li>
-                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="2"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="3"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="1"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="2"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="3"><img src="./images/intro-2.png" alt=""></li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="intro__block">
+            <div class="intro__block intro__block--center">
               <div class="intro__frame">
                 <div class="intro__slider" data-name="intro_slider_center">
                   <ul class="intro__sliderWrapper">
-                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-2.png" alt=""></li>
-                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-3.png" alt=""></li>
-                    <li class="intro__slide slide-1" data-slide-number="1"><img src="./images/intro-1.png" alt=""></li>
-                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-2.png" alt=""></li>
-                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="2"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="3"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="1"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="2"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="3"><img src="./images/intro-3.png" alt=""></li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="intro__block">
+            <div class="intro__block intro__block--right">
               <div class="intro__frame">
                 <div class="intro__slider" data-name="intro_slider_right">
                   <ul class="intro__sliderWrapper">
-                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-3.png" alt=""></li>
-                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-1.png" alt=""></li>
-                    <li class="intro__slide slide-1" data-slide-number="1"><img src="./images/intro-2.png" alt=""></li>
-                    <li class="intro__slide slide-2" data-slide-number="2"><img src="./images/intro-3.png" alt=""></li>
-                    <li class="intro__slide slide-3" data-slide-number="3"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="2"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="3"><img src="./images/intro-1.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="1"><img src="./images/intro-2.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="2"><img src="./images/intro-3.png" alt=""></li>
+                    <li class="intro__slide" data-slide-number="3"><img src="./images/intro-1.png" alt=""></li>
                   </ul>
                 </div>
               </div>
@@ -173,7 +174,7 @@
       </div>
       <section class="popularCategories">
         <div class="container"> 
-          <h2 class="popularCategories__title">Популярные категории</h2>
+          <h2 class="popularCategories__title animated__title">Популярные категории</h2>
           <ul class="popularCategories__list"> 
             <li class="popularCategories__item"> <a class="popularCategories__link" href="#"> 
                 <div class="popularCategories__img"> <img src="./images/popular-сategories-1.png" alt="категория"/></div>
@@ -597,7 +598,7 @@
       </section>
       <section class="popularGoods goodsSection slider-start">
         <div class="container">
-          <h2 class="goodsSection__title">популярные товары</h2>
+          <h2 class="goodsSection__title animated__title">популярные товары</h2>
           <div class="goodsCard__wrapper">
             <div class="goodsCard__item">
               <div class="goodsCard__sliderWrapper"> 
@@ -803,7 +804,7 @@
       </section>
       <section class="newGoods goodsSection slider-start">
         <div class="container">
-          <h2 class="goodsSection__title">новинки</h2>
+          <h2 class="goodsSection__title animated__title">новинки</h2>
           <div class="newGoods__wrapper goodsCard__wrapper">
             <div class="goodsCard__item">
               <div class="goodsCard__sliderWrapper"> 
@@ -1009,7 +1010,7 @@
       </section>
       <section class="ourGoods goodsSection slider-start">
         <div class="container">
-          <h2 class="goodsSection__title">наша продукция</h2>
+          <h2 class="goodsSection__title animated__title">наша продукция</h2>
           <div class="goodsCard__wrapper">
             <div class="goodsCard__item">
               <div class="goodsCard__sliderWrapper"> 

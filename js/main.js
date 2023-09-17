@@ -10,10 +10,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   const intro_section = document.querySelector(".intro");
   if (intro_section) {
-    initIntroSlider();
-    // doIntroSectionInit();
-    initAutoscrollBlocks();
+    doStartFirstScreenAnimation();
 
+    doAnimationByScrollMainPage();
+    doFooterAnimationByScroll();
+    // initIntroSlider();
+    initAutoscrollBlocks();
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -78,6 +80,101 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 // ========== FUNCTIONS =============
+
+// start animation
+function doStartFirstScreenAnimation() {
+  const TL = gsap.timeline();
+  TL.from(".header__container", {
+    delay: 0.5,
+    opacity: 0,
+    y: "-10px",
+    duration: 0.4,
+  })
+    .from(".header__container .container", {
+      opacity: 0,
+      y: 5,
+      duration: 0.8,
+    })
+    .from(
+      ".panel__line",
+      {
+        width: 0,
+        duration: 0.5,
+      },
+      "-=0.4"
+    )
+    .from(
+      ".panel__title",
+      {
+        opacity: 0,
+        y: -5,
+        scale: 1.3,
+        duration: 0.4,
+      },
+      "-=0.4"
+    )
+    .from(
+      ".panel__nav",
+      {
+        opacity: 0,
+        x: -30,
+        duration: 0.7,
+      },
+      "-=0.1"
+    )
+    .from(
+      ".panel__menu",
+      {
+        opacity: 0,
+        x: 30,
+        duration: 0.7,
+      },
+      "<"
+    )
+    .from(
+      ".intro__block--center",
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+        duration: 0.7,
+      },
+      "<"
+    )
+    .from(
+      ".intro__block--left",
+      {
+        opacity: 0,
+        x: -50,
+        duration: 0.4,
+      },
+      "-=0.2"
+    )
+    .from(
+      ".intro__block--right",
+      {
+        opacity: 0,
+        x: 50,
+        duration: 0.4,
+      },
+      "<"
+    )
+    .from(
+      ".intro__nav",
+      {
+        opacity: 0,
+        duration: 0.4,
+        onComplete: () => initIntroSlider(),
+      },
+      3
+    )
+    .from(".intro__pagination", {
+      opacity: 0,
+      y: 10,
+      duration: 0.4,
+    });
+  // .delayedCall(2, initIntroSlider);
+}
 
 //=== header logic
 
@@ -818,8 +915,10 @@ function initParallaxPromotionsSection() {
             scrollTrigger: {
               trigger: ".goodsCard__wrapper",
               // markers: true,
-              start: "+=200px bottom",
-              end: "bottom+=400px bottom",
+              // start: "+=200px bottom",
+              // end: "bottom+=400px bottom",
+              start: "top 90%",
+              end: "bottom 90%",
               scrub: true,
             },
           },
@@ -846,6 +945,89 @@ function initParallaxPromotionsSection() {
       };
     }
   );
+}
+
+// function doScrollAnimate() {
+//   return gsap.from(".popularCategories__title", {
+//     x: -50,
+//     duration: 5,
+//   });
+// }
+
+function doAnimationByScrollMainPage() {
+  const animated__title = Array.from(
+    document.querySelectorAll(".animated__title")
+  );
+  const popularCategories__img = Array.from(
+    document.querySelectorAll(".popularCategories__img")
+  );
+  const popularCategories__name = Array.from(
+    document.querySelectorAll(".popularCategories__name")
+  );
+  const brandsSection__item = Array.from(
+    document.querySelectorAll(".brandsSection__item")
+  );
+  const over = Array.from(document.querySelectorAll(".over"));
+  const promotionsSection_block_first = Array.from(
+    document.querySelectorAll(".promotionsSection__block--first")
+  );
+  const promotionsSection_item_first = Array.from(
+    document.querySelectorAll(
+      ".promotionsSection__block--first .promotionsSection__item:first-child"
+    )
+  );
+  const promotionsSection_item_second = Array.from(
+    document.querySelectorAll(
+      ".promotionsSection__block--second .promotionsSection__item"
+    )
+  );
+
+  const goods_slides = Array.from(
+    document.querySelectorAll(".goodsSection .goodsCard__slide")
+  );
+
+  const footer_main_wrapper = Array.from(
+    document.querySelectorAll(".footer__main-wrapper")
+  );
+
+  const animated_elements = [].concat(
+    animated__title,
+    popularCategories__img,
+    popularCategories__name,
+    brandsSection__item,
+    over,
+    promotionsSection_block_first,
+    promotionsSection_item_first,
+    promotionsSection_item_second,
+    goods_slides,
+    footer_main_wrapper
+  );
+  animated_elements.forEach((trigger, i) => {
+    ScrollTrigger.create({
+      trigger: trigger,
+      start: "top 90%",
+      once: true,
+      //toggleActions: "play complete complete complete",
+      toggleClass: "animate",
+    });
+  });
+}
+
+function doFooterAnimationByScroll() {
+  const footer_copyright = Array.from(
+    document.querySelectorAll(".footer__copyright")
+  );
+
+  const footer_elements = [].concat(footer_copyright);
+  footer_elements.forEach((trigger, i) => {
+    ScrollTrigger.create({
+      trigger: trigger,
+      start: "top bottom",
+      once: true,
+      //toggleActions: "play complete complete complete",
+      toggleClass: "animate",
+    });
+  });
 }
 
 // animate text for 'discountedProducts' on main page
@@ -952,42 +1134,45 @@ function initIntroSlider() {
   // start animation for the first time
   // doAnimatePagination();
 
-  const doAutoSlide = () => {
-    handleIntroBtn(direction, params);
-    // doAnimatePagination();
-  };
+  // const doAutoSlide = () => {
+  //   handleIntroBtn(direction, params);
+  //   // doAnimatePagination();
+  // };
 
-  function startAutoSlide() {
-    const TL = gsap.timeline();
-    return TL.set(
-      doAutoSlide,
-      {
-        delay: duration,
-        onRepeat: doAutoSlide,
-        repeat: -1,
-        repeatDelay: duration,
-      },
-      0
-    );
-  }
-
-  // function doAnimatePagination() {
-  //   const TL = gsap.timeline();
-  //   return TL.fromTo(
-  //     ".intro__paginationItem.active span",
-  //     { x: "-100%" },
+  // const autoTL = gsap.timeline();
+  // function startAutoSlide(delay) {
+  //   return autoTL.set(
+  //     doAutoSlide,
   //     {
-  //       x: "0%",
-  //       duration: duration,
+  //       delay: delay,
+  //       onRepeat: doAutoSlide,
+  //       repeat: -1,
+  //       repeatDelay: 5,
   //     },
   //     0
-  //   ).to(".intro__paginationItem span", {
-  //     x: "-100%",
-  //   });
+  //   );
   // }
 
-  let autoSlide = startAutoSlide();
-  // let autoPagination = doAnimatePagination();
+  function doAnimatePagination() {
+    const TL = gsap.timeline();
+    return TL.to(
+      ".intro__paginationItem.active span",
+      {
+        x: "0%",
+        duration: duration,
+      },
+      0
+    ).to(".intro__paginationItem span", {
+      x: "-100%",
+      duration: 0,
+      onComplete: () => handleIntroBtn(direction, params),
+    });
+  }
+
+  // let autoSlide = startAutoSlide(5);
+  let autoPagination = doAnimatePagination();
+
+  autoPagination.repeat(-1);
 
   // add listeners to sliders nav button
   [prev_btn, next_btn].forEach((btn) => {
@@ -999,15 +1184,19 @@ function initIntroSlider() {
     }
     btn.addEventListener("click", () => {
       // reset autoSlide animation
-      autoSlide.kill();
+      // autoSlide.kill();
       // autoPagination.kill();
 
       requestAnimationFrame(() => {
         handleIntroBtn(direction, params);
       });
 
+      // autoTL.restart(true);
+      console.log();
+      autoPagination.restart();
+
       // move autoSlide animation again
-      autoSlide = startAutoSlide();
+      // autoSlide = startAutoSlide(1);
     });
   });
 }
