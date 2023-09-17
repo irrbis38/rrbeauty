@@ -1,6 +1,12 @@
 .intro {
   max-height: 813px;
   overflow: hidden;
+  opacity: 0;
+  // transition: opacity 0.2s linear;
+
+  // &.loaded {
+  //   opacity: 1;
+  // }
 }
 
 .intro__container {

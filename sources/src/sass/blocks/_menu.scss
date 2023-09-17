@@ -17,6 +17,10 @@
     opacity: 1;
     pointer-events: all;
   }
+
+  @include xs {
+    top: 100%;
+  }
 }
 
 .menu__overlay {

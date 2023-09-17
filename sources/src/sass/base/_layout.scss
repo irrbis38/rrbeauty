@@ -33,6 +33,7 @@ body {
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body.lock {
@@ -569,7 +570,7 @@ button {
   transform: translateX(40px);
   opacity: 0;
   transition: all 0.8s ease-out;
-  // transition-delay: 0.2s;
+  transition-delay: 0.2s;
 
   &.animate {
     transform: translateX(0);
@@ -638,6 +639,7 @@ button {
 
   .promotionsSection__item:first-child.animate::after {
     min-width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -661,76 +663,76 @@ button {
 
   .promotionsSection__item:first-child.animate::after {
     min-width: 100%;
+    max-width: 100%;
   }
 }
 
-.goodsSection {
-  .goodsCard__slide {
-    .goodsCard__img {
-      // transform: scale(0.9);
-      transform: translateX(-15px);
-      opacity: 0;
-      transition: all 0.4s ease-out;
+@media screen and (min-width: 576px) {
+  .goodsSection {
+    .goodsCard__slide {
+      .goodsCard__img {
+        transform: scale(0.9);
+        transform: translateX(-15px);
+        opacity: 0;
+        transition: all 0.4s ease-out;
+      }
+
+      .goodsCard__addToFavorites {
+        opacity: 0;
+        transition: all 0.4s ease-out;
+        transition-delay: 0.3s;
+      }
+
+      .goodsCard__price {
+        transform: translateX(20px);
+        opacity: 0;
+        transition: all 0.4s ease-out;
+        transition-delay: 0.2s;
+      }
+
+      .goodsCard__name,
+      .goodsCard__about {
+        transform: translateX(20px);
+        opacity: 0;
+        transition: all 0.4s ease-out;
+        transition-delay: 0.4s;
+      }
+
+      .goodsCard__addToCart {
+        transform: translateY(10px);
+        opacity: 0;
+        transition: all 0.3s ease-out;
+      }
     }
 
-    .goodsCard__addToFavorites {
-      opacity: 0;
-      transition: all 0.4s ease-out;
-      transition-delay: 0.3s;
-    }
+    .goodsCard__slide.animate {
+      .goodsCard__img {
+        transform: scale(1);
+        transform: translateX(0);
+        opacity: 1;
+      }
 
-    .goodsCard__price {
-      transform: translateX(20px);
-      opacity: 0;
-      transition: all 0.4s ease-out;
-      transition-delay: 0.2s;
-    }
+      .goodsCard__addToFavorites {
+        opacity: 1;
+      }
 
-    .goodsCard__name,
-    .goodsCard__about {
-      transform: translateX(20px);
-      opacity: 0;
-      transition: all 0.4s ease-out;
-      transition-delay: 0.4s;
-    }
+      .goodsCard__price,
+      .goodsCard__name,
+      .goodsCard__about {
+        transform: translateX(0);
+        opacity: 1;
+      }
 
-    // .goodsCard__about {
-    //   transform: translateX(20px);
-    //   opacity: 0;
-    //   transition: all 0.4s ease-out;
-    //   transition-delay: 0.6s;
-    // }
-
-    .goodsCard__addToCart {
-      transform: translateY(10px);
-      opacity: 0;
-      transition: all 0.3s ease-out;
-    }
-  }
-
-  .goodsCard__slide.animate {
-    .goodsCard__img {
-      // transform: scale(1);
-      transform: translateX(0);
-      opacity: 1;
-    }
-
-    .goodsCard__addToFavorites {
-      opacity: 1;
-    }
-
-    .goodsCard__price,
-    .goodsCard__name,
-    .goodsCard__about {
-      transform: translateX(0);
-      opacity: 1;
-    }
-
-    .goodsCard__addToCart {
-      transform: translateY(0);
-      opacity: 1;
+      .goodsCard__addToCart {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
+}
+
+.footer {
+  overflow: hidden;
 }
 
 .footer__main-wrapper {
@@ -762,6 +764,7 @@ button {
 
 .footer__copyright {
   position: relative;
+  overflow: hidden;
 
   &::after {
     content: "";
@@ -778,6 +781,12 @@ button {
 
   &.animate::after {
     min-width: 100%;
+  }
+
+  &.animate::after {
+    @include xs {
+      display: none;
+    }
   }
 
   .footer__developedBy {

@@ -84,12 +84,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
 // start animation
 function doStartFirstScreenAnimation() {
   const TL = gsap.timeline();
-  TL.from(".header__container", {
-    delay: 0.5,
-    opacity: 0,
-    y: "-10px",
-    duration: 0.4,
-  })
+  TL.set(
+    ".header",
+    {
+      opacity: 1,
+    },
+    0
+  )
+    .set(
+      ".intro",
+      {
+        opacity: 1,
+      },
+      0
+    )
+    .from(".header__container", {
+      delay: 0.5,
+      opacity: 0,
+      y: "-10px",
+      duration: 0.4,
+    })
     .from(".header__container .container", {
       opacity: 0,
       y: 5,
