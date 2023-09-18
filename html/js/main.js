@@ -1101,25 +1101,25 @@ function initIntroSlider() {
   const intro_sliders = intro.querySelectorAll(".intro__slider");
   const prev_btn = intro.querySelector(".intro__prev");
   const next_btn = intro.querySelector(".intro__next");
-  const pagination = intro.querySelector(".intro__pagination");
+  // const pagination = intro.querySelector(".intro__pagination");
 
-  function doCreatePagination() {
-    const uniqueSlidesAmount = intro_sliders[0].children[0].children.length - 2;
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i < uniqueSlidesAmount; i++) {
-      let li = document.createElement("LI");
-      if (i === 0) {
-        li.classList.add("intro__paginationItem", "active");
-      } else {
-        li.classList.add("intro__paginationItem");
-      }
-      li.innerHTML = `<span></span>`;
-      fragment.append(li);
-    }
-    pagination.append(fragment);
-  }
+  // function doCreatePagination() {
+  //   const uniqueSlidesAmount = intro_sliders[0].children[0].children.length - 2;
+  //   const fragment = document.createDocumentFragment();
+  //   for (let i = 0; i < uniqueSlidesAmount; i++) {
+  //     let li = document.createElement("LI");
+  //     if (i === 0) {
+  //       li.classList.add("intro__paginationItem", "active");
+  //     } else {
+  //       li.classList.add("intro__paginationItem");
+  //     }
+  //     li.innerHTML = `<span></span>`;
+  //     fragment.append(li);
+  //   }
+  //   pagination.append(fragment);
+  // }
 
-  doCreatePagination();
+  // doCreatePagination();
 
   // set class 'current-slide' to every slide with index "2"
   intro_sliders.forEach((slider) => {
@@ -1136,36 +1136,11 @@ function initIntroSlider() {
     intro_sliders,
     prev_btn,
     next_btn,
-    pagination,
   };
-
-  // autoslide introSlider
 
   // base parameters of intro slider
   const direction = "to_left";
   const duration = 5;
-
-  // start animation for the first time
-  // doAnimatePagination();
-
-  // const doAutoSlide = () => {
-  //   handleIntroBtn(direction, params);
-  //   // doAnimatePagination();
-  // };
-
-  // const autoTL = gsap.timeline();
-  // function startAutoSlide(delay) {
-  //   return autoTL.set(
-  //     doAutoSlide,
-  //     {
-  //       delay: delay,
-  //       onRepeat: doAutoSlide,
-  //       repeat: -1,
-  //       repeatDelay: 5,
-  //     },
-  //     0
-  //   );
-  // }
 
   function doAnimatePagination() {
     const TL = gsap.timeline();
@@ -1183,7 +1158,6 @@ function initIntroSlider() {
     });
   }
 
-  // let autoSlide = startAutoSlide(5);
   let autoPagination = doAnimatePagination();
 
   autoPagination.repeat(-1);
@@ -1197,40 +1171,22 @@ function initIntroSlider() {
       direction = "to_right";
     }
     btn.addEventListener("click", () => {
-      // reset autoSlide animation
-      // autoSlide.kill();
-      // autoPagination.kill();
-
       requestAnimationFrame(() => {
         handleIntroBtn(direction, params);
       });
 
-      // autoTL.restart(true);
-      console.log();
       autoPagination.restart();
-
-      // move autoSlide animation again
-      // autoSlide = startAutoSlide(1);
     });
   });
 }
 
 function handleIntroBtn(direction, params) {
-  const { intro_sliders, pagination } = params;
+  const { intro_sliders } = params;
 
   intro_sliders.forEach((slider) => {
     // start animation
     doIntroSliderAnimation(slider, params, direction);
   });
-
-  // changing the active paginationItem depending on the current slide
-  const slideNumber =
-    intro_sliders[0].querySelector(".current-slide").dataset.slideNumber;
-
-  Array.from(pagination.children).forEach((item) =>
-    item.classList.remove("active")
-  );
-  pagination.children[slideNumber - 1].classList.add("active");
 }
 
 function doReplaceIntroSliderElements(...props) {
@@ -1239,14 +1195,17 @@ function doReplaceIntroSliderElements(...props) {
   const slides = Array.from(slider.querySelectorAll(".intro__slide"));
 
   if (direction === "to_left") {
-    const clonedElement = slides[slides.length - 3];
+    const clonedElement = slides[2];
+    console.log(clonedElement);
     const clone = clonedElement.cloneNode(true);
+    clone.classList.remove("current-slide");
     const deletedElement = slides[0];
     deletedElement.remove();
     wrapper.append(clone);
   } else {
-    const clonedElement = slides[slides.length - 3];
+    const clonedElement = slides[3];
     const clone = clonedElement.cloneNode(true);
+    clone.classList.remove("current-slide");
     const deletedElement = slides[slides.length - 1];
     deletedElement.remove();
     wrapper.prepend(clone);
@@ -1276,7 +1235,9 @@ function doIntroSliderAnimation(slider, params, direction) {
   const { prev_btn, next_btn } = params;
 
   const currentSlide = slider.querySelector(".current-slide");
+  const slides = slider.querySelectorAll(".intro__slide");
   const currentSlideInner = currentSlide.children[0];
+  // console.log("slides: ", slides);
   let newSlide = null,
     newSlideInner = null;
 
@@ -1315,9 +1276,9 @@ function doIntroSliderAnimation(slider, params, direction) {
   gsapAnimationIntroSlider(props);
 
   // change current slide
-  currentSlide.classList.remove("current-slide");
+  slides.forEach((slide) => slide.classList.remove("current-slide"));
+
   newSlide.classList.add("current-slide");
-  // console.log(newSlide.dataset.slideNumber);
 }
 
 function gsapAnimationIntroSlider(props) {
