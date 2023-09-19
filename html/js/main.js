@@ -122,7 +122,7 @@ function doStartFirstScreenAnimation() {
       {
         opacity: 0,
         y: -5,
-        scale: 1.3,
+        // scale: 1.3,
         duration: 0.4,
       },
       "-=0.4"
@@ -196,6 +196,7 @@ function doHeaderInit() {
   const header_container = document.querySelector(".header__container");
   const header_menu = document.querySelector(".header__menu");
   const header_btn = document.querySelector(".header__btn");
+  const header_overlay = document.querySelector(".header__overlay");
 
   header_btn.addEventListener("click", () => {
     requestAnimationFrame(doHeaderToggle);
@@ -207,12 +208,20 @@ function doHeaderInit() {
     if (isHeaderContainerActive) {
       header_container.classList.remove("active");
       header_menu.style.maxHeight = 0;
+      header_overlay.classList.remove("show");
     } else {
       header_container.classList.add("active");
       header_menu.style.maxHeight = header_menu.scrollHeight + "px";
       header_menu.style.opacity = 1;
+      header_overlay.classList.add("show");
     }
   }
+
+  header_overlay.addEventListener("click", () => {
+    header_container.classList.remove("active");
+    header_menu.style.maxHeight = 0;
+    header_overlay.classList.remove("show");
+  });
 
   const mq1300 = window.matchMedia("(max-width: 1300px)");
 
@@ -921,27 +930,23 @@ function initParallaxPromotionsSection() {
 
       const TL = gsap.timeline();
       if (isDesktop) {
-        TL.from(
-          goods_card_items[0],
-          {
-            y: "-232px",
-            ease: Power2.easeOut,
-            scrollTrigger: {
-              trigger: ".goodsCard__wrapper",
-              // markers: true,
-              // start: "+=200px bottom",
-              // end: "bottom+=400px bottom",
-              start: "top 90%",
-              end: "bottom 90%",
-              scrub: true,
-            },
+        TL.from(goods_card_items[0], {
+          y: "-232px",
+          ease: Power1.easeOut,
+          scrollTrigger: {
+            trigger: ".goodsCard__wrapper",
+            // markers: true,
+            // start: "+=200px bottom",
+            // end: "bottom+=400px bottom",
+            start: "top 90%",
+            end: "bottom 90%",
+            scrub: true,
           },
-          0
-        ).from(
+        }).from(
           goods_card_items[2],
           {
             y: "-98px",
-            ease: Power2.easeOut,
+            ease: Power4.easeOut,
             scrollTrigger: {
               trigger: ".goodsCard__wrapper",
               // markers: true,
@@ -950,7 +955,7 @@ function initParallaxPromotionsSection() {
               scrub: true,
             },
           },
-          0
+          "-=2"
         );
       }
 
@@ -985,6 +990,9 @@ function doAnimationByScrollMainPage() {
   const promotionsSection_block_first = Array.from(
     document.querySelectorAll(".promotionsSection__block--first")
   );
+  const promotionsSection_block_second = Array.from(
+    document.querySelectorAll(".promotionsSection__block--second")
+  );
   const promotionsSection_item_first = Array.from(
     document.querySelectorAll(
       ".promotionsSection__block--first .promotionsSection__item:first-child"
@@ -1011,6 +1019,7 @@ function doAnimationByScrollMainPage() {
     brandsSection__item,
     over,
     promotionsSection_block_first,
+    promotionsSection_block_second,
     promotionsSection_item_first,
     promotionsSection_item_second,
     goods_slides,
@@ -1196,7 +1205,6 @@ function doReplaceIntroSliderElements(...props) {
 
   if (direction === "to_left") {
     const clonedElement = slides[2];
-    console.log(clonedElement);
     const clone = clonedElement.cloneNode(true);
     clone.classList.remove("current-slide");
     const deletedElement = slides[0];
@@ -1237,7 +1245,6 @@ function doIntroSliderAnimation(slider, params, direction) {
   const currentSlide = slider.querySelector(".current-slide");
   const slides = slider.querySelectorAll(".intro__slide");
   const currentSlideInner = currentSlide.children[0];
-  // console.log("slides: ", slides);
   let newSlide = null,
     newSlideInner = null;
 
@@ -1700,10 +1707,23 @@ function gsapAnimationForGoodsSectionSlider(params) {
     lastCurrentSlideInnerOffset,
   } = params;
 
+  const price = currentSlide.querySelector(".goodsCard__price");
+  const name = currentSlide.querySelector(".goodsCard__name");
+  const about = currentSlide.querySelector(".goodsCard__about");
+  const addToCart = currentSlide.querySelector(".goodsCard__addToCart");
+
+  const elements = [price, name, about, addToCart];
+
   const TL = gsap.timeline();
   return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.add("nodelay"))
+    )
     .set(currentSlide, { zIndex: 1 })
     .set(newSlide, { zIndex: 2 })
+    .set(elements, { opacity: 0 })
     .to(currentSlide, {
       left: firstCurrentSlideOffsset,
       duration: 0.4,
@@ -1727,9 +1747,17 @@ function gsapAnimationForGoodsSectionSlider(params) {
     .set(currentSlide, {
       left: lastCurrentSlideOffset,
     })
+    .set(elements, {
+      opacity: 1,
+    })
     .set(currentSlideInner, {
       x: lastCurrentSlideInnerOffset,
     })
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.remove("nodelay"))
+    )
     .call(doRemoveClassToButtons, [prev_btn, next_btn]);
 }
 
