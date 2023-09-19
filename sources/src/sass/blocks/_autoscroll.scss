@@ -1,20 +1,110 @@
 // autoscroll block
 
-.splide__list {
-  will-change: transform;
-}
-
 .autoscroll__block {
+  position: relative;
+  min-height: 232px;
   padding: 30px 0 31px;
   border-top: 1px solid #d9d9d9;
   border-bottom: 4px solid #000;
+  overflow: hidden;
+
+  @include r(1680px) {
+    min-height: 222px;
+    font-size: 120px;
+    letter-spacing: 10px;
+  }
+
+  @include r(1480px) {
+    min-height: 200px;
+    font-size: 110px;
+  }
+
+  @include lg {
+    .autoscroll__list li:nth-child(1) {
+      display: none;
+    }
+  }
 
   @include sm {
+    min-height: 160px;
     border-bottom: 1px solid #d9d9d9;
   }
 
   @include xs {
+    min-height: 105px;
     padding: 26px 0;
+
+    .autoscroll__list li:nth-child(1) {
+      display: block;
+    }
+  }
+
+  @include r(600px) {
+    .autoscroll__list li:nth-child(1) {
+      display: none;
+    }
+  }
+
+  @include r(450px) {
+    .autoscroll__list li:nth-child(2) {
+      display: none;
+    }
+  }
+}
+
+.promotionsSection {
+  .autoscroll__block {
+    @include r(1700px) {
+      .autoscroll__list li:nth-child(1) {
+        display: none;
+      }
+    }
+
+    @include r(1200px) {
+      .autoscroll__list li:nth-child(2) {
+        display: none;
+      }
+    }
+
+    @include sm {
+      .autoscroll__list li:nth-child(1) {
+        display: block;
+      }
+    }
+
+    @include r(860px) {
+      .autoscroll__list li:nth-child(1) {
+        display: none;
+      }
+    }
+
+    @include xs {
+      .autoscroll__list li:nth-child(1) {
+        display: block;
+      }
+    }
+
+    @include r(499px) {
+      .autoscroll__list li:nth-child(1) {
+        display: none;
+      }
+    }
+
+    @include r(400px) {
+      .autoscroll__list li:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+}
+
+.mapSection {
+  .autoscroll__block {
+    @include r(450px) {
+      .autoscroll__list li:nth-child(2) {
+        display: block;
+      }
+    }
   }
 }
 
@@ -27,9 +117,19 @@
   text-transform: uppercase;
   white-space: nowrap;
 
-  @include xl {
-    font-size: 102px;
-    letter-spacing: 8px;
+  @include r(1680px) {
+    font-size: 120px;
+    letter-spacing: 10px;
+  }
+
+  @include r(1480px) {
+    font-size: 110px;
+  }
+
+  @include lg {
+    .autoscroll__list li:nth-child(1) {
+      display: none;
+    }
   }
 
   @include sm {
@@ -43,42 +143,38 @@
   }
 }
 
-.brandsSection__autoscroll {
-  overflow: hidden;
-  display: flex;
-}
-
 .autoscroll__list {
-  // width: 200%;
-  flex: 0 0 200%;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 200%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0 80px;
-
-  // li {
-  //   margin-right: 80px;
-  // }
+  will-change: transform;
 }
 
 .list1 {
-  background-color: aqua;
+  left: -100%;
+  // background-color: aqua;
   animation: marquee1 4s linear 1 forwards;
-  // transform: translateX(0%);
+  // transform: translateX(-50%);
 }
 
 .list2 {
-  background-color: chocolate;
-
-  animation: marquee2 8s linear infinite;
-  // transform: translateX(0%);
+  left: 100%;
+  // background-color: chocolate;
+  animation: marquee2 16s linear infinite;
+  // transform: translateX(-50%);
 }
 
 .list3 {
-  background-color: chartreuse;
-
-  animation: marquee3 12s linear infinite;
-  // transform: translateX(0%);
+  left: 100%;
+  // background-color: chartreuse;
+  animation: marquee3 16s linear infinite;
+  animation-delay: 8s;
+  // transform: translateX(-50%);
 }
 
 @keyframes marquee1 {
@@ -86,7 +182,7 @@
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(-100%, 0);
+    transform: translate(-50%, 0);
   }
 }
 @keyframes marquee2 {
@@ -102,27 +198,9 @@
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(-300%, 0);
+    transform: translate(-200%, 0);
   }
 }
-
-// @keyframes marquee2 {
-//   0% {
-//     transform: translate(50%, 0);
-//   }
-//   100% {
-//     transform: translate(-150%, 0);
-//   }
-// }
-
-// @keyframes marquee3 {
-//   0% {
-//     transform: translate(150%, 0);
-//   }
-//   100% {
-//     transform: translate(-150%, 0);
-//   }
-// }
 
 .title__hidden {
   font-size: 1px;
