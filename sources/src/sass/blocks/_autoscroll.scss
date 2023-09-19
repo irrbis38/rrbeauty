@@ -158,23 +158,36 @@
 .list1 {
   left: -100%;
   // background-color: aqua;
-  animation: marquee1 4s linear 1 forwards;
+  animation: marquee1 8s linear 1 forwards;
   // transform: translateX(-50%);
+
+  @include xxs {
+    animation: marquee1 4s linear 1 forwards;
+  }
 }
 
 .list2 {
   left: 100%;
   // background-color: chocolate;
-  animation: marquee2 16s linear infinite;
+  animation: marquee2 32s linear infinite;
   // transform: translateX(-50%);
+
+  @include xxs {
+    animation: marquee2 16s linear infinite;
+  }
 }
 
 .list3 {
   left: 100%;
   // background-color: chartreuse;
-  animation: marquee3 16s linear infinite;
-  animation-delay: 8s;
+  animation: marquee3 32s linear infinite;
+  animation-delay: 16s;
   // transform: translateX(-50%);
+
+  @include xxs {
+    animation: marquee3 16s linear infinite;
+    animation-delay: 8s;
+  }
 }
 
 @keyframes marquee1 {
