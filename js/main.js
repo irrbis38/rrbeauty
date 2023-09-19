@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doAnimationByScrollMainPage();
     doFooterAnimationByScroll();
     // initIntroSlider();
-    initAutoscrollBlocks();
+    // initAutoscrollBlocks();
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -326,139 +326,139 @@ function doPanelInit() {
 
 // init all autoscroll blocks
 
-function initAutoscrollBlocks() {
-  // init autoscroll blocks
+// function initAutoscrollBlocks() {
+//   // init autoscroll blocks
 
-  const brandsSection_autoscroll = document.querySelector(
-    ".brandsSection__autoscroll"
-  );
-  const promotionsSection_autoscroll = document.querySelector(
-    ".promotionsSection__autoscroll"
-  );
-  const map_autoscroll = document.querySelector(".map__autoscroll");
+//   const brandsSection_autoscroll = document.querySelector(
+//     ".brandsSection__autoscroll"
+//   );
+//   const promotionsSection_autoscroll = document.querySelector(
+//     ".promotionsSection__autoscroll"
+//   );
+//   const map_autoscroll = document.querySelector(".map__autoscroll");
 
-  // [brandsSection_autoscroll].forEach((slider) => {
-  //   new Splide(slider, {
-  //     type: "loop",
-  //     arrows: false,
-  //     pagination: false,
-  //     perPage: 3,
-  //     gap: "800px",
-  //     breakpoints: {
-  //       1700: {
-  //         gap: "900px",
-  //       },
-  //       1600: {
-  //         gap: "400px",
-  //       },
-  //       1400: {
-  //         gap: "600px",
-  //       },
-  //       992: {
-  //         gap: "200px",
-  //         perPage: 2,
-  //       },
-  //       767: {
-  //         perPage: 3,
-  //         gap: "100px",
-  //       },
-  //       650: {
-  //         gap: "150px",
-  //       },
-  //       575: {
-  //         perPage: 2,
-  //         gap: "100px",
-  //       },
-  //       400: {
-  //         gap: "170px",
-  //       },
-  //     },
+//   // [brandsSection_autoscroll].forEach((slider) => {
+//   //   new Splide(slider, {
+//   //     type: "loop",
+//   //     arrows: false,
+//   //     pagination: false,
+//   //     perPage: 3,
+//   //     gap: "800px",
+//   //     breakpoints: {
+//   //       1700: {
+//   //         gap: "900px",
+//   //       },
+//   //       1600: {
+//   //         gap: "400px",
+//   //       },
+//   //       1400: {
+//   //         gap: "600px",
+//   //       },
+//   //       992: {
+//   //         gap: "200px",
+//   //         perPage: 2,
+//   //       },
+//   //       767: {
+//   //         perPage: 3,
+//   //         gap: "100px",
+//   //       },
+//   //       650: {
+//   //         gap: "150px",
+//   //       },
+//   //       575: {
+//   //         perPage: 2,
+//   //         gap: "100px",
+//   //       },
+//   //       400: {
+//   //         gap: "170px",
+//   //       },
+//   //     },
 
-  //     autoScroll: {
-  //       speed: 1,
-  //       pauseOnHover: false,
-  //       pauseOnFocus: false,
-  //     },
-  //   }).mount(window.splide.Extensions);
-  // });
+//   //     autoScroll: {
+//   //       speed: 1,
+//   //       pauseOnHover: false,
+//   //       pauseOnFocus: false,
+//   //     },
+//   //   }).mount(window.splide.Extensions);
+//   // });
 
-  // [promotionsSection_autoscroll].forEach((slider) => {
-  //   new Splide(slider, {
-  //     type: "loop",
-  //     arrows: false,
-  //     pagination: false,
-  //     perPage: 3,
-  //     gap: "400px",
-  //     breakpoints: {
-  //       1700: {
-  //         gap: "600px",
-  //       },
-  //       1600: {
-  //         gap: "200px",
-  //       },
-  //       1300: {
-  //         gap: "300px",
-  //       },
-  //       1150: {
-  //         gap: "500px",
-  //       },
-  //       992: {
-  //         gap: "350px",
-  //       },
-  //       767: {
-  //         gap: "60px",
-  //       },
-  //       575: {
-  //         // perPage: 2,
-  //         gap: "230px",
-  //       },
-  //     },
+//   // [promotionsSection_autoscroll].forEach((slider) => {
+//   //   new Splide(slider, {
+//   //     type: "loop",
+//   //     arrows: false,
+//   //     pagination: false,
+//   //     perPage: 3,
+//   //     gap: "400px",
+//   //     breakpoints: {
+//   //       1700: {
+//   //         gap: "600px",
+//   //       },
+//   //       1600: {
+//   //         gap: "200px",
+//   //       },
+//   //       1300: {
+//   //         gap: "300px",
+//   //       },
+//   //       1150: {
+//   //         gap: "500px",
+//   //       },
+//   //       992: {
+//   //         gap: "350px",
+//   //       },
+//   //       767: {
+//   //         gap: "60px",
+//   //       },
+//   //       575: {
+//   //         // perPage: 2,
+//   //         gap: "230px",
+//   //       },
+//   //     },
 
-  //     autoScroll: {
-  //       speed: 1,
-  //       pauseOnHover: false,
-  //       pauseOnFocus: false,
-  //     },
-  //   }).mount(window.splide.Extensions);
-  // });
+//   //     autoScroll: {
+//   //       speed: 1,
+//   //       pauseOnHover: false,
+//   //       pauseOnFocus: false,
+//   //     },
+//   //   }).mount(window.splide.Extensions);
+//   // });
 
-  // [map_autoscroll].forEach((slider) => {
-  //   new Splide(slider, {
-  //     type: "loop",
-  //     arrows: false,
-  //     pagination: false,
-  //     perPage: 2,
-  //     gap: "1700px",
-  //     breakpoints: {
-  //       1600: {
-  //         gap: "1000px",
-  //       },
-  //       1400: {
-  //         gap: "1100px",
-  //       },
-  //       1300: {
-  //         gap: "1200px",
-  //       },
-  //       1100: {
-  //         // perPage: 1,
-  //         gap: "1250px",
-  //       },
-  //       992: {
-  //         // perPage: 1,
-  //         gap: "950px",
-  //       },
-  //       767: {
-  //         gap: "500px",
-  //       },
-  //     },
-  //     autoScroll: {
-  //       speed: 1,
-  //       pauseOnHover: false,
-  //       pauseOnFocus: false,
-  //     },
-  //   }).mount(window.splide.Extensions);
-  // });
-}
+//   // [map_autoscroll].forEach((slider) => {
+//   //   new Splide(slider, {
+//   //     type: "loop",
+//   //     arrows: false,
+//   //     pagination: false,
+//   //     perPage: 2,
+//   //     gap: "1700px",
+//   //     breakpoints: {
+//   //       1600: {
+//   //         gap: "1000px",
+//   //       },
+//   //       1400: {
+//   //         gap: "1100px",
+//   //       },
+//   //       1300: {
+//   //         gap: "1200px",
+//   //       },
+//   //       1100: {
+//   //         // perPage: 1,
+//   //         gap: "1250px",
+//   //       },
+//   //       992: {
+//   //         // perPage: 1,
+//   //         gap: "950px",
+//   //       },
+//   //       767: {
+//   //         gap: "500px",
+//   //       },
+//   //     },
+//   //     autoScroll: {
+//   //       speed: 1,
+//   //       pauseOnHover: false,
+//   //       pauseOnFocus: false,
+//   //     },
+//   //   }).mount(window.splide.Extensions);
+//   // });
+// }
 
 // init map on main page
 
