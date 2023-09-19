@@ -4399,22 +4399,95 @@ input[type=number]:hover {
     margin-bottom: 44px
   }
 }
-.splide__list {
-  will-change: transform
-}
 .autoscroll__block {
+  position: relative;
+  min-height: 232px;
   padding: 30px 0 31px;
   border-top: 1px solid #d9d9d9;
-  border-bottom: 4px solid #000
+  border-bottom: 4px solid #000;
+  overflow: hidden
+}
+@media only screen and (max-width:1680px) {
+  .autoscroll__block {
+    min-height: 222px;
+    font-size: 120px;
+    letter-spacing: 10px
+  }
+}
+@media only screen and (max-width:1480px) {
+  .autoscroll__block {
+    min-height: 200px;
+    font-size: 110px
+  }
+}
+@media (max-width:1300px) {
+  .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: none
+  }
 }
 @media (max-width:991px) {
   .autoscroll__block {
+    min-height: 160px;
     border-bottom: 1px solid #d9d9d9
   }
 }
 @media (max-width:767px) {
   .autoscroll__block {
+    min-height: 105px;
     padding: 26px 0
+  }
+  .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: block
+  }
+}
+@media only screen and (max-width:600px) {
+  .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: none
+  }
+}
+@media only screen and (max-width:450px) {
+  .autoscroll__block .autoscroll__list li:nth-child(2) {
+    display: none
+  }
+}
+@media only screen and (max-width:1700px) {
+  .promotionsSection .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: none
+  }
+}
+@media only screen and (max-width:1200px) {
+  .promotionsSection .autoscroll__block .autoscroll__list li:nth-child(2) {
+    display: none
+  }
+}
+@media (max-width:991px) {
+  .promotionsSection .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: block
+  }
+}
+@media only screen and (max-width:860px) {
+  .promotionsSection .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: none
+  }
+}
+@media (max-width:767px) {
+  .promotionsSection .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: block
+  }
+}
+@media only screen and (max-width:499px) {
+  .promotionsSection .autoscroll__block .autoscroll__list li:nth-child(1) {
+    display: none
+  }
+}
+@media only screen and (max-width:400px) {
+  .promotionsSection .autoscroll__block .autoscroll__list li:nth-child(3) {
+    display: none
+  }
+}
+@media only screen and (max-width:450px) {
+  .mapSection .autoscroll__block .autoscroll__list li:nth-child(2) {
+    display: block
   }
 }
 .autoscroll__title {
@@ -4426,10 +4499,20 @@ input[type=number]:hover {
   text-transform: uppercase;
   white-space: nowrap
 }
-@media (max-width:1600px) {
+@media only screen and (max-width:1680px) {
   .autoscroll__title {
-    font-size: 102px;
-    letter-spacing: 8px
+    font-size: 120px;
+    letter-spacing: 10px
+  }
+}
+@media only screen and (max-width:1480px) {
+  .autoscroll__title {
+    font-size: 110px
+  }
+}
+@media (max-width:1300px) {
+  .autoscroll__title .autoscroll__list li:nth-child(1) {
+    display: none
   }
 }
 @media (max-width:991px) {
@@ -4444,16 +4527,11 @@ input[type=number]:hover {
     letter-spacing: 2.2px
   }
 }
-.brandsSection__autoscroll {
-  overflow: hidden;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex
-}
 .autoscroll__list {
-  -webkit-flex: 0 0 200%;
-  -ms-flex: 0 0 200%;
-  flex: 0 0 200%;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 200%;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -4463,22 +4541,25 @@ input[type=number]:hover {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  gap: 0 80px
+  gap: 0 80px;
+  will-change: transform
 }
 .list1 {
-  background-color: #0ff;
+  left: -100%;
   -webkit-animation: marquee1 4s linear 1 forwards;
   animation: marquee1 4s linear 1 forwards
 }
 .list2 {
-  background-color: #d2691e;
-  -webkit-animation: marquee2 8s linear infinite;
-  animation: marquee2 8s linear infinite
+  left: 100%;
+  -webkit-animation: marquee2 16s linear infinite;
+  animation: marquee2 16s linear infinite
 }
 .list3 {
-  background-color: #7fff00;
-  -webkit-animation: marquee3 12s linear infinite;
-  animation: marquee3 12s linear infinite
+  left: 100%;
+  -webkit-animation: marquee3 16s linear infinite;
+  animation: marquee3 16s linear infinite;
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s
 }
 @-webkit-keyframes marquee1 {
   0% {
@@ -4486,8 +4567,8 @@ input[type=number]:hover {
     transform: translate(0,0)
   }
   100% {
-    -webkit-transform: translate(-100%,0);
-    transform: translate(-100%,0)
+    -webkit-transform: translate(-50%,0);
+    transform: translate(-50%,0)
   }
 }
 @keyframes marquee1 {
@@ -4496,8 +4577,8 @@ input[type=number]:hover {
     transform: translate(0,0)
   }
   100% {
-    -webkit-transform: translate(-100%,0);
-    transform: translate(-100%,0)
+    -webkit-transform: translate(-50%,0);
+    transform: translate(-50%,0)
   }
 }
 @-webkit-keyframes marquee2 {
@@ -4526,8 +4607,8 @@ input[type=number]:hover {
     transform: translate(0,0)
   }
   100% {
-    -webkit-transform: translate(-300%,0);
-    transform: translate(-300%,0)
+    -webkit-transform: translate(-200%,0);
+    transform: translate(-200%,0)
   }
 }
 @keyframes marquee3 {
@@ -4536,8 +4617,8 @@ input[type=number]:hover {
     transform: translate(0,0)
   }
   100% {
-    -webkit-transform: translate(-300%,0);
-    transform: translate(-300%,0)
+    -webkit-transform: translate(-200%,0);
+    transform: translate(-200%,0)
   }
 }
 .title__hidden {
