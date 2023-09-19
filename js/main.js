@@ -122,7 +122,7 @@ function doStartFirstScreenAnimation() {
       {
         opacity: 0,
         y: -5,
-        scale: 1.3,
+        // scale: 1.3,
         duration: 0.4,
       },
       "-=0.4"
@@ -196,6 +196,7 @@ function doHeaderInit() {
   const header_container = document.querySelector(".header__container");
   const header_menu = document.querySelector(".header__menu");
   const header_btn = document.querySelector(".header__btn");
+  const header_overlay = document.querySelector(".header__overlay");
 
   header_btn.addEventListener("click", () => {
     requestAnimationFrame(doHeaderToggle);
@@ -207,12 +208,20 @@ function doHeaderInit() {
     if (isHeaderContainerActive) {
       header_container.classList.remove("active");
       header_menu.style.maxHeight = 0;
+      header_overlay.classList.remove("show");
     } else {
       header_container.classList.add("active");
       header_menu.style.maxHeight = header_menu.scrollHeight + "px";
       header_menu.style.opacity = 1;
+      header_overlay.classList.add("show");
     }
   }
+
+  header_overlay.addEventListener("click", () => {
+    header_container.classList.remove("active");
+    header_menu.style.maxHeight = 0;
+    header_overlay.classList.remove("show");
+  });
 
   const mq1300 = window.matchMedia("(max-width: 1300px)");
 
@@ -921,27 +930,23 @@ function initParallaxPromotionsSection() {
 
       const TL = gsap.timeline();
       if (isDesktop) {
-        TL.from(
-          goods_card_items[0],
-          {
-            y: "-232px",
-            ease: Power2.easeOut,
-            scrollTrigger: {
-              trigger: ".goodsCard__wrapper",
-              // markers: true,
-              // start: "+=200px bottom",
-              // end: "bottom+=400px bottom",
-              start: "top 90%",
-              end: "bottom 90%",
-              scrub: true,
-            },
+        TL.from(goods_card_items[0], {
+          y: "-232px",
+          ease: Power1.easeOut,
+          scrollTrigger: {
+            trigger: ".goodsCard__wrapper",
+            // markers: true,
+            // start: "+=200px bottom",
+            // end: "bottom+=400px bottom",
+            start: "top 90%",
+            end: "bottom 90%",
+            scrub: true,
           },
-          0
-        ).from(
+        }).from(
           goods_card_items[2],
           {
             y: "-98px",
-            ease: Power2.easeOut,
+            ease: Power4.easeOut,
             scrollTrigger: {
               trigger: ".goodsCard__wrapper",
               // markers: true,
@@ -950,7 +955,7 @@ function initParallaxPromotionsSection() {
               scrub: true,
             },
           },
-          0
+          "-=2"
         );
       }
 
@@ -985,6 +990,9 @@ function doAnimationByScrollMainPage() {
   const promotionsSection_block_first = Array.from(
     document.querySelectorAll(".promotionsSection__block--first")
   );
+  const promotionsSection_block_second = Array.from(
+    document.querySelectorAll(".promotionsSection__block--second")
+  );
   const promotionsSection_item_first = Array.from(
     document.querySelectorAll(
       ".promotionsSection__block--first .promotionsSection__item:first-child"
@@ -1011,6 +1019,7 @@ function doAnimationByScrollMainPage() {
     brandsSection__item,
     over,
     promotionsSection_block_first,
+    promotionsSection_block_second,
     promotionsSection_item_first,
     promotionsSection_item_second,
     goods_slides,
@@ -1101,25 +1110,25 @@ function initIntroSlider() {
   const intro_sliders = intro.querySelectorAll(".intro__slider");
   const prev_btn = intro.querySelector(".intro__prev");
   const next_btn = intro.querySelector(".intro__next");
-  const pagination = intro.querySelector(".intro__pagination");
+  // const pagination = intro.querySelector(".intro__pagination");
 
-  function doCreatePagination() {
-    const uniqueSlidesAmount = intro_sliders[0].children[0].children.length - 2;
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i < uniqueSlidesAmount; i++) {
-      let li = document.createElement("LI");
-      if (i === 0) {
-        li.classList.add("intro__paginationItem", "active");
-      } else {
-        li.classList.add("intro__paginationItem");
-      }
-      li.innerHTML = `<span></span>`;
-      fragment.append(li);
-    }
-    pagination.append(fragment);
-  }
+  // function doCreatePagination() {
+  //   const uniqueSlidesAmount = intro_sliders[0].children[0].children.length - 2;
+  //   const fragment = document.createDocumentFragment();
+  //   for (let i = 0; i < uniqueSlidesAmount; i++) {
+  //     let li = document.createElement("LI");
+  //     if (i === 0) {
+  //       li.classList.add("intro__paginationItem", "active");
+  //     } else {
+  //       li.classList.add("intro__paginationItem");
+  //     }
+  //     li.innerHTML = `<span></span>`;
+  //     fragment.append(li);
+  //   }
+  //   pagination.append(fragment);
+  // }
 
-  doCreatePagination();
+  // doCreatePagination();
 
   // set class 'current-slide' to every slide with index "2"
   intro_sliders.forEach((slider) => {
@@ -1136,36 +1145,11 @@ function initIntroSlider() {
     intro_sliders,
     prev_btn,
     next_btn,
-    pagination,
   };
-
-  // autoslide introSlider
 
   // base parameters of intro slider
   const direction = "to_left";
   const duration = 5;
-
-  // start animation for the first time
-  // doAnimatePagination();
-
-  // const doAutoSlide = () => {
-  //   handleIntroBtn(direction, params);
-  //   // doAnimatePagination();
-  // };
-
-  // const autoTL = gsap.timeline();
-  // function startAutoSlide(delay) {
-  //   return autoTL.set(
-  //     doAutoSlide,
-  //     {
-  //       delay: delay,
-  //       onRepeat: doAutoSlide,
-  //       repeat: -1,
-  //       repeatDelay: 5,
-  //     },
-  //     0
-  //   );
-  // }
 
   function doAnimatePagination() {
     const TL = gsap.timeline();
@@ -1183,7 +1167,6 @@ function initIntroSlider() {
     });
   }
 
-  // let autoSlide = startAutoSlide(5);
   let autoPagination = doAnimatePagination();
 
   autoPagination.repeat(-1);
@@ -1197,40 +1180,22 @@ function initIntroSlider() {
       direction = "to_right";
     }
     btn.addEventListener("click", () => {
-      // reset autoSlide animation
-      // autoSlide.kill();
-      // autoPagination.kill();
-
       requestAnimationFrame(() => {
         handleIntroBtn(direction, params);
       });
 
-      // autoTL.restart(true);
-      console.log();
       autoPagination.restart();
-
-      // move autoSlide animation again
-      // autoSlide = startAutoSlide(1);
     });
   });
 }
 
 function handleIntroBtn(direction, params) {
-  const { intro_sliders, pagination } = params;
+  const { intro_sliders } = params;
 
   intro_sliders.forEach((slider) => {
     // start animation
     doIntroSliderAnimation(slider, params, direction);
   });
-
-  // changing the active paginationItem depending on the current slide
-  const slideNumber =
-    intro_sliders[0].querySelector(".current-slide").dataset.slideNumber;
-
-  Array.from(pagination.children).forEach((item) =>
-    item.classList.remove("active")
-  );
-  pagination.children[slideNumber - 1].classList.add("active");
 }
 
 function doReplaceIntroSliderElements(...props) {
@@ -1239,14 +1204,16 @@ function doReplaceIntroSliderElements(...props) {
   const slides = Array.from(slider.querySelectorAll(".intro__slide"));
 
   if (direction === "to_left") {
-    const clonedElement = slides[slides.length - 3];
+    const clonedElement = slides[2];
     const clone = clonedElement.cloneNode(true);
+    clone.classList.remove("current-slide");
     const deletedElement = slides[0];
     deletedElement.remove();
     wrapper.append(clone);
   } else {
-    const clonedElement = slides[slides.length - 3];
+    const clonedElement = slides[3];
     const clone = clonedElement.cloneNode(true);
+    clone.classList.remove("current-slide");
     const deletedElement = slides[slides.length - 1];
     deletedElement.remove();
     wrapper.prepend(clone);
@@ -1276,6 +1243,7 @@ function doIntroSliderAnimation(slider, params, direction) {
   const { prev_btn, next_btn } = params;
 
   const currentSlide = slider.querySelector(".current-slide");
+  const slides = slider.querySelectorAll(".intro__slide");
   const currentSlideInner = currentSlide.children[0];
   let newSlide = null,
     newSlideInner = null;
@@ -1315,9 +1283,9 @@ function doIntroSliderAnimation(slider, params, direction) {
   gsapAnimationIntroSlider(props);
 
   // change current slide
-  currentSlide.classList.remove("current-slide");
+  slides.forEach((slide) => slide.classList.remove("current-slide"));
+
   newSlide.classList.add("current-slide");
-  // console.log(newSlide.dataset.slideNumber);
 }
 
 function gsapAnimationIntroSlider(props) {
@@ -1739,10 +1707,23 @@ function gsapAnimationForGoodsSectionSlider(params) {
     lastCurrentSlideInnerOffset,
   } = params;
 
+  const price = currentSlide.querySelector(".goodsCard__price");
+  const name = currentSlide.querySelector(".goodsCard__name");
+  const about = currentSlide.querySelector(".goodsCard__about");
+  const addToCart = currentSlide.querySelector(".goodsCard__addToCart");
+
+  const elements = [price, name, about, addToCart];
+
   const TL = gsap.timeline();
   return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.add("nodelay"))
+    )
     .set(currentSlide, { zIndex: 1 })
     .set(newSlide, { zIndex: 2 })
+    .set(elements, { opacity: 0 })
     .to(currentSlide, {
       left: firstCurrentSlideOffsset,
       duration: 0.4,
@@ -1766,9 +1747,17 @@ function gsapAnimationForGoodsSectionSlider(params) {
     .set(currentSlide, {
       left: lastCurrentSlideOffset,
     })
+    .set(elements, {
+      opacity: 1,
+    })
     .set(currentSlideInner, {
       x: lastCurrentSlideInnerOffset,
     })
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.remove("nodelay"))
+    )
     .call(doRemoveClassToButtons, [prev_btn, next_btn]);
 }
 
