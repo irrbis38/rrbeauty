@@ -3318,16 +3318,19 @@ body.lock .header {
     letter-spacing: 1.4px
   }
 }
+.catalog-brand-page.sort-list-open .catalog,
 .catalog-page.sort-list-open .catalog {
   position: relative;
   z-index: 11
 }
+.catalog-brand-page.sort-list-open .options__overlay,
 .catalog-page.sort-list-open .options__overlay {
   z-index: 11;
   visibility: visible;
   opacity: 1;
   pointer-events: all
 }
+.catalog-brand-page.sort-list-open .options__sortList,
 .catalog-page.sort-list-open .options__sortList {
   visibility: visible;
   opacity: 1;
@@ -4546,8 +4549,8 @@ input[type=number]:hover {
 }
 .list1 {
   left: -100%;
-  -webkit-animation: marquee1 8s linear 1 forwards;
-  animation: marquee1 8s linear 1 forwards
+  -webkit-animation: marquee1 10s linear 1 forwards;
+  animation: marquee1 10s linear 1 forwards
 }
 @media (max-width:575px) {
   .list1 {
@@ -4557,8 +4560,8 @@ input[type=number]:hover {
 }
 .list2 {
   left: 100%;
-  -webkit-animation: marquee2 32s linear infinite;
-  animation: marquee2 32s linear infinite
+  -webkit-animation: marquee2 40s linear infinite;
+  animation: marquee2 40s linear infinite
 }
 @media (max-width:575px) {
   .list2 {
@@ -4568,10 +4571,10 @@ input[type=number]:hover {
 }
 .list3 {
   left: 100%;
-  -webkit-animation: marquee3 32s linear infinite;
-  animation: marquee3 32s linear infinite;
-  -webkit-animation-delay: 16s;
-  animation-delay: 16s
+  -webkit-animation: marquee3 40s linear infinite;
+  animation: marquee3 40s linear infinite;
+  -webkit-animation-delay: 20s;
+  animation-delay: 20s
 }
 @media (max-width:575px) {
   .list3 {
