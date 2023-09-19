@@ -2366,7 +2366,7 @@ body.lock .header {
   filter: grayscale(100%)
 }
 .brandsSection__item:hover {
-  opacity: 1
+  opacity: 1!important
 }
 .promotionsSection {
   position: relative;
@@ -4546,20 +4546,40 @@ input[type=number]:hover {
 }
 .list1 {
   left: -100%;
-  -webkit-animation: marquee1 4s linear 1 forwards;
-  animation: marquee1 4s linear 1 forwards
+  -webkit-animation: marquee1 8s linear 1 forwards;
+  animation: marquee1 8s linear 1 forwards
+}
+@media (max-width:575px) {
+  .list1 {
+    -webkit-animation: marquee1 4s linear 1 forwards;
+    animation: marquee1 4s linear 1 forwards
+  }
 }
 .list2 {
   left: 100%;
-  -webkit-animation: marquee2 16s linear infinite;
-  animation: marquee2 16s linear infinite
+  -webkit-animation: marquee2 32s linear infinite;
+  animation: marquee2 32s linear infinite
+}
+@media (max-width:575px) {
+  .list2 {
+    -webkit-animation: marquee2 16s linear infinite;
+    animation: marquee2 16s linear infinite
+  }
 }
 .list3 {
   left: 100%;
-  -webkit-animation: marquee3 16s linear infinite;
-  animation: marquee3 16s linear infinite;
-  -webkit-animation-delay: 8s;
-  animation-delay: 8s
+  -webkit-animation: marquee3 32s linear infinite;
+  animation: marquee3 32s linear infinite;
+  -webkit-animation-delay: 16s;
+  animation-delay: 16s
+}
+@media (max-width:575px) {
+  .list3 {
+    -webkit-animation: marquee3 16s linear infinite;
+    animation: marquee3 16s linear infinite;
+    -webkit-animation-delay: 8s;
+    animation-delay: 8s
+  }
 }
 @-webkit-keyframes marquee1 {
   0% {
