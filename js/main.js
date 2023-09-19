@@ -337,50 +337,50 @@ function initAutoscrollBlocks() {
   );
   const map_autoscroll = document.querySelector(".map__autoscroll");
 
-  [brandsSection_autoscroll].forEach((slider) => {
-    new Splide(slider, {
-      type: "loop",
-      arrows: false,
-      pagination: false,
-      perPage: 3,
-      gap: "800px",
-      breakpoints: {
-        1700: {
-          gap: "900px",
-        },
-        1600: {
-          gap: "400px",
-        },
-        1400: {
-          gap: "600px",
-        },
-        992: {
-          gap: "200px",
-          perPage: 2,
-        },
-        767: {
-          perPage: 3,
-          gap: "100px",
-        },
-        650: {
-          gap: "150px",
-        },
-        575: {
-          perPage: 2,
-          gap: "100px",
-        },
-        400: {
-          gap: "170px",
-        },
-      },
+  // [brandsSection_autoscroll].forEach((slider) => {
+  //   new Splide(slider, {
+  //     type: "loop",
+  //     arrows: false,
+  //     pagination: false,
+  //     perPage: 3,
+  //     gap: "800px",
+  //     breakpoints: {
+  //       1700: {
+  //         gap: "900px",
+  //       },
+  //       1600: {
+  //         gap: "400px",
+  //       },
+  //       1400: {
+  //         gap: "600px",
+  //       },
+  //       992: {
+  //         gap: "200px",
+  //         perPage: 2,
+  //       },
+  //       767: {
+  //         perPage: 3,
+  //         gap: "100px",
+  //       },
+  //       650: {
+  //         gap: "150px",
+  //       },
+  //       575: {
+  //         perPage: 2,
+  //         gap: "100px",
+  //       },
+  //       400: {
+  //         gap: "170px",
+  //       },
+  //     },
 
-      autoScroll: {
-        speed: 1,
-        pauseOnHover: false,
-        pauseOnFocus: false,
-      },
-    }).mount(window.splide.Extensions);
-  });
+  //     autoScroll: {
+  //       speed: 1,
+  //       pauseOnHover: false,
+  //       pauseOnFocus: false,
+  //     },
+  //   }).mount(window.splide.Extensions);
+  // });
 
   [promotionsSection_autoscroll].forEach((slider) => {
     new Splide(slider, {
