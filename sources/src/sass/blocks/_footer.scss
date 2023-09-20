@@ -13,6 +13,7 @@
   justify-content: space-between;
   max-width: 1338px;
   gap: 0 30px;
+  padding-bottom: 58px;
 
   @include lg {
     grid-template-columns: repeat(4, 215px);
@@ -29,7 +30,7 @@
     max-width: 624px;
     gap: 60px 20px;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 20px 58px;
   }
 
   @include xxs {

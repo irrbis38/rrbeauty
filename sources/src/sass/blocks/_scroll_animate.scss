@@ -344,7 +344,7 @@
       height: 1px;
       background-color: #d9d9d9;
       transition: min-width 0.4s ease-out;
-      transition-delay: 0.9s;
+      transition-delay: 0.5s;
     }
 
     &.animate::after {
@@ -352,7 +352,7 @@
     }
 
     &.animate::after {
-      @include xs {
+      @include xxs {
         display: none;
       }
     }
@@ -361,21 +361,21 @@
       transform: scale(1.1);
       opacity: 0;
       transition: all 0.4s ease-out;
-      transition-delay: 1.1s;
+      transition-delay: 0.7s;
     }
 
     .footer__period {
       transform: translateX(-30px);
       opacity: 0;
       transition: all 0.4s ease-out;
-      transition-delay: 1.3s;
+      transition-delay: 0.9s;
     }
 
     .footer__policy {
       transform: translateX(30px);
       opacity: 0;
       transition: all 0.4s ease-out;
-      transition-delay: 1.3s;
+      transition-delay: 0.9s;
     }
 
     &.animate {

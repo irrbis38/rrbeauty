@@ -4510,7 +4510,8 @@ input[type=number]:hover {
   -ms-flex-pack: justify;
   justify-content: space-between;
   max-width: 1338px;
-  gap: 0 30px
+  gap: 0 30px;
+  padding-bottom: 58px
 }
 @media (max-width:1300px) {
   .footer__main-wrapper {
@@ -4534,7 +4535,7 @@ input[type=number]:hover {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 0 20px
+    padding: 0 20px 58px
   }
 }
 @media (max-width:575px) {
@@ -5301,12 +5302,12 @@ input[type=number]:hover {
   height: 1px;
   background-color: #d9d9d9;
   transition: min-width .4s ease-out;
-  transition-delay: .9s
+  transition-delay: .5s
 }
 .index .footer__copyright.animate::after {
   min-width: 100%
 }
-@media (max-width:767px) {
+@media (max-width:575px) {
   .index .footer__copyright.animate::after {
     display: none
   }
@@ -5316,21 +5317,21 @@ input[type=number]:hover {
   transform: scale(1.1);
   opacity: 0;
   transition: all .4s ease-out;
-  transition-delay: 1.1s
+  transition-delay: .7s
 }
 .index .footer__copyright .footer__period {
   -webkit-transform: translateX(-30px);
   transform: translateX(-30px);
   opacity: 0;
   transition: all .4s ease-out;
-  transition-delay: 1.3s
+  transition-delay: .9s
 }
 .index .footer__copyright .footer__policy {
   -webkit-transform: translateX(30px);
   transform: translateX(30px);
   opacity: 0;
   transition: all .4s ease-out;
-  transition-delay: 1.3s
+  transition-delay: .9s
 }
 .index .footer__copyright.animate .footer__developedBy {
   -webkit-transform: scale(1);
