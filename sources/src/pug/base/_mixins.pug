@@ -61,7 +61,7 @@ mixin popularCategoriesItem(numberOfItem)
         a.popularCategories__link(href="#") 
 
             .popularCategories__img 
-                img(src= "./images/popular-сategories-" + numberOfItem + ".png" alt="категория")
+                img(src= "./images/popular-сategories-" + numberOfItem + ".png" alt="Популярная категория товара")
 
             h3.popularCategories__name КАТЕГОРИЯ
 
@@ -70,6 +70,7 @@ mixin brandSectionItem(numberOfIcon)
     li.brandsSection__item
         a(href="#")
             img(src= "./images/icon-brand-" + numberOfIcon + ".svg" alt="")
+            span.visualhidden Dolce & Gabbana
 
 
 mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAddedToFavorites)
