@@ -1,0 +1,150 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'catalog-item';
+block head
+    title RR Beauty - Карточка товара
+block page
+
+    .top
+        .container
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+    section.item
+        .container.item__container
+
+            .item__view.view
+
+                .view__wrapper
+
+                    .view__small.swiper
+                        .swiper-wrapper
+                            .view__small-item.swiper-slide
+                                img(src="./images/view-small-1.png" alt="Фото товара")
+                            .view__small-item.swiper-slide
+                                img(src="./images/view-small-2.png" alt="Фото товара")
+                            .view__small-item.swiper-slide
+                                img(src="./images/view-small-2.png" alt="Фото товара")
+
+                    .view__full.swiper
+                        .swiper-wrapper
+                            .view__full-item.swiper-slide
+                                img(src="./images/view-full-1.png" alt="Фото товара")
+                            .view__full-item.swiper-slide
+                                img(src="./images/goods-card-5.png" alt="Фото товара")
+                            .view__full-item.swiper-slide
+                                img(src="./images/goods-card-5.png" alt="Фото товара")
+
+            .item__details.details
+
+                .details__top
+                    .details__marks
+
+                        span.details__sticker.sticker__sale.sticker__red Хит
+                        .details__brand
+                            img(src="./images/givenchy-logo.svg" alt="Givenchy")
+                    h2.details__title INTENZE Products Lemon Yellow 2 oz
+
+                span.details__decor
+
+                .details__feature.details__feature-weight
+                    .details__name
+                        span Вес / 
+                        span.details__current 12 гр
+                    .details__values
+                        button.details__set-value.selected(type="button" aria-label="Выбрать вес") 12
+                        button.details__set-value(type="button" aria-label="Выбрать вес") 20
+                        button.details__set-value(type="button" aria-label="Выбрать вес") 25
+                        button.details__set-value(type="button" aria-label="Выбрать вес") 32
+
+                -
+                    const colors = [
+                        {value: 'F4ECEC', colorName: 'Whisper', isSelected: true},
+                        {value: 'D87779', colorName: 'Froly', isSelected: false},
+                        {value: 'E84851', colorName: 'Mandy', isSelected: false},
+                        {value: 'E99E82', colorName: 'Tonys Pink', isSelected: false},
+                        {value: 'DB828E', colorName: 'Carissma', isSelected: false},
+                        {value: 'E18682', colorName: 'Sea Pink', isSelected: false},
+                        {value: 'F7D1D0', colorName: 'Cosmos', isSelected: false},
+                        {value: 'D69B82', colorName: 'Tumbleweed', isSelected: false},
+                        {value: 'E9ABAE', colorName: 'Pale Chestnut', isSelected: false},
+                        {value: 'E99E82', colorName: 'Tonys Pink', isSelected: false},
+                        {value: 'DB828E', colorName: 'Carissma', isSelected: false},
+                        {value: 'E18682', colorName: 'Sea Pink', isSelected: false},
+                        {value: 'F7D1D0', colorName: 'Cosmos', isSelected: false},
+                        {value: 'D69B82', colorName: 'Tumbleweed', isSelected: false},
+                        {value: 'E9ABAE', colorName: 'Pale Chestnut', isSelected: false},
+                        {value: 'D87779', colorName: 'Flory', isSelected: false},
+                        {value: 'E84851', colorName: 'Mandy', isSelected: false},
+                        {value: 'E9ABAE', colorName: 'Pale Chestnut', isSelected: false},
+                        {value: 'E99E82', colorName: 'Tonys Pink', isSelected: false},
+                        {value: 'DB828E', colorName: 'Carissma', isSelected: false},
+                        {value: 'E18682', colorName: 'Sea Pink', isSelected: false},
+                        {value: 'F7D1D0', colorName: 'Cosmos', isSelected: false},
+                        {value: 'D69B82', colorName: 'Tumbleweed', isSelected: false},
+                        {value: 'E9ABAE', colorName: 'Pale Chestnut', isSelected: false},
+                        {value: 'D87779', colorName: 'Flory', isSelected: false},
+                        {value: 'E84851', colorName: 'Mandy', isSelected: false},
+                    ]
+
+
+                .details__feature.details__feature-color
+                    .details__name
+                        span Цвет / 
+                        span.details__current whisper
+                    .details__values
+                        each color in colors
+                            button.details__set-value(type="button" aria-label="Выбрать цвет" data-color-name= color.colorName style="background-color:#" + color.value + ";" class= color.isSelected ? 'selected' : '')
+                        button.details__toggle-btn.non-overflow(type="button" aria-label="Показать / скрыть все цвета")
+                            span
+                            span
+
+                .details__price
+                    span.details__current-price 3 800₸
+                    span.details__old-price 4 800₸
+
+                .details__panel
+
+                    .details__amount
+                        button.detalis__decrease
+                            svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                                path(d="M19 13H5V11H19V13Z" fill="black")
+
+                        input(type="number" value="1")
+
+                        button.detalis__increase
+                            svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                                path(d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="black")
+
+                    button.details__add-to-cart(type="button" aria-label="Добавить в корзину") В корзину
+
+                    button.details__add-to-favorites(type="button" aria-label="Добавить в избранное")
+                        img(src="./images/heart-icon.svg" alt="Добавить в избранное")
+                        img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
+                        img(src="./images/heart-icon-red.svg" alt="Убрать из избранного")
+
+                    button.details__one-click(type="button" aria-label="Купить товар в один клик") Купить в 1 клик
+
+
+            .item__info.info
+                .info__heading
+                    ul.info__heading-list.hidescrollbar
+                        li: button.info__heading-btn.active(type="button" data-heading="descr" aria-label="Показать описание") Описание
+                        li: button.info__heading-btn(type="button" aria-label="Показать характеристики" data-heading="features") Характеристики
+                        li: button.info__heading-btn(type="button" aria-label="Показать документы" data-heading="docs") Документы
+                        li: button.info__heading-btn(type="button" aria-label="Показать информацию о доставке и оплате" data-heading="shipping") Доставка и оплата
+                        li: button.info__heading-btn(type="button" aria-label="Показать отзывы на товар" data-heading="reviews") Отзывы
+
+
+                .info__wrapper
+
+                    .info__tab(data-tab="descr")
+                        p Парфюмерный бренд из Италии, основан креативным директором Серджио Момо в 2004 году. Его основной целью было предложить парфюмерному рынку продукт, в котором не было бы компромисса между качеством аромата и качеством упаковки.
+
+                        p Аромат с нотами искристого бергамота врезается в память и воскрешает истории об итальянских скалах, звуке разбивающихся о них волн и все оттенки морской воды. Цитрусовый взрыв плавно перетекает в цветки табака и прощается мускусными нотами.
+                    .info__tab.hidden(data-tab="features")
+                    .info__tab.hidden(data-tab="docs")
+                    .info__tab.hidden(data-tab="shipping")
+                    .info__tab.hidden(data-tab="reviews")

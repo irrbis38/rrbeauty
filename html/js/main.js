@@ -76,6 +76,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
   }
 
+  // catalog-item page
+
+  const catalog_item_page = document.querySelector(".catalog-item");
+
+  if (catalog_item_page) {
+    doInitCatalogItemSlider();
+    doSelectValueButton();
+    doToggleDetailsValuesAppearance();
+    doCheckSetValueAmount();
+    doChangeToggleBtnAmountByResize();
+    doToggleAddToFavoritesBtn();
+  }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -1762,3 +1774,149 @@ function gsapAnimationForGoodsSectionSlider(params) {
 }
 
 // === END OF SLIDER LOGIC ===
+
+// === CATALOG-ITEM PAGE ===
+
+function doInitCatalogItemSlider() {
+  var swiperSmall = new Swiper(".view__small", {
+    direction: "vertical",
+    spaceBetween: 9,
+    slidesPerView: 3,
+    // freeMode: true,
+    // watchSlidesProgress: true,
+    navigation: false,
+
+    breakpoints: {
+      768: {
+        spaceBetween: 23,
+      },
+    },
+  });
+  var swiperFull = new Swiper(".view__full", {
+    effect: "fade",
+    slidesPerView: 1,
+    spaceBetween: 0,
+    navigation: false,
+
+    thumbs: {
+      swiper: swiperSmall,
+    },
+  });
+}
+
+// select details__value in '.details__feature-weight' on catalog-item page
+
+function doSelectValueButton() {
+  var detalis_blocks = Array.from(
+    document.querySelectorAll(".details__feature")
+  );
+
+  detalis_blocks.forEach((block) => {
+    var buttons = Array.from(block.querySelectorAll(".details__set-value"));
+    var currentValue = block.querySelector(".details__current");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        var currentBtn = e.currentTarget;
+        var isWeightBlock = block.classList.contains("details__feature-weight");
+        var isColorBlock = block.classList.contains("details__feature-color");
+        var newValue = "";
+
+        if (isWeightBlock) {
+          newValue = currentBtn.textContent + " гр";
+        } else if (isColorBlock) {
+          newValue = currentBtn.dataset.colorName;
+        } else {
+          return;
+        }
+
+        requestAnimationFrame(() =>
+          handleSetValueButton(currentBtn, buttons, currentValue, newValue)
+        );
+      });
+    });
+  });
+}
+
+function handleSetValueButton(currentBtn, buttons, currentValue, newValue) {
+  var isSelected = currentBtn.classList.contains("selected");
+
+  if (!isSelected) {
+    buttons.forEach((btn) => btn.classList.remove("selected"));
+    currentBtn.classList.add("selected");
+    currentValue.textContent = newValue;
+  }
+}
+
+// change the appearance of the '.details__values'
+
+function doToggleDetailsValuesAppearance() {
+  var details_toggle_btn = Array.from(
+    document.querySelectorAll(".details__toggle-btn")
+  );
+
+  details_toggle_btn.forEach((btn) => {
+    var details_feature_block = btn.closest(".details__feature");
+    btn.addEventListener("click", () =>
+      handleDetailsToggleBtn(details_feature_block)
+    );
+  });
+}
+
+function handleDetailsToggleBtn(block) {
+  requestAnimationFrame(() => {
+    block.classList.toggle("active");
+  });
+}
+
+// set '.details__toggle-btn' value
+function doCheckSetValueAmount() {
+  const feature_color_blocks = Array.from(
+    document.querySelectorAll(".details__feature-color")
+  );
+
+  feature_color_blocks.forEach((block) => {
+    var btn = block.querySelector(".details__toggle-btn");
+    var btnValue = btn.children[0];
+    var len = block.querySelectorAll(".details__set-value").length;
+
+    if (window.innerWidth > 1300) {
+      doSetToggleBtnAmount(len, btn, btnValue, 18);
+    } else if (window.innerWidth >= 768 && window.innerWidth <= 1300) {
+      doSetToggleBtnAmount(len, btn, btnValue, 14);
+    } else {
+      doSetToggleBtnAmount(len, btn, btnValue, 12);
+    }
+  });
+}
+
+function doSetToggleBtnAmount(len, btn, btnValue, amount) {
+  if (len > amount) {
+    btn.classList.remove("non-overflow");
+    btnValue.textContent = `+${len - amount + 1}`;
+  } else {
+    btn.classList.add("non-overflow");
+  }
+}
+
+// change '.details__toggle-btn' value by resize
+function doChangeToggleBtnAmountByResize() {
+  var mq767 = window.matchMedia("(max-width: 767px)");
+  var mq1300 = window.matchMedia("(max-width: 1300px)");
+
+  mq767.addEventListener("change", doCheckSetValueAmount);
+  mq1300.addEventListener("change", doCheckSetValueAmount);
+}
+
+// toggle add-to-favorites button
+
+function doToggleAddToFavoritesBtn() {
+  const add_to_favorites_btn = document.querySelector(
+    ".details__add-to-favorites"
+  );
+  const item = document.querySelector(".item");
+
+  add_to_favorites_btn.addEventListener("click", () => {
+    item.classList.toggle("addedToFavorites");
+  });
+}

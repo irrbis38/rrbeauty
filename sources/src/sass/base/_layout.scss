@@ -19,6 +19,7 @@ html {
 ::after,
 ::before {
   box-sizing: inherit;
+  box-sizing: border-box;
 }
 // min-height: 0.001vw; // — Fixes Safari bug with viewport units in calc()
 
@@ -112,6 +113,17 @@ button {
   width: 1px;
   padding: 0;
   border: 0;
+}
+
+.hidescrollbar {
+  // hide scrollbar in Firefox
+  scrollbar-width: none;
+
+  // hide scrollbar in Chrome, Safari
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 }
 
 // button 'showmore'
