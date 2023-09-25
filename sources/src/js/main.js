@@ -1950,6 +1950,7 @@ function handleInfoButtons(e, tabs, buttons) {
   var isCurrentTabSeleting =
     dataHeadingOfSelectedButton === dataTabOfCurrentTab;
 
+  // if not the current tab is selected, switch to
   if (!isCurrentTabSeleting) {
     buttons.forEach((btn) => btn.classList.remove("active"));
     selectedButton.classList.add("active");
