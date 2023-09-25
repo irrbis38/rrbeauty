@@ -140,11 +140,15 @@ block page
 
                 .info__wrapper
 
-                    .info__tab(data-tab="descr")
+                    .info__tab.info__descr(data-tab="descr")
                         p Парфюмерный бренд из Италии, основан креативным директором Серджио Момо в 2004 году. Его основной целью было предложить парфюмерному рынку продукт, в котором не было бы компромисса между качеством аромата и качеством упаковки.
 
                         p Аромат с нотами искристого бергамота врезается в память и воскрешает истории об итальянских скалах, звуке разбивающихся о них волн и все оттенки морской воды. Цитрусовый взрыв плавно перетекает в цветки табака и прощается мускусными нотами.
-                    .info__tab.hidden(data-tab="features")
-                    .info__tab.hidden(data-tab="docs")
-                    .info__tab.hidden(data-tab="shipping")
-                    .info__tab.hidden(data-tab="reviews")
+
+                    .info__tab.info__features.hidden(data-tab="features") features
+
+                    .info__tab.info__docs.hidden(data-tab="docs") docs
+
+                    .info__tab.info__shipping.hidden(data-tab="shipping") shipping
+
+                    .info__tab.info__reviews.hidden(data-tab="reviews") reviews

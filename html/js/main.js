@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doCheckSetValueAmount();
     doChangeToggleBtnAmountByResize();
     doToggleAddToFavoritesBtn();
+    doToggleInfoTabs();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -1919,4 +1920,43 @@ function doToggleAddToFavoritesBtn() {
   add_to_favorites_btn.addEventListener("click", () => {
     item.classList.toggle("addedToFavorites");
   });
+}
+
+// toggle info-tabs on catalog-item page
+
+function doToggleInfoTabs() {
+  var info_buttons = document.querySelectorAll(".info__heading-btn");
+  var info_tabs = document.querySelectorAll(".info__tab");
+
+  info_buttons.forEach((btn) =>
+    btn.addEventListener("click", (e) =>
+      handleInfoButtons(e, info_tabs, info_buttons)
+    )
+  );
+}
+
+function handleInfoButtons(e, tabs, buttons) {
+  var selectedButton = e.currentTarget;
+  var dataHeadingOfSelectedButton = selectedButton.dataset.heading;
+  var dataTabOfCurrentTab = "";
+
+  // get value of data-tab attribute of current tab
+  tabs.forEach((tab) =>
+    tab.classList.contains("hidden")
+      ? null
+      : (dataTabOfCurrentTab = tab.dataset.tab)
+  );
+
+  var isCurrentTabSeleting =
+    dataHeadingOfSelectedButton === dataTabOfCurrentTab;
+
+  if (!isCurrentTabSeleting) {
+    buttons.forEach((btn) => btn.classList.remove("active"));
+    selectedButton.classList.add("active");
+    tabs.forEach((tab) =>
+      tab.dataset.tab === dataHeadingOfSelectedButton
+        ? tab.classList.remove("hidden")
+        : tab.classList.add("hidden")
+    );
+  }
 }
