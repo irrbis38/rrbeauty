@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doChangeToggleBtnAmountByResize();
     doToggleAddToFavoritesBtn();
     doToggleInfoTabs();
+    // prevent();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -1960,4 +1961,14 @@ function handleInfoButtons(e, tabs, buttons) {
         : tab.classList.add("hidden")
     );
   }
+}
+
+function prevent() {
+  const star_rating_inputs = document.querySelectorAll(".rating input");
+
+  star_rating_inputs.forEach((input) =>
+    input.addEventListener("click", (e) => {
+      e.preventDefault();
+    })
+  );
 }

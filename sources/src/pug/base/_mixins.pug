@@ -183,3 +183,39 @@ mixin filtersItem(value)
             span
             span= value
 
+
+mixin starRating(isDisable)
+
+    if isDisable
+        input.rating__input(type="radio" name="star" value="5" disabled)
+        label.rating__label(for="" title="text") 5 stars
+
+        input.rating__input(type="radio" name="star" value="4" disabled checked)
+        label.rating__label(for="" title="text") 4 stars
+
+        input.rating__input(type="radio" name="star" value="3" disabled)
+        label.rating__label(for="" title="text") 3 stars
+
+        input.rating__input(type="radio" name="star" value="2" disabled)
+        label.rating__label(for="" title="text") 2 stars
+
+        input.rating__input(type="radio" name="star" value="1" disabled)
+        label.rating__label(for="" title="text") 1 star
+
+    else
+
+        input.rating__input(type="radio" id="star5" name="star" value="5")
+        label.rating__label(for="star5" title="text") 5 stars
+
+        input.rating__input(type="radio" id="star4" name="star" value="4")
+        label.rating__label(for="star4" title="text") 4 stars
+
+        input.rating__input(type="radio" id="star3" name="star" value="3")
+        label.rating__label(for="star3" title="text") 3 stars
+
+        input.rating__input(type="radio" id="star2" name="star" value="2")
+        label.rating__label(for="star2" title="text") 2 stars
+
+        input.rating__input(type="radio" id="star1" name="star" value="1")
+        label.rating__label(for="star1" title="text") 1 star
+

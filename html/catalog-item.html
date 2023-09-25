@@ -216,7 +216,7 @@
             <div class="info__heading">
               <ul class="info__heading-list hidescrollbar">
                 <li>
-                  <button class="info__heading-btn active" type="button" data-heading="descr" aria-label="Показать описание">Описание</button>
+                  <button class="info__heading-btn" type="button" data-heading="descr" aria-label="Показать описание">Описание</button>
                 </li>
                 <li>
                   <button class="info__heading-btn" type="button" aria-label="Показать характеристики" data-heading="features">Характеристики</button>
@@ -228,12 +228,12 @@
                   <button class="info__heading-btn" type="button" aria-label="Показать информацию о доставке и оплате" data-heading="shipping">Доставка и оплата</button>
                 </li>
                 <li>
-                  <button class="info__heading-btn" type="button" aria-label="Показать отзывы на товар" data-heading="reviews">Отзывы</button>
+                  <button class="info__heading-btn active" type="button" aria-label="Показать отзывы на товар" data-heading="reviews">Отзывы</button>
                 </li>
               </ul>
             </div>
             <div class="info__wrapper">
-              <div class="info__tab info__descr" data-tab="descr">
+              <div class="info__tab info__descr hidden" data-tab="descr">
                 <p>Парфюмерный бренд из Италии, основан креативным директором Серджио Момо в 2004 году. Его основной целью было предложить парфюмерному рынку продукт, в котором не было бы компромисса между качеством аромата и качеством упаковки.</p>
                 <p>Аромат с нотами искристого бергамота врезается в память и воскрешает истории об итальянских скалах, звуке разбивающихся о них волн и все оттенки морской воды. Цитрусовый взрыв плавно перетекает в цветки табака и прощается мускусными нотами.</p>
               </div>
@@ -255,7 +255,124 @@
                 <p>Парфюмерный бренд из Италии, основан креативным директором Серджио Момо в 2004 году. Его основной целью было предложить парфюмерному рынку продукт, в котором не было бы компромисса между качеством аромата и качеством упаковки.</p>
                 <p>Аромат с нотами искристого бергамота врезается в память и воскрешает истории об итальянских скалах, звуке разбивающихся о них волн и все оттенки морской воды. Цитрусовый взрыв плавно перетекает в цветки табака и прощается мускусными нотами.</p><a href="#">Подробнее о доставке</a>
               </div>
-              <div class="info__tab info__reviews hidden" data-tab="reviews">reviews</div>
+              <div class="info__tab info__reviews" data-tab="reviews">
+                <div class="info__reviews-item">
+                  <div class="info__reviews-descr"><span class="info__reviews-user">Ярослав П.</span>
+                    <time class="info__reviews-date" datetime="2023-05-24">24 мая 2023</time>
+                  </div>
+                  <form class="rating info__reviews-rating" action="#">
+                    <input class="rating__input" type="radio" name="star" value="5" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">5 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="4" disabled="disabled" checked="checked"/>
+                    <label class="rating__label" for="" title="text">4 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="3" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">3 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="2" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">2 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="1" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">1 star</label>
+                  </form>
+                  <div class="info__reviews-text">
+                    <p>На глаз засветов не видно, но на камеру почему то видно. Но для данной матрицы, засветы в норме (У тфт 10 летней давности(v193hq), вроде больше. Хотя я думал там вообще нет никаких засветов)</p>
+                  </div>
+                  <div class="info__reviews-images">
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                  </div>
+                </div>
+                <div class="info__reviews-item">
+                  <div class="info__reviews-descr"><span class="info__reviews-user">Ярослав П.</span>
+                    <time class="info__reviews-date" datetime="2023-05-24">24 мая 2023</time>
+                  </div>
+                  <form class="rating info__reviews-rating" action="#">
+                    <input class="rating__input" type="radio" name="star" value="5" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">5 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="4" disabled="disabled" checked="checked"/>
+                    <label class="rating__label" for="" title="text">4 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="3" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">3 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="2" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">2 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="1" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">1 star</label>
+                  </form>
+                  <div class="info__reviews-text">
+                    <p>На глаз засветов не видно, но на камеру почему то видно. Но для данной матрицы, засветы в норме (У тфт 10 летней давности(v193hq), вроде больше. Хотя я думал там вообще нет никаких засветов)</p>
+                  </div>
+                  <div class="info__reviews-images">
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                  </div>
+                </div>
+                <div class="info__reviews-item">
+                  <div class="info__reviews-descr"><span class="info__reviews-user">Ярослав П.</span>
+                    <time class="info__reviews-date" datetime="2023-05-24">24 мая 2023</time>
+                  </div>
+                  <form class="rating info__reviews-rating" action="#">
+                    <input class="rating__input" type="radio" name="star" value="5" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">5 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="4" disabled="disabled" checked="checked"/>
+                    <label class="rating__label" for="" title="text">4 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="3" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">3 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="2" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">2 stars</label>
+                    <input class="rating__input" type="radio" name="star" value="1" disabled="disabled"/>
+                    <label class="rating__label" for="" title="text">1 star</label>
+                  </form>
+                  <div class="info__reviews-text">
+                    <p>На глаз засветов не видно, но на камеру почему то видно. Но для данной матрицы, засветы в норме (У тфт 10 летней давности(v193hq), вроде больше. Хотя я думал там вообще нет никаких засветов)</p>
+                  </div>
+                  <div class="info__reviews-images">
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                    <div class="info__reviews-img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                  </div>
+                </div>
+                <button class="info__reviews-btn" type="button" aria-label="Показать панель добавления отзыва">Добавить отзыв</button>
+                <div class="info__reviews-add add">
+                  <div class="add__top">
+                    <h3 class="add__title">Добавить отзыв</h3>
+                    <button class="add__close-btn"><span>Закрыть</span>
+                      <svg class="add__close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <form class="add__form" action="#">
+                    <div class="add__wrapper">
+                      <div class="add__data">
+                        <input class="add__input" type="text" placeholder="Ваше имя" maxlength="30">
+                        <input class="add__input" type="email" placeholder="Email">
+                      </div>
+                      <div class="add__rating">
+                        <input class="rating__input" type="radio" id="star5" name="star" value="5"/>
+                        <label class="rating__label" for="star5" title="text">5 stars</label>
+                        <input class="rating__input" type="radio" id="star4" name="star" value="4"/>
+                        <label class="rating__label" for="star4" title="text">4 stars</label>
+                        <input class="rating__input" type="radio" id="star3" name="star" value="3"/>
+                        <label class="rating__label" for="star3" title="text">3 stars</label>
+                        <input class="rating__input" type="radio" id="star2" name="star" value="2"/>
+                        <label class="rating__label" for="star2" title="text">2 stars</label>
+                        <input class="rating__input" type="radio" id="star1" name="star" value="1"/>
+                        <label class="rating__label" for="star1" title="text">1 star</label>
+                      </div>
+                      <textarea class="add__text" placeholder="Расскажите о товаре"></textarea>
+                      <div class="add__images">
+                        <div class="add__img"><img src="./images/info-img.png" alt="фото отзыва"></div>
+                        <button class="add__img-btn" type="button" aria-label="Добавить фото">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#757575"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <button class="add__publish-btn" type="button" aria-label="Опубликовать отзыв о товаре">Опубликовать отзыв</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

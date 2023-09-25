@@ -131,16 +131,16 @@ block page
             .item__info.info
                 .info__heading
                     ul.info__heading-list.hidescrollbar
-                        li: button.info__heading-btn.active(type="button" data-heading="descr" aria-label="Показать описание") Описание
+                        li: button.info__heading-btn(type="button" data-heading="descr" aria-label="Показать описание") Описание
                         li: button.info__heading-btn(type="button" aria-label="Показать характеристики" data-heading="features") Характеристики
                         li: button.info__heading-btn(type="button" aria-label="Показать документы" data-heading="docs") Документы
                         li: button.info__heading-btn(type="button" aria-label="Показать информацию о доставке и оплате" data-heading="shipping") Доставка и оплата
-                        li: button.info__heading-btn(type="button" aria-label="Показать отзывы на товар" data-heading="reviews") Отзывы
+                        li: button.info__heading-btn.active(type="button" aria-label="Показать отзывы на товар" data-heading="reviews") Отзывы
 
 
                 .info__wrapper
 
-                    .info__tab.info__descr(data-tab="descr")
+                    .info__tab.info__descr.hidden(data-tab="descr")
                         p Парфюмерный бренд из Италии, основан креативным директором Серджио Момо в 2004 году. Его основной целью было предложить парфюмерному рынку продукт, в котором не было бы компромисса между качеством аромата и качеством упаковки.
 
                         p Аромат с нотами искристого бергамота врезается в память и воскрешает истории об итальянских скалах, звуке разбивающихся о них волн и все оттенки морской воды. Цитрусовый взрыв плавно перетекает в цветки табака и прощается мускусными нотами.
@@ -194,4 +194,46 @@ block page
 
                         a(href="#") Подробнее о доставке
 
-                    .info__tab.info__reviews.hidden(data-tab="reviews") reviews
+                    .info__tab.info__reviews(data-tab="reviews")
+
+                        include ./blocks/_info-reviews-item
+
+                        include ./blocks/_info-reviews-item
+
+                        include ./blocks/_info-reviews-item
+
+                        button.info__reviews-btn(type="button" aria-label="Показать панель добавления отзыва") Добавить отзыв
+
+                        .info__reviews-add.add
+                            .add__top
+                                h3.add__title Добавить отзыв
+                                button.add__close-btn
+                                    span Закрыть
+                                    svg(class="add__close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                                        path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+
+                            form(action="#").add__form
+                                .add__wrapper
+                                    .add__data
+                                        input.add__input(type="text" placeholder="Ваше имя" maxlength="30")
+                                        input.add__input(type="email" placeholder="Email")
+
+                                    .add__rating
+                                        +starRating(false)
+
+                                    textarea.add__text(placeholder="Расскажите о товаре")
+
+                                    .add__images
+                                        .add__img
+                                            img(src="./images/info-img.png" alt="фото отзыва")
+
+                                        button.add__img-btn(type="button" aria-label="Добавить фото")
+                                            svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                                                path(d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#757575")
+
+
+                                button.add__publish-btn(type="button" aria-label="Опубликовать отзыв о товаре") Опубликовать отзыв
+
+
+
+
