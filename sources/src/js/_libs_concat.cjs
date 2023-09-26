@@ -7,4 +7,5 @@ module.exports = [
   "./src/libs/choices/choices.min.js",
   "./src/libs/gsap/gsap.min.js",
   "./src/libs/gsap/ScrollTrigger.min.js",
+  "./src/libs/maska/maska.umd.js",
 ];

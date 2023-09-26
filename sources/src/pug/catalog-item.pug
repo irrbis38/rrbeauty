@@ -247,7 +247,7 @@ block page
 
                 form.oneclick__form(action="#" novalidate)
                     input.oneclick__input(type="text" placeholder="Ваше имя*" required name="customer_name")
-                    input.oneclick__input(type="text" placeholder="Ваш телефон*" required name="customer_phone")
+                    input.oneclick__input.oneclick__phone(type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required minlength="18")
                     input.oneclick__input(type="text" placeholder="Ваша почта" name="customer_email")
 
                     button.oneclick__submit(type="submit" aria-label="Отправить данные для заказа в 1 клик") Отправить

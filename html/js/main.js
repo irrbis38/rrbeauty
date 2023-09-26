@@ -94,6 +94,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doShowOneclick();
     doHideOneclick();
     checkOneclickForm();
+    doInitMaskInput();
+    doSetCursorToEnd();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -2162,7 +2164,8 @@ function checkOneclickForm() {
     if (user_name.validity.valueMissing) {
       user_name.classList.add("error");
     }
-    if (phone.validity.valueMissing) {
+
+    if (phone.value.length < 18) {
       phone.classList.add("error");
     }
 
@@ -2180,4 +2183,23 @@ function doRemoveErrorClassNameInOneclick(elements) {
   elements.forEach((el) =>
     el.addEventListener("input", (e) => e.target.classList.remove("error"))
   );
+}
+
+// oneclick maska
+
+function doInitMaskInput() {
+  const { MaskInput } = Maska;
+
+  const maskIinput = new MaskInput("[data-maska]");
+
+  // console.log(maskIinput);
+}
+
+function doSetCursorToEnd() {
+  var oneclick_phone = document.querySelector(".oneclick__phone");
+  oneclick_phone.addEventListener("click", (e) => {
+    var input = e.target;
+    var end = input.value.length;
+    input.setSelectionRange(end, end);
+  });
 }
