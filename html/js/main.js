@@ -91,6 +91,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doChangeGoodsAmount();
     doToggleReviewsPanel();
     checkNewCommentForm();
+    doShowOneclick();
+    doHideOneclick();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -2111,5 +2113,33 @@ function doRemoveErrorClassNameByInput(elements) {
 
   rating_fieldset.addEventListener("input", (e) =>
     e.target.closest(".rating__fieldset").classList.remove("error")
+  );
+}
+
+function doShowOneclick() {
+  var show_oneclick_btn = document.querySelector(".details__one-click");
+  var oneclick = document.querySelector(".oneclick");
+  var body = document.body;
+
+  show_oneclick_btn.addEventListener("click", () => {
+    requestAnimationFrame(() => {
+      oneclick.classList.add("active");
+      body.classList.add("noscroll");
+    });
+  });
+}
+
+function doHideOneclick() {
+  var close_oneclick_buttons = document.querySelectorAll(".oneclick-close");
+  var oneclick = document.querySelector(".oneclick");
+  var body = document.body;
+
+  close_oneclick_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      requestAnimationFrame(() => {
+        oneclick.classList.remove("active");
+        body.classList.remove("noscroll");
+      });
+    })
   );
 }

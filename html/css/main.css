@@ -5946,6 +5946,256 @@ input[type=number]:hover {
 .rating__input:checked ~ .rating__label {
   color: #f9b403
 }
+.oneclick {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  background-color: rgba(0,0,0,.25);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease-out
+}
+.oneclick.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all
+}
+.oneclick__overlay {
+  width: 100%;
+  height: 100%;
+  cursor: pointer
+}
+.oneclick__wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  max-width: 946px;
+  height: 100%;
+  min-height: 947px;
+  background-color: #fff
+}
+@media (max-width:1300px) {
+  .oneclick__wrapper {
+    max-width: 800px
+  }
+}
+@media (max-width:991px) {
+  .oneclick__wrapper {
+    max-width: 80%
+  }
+}
+@media (max-width:767px) {
+  .oneclick__wrapper {
+    max-width: 100%;
+    height: 81.71vh;
+    min-height: unset;
+    top: unset;
+    bottom: 0
+  }
+}
+.oneclick__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 147px 0;
+  overflow-y: auto
+}
+@media (max-width:767px) {
+  .oneclick__inner {
+    padding: 15px 0
+  }
+}
+.oneclick__close-btn {
+  position: absolute;
+  top: 96px;
+  right: 188px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  padding: 0
+}
+.oneclick__close-btn svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain
+}
+.oneclick__close-btn path {
+  transition: all .2s ease-out
+}
+.oneclick__close-btn:hover path {
+  fill: #acacac
+}
+@media (max-width:991px) {
+  .oneclick__close-btn {
+    right: 130px
+  }
+}
+@media (max-width:767px) {
+  .oneclick__close-btn {
+    display: none
+  }
+}
+.oneclick__top {
+  padding: 0 50px 30px;
+  border-bottom: 1px solid #d9d9d9
+}
+.oneclick__title {
+  padding-top: 63px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 74px;
+  font-weight: 600;
+  letter-spacing: 7.4px;
+  text-transform: uppercase
+}
+@media (max-width:1300px) {
+  .oneclick__title {
+    padding-top: 40px;
+    font-size: 54px;
+    letter-spacing: 5px
+  }
+}
+@media (max-width:991px) {
+  .oneclick__title {
+    padding-top: 20px;
+    font-size: 40px;
+    letter-spacing: 3.5px
+  }
+}
+@media (max-width:767px) {
+  .oneclick__title {
+    font-size: 32px;
+    letter-spacing: 1.6px
+  }
+}
+.oneclick__subtitle {
+  max-width: 350px;
+  margin: 0 auto;
+  color: #838383;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 140%
+}
+@media (max-width:767px) {
+  .oneclick__subtitle {
+    display: none
+  }
+}
+.oneclick__form {
+  width: 100%;
+  max-width: 504px;
+  padding: 0 20px;
+  margin: 0 auto
+}
+.oneclick__input {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px 23px;
+  color: #000;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17px
+}
+.oneclick__input::-webkit-input-placeholder {
+  color: #757575
+}
+.oneclick__input::-moz-placeholder {
+  color: #757575
+}
+.oneclick__input:-ms-input-placeholder {
+  color: #757575
+}
+.oneclick__input::placeholder {
+  color: #757575
+}
+.oneclick__input.error {
+  border-color: red
+}
+.oneclick__input.error::-webkit-input-placeholder {
+  color: red
+}
+.oneclick__input.error::-moz-placeholder {
+  color: red
+}
+.oneclick__input.error:-ms-input-placeholder {
+  color: red
+}
+.oneclick__input.error::placeholder {
+  color: red
+}
+.oneclick__submit {
+  display: block;
+  width: 100%;
+  margin: 36px auto 20px;
+  padding: 17px 20px;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #000;
+  transition: all .2s ease-out
+}
+.oneclick__submit:hover {
+  color: #000;
+  background-color: #fff
+}
+@media (max-width:767px) {
+  .oneclick__submit {
+    margin-bottom: 30px
+  }
+}
+.oneclick__policy {
+  color: #838383;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%
+}
+.oneclick__policy a {
+  color: #000;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: opacity .2s ease-out
+}
+.oneclick__policy a:hover {
+  opacity: .7
+}
+@media (max-width:767px) {
+  .oneclick__policy {
+    margin-bottom: 40px;
+    font-size: 15px
+  }
+}
+.oneclick__hide-btn {
+  display: none;
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  padding: 17px 20px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+  transition: all .2s ease-out
+}
+.oneclick__hide-btn:hover {
+  color: #fff;
+  background-color: #000
+}
+@media (max-width:767px) {
+  .oneclick__hide-btn {
+    display: block
+  }
+}
 .footer {
   padding-top: 71px;
   border-top: 4px solid #000

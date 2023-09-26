@@ -234,5 +234,33 @@ block page
                                 button.add__publish-close.reviews-close(type="button" aria-label="Закрыть понель добавления отзыва") Закрыть
 
 
+    section.oneclick
+        .oneclick__overlay.oneclick-close
+        .oneclick__wrapper
+            .oneclick__inner
+                button.oneclick__close-btn.oneclick-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'")
+                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                        path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+                .oneclick__top
+                    h2.oneclick__title В 1 клик
+                    p.oneclick__subtitle Менеджер перезвонит вам, узнает все детали и заказ будет оформлен.
+
+                form.oneclick__form(action="#" novalidate)
+                    input.oneclick__input(type="text" placeholder="Ваше имя*" required name="customer_name")
+                    input.oneclick__input(type="text" placeholder="Ваш телефон*" required name="customer_phone")
+                    input.oneclick__input(type="text" placeholder="Ваша почта" name="customer_email")
+
+                    button.oneclick__submit(type="submit" aria-label="Отправить данные для заказа в 1 клик") Отправить
+
+                .oneclick__policy
+                    span Продолжая, вы соглашаетесь с#[br]
+                    a(href="#" target="_blank") политикой конфиденциальности
+
+                button.oneclick__hide-btn.oneclick-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'") Закрыть
+
+
+
+
+
 
 
