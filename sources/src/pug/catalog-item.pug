@@ -210,16 +210,15 @@ block page
                                     svg(class="add__close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
                                         path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
 
-                            form(action="#").add__form
+                            form(action="#" novalidate).add__form
                                 .add__wrapper
                                     .add__data
-                                        input.add__input(type="text" placeholder="Ваше имя" maxlength="30")
-                                        input.add__input(type="email" placeholder="Email")
+                                        input.add__input(type="text" name="user_name" placeholder="Ваше имя" maxlength="30" required)
+                                        input.add__input(type="email" name="email" placeholder="Email" required)
 
-                                    .add__rating
-                                        +starRating(false, 2)
+                                    +starRating('add__rating', false, 2)
 
-                                    textarea.add__text(placeholder="Расскажите о товаре")
+                                    textarea.add__text(name="comment" placeholder="Расскажите о товаре" required)
 
                                     .add__images
                                         .add__img

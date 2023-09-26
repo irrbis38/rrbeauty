@@ -1,7 +1,10 @@
-.rating {
+.rating__fieldset {
+  width: max-content;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  border: none;
+  appearance: none;
 }
 
 .rating__input {

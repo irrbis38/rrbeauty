@@ -184,40 +184,45 @@ mixin filtersItem(value)
             span= value
 
 
-mixin starRating(isDisable, id)
+mixin starRating(customClassName, isDisable, id)
 
     if isDisable
-        input.rating__input(type="radio" id="star5" + id name="star" value="5" disabled)
-        label.rating__label(for="star5" + id title="text") 5 stars
 
-        input.rating__input(type="radio" id="star4" + id name="star" value="4" disabled checked)
-        label.rating__label(for="star4" + id title="text") 4 stars
+        fieldset.rating__fieldset(name="raitng" class= customClassName disabled)
 
-        input.rating__input(type="radio" id="star3" + id name="star" value="3" disabled)
-        label.rating__label(for="star3" + id title="text") 3 stars
+            input.rating__input(type="radio" id="star5" + id name="star" value="5")
+            label.rating__label(for="star5" + id title="text") 5 stars
 
-        input.rating__input(type="radio" id="star2" + id name="star" value="2" disabled)
-        label.rating__label(for="star2" + id title="text") 2 stars
+            input.rating__input(type="radio" id="star4" + id name="star" value="4" checked)
+            label.rating__label(for="star4" + id title="text") 4 stars
 
-        input.rating__input(type="radio" id="star1" + id name="star" value="1" disabled)
-        label.rating__label(for="star1" + id title="text") 1 star
+            input.rating__input(type="radio" id="star3" + id name="star" value="3")
+            label.rating__label(for="star3" + id title="text") 3 stars
+
+            input.rating__input(type="radio" id="star2" + id name="star" value="2")
+            label.rating__label(for="star2" + id title="text") 2 stars
+
+            input.rating__input(type="radio" id="star1" + id name="star" value="1")
+            label.rating__label(for="star1" + id title="text") 1 star
 
     else
 
-        input.rating__input(type="radio" id="star5" name="star" value="5")
-        label.rating__label(for="star5" title="text") 5 stars
+        fieldset.rating__fieldset(name="raitng" class= customClassName)
 
-        input.rating__input(type="radio" id="star4" name="star" value="4")
-        label.rating__label(for="star4" title="text") 4 stars
+            input.rating__input(type="radio" id="star5" name="star" value="5")
+            label.rating__label(for="star5" title="text") 5 stars
 
-        input.rating__input(type="radio" id="star3" name="star" value="3")
-        label.rating__label(for="star3" title="text") 3 stars
+            input.rating__input(type="radio" id="star4" name="star" value="4")
+            label.rating__label(for="star4" title="text") 4 stars
 
-        input.rating__input(type="radio" id="star2" name="star" value="2")
-        label.rating__label(for="star2" title="text") 2 stars
+            input.rating__input(type="radio" id="star3" name="star" value="3")
+            label.rating__label(for="star3" title="text") 3 stars
 
-        input.rating__input(type="radio" id="star1" name="star" value="1")
-        label.rating__label(for="star1" title="text") 1 star
+            input.rating__input(type="radio" id="star2" name="star" value="2")
+            label.rating__label(for="star2" title="text") 2 stars
+
+            input.rating__input(type="radio" id="star1" name="star" value="1")
+            label.rating__label(for="star1" title="text") 1 star
 
 
 mixin infoReviewsItem(id)
@@ -228,7 +233,7 @@ mixin infoReviewsItem(id)
             time.info__reviews-date(datetime="2023-05-24") 24 мая 2023
 
         form(action="#").rating.info__reviews-rating
-            +starRating(true, id)
+            +starRating('.info__rating', true, id)
 
         .info__reviews-text
             p На глаз засветов не видно, но на камеру почему то видно. Но для данной матрицы, засветы в норме (У тфт 10 летней давности(v193hq), вроде больше. Хотя я думал там вообще нет никаких засветов)

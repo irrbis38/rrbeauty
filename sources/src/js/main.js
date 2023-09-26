@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleInfoTabs();
     doChangeGoodsAmount();
     doToggleReviewsPanel();
+    checkNewCommentForm();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -2050,4 +2051,65 @@ function handleAddBlockCloseBtn(body, add_block) {
   add_block.style.maxHeight = "0";
   add_block.classList.remove("active");
   body.classList.remove("noscroll");
+}
+
+// check new comment form on catalog-item page
+function checkNewCommentForm() {
+  var form = document.querySelector(".add__form");
+  var rating_inputs = Array.from(form.querySelectorAll(".rating__input"));
+  var user_name = form.elements.user_name;
+  var email = form.elements.email;
+  var rating_fieldset = form.elements.raitng;
+  var comment = form.elements.comment;
+
+  var elements = [user_name, email, rating_fieldset, comment];
+
+  // add listener to submit form button
+  form.addEventListener("submit", (e) => {
+    if (user_name.validity.valueMissing) {
+      user_name.classList.add("error");
+    }
+    if (email.validity.typeMismatch || email.validity.valueMissing) {
+      email.classList.add("error");
+      console.log("not");
+    }
+    if (!doCheckRatingInputs(rating_inputs)) {
+      rating_fieldset.classList.add("error");
+    }
+    if (comment.validity.valueMissing) {
+      comment.classList.add("error");
+    }
+
+    checkContainingErrorClassName(elements)
+      ? e.preventDefault()
+      : form.submit();
+  });
+
+  // adds listeners to all elements that can have an error className
+  doRemoveErrorClassNameByInput(elements);
+}
+
+// checks for the presence of the error className
+function checkContainingErrorClassName(elements) {
+  return elements.some((el) => el.classList.contains("error"));
+}
+
+// checks if the selected item exists
+function doCheckRatingInputs(inputs) {
+  var isRatingChecked = inputs.some((input) => input.checked);
+
+  return isRatingChecked;
+}
+
+// remove 'error' class by input
+function doRemoveErrorClassNameByInput(elements) {
+  var { 0: user_name, 1: email, 2: rating_fieldset, 3: comment } = elements;
+
+  [user_name, email, comment].forEach((el) =>
+    el.addEventListener("input", (e) => e.target.classList.remove("error"))
+  );
+
+  rating_fieldset.addEventListener("input", (e) =>
+    e.target.closest(".rating__fieldset").classList.remove("error")
+  );
 }

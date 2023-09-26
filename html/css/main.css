@@ -5689,9 +5689,10 @@ input[type=number]:hover {
   -webkit-flex: 1 1 50%;
   -ms-flex: 1 1 50%;
   flex: 1 1 50%;
-  padding: 12px 23px;
+  padding: 10px 21px;
   color: #000;
   background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
   font-size: 14px;
   font-weight: 500;
   line-height: 17px
@@ -5717,7 +5718,14 @@ input[type=number]:hover {
     padding: 13px 23px
   }
 }
+.add__input.error {
+  border-color: red
+}
 .add__rating {
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -5747,16 +5755,22 @@ input[type=number]:hover {
     font-size: 18px
   }
 }
+.rating__fieldset {
+  border: 1px solid transparent!important
+}
+.rating__fieldset.error {
+  border-color: red!important
+}
 .add__text {
   display: block;
   width: 100%;
   min-height: 120px;
   margin-bottom: 24px;
-  padding: 15px 22px;
+  padding: 13px 20px;
   resize: none;
   color: #000;
   background-color: #f1f1f1;
-  border: none;
+  border: 1px solid #f1f1f1;
   font-size: 14px;
   font-weight: 500;
   line-height: 17px
@@ -5778,6 +5792,9 @@ input[type=number]:hover {
     min-height: 130px;
     margin-bottom: 16px
   }
+}
+.add__text.error {
+  border-color: red
 }
 .add__images {
   display: -webkit-flex;
@@ -5892,7 +5909,10 @@ input[type=number]:hover {
     display: block
   }
 }
-.rating {
+.rating__fieldset {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -5901,7 +5921,11 @@ input[type=number]:hover {
   flex-direction: row-reverse;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
-  justify-content: flex-end
+  justify-content: flex-end;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none
 }
 .rating__input {
   position: fixed;
