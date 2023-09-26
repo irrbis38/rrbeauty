@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doChangeToggleBtnAmountByResize();
     doToggleAddToFavoritesBtn();
     doToggleInfoTabs();
+    doChangeGoodsAmount();
     doToggleReviewsPanel();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -1961,6 +1962,25 @@ function handleInfoButtons(e, tabs, buttons) {
         : tab.classList.add("hidden")
     );
   }
+}
+
+// === change goods amout on catalog-item page
+
+function doChangeGoodsAmount() {
+  var amount_block = document.querySelector(".details__amount");
+  var decrease_btn = amount_block.querySelector(".detalis__decrease");
+  var increase_btn = amount_block.querySelector(".detalis__increase");
+  var input = amount_block.querySelector("input");
+
+  decrease_btn.addEventListener("click", () => {
+    var value = parseInt(input.value);
+    value > 1 ? (input.value = value - 1) : null;
+  });
+
+  increase_btn.addEventListener("click", () => {
+    var value = parseInt(input.value);
+    input.value = value + 1;
+  });
 }
 
 // === '.info__reviews-add' block toggle logic
