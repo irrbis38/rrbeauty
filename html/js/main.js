@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     checkNewCommentForm();
     doShowOneclick();
     doHideOneclick();
+    checkOneclickForm();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -2116,6 +2117,8 @@ function doRemoveErrorClassNameByInput(elements) {
   );
 }
 
+// === ONECLICK
+
 function doShowOneclick() {
   var show_oneclick_btn = document.querySelector(".details__one-click");
   var oneclick = document.querySelector(".oneclick");
@@ -2141,5 +2144,40 @@ function doHideOneclick() {
         body.classList.remove("noscroll");
       });
     })
+  );
+}
+
+// === ONECLICK FORM CHECK
+
+// check new comment form on catalog-item page
+function checkOneclickForm() {
+  var form = document.querySelector(".oneclick__form");
+  var user_name = form.elements.customer_name;
+  var phone = form.elements.customer_phone;
+
+  var elements = [user_name, phone];
+
+  // add listener to submit form button
+  form.addEventListener("submit", (e) => {
+    if (user_name.validity.valueMissing) {
+      user_name.classList.add("error");
+    }
+    if (phone.validity.valueMissing) {
+      phone.classList.add("error");
+    }
+
+    checkContainingErrorClassName(elements)
+      ? e.preventDefault()
+      : form.submit();
+  });
+
+  // adds listeners to all elements that can have an error className
+  doRemoveErrorClassNameInOneclick(elements);
+}
+
+// remove 'error' class in oneclick form
+function doRemoveErrorClassNameInOneclick(elements) {
+  elements.forEach((el) =>
+    el.addEventListener("input", (e) => e.target.classList.remove("error"))
   );
 }
