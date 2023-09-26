@@ -196,18 +196,16 @@ block page
 
                     .info__tab.info__reviews(data-tab="reviews")
 
-                        include ./blocks/_info-reviews-item
-
-                        include ./blocks/_info-reviews-item
-
-                        include ./blocks/_info-reviews-item
+                        +infoReviewsItem('qw54#')
+                        +infoReviewsItem('zmK81')
+                        +infoReviewsItem('vl7rZ')
 
                         button.info__reviews-btn(type="button" aria-label="Показать панель добавления отзыва") Добавить отзыв
 
                         .info__reviews-add.add
                             .add__top
                                 h3.add__title Добавить отзыв
-                                button.add__close-btn
+                                button.add__close-btn.reviews-close
                                     span Закрыть
                                     svg(class="add__close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
                                         path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
@@ -219,7 +217,7 @@ block page
                                         input.add__input(type="email" placeholder="Email")
 
                                     .add__rating
-                                        +starRating(false)
+                                        +starRating(false, 2)
 
                                     textarea.add__text(placeholder="Расскажите о товаре")
 
@@ -232,7 +230,9 @@ block page
                                                 path(d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#757575")
 
 
-                                button.add__publish-btn(type="button" aria-label="Опубликовать отзыв о товаре") Опубликовать отзыв
+                                button.add__publish-btn(type="submit" aria-label="Опубликовать отзыв о товаре") Опубликовать отзыв
+
+                                button.add__publish-close.reviews-close(type="button" aria-label="Закрыть понель добавления отзыва") Закрыть
 
 
 

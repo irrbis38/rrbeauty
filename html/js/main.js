@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doChangeToggleBtnAmountByResize();
     doToggleAddToFavoritesBtn();
     doToggleInfoTabs();
-    // prevent();
+    doToggleReviewsPanel();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -1963,12 +1963,71 @@ function handleInfoButtons(e, tabs, buttons) {
   }
 }
 
-function prevent() {
-  const star_rating_inputs = document.querySelectorAll(".rating input");
+// === '.info__reviews-add' block toggle logic
 
-  star_rating_inputs.forEach((input) =>
-    input.addEventListener("click", (e) => {
-      e.preventDefault();
+function doToggleReviewsPanel() {
+  // open reviews panel
+  var info_reviews_btn = document.querySelector(".info__reviews-btn");
+  var add_block = document.querySelector(".add");
+  body = document.body;
+
+  info_reviews_btn.addEventListener("click", (e) => {
+    handleInfoReviewsBtn(e, body, add_block);
+  });
+
+  // change reviews panel height by resize
+  var mq767 = window.matchMedia("(max-width: 767px)");
+
+  mq767.addEventListener("change", (e) => {
+    handleResizeForAddBlock(e, body, add_block);
+  });
+
+  // close reiviews panel
+  var close_buttons = document.querySelectorAll(".reviews-close");
+
+  close_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      handleAddBlockCloseBtn(body, add_block);
     })
   );
+}
+
+//  start onload behavior
+function handleInfoReviewsBtn(e, body, add_block) {
+  add_block.classList.add("active");
+
+  if (window.innerWidth <= 767) {
+    add_block.style.maxHeight = "100vh";
+    body.classList.add("noscroll");
+  } else {
+    add_block.style.maxHeight = add_block.scrollHeight + "px";
+  }
+}
+
+// change add block height by window resize
+function handleResizeForAddBlock(e, body, add_block) {
+  if (add_block.classList.contains("active")) {
+    e.matches
+      ? doSetTo100vh(body, add_block)
+      : doSetToScrollHeight(body, add_block);
+  }
+}
+
+// set '.info__reviews-add' block height to scrollHeight
+function doSetToScrollHeight(body, add_block) {
+  body.classList.remove("noscroll");
+  add_block.style.maxHeight = add_block.scrollHeight + "px";
+}
+
+// set '.info__reviews-add' block height to 100vh
+function doSetTo100vh(body, add_block) {
+  body.classList.add("noscroll");
+  add_block.style.maxHeight = "100vh";
+}
+
+// close reviews panel
+function handleAddBlockCloseBtn(body, add_block) {
+  add_block.style.maxHeight = "0";
+  add_block.classList.remove("active");
+  body.classList.remove("noscroll");
 }
