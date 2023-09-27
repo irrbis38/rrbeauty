@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doChangeToggleBtnAmountByResize();
     doToggleAddToFavoritesBtn();
     doToggleInfoTabs();
-    doChangeGoodsAmount();
+    doChangeGoodsAmount(".goods-amount");
     doToggleReviewsPanel();
     checkNewCommentForm();
     doShowOneclick();
@@ -1970,22 +1970,25 @@ function handleInfoButtons(e, tabs, buttons) {
   }
 }
 
-// === change goods amout on catalog-item page
+// === change goods amout
 
-function doChangeGoodsAmount() {
-  var amount_block = document.querySelector(".details__amount");
-  var decrease_btn = amount_block.querySelector(".detalis__decrease");
-  var increase_btn = amount_block.querySelector(".detalis__increase");
-  var input = amount_block.querySelector("input");
+function doChangeGoodsAmount(amount_block_class) {
+  var blocks = Array.from(document.querySelectorAll(amount_block_class));
 
-  decrease_btn.addEventListener("click", () => {
-    var value = parseInt(input.value);
-    value > 1 ? (input.value = value - 1) : null;
-  });
+  blocks.forEach((block) => {
+    var decrease_btn = block.querySelector(".goods-decrease");
+    var increase_btn = block.querySelector(".goods-increase");
+    var input = block.querySelector("input");
 
-  increase_btn.addEventListener("click", () => {
-    var value = parseInt(input.value);
-    input.value = value + 1;
+    decrease_btn.addEventListener("click", () => {
+      var value = parseInt(input.value);
+      value > 1 ? (input.value = value - 1) : null;
+    });
+
+    increase_btn.addEventListener("click", () => {
+      var value = parseInt(input.value);
+      input.value = value + 1;
+    });
   });
 }
 
@@ -2076,7 +2079,6 @@ function checkNewCommentForm() {
     }
     if (email.validity.typeMismatch || email.validity.valueMissing) {
       email.classList.add("error");
-      console.log("not");
     }
     if (!doCheckRatingInputs(rating_inputs)) {
       rating_fieldset.classList.add("error");
@@ -2164,8 +2166,8 @@ function checkOneclickForm() {
     if (user_name.validity.valueMissing) {
       user_name.classList.add("error");
     }
-
-    if (phone.value.length < 18) {
+    minPhoneLen = parseInt(phone.dataset.minPhoneLength);
+    if (phone.value.length < minPhoneLen) {
       phone.classList.add("error");
     }
 
@@ -2191,8 +2193,6 @@ function doInitMaskInput() {
   const { MaskInput } = Maska;
 
   const maskIinput = new MaskInput("[data-maska]");
-
-  // console.log(maskIinput);
 }
 
 function doSetCursorToEnd() {

@@ -194,14 +194,14 @@
             </div>
             <div class="details__price"><span class="details__current-price">3 800₸</span><span class="details__old-price">4 800₸</span></div>
             <div class="details__panel">
-              <div class="details__amount">
-                <button class="detalis__decrease">
+              <div class="details__amount goods-amount">
+                <button class="detalis__decrease goods-decrease">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M19 13H5V11H19V13Z" fill="black"></path>
                   </svg>
                 </button>
                 <input type="number" value="1">
-                <button class="detalis__increase">
+                <button class="detalis__increase goods-increase">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="black"></path>
                   </svg>
@@ -216,7 +216,7 @@
             <div class="info__heading">
               <ul class="info__heading-list hidescrollbar">
                 <li>
-                  <button class="info__heading-btn" type="button" data-heading="descr" aria-label="Показать описание">Описание</button>
+                  <button class="info__heading-btn active" type="button" data-heading="descr" aria-label="Показать описание">Описание</button>
                 </li>
                 <li>
                   <button class="info__heading-btn" type="button" aria-label="Показать характеристики" data-heading="features">Характеристики</button>
@@ -228,12 +228,12 @@
                   <button class="info__heading-btn" type="button" aria-label="Показать информацию о доставке и оплате" data-heading="shipping">Доставка и оплата</button>
                 </li>
                 <li>
-                  <button class="info__heading-btn active" type="button" aria-label="Показать отзывы на товар" data-heading="reviews">Отзывы</button>
+                  <button class="info__heading-btn" type="button" aria-label="Показать отзывы на товар" data-heading="reviews">Отзывы</button>
                 </li>
               </ul>
             </div>
             <div class="info__wrapper">
-              <div class="info__tab info__descr hidden" data-tab="descr">
+              <div class="info__tab info__descr" data-tab="descr">
                 <p>Парфюмерный бренд из Италии, основан креативным директором Серджио Момо в 2004 году. Его основной целью было предложить парфюмерному рынку продукт, в котором не было бы компромисса между качеством аромата и качеством упаковки.</p>
                 <p>Аромат с нотами искристого бергамота врезается в память и воскрешает истории об итальянских скалах, звуке разбивающихся о них волн и все оттенки морской воды. Цитрусовый взрыв плавно перетекает в цветки табака и прощается мускусными нотами.</p>
               </div>
@@ -255,7 +255,7 @@
                 <p>Парфюмерный бренд из Италии, основан креативным директором Серджио Момо в 2004 году. Его основной целью было предложить парфюмерному рынку продукт, в котором не было бы компромисса между качеством аромата и качеством упаковки.</p>
                 <p>Аромат с нотами искристого бергамота врезается в память и воскрешает истории об итальянских скалах, звуке разбивающихся о них волн и все оттенки морской воды. Цитрусовый взрыв плавно перетекает в цветки табака и прощается мускусными нотами.</p><a href="#">Подробнее о доставке</a>
               </div>
-              <div class="info__tab info__reviews" data-tab="reviews">
+              <div class="info__tab info__reviews hidden" data-tab="reviews">
                 <div class="info__reviews-item">
                   <div class="info__reviews-descr"><span class="info__reviews-user">Ярослав П.</span>
                     <time class="info__reviews-date" datetime="2023-05-24">24 мая 2023</time>
@@ -399,7 +399,7 @@
             </div>
             <form class="oneclick__form" action="#" novalidate>
               <input class="oneclick__input" type="text" placeholder="Ваше имя*" required name="customer_name">
-              <input class="oneclick__input oneclick__phone" type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required minlength="18">
+              <input class="oneclick__input oneclick__phone" type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18">
               <input class="oneclick__input" type="text" placeholder="Ваша почта" name="customer_email">
               <button class="oneclick__submit" type="submit" aria-label="Отправить данные для заказа в 1 клик">Отправить</button>
             </form>

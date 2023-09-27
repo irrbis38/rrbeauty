@@ -5978,7 +5978,6 @@ input[type=number]:hover {
   width: 100%;
   max-width: 946px;
   height: 100%;
-  min-height: 947px;
   background-color: #fff
 }
 @media (max-width:1300px) {
