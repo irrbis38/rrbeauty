@@ -96,6 +96,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     checkOneclickForm();
     doInitMaskInput();
     doSetCursorToEnd();
+    initAllGoodsSectionsSliders();
+    doToggleFavoritesIcons();
   }
 
   // cart page
@@ -1407,7 +1409,11 @@ function initAllGoodsSectionsSliders() {
     ".discountedProducts"
   );
 
-  sections = [].concat(goods_sections, [discounted_products_section]);
+  if (discounted_products_section) {
+    sections = [].concat(goods_sections, [discounted_products_section]);
+  } else {
+    sections = goods_sections;
+  }
 
   sections.forEach((section) => {
     let counter = 0;

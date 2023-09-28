@@ -1373,3 +1373,34 @@
     display: block;
   }
 }
+
+// YOU MIGHT LIKE BLOCK
+
+.mightlike {
+  margin-top: 0;
+
+  .autoscroll__block {
+    .autoscroll__list li:nth-child(1) {
+      display: block !important;
+    }
+    .autoscroll__list li:nth-child(2) {
+      display: none !important;
+    }
+
+    @include r(370px) {
+      .autoscroll__title {
+        font-size: 38px;
+      }
+    }
+  }
+
+  .container {
+    padding-top: 43px;
+    padding-bottom: 241px;
+
+    @include sm {
+      padding-top: 31px;
+      padding-bottom: 160px;
+    }
+  }
+}

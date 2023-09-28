@@ -5962,6 +5962,30 @@ input[type=number]:hover {
     display: block
   }
 }
+.mightlike {
+  margin-top: 0
+}
+.mightlike .autoscroll__block .autoscroll__list li:nth-child(1) {
+  display: block!important
+}
+.mightlike .autoscroll__block .autoscroll__list li:nth-child(2) {
+  display: none!important
+}
+@media only screen and (max-width:370px) {
+  .mightlike .autoscroll__block .autoscroll__title {
+    font-size: 38px
+  }
+}
+.mightlike .container {
+  padding-top: 43px;
+  padding-bottom: 241px
+}
+@media (max-width:991px) {
+  .mightlike .container {
+    padding-top: 31px;
+    padding-bottom: 160px
+  }
+}
 .rating__fieldset {
   width: -webkit-max-content;
   width: -moz-max-content;
