@@ -2235,20 +2235,28 @@ function doChangeSum(input) {
   var new_sum = cart_row.querySelector(".cart__sum-new");
   var old_sum = cart_row.querySelector(".cart__sum-old");
 
-  var amount = parseInt(input.value);
+  if (input.value === "") {
+    old_sum.textContent = 0 + " ₸";
+    new_sum.textContent = 0 + " ₸";
+  } else {
+    var amount = parseInt(input.value);
 
-  var new_num =
-    parseInt(input.value) * parseInt(new_price.textContent.replaceAll(" ", ""));
+    var new_num =
+      parseInt(input.value) *
+      parseInt(new_price.textContent.replaceAll(" ", ""));
 
-  new_sum.textContent = new Intl.NumberFormat("ru-RU").format(new_num) + "₸";
+    new_sum.textContent = new Intl.NumberFormat("ru-RU").format(new_num) + "₸";
 
-  if (old_price && old_sum) {
-    old_sum.textContent =
-      amount * parseInt(old_price.textContent.replaceAll(" ", "")) + "₸";
+    if (old_price && old_sum) {
+      old_sum.textContent =
+        amount * parseInt(old_price.textContent.replaceAll(" ", "")) + "₸";
 
-    var old_num = amount * parseInt(old_price.textContent.replaceAll(" ", ""));
+      var old_num =
+        amount * parseInt(old_price.textContent.replaceAll(" ", ""));
 
-    old_sum.textContent = new Intl.NumberFormat("ru-RU").format(old_num) + "₸";
+      old_sum.textContent =
+        new Intl.NumberFormat("ru-RU").format(old_num) + "₸";
+    }
   }
 }
 
