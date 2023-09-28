@@ -86,9 +86,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleDetailsValuesAppearance();
     doCheckSetValueAmount();
     doChangeToggleBtnAmountByResize();
-    doToggleAddToFavoritesBtn();
+    doToggleAddToFavoritesBtn(".details__add-to-favorites", ".item");
     doToggleInfoTabs();
-    doChangeGoodsAmount(".goods-amount");
+    doChangeGoodsAmount(".goods-amount", false);
     doToggleReviewsPanel();
     checkNewCommentForm();
     doShowOneclick();
@@ -96,6 +96,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     checkOneclickForm();
     doInitMaskInput();
     doSetCursorToEnd();
+  }
+
+  // cart page
+  const cart_page = document.querySelector(".cart-page");
+
+  if (cart_page) {
+    doToggleAddToFavoritesBtn(".cart__add-to-favorites", ".cart__regular-row");
+    doChangeGoodsAmount(".goods-amount", true);
+    doAddListenersToAllAmountInput();
+    doRemoveGoodFromCart();
+    doClearCart();
   }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
@@ -1919,14 +1930,15 @@ function doChangeToggleBtnAmountByResize() {
 
 // toggle add-to-favorites button
 
-function doToggleAddToFavoritesBtn() {
-  const add_to_favorites_btn = document.querySelector(
-    ".details__add-to-favorites"
-  );
-  const item = document.querySelector(".item");
+function doToggleAddToFavoritesBtn(buttonClassName, containerClassName) {
+  const add_to_favorites_btns = document.querySelectorAll(buttonClassName);
 
-  add_to_favorites_btn.addEventListener("click", () => {
-    item.classList.toggle("addedToFavorites");
+  add_to_favorites_btns.forEach((btn) => {
+    const item = btn.closest(containerClassName);
+
+    btn.addEventListener("click", () => {
+      item.classList.toggle("addedToFavorites");
+    });
   });
 }
 
@@ -1968,28 +1980,6 @@ function handleInfoButtons(e, tabs, buttons) {
         : tab.classList.add("hidden")
     );
   }
-}
-
-// === change goods amout
-
-function doChangeGoodsAmount(amount_block_class) {
-  var blocks = Array.from(document.querySelectorAll(amount_block_class));
-
-  blocks.forEach((block) => {
-    var decrease_btn = block.querySelector(".goods-decrease");
-    var increase_btn = block.querySelector(".goods-increase");
-    var input = block.querySelector("input");
-
-    decrease_btn.addEventListener("click", () => {
-      var value = parseInt(input.value);
-      value > 1 ? (input.value = value - 1) : null;
-    });
-
-    increase_btn.addEventListener("click", () => {
-      var value = parseInt(input.value);
-      input.value = value + 1;
-    });
-  });
 }
 
 // === '.info__reviews-add' block toggle logic
@@ -2201,5 +2191,104 @@ function doSetCursorToEnd() {
     var input = e.target;
     var end = input.value.length;
     input.setSelectionRange(end, end);
+  });
+}
+
+// === change goods amount
+
+function doChangeGoodsAmount(amount_block_class, isCartPage) {
+  var blocks = Array.from(document.querySelectorAll(amount_block_class));
+
+  blocks.forEach((block) => {
+    var decrease_btn = block.querySelector(".goods-decrease");
+    var increase_btn = block.querySelector(".goods-increase");
+    var input = block.querySelector("input");
+
+    decrease_btn.addEventListener("click", () => {
+      var value = parseInt(input.value);
+      value > 1 ? (input.value = value - 1) : null;
+      isCartPage ? doChangeSum(input) : null;
+    });
+
+    increase_btn.addEventListener("click", () => {
+      var value = parseInt(input.value);
+      input.value = value + 1;
+      isCartPage ? doChangeSum(input) : null;
+    });
+  });
+}
+
+function doAddListenersToAllAmountInput() {
+  var inputs = document.querySelectorAll(".goods-amount input");
+
+  inputs.forEach((input) =>
+    input.addEventListener("input", () => {
+      doChangeSum(input);
+    })
+  );
+}
+
+function doChangeSum(input) {
+  var cart_row = input.closest(".cart__regular-row");
+  var new_price = cart_row.querySelector(".cart__price-new");
+  var old_price = cart_row.querySelector(".cart__price-old");
+  var new_sum = cart_row.querySelector(".cart__sum-new");
+  var old_sum = cart_row.querySelector(".cart__sum-old");
+
+  var amount = parseInt(input.value);
+
+  var new_num =
+    parseInt(input.value) * parseInt(new_price.textContent.replaceAll(" ", ""));
+
+  new_sum.textContent = new Intl.NumberFormat("ru-RU").format(new_num) + "₸";
+
+  if (old_price && old_sum) {
+    old_sum.textContent =
+      amount * parseInt(old_price.textContent.replaceAll(" ", "")) + "₸";
+
+    var old_num = amount * parseInt(old_price.textContent.replaceAll(" ", ""));
+
+    old_sum.textContent = new Intl.NumberFormat("ru-RU").format(old_num) + "₸";
+  }
+}
+
+// remove good-item from cart
+
+function doRemoveGoodFromCart() {
+  var remove_buttons = Array.from(document.querySelectorAll(".cart__remove"));
+
+  remove_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      var cart_item = btn.closest(".cart__regular-row");
+      var cart_removing_block = cart_item.querySelector(".cart__removing");
+      var cart_cancel_btn = cart_item.querySelector(".cart__cancel");
+      var cart_forced_delete_btn = cart_item.querySelector(
+        ".cart__delete-anyway"
+      );
+
+      cart_item.classList.add("deleting");
+
+      cart_cancel_btn.addEventListener("click", () =>
+        cart_item.classList.remove("deleting")
+      );
+
+      cart_removing_block.addEventListener("animationend", () =>
+        cart_item.remove()
+      );
+
+      cart_forced_delete_btn.addEventListener("click", () =>
+        cart_item.remove()
+      );
+    })
+  );
+}
+
+// cart clear
+function doClearCart() {
+  var cart_clear_btn = document.querySelector(".cart__reset");
+  var cart_list = document.querySelector(".cart__list");
+
+  cart_clear_btn.addEventListener("click", () => {
+    cart_list.innerHTML = "";
   });
 }

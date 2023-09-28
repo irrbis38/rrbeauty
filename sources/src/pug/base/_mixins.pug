@@ -247,3 +247,53 @@ mixin infoReviewsItem(id)
             .info__reviews-img
                 img(src="./images/info-img.png" alt="фото отзыва")
 
+
+
+mixin cartRegularRow(imgNum)
+    .cart__regular-row
+
+        .cart__descr
+
+            img.cart__img(src="./images/view-small-" + imgNum + ".png" alt="фото товара 1")
+
+            h4.cart__name INTENZE Products Lemon Yellow 2 oz
+
+            .cart__price
+                span.cart__price-new 3 800₸
+                span.cart__price-old 5 800₸
+
+        .cart__menu
+
+            .cart__amount.details__amount.goods-amount
+                button.detalis__decrease.goods-decrease
+                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                        path(d="M19 13H5V11H19V13Z" fill="black")
+
+                input(type="number" value="1")
+
+                button.detalis__increase.goods-increase
+                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                        path(d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="black")
+
+            .cart__sum
+                span.cart__sum-new 3 800₸
+                span.cart__sum-old 5 800₸
+
+            .cart__buttons
+                button.cart__add-to-favorites(type="button" aria-label="Добавить в избранное")
+                    img(src="./images/heart-icon.svg" alt="Добавить в избранное")
+                    img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
+                    img(src="./images/heart-icon-red.svg" alt="Убрать из избранного")
+
+                button.cart__remove(type="button" aria-label="Удалить товар из корзины")
+                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                        path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+
+        .cart__removing
+            .cart__removing-bg
+            .cart__removing-buttons
+                button.cart__cancel.btn__black(type="button" aria-label="Отменить удаление товара") Вернуть позицию
+                button.cart__delete-anyway.btn__black(type="button" aria-label="Всё равно удалить товар из корзины")
+                    svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                        path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="white")
+

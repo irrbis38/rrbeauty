@@ -91,3 +91,28 @@
     letter-spacing: 1.4px;
   }
 }
+
+.cart-page {
+  .top__title {
+    font-size: 74px;
+    padding: 56px 0 83px;
+
+    @include lg {
+      padding: 50px 0 60px;
+      font-size: 52px;
+      letter-spacing: 4px;
+    }
+
+    @include sm {
+      padding: 40px 0 50px;
+      font-size: 40px;
+      letter-spacing: 2.5px;
+    }
+
+    @include xs {
+      padding: 29px 0 36px;
+      font-size: 28px;
+      letter-spacing: 1.4px;
+    }
+  }
+}
