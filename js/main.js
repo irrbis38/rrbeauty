@@ -76,6 +76,47 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
   }
 
+  // catalog-item page
+
+  const catalog_item_page = document.querySelector(".catalog-item");
+
+  if (catalog_item_page) {
+    doInitCatalogItemSlider();
+    doSelectValueButton();
+    doToggleDetailsValuesAppearance();
+    doCheckSetValueAmount();
+    doChangeToggleBtnAmountByResize();
+    doToggleAddToFavoritesBtn(".details__add-to-favorites", ".item");
+    doToggleInfoTabs();
+    doChangeGoodsAmount(".goods-amount", false);
+    doToggleReviewsPanel();
+    checkNewCommentForm();
+    doShowOneclick();
+    doHideOneclick();
+    checkOneclickForm();
+    doInitMaskInput();
+    doSetCursorToEnd();
+    initAllGoodsSectionsSliders();
+    doToggleFavoritesIcons();
+  }
+
+  // cart page
+  const cart_page = document.querySelector(".cart-page");
+
+  if (cart_page) {
+    doToggleAddToFavoritesBtn(".cart__add-to-favorites", ".cart__regular-row");
+    doChangeGoodsAmount(".goods-amount", true);
+    doAddListenersToAllAmountInput();
+    doRemoveGoodFromCart();
+    doClearCart();
+  }
+
+  // brands page
+  const brands_page = document.querySelector(".brands-page");
+
+  if (brands_page) {
+    doInitBrandsSearch();
+  }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -1375,7 +1416,11 @@ function initAllGoodsSectionsSliders() {
     ".discountedProducts"
   );
 
-  sections = [].concat(goods_sections, [discounted_products_section]);
+  if (discounted_products_section) {
+    sections = [].concat(goods_sections, [discounted_products_section]);
+  } else {
+    sections = goods_sections;
+  }
 
   sections.forEach((section) => {
     let counter = 0;
@@ -1762,3 +1807,542 @@ function gsapAnimationForGoodsSectionSlider(params) {
 }
 
 // === END OF SLIDER LOGIC ===
+
+// === CATALOG-ITEM PAGE ===
+
+function doInitCatalogItemSlider() {
+  var swiperSmall = new Swiper(".view__small", {
+    direction: "vertical",
+    spaceBetween: 9,
+    slidesPerView: 3,
+    // freeMode: true,
+    // watchSlidesProgress: true,
+    navigation: false,
+
+    breakpoints: {
+      768: {
+        spaceBetween: 23,
+      },
+    },
+  });
+  var swiperFull = new Swiper(".view__full", {
+    effect: "fade",
+    slidesPerView: 1,
+    spaceBetween: 0,
+    navigation: false,
+
+    thumbs: {
+      swiper: swiperSmall,
+    },
+  });
+}
+
+// select details__value in '.details__feature-weight' on catalog-item page
+
+function doSelectValueButton() {
+  var detalis_blocks = Array.from(
+    document.querySelectorAll(".details__feature")
+  );
+
+  detalis_blocks.forEach((block) => {
+    var buttons = Array.from(block.querySelectorAll(".details__set-value"));
+    var currentValue = block.querySelector(".details__current");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        var currentBtn = e.currentTarget;
+        var isWeightBlock = block.classList.contains("details__feature-weight");
+        var isColorBlock = block.classList.contains("details__feature-color");
+        var newValue = "";
+
+        if (isWeightBlock) {
+          newValue = currentBtn.textContent + " гр";
+        } else if (isColorBlock) {
+          newValue = currentBtn.dataset.colorName;
+        } else {
+          return;
+        }
+
+        requestAnimationFrame(() =>
+          handleSetValueButton(currentBtn, buttons, currentValue, newValue)
+        );
+      });
+    });
+  });
+}
+
+function handleSetValueButton(currentBtn, buttons, currentValue, newValue) {
+  var isSelected = currentBtn.classList.contains("selected");
+
+  if (!isSelected) {
+    buttons.forEach((btn) => btn.classList.remove("selected"));
+    currentBtn.classList.add("selected");
+    currentValue.textContent = newValue;
+  }
+}
+
+// change the appearance of the '.details__values'
+
+function doToggleDetailsValuesAppearance() {
+  var details_toggle_btn = Array.from(
+    document.querySelectorAll(".details__toggle-btn")
+  );
+
+  details_toggle_btn.forEach((btn) => {
+    var details_feature_block = btn.closest(".details__feature");
+    btn.addEventListener("click", () =>
+      handleDetailsToggleBtn(details_feature_block)
+    );
+  });
+}
+
+function handleDetailsToggleBtn(block) {
+  requestAnimationFrame(() => {
+    block.classList.toggle("active");
+  });
+}
+
+// set '.details__toggle-btn' value
+function doCheckSetValueAmount() {
+  const feature_color_blocks = Array.from(
+    document.querySelectorAll(".details__feature-color")
+  );
+
+  feature_color_blocks.forEach((block) => {
+    var btn = block.querySelector(".details__toggle-btn");
+    var btnValue = btn.children[0];
+    var len = block.querySelectorAll(".details__set-value").length;
+
+    if (window.innerWidth > 1300) {
+      doSetToggleBtnAmount(len, btn, btnValue, 18);
+    } else if (window.innerWidth >= 768 && window.innerWidth <= 1300) {
+      doSetToggleBtnAmount(len, btn, btnValue, 14);
+    } else {
+      doSetToggleBtnAmount(len, btn, btnValue, 12);
+    }
+  });
+}
+
+function doSetToggleBtnAmount(len, btn, btnValue, amount) {
+  if (len > amount) {
+    btn.classList.remove("non-overflow");
+    btnValue.textContent = `+${len - amount + 1}`;
+  } else {
+    btn.classList.add("non-overflow");
+  }
+}
+
+// change '.details__toggle-btn' value by resize
+function doChangeToggleBtnAmountByResize() {
+  var mq767 = window.matchMedia("(max-width: 767px)");
+  var mq1300 = window.matchMedia("(max-width: 1300px)");
+
+  mq767.addEventListener("change", doCheckSetValueAmount);
+  mq1300.addEventListener("change", doCheckSetValueAmount);
+}
+
+// toggle add-to-favorites button
+
+function doToggleAddToFavoritesBtn(buttonClassName, containerClassName) {
+  const add_to_favorites_btns = document.querySelectorAll(buttonClassName);
+
+  add_to_favorites_btns.forEach((btn) => {
+    const item = btn.closest(containerClassName);
+
+    btn.addEventListener("click", () => {
+      item.classList.toggle("addedToFavorites");
+    });
+  });
+}
+
+// toggle info-tabs on catalog-item page
+
+function doToggleInfoTabs() {
+  var info_buttons = document.querySelectorAll(".info__heading-btn");
+  var info_tabs = document.querySelectorAll(".info__tab");
+
+  info_buttons.forEach((btn) =>
+    btn.addEventListener("click", (e) =>
+      handleInfoButtons(e, info_tabs, info_buttons)
+    )
+  );
+}
+
+function handleInfoButtons(e, tabs, buttons) {
+  var selectedButton = e.currentTarget;
+  var dataHeadingOfSelectedButton = selectedButton.dataset.heading;
+  var dataTabOfCurrentTab = "";
+
+  // get value of data-tab attribute of current tab
+  tabs.forEach((tab) =>
+    tab.classList.contains("hidden")
+      ? null
+      : (dataTabOfCurrentTab = tab.dataset.tab)
+  );
+
+  var isCurrentTabSeleting =
+    dataHeadingOfSelectedButton === dataTabOfCurrentTab;
+
+  // if not the current tab is selected, switch to
+  if (!isCurrentTabSeleting) {
+    buttons.forEach((btn) => btn.classList.remove("active"));
+    selectedButton.classList.add("active");
+    tabs.forEach((tab) =>
+      tab.dataset.tab === dataHeadingOfSelectedButton
+        ? tab.classList.remove("hidden")
+        : tab.classList.add("hidden")
+    );
+  }
+}
+
+// === '.info__reviews-add' block toggle logic
+
+function doToggleReviewsPanel() {
+  // open reviews panel
+  var info_reviews_btn = document.querySelector(".info__reviews-btn");
+  var add_block = document.querySelector(".add");
+  body = document.body;
+
+  info_reviews_btn.addEventListener("click", (e) => {
+    handleInfoReviewsBtn(e, body, add_block);
+  });
+
+  // change reviews panel height by resize
+  var mq767 = window.matchMedia("(max-width: 767px)");
+
+  mq767.addEventListener("change", (e) => {
+    handleResizeForAddBlock(e, body, add_block);
+  });
+
+  // close reiviews panel
+  var close_buttons = document.querySelectorAll(".reviews-close");
+
+  close_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      handleAddBlockCloseBtn(body, add_block);
+    })
+  );
+}
+
+//  start onload behavior
+function handleInfoReviewsBtn(e, body, add_block) {
+  add_block.classList.add("active");
+
+  if (window.innerWidth <= 767) {
+    add_block.style.maxHeight = "100vh";
+    body.classList.add("noscroll");
+  } else {
+    add_block.style.maxHeight = add_block.scrollHeight + "px";
+  }
+}
+
+// change add block height by window resize
+function handleResizeForAddBlock(e, body, add_block) {
+  if (add_block.classList.contains("active")) {
+    e.matches
+      ? doSetTo100vh(body, add_block)
+      : doSetToScrollHeight(body, add_block);
+  }
+}
+
+// set '.info__reviews-add' block height to scrollHeight
+function doSetToScrollHeight(body, add_block) {
+  body.classList.remove("noscroll");
+  add_block.style.maxHeight = add_block.scrollHeight + "px";
+}
+
+// set '.info__reviews-add' block height to 100vh
+function doSetTo100vh(body, add_block) {
+  body.classList.add("noscroll");
+  add_block.style.maxHeight = "100vh";
+}
+
+// close reviews panel
+function handleAddBlockCloseBtn(body, add_block) {
+  add_block.style.maxHeight = "0";
+  add_block.classList.remove("active");
+  body.classList.remove("noscroll");
+}
+
+// check new comment form on catalog-item page
+function checkNewCommentForm() {
+  var form = document.querySelector(".add__form");
+  var rating_inputs = Array.from(form.querySelectorAll(".rating__input"));
+  var user_name = form.elements.user_name;
+  var email = form.elements.email;
+  var rating_fieldset = form.elements.raitng;
+  var comment = form.elements.comment;
+
+  var elements = [user_name, email, rating_fieldset, comment];
+
+  // add listener to submit form button
+  form.addEventListener("submit", (e) => {
+    if (user_name.validity.valueMissing) {
+      user_name.classList.add("error");
+    }
+    if (email.validity.typeMismatch || email.validity.valueMissing) {
+      email.classList.add("error");
+    }
+    if (!doCheckRatingInputs(rating_inputs)) {
+      rating_fieldset.classList.add("error");
+    }
+    if (comment.validity.valueMissing) {
+      comment.classList.add("error");
+    }
+
+    checkContainingErrorClassName(elements)
+      ? e.preventDefault()
+      : form.submit();
+  });
+
+  // adds listeners to all elements that can have an error className
+  doRemoveErrorClassNameByInput(elements);
+}
+
+// checks for the presence of the error className
+function checkContainingErrorClassName(elements) {
+  return elements.some((el) => el.classList.contains("error"));
+}
+
+// checks if the selected item exists
+function doCheckRatingInputs(inputs) {
+  var isRatingChecked = inputs.some((input) => input.checked);
+
+  return isRatingChecked;
+}
+
+// remove 'error' class by input
+function doRemoveErrorClassNameByInput(elements) {
+  var { 0: user_name, 1: email, 2: rating_fieldset, 3: comment } = elements;
+
+  [user_name, email, comment].forEach((el) =>
+    el.addEventListener("input", (e) => e.target.classList.remove("error"))
+  );
+
+  rating_fieldset.addEventListener("input", (e) =>
+    e.target.closest(".rating__fieldset").classList.remove("error")
+  );
+}
+
+// === ONECLICK
+
+function doShowOneclick() {
+  var show_oneclick_btn = document.querySelector(".details__one-click");
+  var oneclick = document.querySelector(".oneclick");
+  var body = document.body;
+
+  show_oneclick_btn.addEventListener("click", () => {
+    requestAnimationFrame(() => {
+      oneclick.classList.add("active");
+      body.classList.add("noscroll");
+    });
+  });
+}
+
+function doHideOneclick() {
+  var close_oneclick_buttons = document.querySelectorAll(".oneclick-close");
+  var oneclick = document.querySelector(".oneclick");
+  var body = document.body;
+
+  close_oneclick_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      requestAnimationFrame(() => {
+        oneclick.classList.remove("active");
+        body.classList.remove("noscroll");
+      });
+    })
+  );
+}
+
+// === ONECLICK FORM CHECK
+
+// check new comment form on catalog-item page
+function checkOneclickForm() {
+  var form = document.querySelector(".oneclick__form");
+  var user_name = form.elements.customer_name;
+  var phone = form.elements.customer_phone;
+
+  var elements = [user_name, phone];
+
+  // add listener to submit form button
+  form.addEventListener("submit", (e) => {
+    if (user_name.validity.valueMissing) {
+      user_name.classList.add("error");
+    }
+    minPhoneLen = parseInt(phone.dataset.minPhoneLength);
+    if (phone.value.length < minPhoneLen) {
+      phone.classList.add("error");
+    }
+
+    checkContainingErrorClassName(elements)
+      ? e.preventDefault()
+      : form.submit();
+  });
+
+  // adds listeners to all elements that can have an error className
+  doRemoveErrorClassNameInOneclick(elements);
+}
+
+// remove 'error' class in oneclick form
+function doRemoveErrorClassNameInOneclick(elements) {
+  elements.forEach((el) =>
+    el.addEventListener("input", (e) => e.target.classList.remove("error"))
+  );
+}
+
+// oneclick maska
+
+function doInitMaskInput() {
+  const { MaskInput } = Maska;
+
+  const maskIinput = new MaskInput("[data-maska]");
+}
+
+function doSetCursorToEnd() {
+  var oneclick_phone = document.querySelector(".oneclick__phone");
+  oneclick_phone.addEventListener("click", (e) => {
+    var input = e.target;
+    var end = input.value.length;
+    input.setSelectionRange(end, end);
+  });
+}
+
+// === change goods amount
+
+function doChangeGoodsAmount(amount_block_class, isCartPage) {
+  var blocks = Array.from(document.querySelectorAll(amount_block_class));
+
+  blocks.forEach((block) => {
+    var decrease_btn = block.querySelector(".goods-decrease");
+    var increase_btn = block.querySelector(".goods-increase");
+    var input = block.querySelector("input");
+
+    decrease_btn.addEventListener("click", () => {
+      var value = parseInt(input.value);
+      value > 1 ? (input.value = value - 1) : null;
+      isCartPage ? doChangeSum(input) : null;
+    });
+
+    increase_btn.addEventListener("click", () => {
+      var value = parseInt(input.value);
+      input.value = value + 1;
+      isCartPage ? doChangeSum(input) : null;
+    });
+  });
+}
+
+function doAddListenersToAllAmountInput() {
+  var inputs = document.querySelectorAll(".goods-amount input");
+
+  inputs.forEach((input) =>
+    input.addEventListener("input", () => {
+      doChangeSum(input);
+    })
+  );
+}
+
+function doChangeSum(input) {
+  var cart_row = input.closest(".cart__regular-row");
+  var new_price = cart_row.querySelector(".cart__price-new");
+  var old_price = cart_row.querySelector(".cart__price-old");
+  var new_sum = cart_row.querySelector(".cart__sum-new");
+  var old_sum = cart_row.querySelector(".cart__sum-old");
+
+  if (input.value === "") {
+    old_sum.textContent = 0 + " ₸";
+    new_sum.textContent = 0 + " ₸";
+  } else {
+    var amount = parseInt(input.value);
+
+    var new_num =
+      parseInt(input.value) *
+      parseInt(new_price.textContent.replaceAll(" ", ""));
+
+    new_sum.textContent = new Intl.NumberFormat("ru-RU").format(new_num) + "₸";
+
+    if (old_price && old_sum) {
+      old_sum.textContent =
+        amount * parseInt(old_price.textContent.replaceAll(" ", "")) + "₸";
+
+      var old_num =
+        amount * parseInt(old_price.textContent.replaceAll(" ", ""));
+
+      old_sum.textContent =
+        new Intl.NumberFormat("ru-RU").format(old_num) + "₸";
+    }
+  }
+}
+
+// remove good-item from cart
+
+function doRemoveGoodFromCart() {
+  var remove_buttons = Array.from(document.querySelectorAll(".cart__remove"));
+
+  remove_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      var cart_item = btn.closest(".cart__regular-row");
+      var cart_removing_block = cart_item.querySelector(".cart__removing");
+      var cart_cancel_btn = cart_item.querySelector(".cart__cancel");
+      var cart_forced_delete_btn = cart_item.querySelector(
+        ".cart__delete-anyway"
+      );
+
+      cart_item.classList.add("deleting");
+
+      cart_cancel_btn.addEventListener("click", () =>
+        cart_item.classList.remove("deleting")
+      );
+
+      cart_removing_block.addEventListener("animationend", () =>
+        cart_item.remove()
+      );
+
+      cart_forced_delete_btn.addEventListener("click", () =>
+        cart_item.remove()
+      );
+    })
+  );
+}
+
+// cart clear
+function doClearCart() {
+  var cart_clear_btn = document.querySelector(".cart__reset");
+  var cart_list = document.querySelector(".cart__list");
+
+  cart_clear_btn.addEventListener("click", () => {
+    cart_list.innerHTML = "";
+  });
+}
+
+// SEARCH ON THE BRANDS PAGE
+
+function doInitBrandsSearch() {
+  const input = document.querySelector(".brands-search__input");
+  const clear_search_btn = document.querySelector(".brands-search__clear");
+
+  input.addEventListener("input", () =>
+    requestAnimationFrame(doSearchInputHandle)
+  );
+
+  function doSearchInputHandle() {
+    const isInputNotEmpty = Boolean(input.value);
+    if (!isInputNotEmpty) {
+      input.classList.remove("active");
+      clear_search_btn.classList.remove("visible");
+    } else {
+      input.classList.add("active");
+      clear_search_btn.classList.add("visible");
+    }
+  }
+
+  clear_search_btn.addEventListener("click", () =>
+    requestAnimationFrame(doClearSearchInput)
+  );
+
+  function doClearSearchInput() {
+    input.value = "";
+    input.classList.remove("active");
+    input.focus();
+    clear_search_btn.classList.remove("visible");
+  }
+}
