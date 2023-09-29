@@ -110,6 +110,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doRemoveGoodFromCart();
     doClearCart();
   }
+
+  // brands page
+  const brands_page = document.querySelector(".brands-page");
+
+  if (brands_page) {
+    doInitBrandsSearch();
+  }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -2305,4 +2312,37 @@ function doClearCart() {
   cart_clear_btn.addEventListener("click", () => {
     cart_list.innerHTML = "";
   });
+}
+
+// SEARCH ON THE BRANDS PAGE
+
+function doInitBrandsSearch() {
+  const input = document.querySelector(".brands-search__input");
+  const clear_search_btn = document.querySelector(".brands-search__clear");
+
+  input.addEventListener("input", () =>
+    requestAnimationFrame(doSearchInputHandle)
+  );
+
+  function doSearchInputHandle() {
+    const isInputNotEmpty = Boolean(input.value);
+    if (!isInputNotEmpty) {
+      input.classList.remove("active");
+      clear_search_btn.classList.remove("visible");
+    } else {
+      input.classList.add("active");
+      clear_search_btn.classList.add("visible");
+    }
+  }
+
+  clear_search_btn.addEventListener("click", () =>
+    requestAnimationFrame(doClearSearchInput)
+  );
+
+  function doClearSearchInput() {
+    input.value = "";
+    input.classList.remove("active");
+    input.focus();
+    clear_search_btn.classList.remove("visible");
+  }
 }

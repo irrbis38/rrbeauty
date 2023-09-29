@@ -1,0 +1,159 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'brands-page';
+block head
+    title RR Beauty - Бренды
+block page
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title Бренды
+
+    .brands
+
+        .brands-popular
+            .container 
+
+                ul.brands-popular__list
+
+                    li.brands-popular__item.brands-popular__item--first: a(href="#")
+                        include ./blocks/_icon-star
+                        span Популярное
+
+                    li.brands-popular__item
+                        a(href="#")
+                            img(src= "./images/icon-brand-item-1.svg" alt="Givenchy")
+
+                    li.brands-popular__item
+                        a(href="#")
+                            img(src= "./images/icon-brand-item-2.svg" alt="Dolce & Gabbana")
+
+                    li.brands-popular__item
+                        a(href="#")
+                            img(src= "./images/icon-brand-item-1.svg" alt="Givenchy")
+
+                    li.brands-popular__item
+                        a(href="#")
+                            img(src= "./images/icon-brand-item-2.svg" alt="Dolce & Gabbana")
+
+                    li.brands-popular__item
+                        a(href="#")
+                            img(src= "./images/icon-brand-item-1.svg" alt="Givenchy")
+
+        .brands-search
+            .container 
+                .brands-search__wrapper
+                    img(src="./images/icon-search.svg" alt="")
+                    input.brands-search__input(type="text" aria-label="Поиск" placeholder="Поиск по брендам")
+                    svg.brands-search__clear(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label='Очистить поле поиска')
+                        path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+
+        .brands-abc
+            .container
+                ul.brands-abc__list
+                    -
+                        var abc_list = [
+                            'A',
+                            'B',
+                            'C',
+                            'D',
+                            'E',
+                            'F',
+                            'G',
+                            'H',
+                            'I',
+                            'J',
+                            'K',
+                            'L',
+                            'N',
+                            'O',
+                            'P',
+                            'Q',
+                            'R',
+                            'S',
+                            'T',
+                            'U',
+                            'V',
+                            'W',
+                            'X',
+                            'Y',
+                            'Z',
+                        ]
+
+                    each letter in abc_list
+                        +brandsAbcItem(letter)
+
+                ul.brands-abc__list 
+                    +brandsAbcItem('А - Я')
+
+                ul.brands-abc__list 
+                    +brandsAbcItem('0 - 9')
+
+        -
+            var brands_list = [
+                "A+T Home Décor_",
+                "Artie",
+                "A+T Home Décor_",
+                "Artie",
+                "A+T Home Décor_",
+                "ABOUT Lingerie",
+                "ARUNA",
+                "ABOUT Lingerie",
+                "ARUNA",
+                "ABOUT Lingerie",
+                "Abricot",
+                "Asa",
+                "Abricot",
+                "Asa",
+                "Abricot",
+                "ADE",
+                "Ash",
+                "ADE",
+                "Ash",
+                "ADE",
+                "Adidas",
+                "Asia Gold",
+                "Adidas",
+                "Asia Gold",
+                "Adidas",
+                "ADM",
+                "Aspaya",
+                "ADM",
+                "Aspaya",
+                "ADM",
+                "Affex",
+                "Atlantis",
+                "Affex",
+                "Atlantis",
+                "Affex",
+                "Afina",
+                "Attack",
+                "Afina",
+                "Attack",
+                "Afina",
+            ]
+
+        .brands__wrapper
+            .container
+                .brands-block
+                    span.brands-block__letter A
+                    ul.brands-block__list
+                        each brand in brands_list
+                            +brandsAbcItem(brand)
+                .brands-block
+                    span.brands-block__letter B
+                    ul.brands-block__list
+                        each brand in brands_list
+                            +brandsAbcItem(brand)
+                .brands-block
+                    span.brands-block__letter C
+                    ul.brands-block__list
+                        each brand in brands_list
+                            +brandsAbcItem(brand)
