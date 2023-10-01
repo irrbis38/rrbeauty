@@ -200,7 +200,7 @@
                     <path d="M19 13H5V11H19V13Z" fill="black"></path>
                   </svg>
                 </button>
-                <input type="number" value="1">
+                <input class="goods-amout" type="number" value="1">
                 <button class="detalis__increase goods-increase">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="black"></path>
@@ -395,16 +395,19 @@
             </button>
             <div class="oneclick__top">
               <h2 class="oneclick__title">В 1 клик</h2>
+              <h2 class="oneclick__title oneclick__title--submited">Готово!</h2>
               <p class="oneclick__subtitle">Менеджер перезвонит вам, узнает все детали и заказ будет оформлен.</p>
             </div>
-            <form class="oneclick__form" action="#" novalidate>
-              <input class="oneclick__input" type="text" placeholder="Ваше имя*" required name="customer_name">
-              <input class="oneclick__input oneclick__phone" type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18">
-              <input class="oneclick__input" type="text" placeholder="Ваша почта" name="customer_email">
-              <button class="oneclick__submit" type="submit" aria-label="Отправить данные для заказа в 1 клик">Отправить</button>
-            </form>
-            <div class="oneclick__policy"><span>Продолжая, вы соглашаетесь с<br></span><a href="#" target="_blank">политикой конфиденциальности</a></div>
-            <button class="oneclick__hide-btn oneclick-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">Закрыть</button>
+            <div class="oneclick__form-container">
+              <form class="oneclick__form" action="#" novalidate>
+                <input class="oneclick__input" type="text" placeholder="Ваше имя*" required name="customer_name">
+                <input class="oneclick__input oneclick__phone" type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18">
+                <input class="oneclick__input" type="text" placeholder="Ваша почта" name="customer_email">
+                <button class="oneclick__submit" type="submit" aria-label="Отправить данные для заказа в 1 клик">Отправить</button>
+              </form>
+              <div class="oneclick__policy"><span>Продолжая, вы соглашаетесь с<br></span><a href="#" target="_blank">политикой конфиденциальности</a></div>
+              <button class="oneclick__hide-btn oneclick-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">Закрыть</button>
+            </div>
           </div>
         </div>
       </section>

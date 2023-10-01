@@ -133,6 +133,11 @@
   }
 }
 
+.oneclick__title--submited {
+  display: none;
+  padding-top: 154px;
+}
+
 .oneclick__subtitle {
   max-width: 350px;
   margin: 0 auto;
@@ -147,7 +152,7 @@
   }
 }
 
-.oneclick__form {
+.oneclick__form-container {
   width: 100%;
   max-width: 504px;
   padding: 0 20px;
@@ -225,8 +230,7 @@
 
 .oneclick__hide-btn {
   display: none;
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: 100%;
   padding: 17px 20px;
   color: #000;
   background-color: #fff;
@@ -240,5 +244,59 @@
 
   @include xs {
     display: block;
+  }
+}
+
+// form submited
+
+.oneclick.submited {
+  .oneclick__wrapper {
+    @include xs {
+      height: 37.12vh;
+    }
+  }
+
+  .oneclick__top {
+    @include xs {
+      padding: 0 20px 18px;
+    }
+  }
+
+  .oneclick__title {
+    display: none;
+  }
+
+  .oneclick__title--submited {
+    display: block;
+
+    @include xs {
+      padding-top: 20px;
+      padding-bottom: 12px;
+    }
+  }
+
+  .oneclick__subtitle {
+    display: block;
+  }
+
+  .oneclick__form {
+    display: none;
+  }
+
+  .oneclick__policy {
+    display: none;
+  }
+
+  .oneclick__hide-btn {
+    display: block;
+    max-width: 464px;
+    margin: 24px auto 0;
+    color: #fff;
+    background-color: #000;
+
+    &:hover {
+      color: #000;
+      background-color: #fff;
+    }
   }
 }

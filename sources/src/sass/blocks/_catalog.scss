@@ -41,7 +41,7 @@
   padding: 23px 5px 174px 24px;
 
   @include r(1199px) {
-    padding: 24px 0 0 0;
+    padding: 24px 0 174px 0;
   }
 
   @include xs {
@@ -84,10 +84,11 @@
   gap: 41px 24px;
   margin-bottom: 90px;
 
+  /// ++++++++++++++++++
   @include lg {
     grid-template-columns: repeat(3, 1fr);
   }
-
+  /// ++++++++++++++++++
   @include sm {
     grid-template-columns: repeat(2, 1fr);
   }

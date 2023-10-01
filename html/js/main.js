@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doSetCursorToEnd();
     initAllGoodsSectionsSliders();
     doToggleFavoritesIcons();
+    doResetEmptyInputByBlur();
   }
 
   // cart page
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doAddListenersToAllAmountInput();
     doRemoveGoodFromCart();
     doClearCart();
+    doResetEmptyInputByBlur();
   }
 
   // brands page
@@ -2147,7 +2149,7 @@ function doHideOneclick() {
   close_oneclick_buttons.forEach((btn) =>
     btn.addEventListener("click", () => {
       requestAnimationFrame(() => {
-        oneclick.classList.remove("active");
+        oneclick.classList.remove("active", "submited");
         body.classList.remove("noscroll");
       });
     })
@@ -2158,6 +2160,7 @@ function doHideOneclick() {
 
 // check new comment form on catalog-item page
 function checkOneclickForm() {
+  var oneclick_block = document.querySelector(".oneclick");
   var form = document.querySelector(".oneclick__form");
   var user_name = form.elements.customer_name;
   var phone = form.elements.customer_phone;
@@ -2166,17 +2169,26 @@ function checkOneclickForm() {
 
   // add listener to submit form button
   form.addEventListener("submit", (e) => {
-    if (user_name.validity.valueMissing) {
-      user_name.classList.add("error");
-    }
-    minPhoneLen = parseInt(phone.dataset.minPhoneLength);
-    if (phone.value.length < minPhoneLen) {
-      phone.classList.add("error");
-    }
+    e.preventDefault();
 
-    checkContainingErrorClassName(elements)
-      ? e.preventDefault()
-      : form.submit();
+    user_name.validity.valueMissing && user_name.classList.add("error");
+
+    minPhoneLen = parseInt(phone.dataset.minPhoneLength);
+    phone.value.length < minPhoneLen && phone.classList.add("error");
+
+    !checkContainingErrorClassName(elements) && clearFormInputs();
+
+    // console.log(form.elements);
+    // // ? e.preventDefault()
+    // // : form.submit();
+
+    function clearFormInputs() {
+      oneclick_block.classList.add("submited");
+      const elements = Array.from(form.elements);
+      elements.forEach((el) => {
+        el.classList.contains("oneclick__input") && (el.value = "");
+      });
+    }
   });
 
   // adds listeners to all elements that can have an error className
@@ -2236,6 +2248,7 @@ function doAddListenersToAllAmountInput() {
 
   inputs.forEach((input) =>
     input.addEventListener("input", () => {
+      // doResetEmptyInputByBlur();
       doChangeSum(input);
     })
   );
@@ -2249,8 +2262,8 @@ function doChangeSum(input) {
   var old_sum = cart_row.querySelector(".cart__sum-old");
 
   if (input.value === "") {
-    old_sum.textContent = 0 + " ₸";
     new_sum.textContent = 0 + " ₸";
+    old_sum && (old_sum.textContent = 0 + " ₸");
   } else {
     var amount = parseInt(input.value);
 
@@ -2345,4 +2358,28 @@ function doInitBrandsSearch() {
     input.focus();
     clear_search_btn.classList.remove("visible");
   }
+}
+
+function doResetEmptyInputByBlur() {
+  var goods_amout_inputs = document.querySelectorAll(".goods-amout");
+
+  goods_amout_inputs.forEach((input) =>
+    input.addEventListener("blur", () => {
+      // set input to start value
+      input.value === "" && (input.value = 1);
+
+      // if this is cart-page, reset sum to start value
+      var cart_item = input.closest(".cart__regular-row");
+      if (cart_item) {
+        cart_item.querySelector(".cart__sum-new").textContent =
+          cart_item.querySelector(".cart__price-new").textContent;
+
+        var sum_old = cart_item.querySelector(".cart__sum-old");
+
+        sum_old &&
+          (sum_old.textContent =
+            cart_item.querySelector(".cart__price-old").textContent);
+      }
+    })
+  );
 }

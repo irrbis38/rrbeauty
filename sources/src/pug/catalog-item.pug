@@ -112,7 +112,7 @@ block page
                             svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
                                 path(d="M19 13H5V11H19V13Z" fill="black")
 
-                        input(type="number" value="1")
+                        input.goods-amout(type="number" value="1")
 
                         button.detalis__increase.goods-increase
                             svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
@@ -243,20 +243,23 @@ block page
                         path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
                 .oneclick__top
                     h2.oneclick__title В 1 клик
+                    h2.oneclick__title.oneclick__title--submited Готово!
                     p.oneclick__subtitle Менеджер перезвонит вам, узнает все детали и заказ будет оформлен.
 
-                form.oneclick__form(action="#" novalidate)
-                    input.oneclick__input(type="text" placeholder="Ваше имя*" required name="customer_name")
-                    input.oneclick__input.oneclick__phone(type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18")
-                    input.oneclick__input(type="text" placeholder="Ваша почта" name="customer_email")
+                .oneclick__form-container
 
-                    button.oneclick__submit(type="submit" aria-label="Отправить данные для заказа в 1 клик") Отправить
+                    form.oneclick__form(action="#" novalidate)
+                        input.oneclick__input(type="text" placeholder="Ваше имя*" required name="customer_name")
+                        input.oneclick__input.oneclick__phone(type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18")
+                        input.oneclick__input(type="text" placeholder="Ваша почта" name="customer_email")
 
-                .oneclick__policy
-                    span Продолжая, вы соглашаетесь с#[br]
-                    a(href="#" target="_blank") политикой конфиденциальности
+                        button.oneclick__submit(type="submit" aria-label="Отправить данные для заказа в 1 клик") Отправить
 
-                button.oneclick__hide-btn.oneclick-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'") Закрыть
+                    .oneclick__policy
+                        span Продолжая, вы соглашаетесь с#[br]
+                        a(href="#" target="_blank") политикой конфиденциальности
+
+                    button.oneclick__hide-btn.oneclick-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'") Закрыть
 
 
 
