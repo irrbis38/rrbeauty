@@ -2194,20 +2194,22 @@ function doResetEmptyInputByBlur() {
 
   goods_amout_inputs.forEach((input) =>
     input.addEventListener("blur", () => {
-      // set input to start value
-      input.value === "" && (input.value = 1);
+      if (input.value === "") {
+        // set input to start value
+        input.value = 1;
 
-      // if this is cart-page, reset sum to start value
-      var cart_item = input.closest(".cart__regular-row");
-      if (cart_item) {
-        cart_item.querySelector(".cart__sum-new").textContent =
-          cart_item.querySelector(".cart__price-new").textContent;
+        // if this is cart-page, reset sum to start value
+        var cart_item = input.closest(".cart__regular-row");
+        if (cart_item) {
+          cart_item.querySelector(".cart__sum-new").textContent =
+            cart_item.querySelector(".cart__price-new").textContent;
 
-        var sum_old = cart_item.querySelector(".cart__sum-old");
+          var sum_old = cart_item.querySelector(".cart__sum-old");
 
-        sum_old &&
-          (sum_old.textContent =
-            cart_item.querySelector(".cart__price-old").textContent);
+          sum_old &&
+            (sum_old.textContent =
+              cart_item.querySelector(".cart__price-old").textContent);
+        }
       }
     })
   );
