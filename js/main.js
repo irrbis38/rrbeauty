@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     doAnimationByScrollMainPage();
     doFooterAnimationByScroll();
-    // initIntroSlider();
-    // initAutoscrollBlocks();
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -98,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doSetCursorToEnd();
     initAllGoodsSectionsSliders();
     doToggleFavoritesIcons();
+    doResetEmptyInputByBlur();
   }
 
   // cart page
@@ -109,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doAddListenersToAllAmountInput();
     doRemoveGoodFromCart();
     doClearCart();
+    doResetEmptyInputByBlur();
   }
 
   // brands page
@@ -228,7 +228,6 @@ function doStartFirstScreenAnimation() {
       y: 10,
       duration: 0.4,
     });
-  // .delayedCall(2, initIntroSlider);
 }
 
 //=== header logic
@@ -364,142 +363,6 @@ function doPanelInit() {
     btn.classList.toggle("active");
   }
 }
-
-// init all autoscroll blocks
-
-// function initAutoscrollBlocks() {
-//   // init autoscroll blocks
-
-//   const brandsSection_autoscroll = document.querySelector(
-//     ".brandsSection__autoscroll"
-//   );
-//   const promotionsSection_autoscroll = document.querySelector(
-//     ".promotionsSection__autoscroll"
-//   );
-//   const map_autoscroll = document.querySelector(".map__autoscroll");
-
-//   // [brandsSection_autoscroll].forEach((slider) => {
-//   //   new Splide(slider, {
-//   //     type: "loop",
-//   //     arrows: false,
-//   //     pagination: false,
-//   //     perPage: 3,
-//   //     gap: "800px",
-//   //     breakpoints: {
-//   //       1700: {
-//   //         gap: "900px",
-//   //       },
-//   //       1600: {
-//   //         gap: "400px",
-//   //       },
-//   //       1400: {
-//   //         gap: "600px",
-//   //       },
-//   //       992: {
-//   //         gap: "200px",
-//   //         perPage: 2,
-//   //       },
-//   //       767: {
-//   //         perPage: 3,
-//   //         gap: "100px",
-//   //       },
-//   //       650: {
-//   //         gap: "150px",
-//   //       },
-//   //       575: {
-//   //         perPage: 2,
-//   //         gap: "100px",
-//   //       },
-//   //       400: {
-//   //         gap: "170px",
-//   //       },
-//   //     },
-
-//   //     autoScroll: {
-//   //       speed: 1,
-//   //       pauseOnHover: false,
-//   //       pauseOnFocus: false,
-//   //     },
-//   //   }).mount(window.splide.Extensions);
-//   // });
-
-//   // [promotionsSection_autoscroll].forEach((slider) => {
-//   //   new Splide(slider, {
-//   //     type: "loop",
-//   //     arrows: false,
-//   //     pagination: false,
-//   //     perPage: 3,
-//   //     gap: "400px",
-//   //     breakpoints: {
-//   //       1700: {
-//   //         gap: "600px",
-//   //       },
-//   //       1600: {
-//   //         gap: "200px",
-//   //       },
-//   //       1300: {
-//   //         gap: "300px",
-//   //       },
-//   //       1150: {
-//   //         gap: "500px",
-//   //       },
-//   //       992: {
-//   //         gap: "350px",
-//   //       },
-//   //       767: {
-//   //         gap: "60px",
-//   //       },
-//   //       575: {
-//   //         // perPage: 2,
-//   //         gap: "230px",
-//   //       },
-//   //     },
-
-//   //     autoScroll: {
-//   //       speed: 1,
-//   //       pauseOnHover: false,
-//   //       pauseOnFocus: false,
-//   //     },
-//   //   }).mount(window.splide.Extensions);
-//   // });
-
-//   // [map_autoscroll].forEach((slider) => {
-//   //   new Splide(slider, {
-//   //     type: "loop",
-//   //     arrows: false,
-//   //     pagination: false,
-//   //     perPage: 2,
-//   //     gap: "1700px",
-//   //     breakpoints: {
-//   //       1600: {
-//   //         gap: "1000px",
-//   //       },
-//   //       1400: {
-//   //         gap: "1100px",
-//   //       },
-//   //       1300: {
-//   //         gap: "1200px",
-//   //       },
-//   //       1100: {
-//   //         // perPage: 1,
-//   //         gap: "1250px",
-//   //       },
-//   //       992: {
-//   //         // perPage: 1,
-//   //         gap: "950px",
-//   //       },
-//   //       767: {
-//   //         gap: "500px",
-//   //       },
-//   //     },
-//   //     autoScroll: {
-//   //       speed: 1,
-//   //       pauseOnHover: false,
-//   //       pauseOnFocus: false,
-//   //     },
-//   //   }).mount(window.splide.Extensions);
-//   // });
-// }
 
 // init map on main page
 
@@ -977,8 +840,6 @@ function initParallaxPromotionsSection() {
           scrollTrigger: {
             trigger: ".goodsCard__wrapper",
             // markers: true,
-            // start: "+=200px bottom",
-            // end: "bottom+=400px bottom",
             start: "top 90%",
             end: "bottom 90%",
             scrub: true,
@@ -1006,13 +867,6 @@ function initParallaxPromotionsSection() {
     }
   );
 }
-
-// function doScrollAnimate() {
-//   return gsap.from(".popularCategories__title", {
-//     x: -50,
-//     duration: 5,
-//   });
-// }
 
 function doAnimationByScrollMainPage() {
   const animated__title = Array.from(
@@ -1151,25 +1005,6 @@ function initIntroSlider() {
   const intro_sliders = intro.querySelectorAll(".intro__slider");
   const prev_btn = intro.querySelector(".intro__prev");
   const next_btn = intro.querySelector(".intro__next");
-  // const pagination = intro.querySelector(".intro__pagination");
-
-  // function doCreatePagination() {
-  //   const uniqueSlidesAmount = intro_sliders[0].children[0].children.length - 2;
-  //   const fragment = document.createDocumentFragment();
-  //   for (let i = 0; i < uniqueSlidesAmount; i++) {
-  //     let li = document.createElement("LI");
-  //     if (i === 0) {
-  //       li.classList.add("intro__paginationItem", "active");
-  //     } else {
-  //       li.classList.add("intro__paginationItem");
-  //     }
-  //     li.innerHTML = `<span></span>`;
-  //     fragment.append(li);
-  //   }
-  //   pagination.append(fragment);
-  // }
-
-  // doCreatePagination();
 
   // set class 'current-slide' to every slide with index "2"
   intro_sliders.forEach((slider) => {
@@ -2147,7 +1982,7 @@ function doHideOneclick() {
   close_oneclick_buttons.forEach((btn) =>
     btn.addEventListener("click", () => {
       requestAnimationFrame(() => {
-        oneclick.classList.remove("active");
+        oneclick.classList.remove("active", "submited");
         body.classList.remove("noscroll");
       });
     })
@@ -2158,6 +1993,7 @@ function doHideOneclick() {
 
 // check new comment form on catalog-item page
 function checkOneclickForm() {
+  var oneclick_block = document.querySelector(".oneclick");
   var form = document.querySelector(".oneclick__form");
   var user_name = form.elements.customer_name;
   var phone = form.elements.customer_phone;
@@ -2166,17 +2002,22 @@ function checkOneclickForm() {
 
   // add listener to submit form button
   form.addEventListener("submit", (e) => {
-    if (user_name.validity.valueMissing) {
-      user_name.classList.add("error");
-    }
-    minPhoneLen = parseInt(phone.dataset.minPhoneLength);
-    if (phone.value.length < minPhoneLen) {
-      phone.classList.add("error");
-    }
+    e.preventDefault();
 
-    checkContainingErrorClassName(elements)
-      ? e.preventDefault()
-      : form.submit();
+    user_name.validity.valueMissing && user_name.classList.add("error");
+
+    minPhoneLen = parseInt(phone.dataset.minPhoneLength);
+    phone.value.length < minPhoneLen && phone.classList.add("error");
+
+    !checkContainingErrorClassName(elements) && clearFormInputs();
+
+    function clearFormInputs() {
+      oneclick_block.classList.add("submited");
+      const elements = Array.from(form.elements);
+      elements.forEach((el) => {
+        el.classList.contains("oneclick__input") && (el.value = "");
+      });
+    }
   });
 
   // adds listeners to all elements that can have an error className
@@ -2236,6 +2077,7 @@ function doAddListenersToAllAmountInput() {
 
   inputs.forEach((input) =>
     input.addEventListener("input", () => {
+      // doResetEmptyInputByBlur();
       doChangeSum(input);
     })
   );
@@ -2249,8 +2091,8 @@ function doChangeSum(input) {
   var old_sum = cart_row.querySelector(".cart__sum-old");
 
   if (input.value === "") {
-    old_sum.textContent = 0 + " ₸";
     new_sum.textContent = 0 + " ₸";
+    old_sum && (old_sum.textContent = 0 + " ₸");
   } else {
     var amount = parseInt(input.value);
 
@@ -2345,4 +2187,28 @@ function doInitBrandsSearch() {
     input.focus();
     clear_search_btn.classList.remove("visible");
   }
+}
+
+function doResetEmptyInputByBlur() {
+  var goods_amout_inputs = document.querySelectorAll(".goods-amout");
+
+  goods_amout_inputs.forEach((input) =>
+    input.addEventListener("blur", () => {
+      // set input to start value
+      input.value === "" && (input.value = 1);
+
+      // if this is cart-page, reset sum to start value
+      var cart_item = input.closest(".cart__regular-row");
+      if (cart_item) {
+        cart_item.querySelector(".cart__sum-new").textContent =
+          cart_item.querySelector(".cart__price-new").textContent;
+
+        var sum_old = cart_item.querySelector(".cart__sum-old");
+
+        sum_old &&
+          (sum_old.textContent =
+            cart_item.querySelector(".cart__price-old").textContent);
+      }
+    })
+  );
 }
