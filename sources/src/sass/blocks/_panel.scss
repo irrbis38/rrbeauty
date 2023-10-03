@@ -148,6 +148,14 @@
   @include md {
     display: none;
   }
+
+  // @include md {
+  //   width: 28vw;
+  // }
+
+  // @include xs {
+  //   display: none;
+  // }
 }
 
 .panel__clear {
@@ -182,6 +190,10 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @include md {
+    gap: 0 38px;
+  }
 }
 
 .panel__user {
@@ -255,13 +267,25 @@
 .panel__favorites {
   margin-right: 36px;
 
+  // @include md {
+  //   display: none;
+  // }
+
   @include md {
+    margin-right: 0;
+  }
+
+  @include xs {
     display: none;
   }
 }
 
 .panel__cart {
-  @include md {
+  // @include md {
+  //   display: none;
+  // }
+
+  @include xs {
     display: none;
   }
 }
@@ -289,11 +313,11 @@
   }
 }
 
-.panel__amout {
+.panel__amount {
   display: none;
   position: absolute;
-  bottom: 15px;
-  left: 15px;
+  bottom: 12px;
+  left: 12px;
   z-index: 2;
   min-width: 24px;
   min-height: 24px;
