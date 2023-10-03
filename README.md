@@ -15,6 +15,9 @@
 - [Catalog-brand](https://irrbis38.github.io/rrbeauty/catalog-brand.html)
 - [Catalog-favorites](https://irrbis38.github.io/rrbeauty/catalog-favorites.html)
 - [Catalog-search-result](https://irrbis38.github.io/rrbeauty/catalog-search-result.html)
+- [Catalog-item page](https://irrbis38.github.io/rrbeauty/catalog-item.html)
+- [Cart page](https://irrbis38.github.io/rrbeauty/cart.html)
+- [Brands page](https://irrbis38.github.io/rrbeauty/brands.html)
 
 ![screenshot](https://github.com/irrbis38/rrbeauty/assets/66014974/2aa589d6-4a40-48fb-ad4b-6e07193709d3)
 
