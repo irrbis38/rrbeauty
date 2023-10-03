@@ -1,6 +1,6 @@
 extends base/_layout
 block vars
-    - var bodyClass = 'catalog-item';
+    - var bodyClass = 'catalog-item added-to-cart';
 block head
     title RR Beauty - Карточка товара
 block page
@@ -130,7 +130,9 @@ block page
                             svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
                                 path(d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="black")
 
-                    button.details__add-to-cart(type="button" aria-label="Добавить в корзину") В корзину
+                    button.details__add-to-cart(type="button" aria-label="Добавить в корзину")
+                        span.non-added В корзину
+                        span.added В корзине
 
                     button.details__add-to-favorites(type="button" aria-label="Добавить в избранное")
                         img(src="./images/heart-icon.svg" alt="Добавить в избранное")

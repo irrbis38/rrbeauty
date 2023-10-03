@@ -593,6 +593,30 @@
     width: calc(100% - 176px);
     order: 2;
   }
+
+  .added {
+    display: none;
+  }
+}
+
+.added-to-cart {
+  .details__add-to-cart {
+    background-color: #33b51d;
+    border-color: #33b51d;
+
+    .added {
+      display: block;
+    }
+
+    .non-added {
+      display: none;
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
 }
 
 .details__add-to-favorites {

@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     initAllGoodsSectionsSliders();
     doToggleFavoritesIcons();
     doResetEmptyInputByBlur();
+    doToggleAddToCartButton();
   }
 
   // cart page
@@ -2212,5 +2213,13 @@ function doResetEmptyInputByBlur() {
         }
       }
     })
+  );
+}
+
+function doToggleAddToCartButton() {
+  var add_to_cart_btn = document.querySelector(".details__add-to-cart");
+
+  add_to_cart_btn.addEventListener("click", () =>
+    document.body.classList.toggle("added-to-cart")
   );
 }
