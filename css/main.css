@@ -2012,6 +2012,11 @@ body.lock .header {
   -ms-flex-align: center;
   align-items: center
 }
+@media (max-width:1000px) {
+  .panel__menu {
+    gap: 0 38px
+  }
+}
 .panel__user {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2087,10 +2092,15 @@ body.lock .header {
 }
 @media (max-width:1000px) {
   .panel__favorites {
+    margin-right: 0
+  }
+}
+@media (max-width:767px) {
+  .panel__favorites {
     display: none
   }
 }
-@media (max-width:1000px) {
+@media (max-width:767px) {
   .panel__cart {
     display: none
   }
@@ -2112,11 +2122,11 @@ body.lock .header {
   fill: var(--color_grey,#838383);
   stroke: var(--color_grey,#838383)
 }
-.panel__amout {
+.panel__amount {
   display: none;
   position: absolute;
-  bottom: 15px;
-  left: 15px;
+  bottom: 12px;
+  left: 12px;
   z-index: 2;
   min-width: 24px;
   min-height: 24px;
@@ -2133,18 +2143,18 @@ body.lock .header {
   color: #fff;
   background-color: var(--color__azure,#3896ab)
 }
-.panel__amout::after {
+.panel__amount::after {
   content: "";
   display: block;
   padding-top: 100%
 }
-.panel__amout span {
+.panel__amount span {
   display: block;
   width: 100%;
   height: 100%;
   text-align: center
 }
-.non-empty .panel__amout {
+.non-empty .panel__amount {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex
@@ -5150,6 +5160,23 @@ input[type=number]:hover {
     order: 2
   }
 }
+.details__add-to-cart .added {
+  display: none
+}
+.added-to-cart .details__add-to-cart {
+  background-color: #33b51d;
+  border-color: #33b51d
+}
+.added-to-cart .details__add-to-cart .added {
+  display: block
+}
+.added-to-cart .details__add-to-cart .non-added {
+  display: none
+}
+.added-to-cart .details__add-to-cart:hover {
+  background-color: #fff;
+  color: #000
+}
 .details__add-to-favorites {
   position: relative;
   display: block;
@@ -5623,7 +5650,7 @@ input[type=number]:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    bottom: 0;
     z-index: 10;
     padding: 0 20px 30px;
     background-color: #fff;
@@ -6976,6 +7003,99 @@ input[type=number]:hover {
   .cart__gift-name {
     padding: 0
   }
+}
+.floating-cart {
+  display: none;
+  position: fixed;
+  bottom: 32px;
+  left: 0;
+  z-index: 10;
+  width: 100%
+}
+.floating-cart .container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0 8px
+}
+@media (max-width:767px) {
+  body.cart-non-empty .floating-cart,
+  body.favorites-non-empty .floating-cart {
+    display: block
+  }
+}
+body.cart-non-empty .floating-cart__show-cart .panel__amount {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex
+}
+body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex
+}
+.floating-cart__show-cart,
+.floating-cart__show-favorites {
+  position: relative;
+  min-height: 56px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+.floating-cart__show-cart {
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  gap: 0 15px;
+  padding: 10px 16px
+}
+.floating-cart__show-cart path {
+  fill: #fff;
+  stroke: #fff;
+  transition: all .2s ease-out
+}
+.floating-cart__show-cart:hover path {
+  fill: #000;
+  stroke: #000
+}
+.floating-cart__show-favorites {
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
+  transition: all .2s ease-out
+}
+.floating-cart__show-favorites:hover path {
+  fill: #000;
+  stroke: #000
+}
+.floating-cart__icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center
 }
 .brands-popular {
   border-bottom: 1px solid #d9d9d9
