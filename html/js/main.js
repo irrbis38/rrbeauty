@@ -1652,7 +1652,7 @@ function doInitCatalogItemSlider() {
     slidesPerView: 3,
     // freeMode: true,
     // watchSlidesProgress: true,
-    navigation: false,
+    // navigation: false,
 
     breakpoints: {
       768: {
