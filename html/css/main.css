@@ -3848,7 +3848,6 @@ body.lock .header {
 }
 @media (max-width:575px) {
   .catalog__wrapper {
-    max-width: 335px;
     margin: 0 auto;
     grid-template-columns: 1fr
   }
