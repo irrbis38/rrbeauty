@@ -1,7 +1,9 @@
 include _vars
 include _mixins
 block vars
-    - var bodyClass = '';
+    -
+        var bodyClass = '';
+        var mapInclue = false;
 doctype html
 html(lang="ru")
     head
@@ -41,7 +43,7 @@ html(lang="ru")
         block footer
             include ../blocks/_footer
 
-            if bodyClass === 'index'
+            if mapInclue
                 block js
                     script(src="https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU")
                     script(src="js/main.min.js")

@@ -85,6 +85,7 @@
   margin-bottom: 90px;
 
   /// ++++++++++++++++++
+  /// TODO: auto-fit for >=992px
   @include lg {
     grid-template-columns: repeat(3, 1fr);
   }

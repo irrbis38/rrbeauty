@@ -1,0 +1,184 @@
+extends base/_layout
+block vars
+    -
+        var bodyClass = 'order-placement-page';
+        var mapInclue = true;
+block head
+    title RR Beauty - Оформление заказа
+block page
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title Оформление заказа
+    .order
+        .container.order__container
+
+            .order__info
+
+                .order__step
+
+                    h3.order__heading
+                        span 1/3
+                        span ПОКУПАТЕЛЬ
+
+                    form.order__form(action="#")
+                        ul.order__list
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="customer" value="individual" checked)
+                                    span
+                                    span Физическое лицо
+
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="customer" value="individual")
+                                    span
+                                    span Компании
+
+                        .order__inputs-row 
+                            input.order__input(type="text" placeholder="ФИО")
+                            input.order__input(type="text" placeholder="Email")
+                            input.order__input(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*")
+
+                        .order__inputs-row 
+                            input.order__input(type="text" placeholder="ФИО")
+                            input.order__input(type="text" placeholder="Email")
+                            input.order__input(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*")
+
+                    .order__nav 
+                        button.order__prev.btn__white(type="button" aria-label="Вернуться к предыдущему шагу") Назад
+                        button.order__next.btn__black(type="button" aria-label="Перейти к следующему шагу") Далее
+
+
+
+                .order__step.order__step--map
+
+                    h3.order__heading
+                        span 2/3
+                        span доставка
+
+                    form.order__form(action="#")
+                        ul.order__list
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="delivery" value="sdek" checked)
+                                    span
+                                    span СДЭК
+
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="delivery" value="avis")
+                                    span
+                                    span Avis
+
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="delivery" value="pickup")
+                                    span
+                                    span Самовывоз из магазина
+
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="delivery" value="courier")
+                                    span
+                                    span Курьерская доставка (Алматы)
+
+
+                        span.order__note При заказе от 5 000 тенге - доставка по городу бесплатная, если менее 5 000 - 1 300 тенге.
+
+                    .map
+
+                        .mapSection__container
+
+                            .map__info
+                                select.map__stores(name="stores" aria-label="Выбрать магазин") 
+                                    option(value="Almaty") Алматы
+                                    option(value="Astana") Астана
+                                    option(value="Moscow") Москва
+
+                                .map__description
+                                    .map__description-wrapper
+                                        h3.map__storeName магазин №214
+                                        .map__data
+                                            p.map__name Адрес
+                                            p.map__value Краснодар, В. Головатого, 313 
+                                        .map__data
+                                            p.map__name График работы
+                                            p.map__value Ежедневно, 10:00 — 22:00
+                                        .map__data
+                                            p.map__name Горячая линия
+                                            p.map__value: a(href="tel:88008805060") 8 800 880 50 60
+                                        .map__data
+                                            p.map__name Почта
+                                            p.map__value: a(href="mailto:rrbeauty@gmail.com") rrbeauty@gmail.com
+
+                                    button.map__close(type="button" aria-label="Закрыть окно с описанием магазина") Закрыть
+
+
+                        .mapSection__wrapper#map-section-wrapper
+
+                            .mapSection__overlay
+
+
+                .order__step.order__step--payment
+
+                    h3.order__heading
+                        span 3/3
+                        span оплата
+
+                    form.order__form(action="#")
+                        ul.order__list
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="payment" value="card" checked)
+                                    span
+                                    span Оплата картой
+
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="payment" value="cash")
+                                    span
+                                    span Наличные
+
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="payment" value="bank-transfer")
+                                    span
+                                    span Банковский перевод
+
+                            li.order__item
+                                label.order__label
+                                    input.order__radio(type="radio" name="payment" value="payment-on-account")
+                                    span
+                                    span Оплата по счету
+
+
+            .order__checkout
+                input.cart__promocode.order__promocode(type="text" placeholder="Есть промокод")
+
+                .cart__checkout-inner
+                    .cart__total
+                        span Итого:
+                        span.cart__total-price 25 800₸
+
+                    ul.order__checkout-list
+                        li
+                            span Товаров:
+                            span 8
+                        li
+                            span Способ доставки:
+                            span СДЭК
+                        li
+                            span Стоимость доставки:
+                            span 800₸
+
+                    span.order__msg Оплата осуществляется после оформления заказа. С вами свяжется менеджер магазина для подтверждения заказа!
+
+                    button.cart__order.btn__black(type="button" aria-label="Оформить заказ товаров") Оформить заказ

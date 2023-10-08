@@ -118,6 +118,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (brands_page) {
     doInitBrandsSearch();
   }
+
+  // order-placement page
+  const order_placement_page = document.querySelector(".order-placement-page");
+
+  if (order_placement_page) {
+    doInitMaskInput();
+    doRemoveMapOverlayByClick();
+    doInitMapStoresSelect();
+    doAddMapStoresListener();
+    doHideMapDescription();
+
+    if (typeof ymaps !== "undefined" && ymaps !== null) {
+      setTimeout(doInitMap, 0);
+    }
+  }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
