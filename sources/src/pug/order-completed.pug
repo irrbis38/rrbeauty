@@ -1,0 +1,30 @@
+extends base/_layout
+block vars
+    -
+        var bodyClass = 'order-completed-page';
+block head
+    title RR Beauty - Оформление заказа
+block page
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title Заказ сформирован
+
+    .completed
+        .container
+
+            h3.completed__title Ваш заказ №54 от 22.08.2023 15:48 успешно создан. Номер вашей оплаты: №54/1
+
+            .completed__info
+                p.completed__text Вы можете следить за выполнением своего заказа в #[a(href="#") Персональном разделе сайта]. Обратите внимание, что для входа в этот раздел вам необходимо будет ввести логин и пароль пользователя сайта.
+
+                .completed__nav
+                    a.completed__to-main.btn__black(href="#") Перейти на главную
+                    a.completed__to-cabinet.btn__white(href="#") Личный кабинет
