@@ -658,6 +658,74 @@
         </div>
       </section>
     </main>
+    <section class="auth signin">
+      <div class="auth__overlay auth-close"></div>
+      <div class="auth__wrapper">
+        <div class="auth__inner auth__inner--signin">
+          <button class="auth__close-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"></path>
+            </svg>
+          </button>
+          <div class="auth__top">
+            <h2 class="auth__title">вход</h2>
+          </div>
+          <div class="auth__form-container">
+            <form class="auth__form" action="#" novalidate>
+              <div class="auth__input-wrapper">
+                <input class="auth__input auth__input--required" type="text" placeholder="Логин" required name="user_login">
+              </div>
+              <div class="auth__input-wrapper auth__hidden-content">
+                <input class="auth__input auth__input--required" type="password" placeholder="Пароль" name="user_password" required>
+              </div>
+              <div class="auth__additional">
+                <div class="auth__item">
+                  <label class="auth__label">
+                    <input class="auth__checkbox" type="checkbox" value="remember_me"><span></span><span>Запомнить меня</span>
+                  </label>
+                </div><a class="auth__restore" href="#">Забыли пароль?</a>
+              </div>
+              <button class="auth__submit" type="submit" aria-label="Войти в кабинет пользователя">Войти</button>
+              <button class="auth__to-registration btn__white" type="button" aria-label="Пройти регистрацию пользователя">Регистрация</button>
+            </form>
+            <div class="auth__policy"><span>Продолжая, вы соглашаетесь с<br></span><a href="#" target="_blank">политикой конфиденциальности</a></div>
+            <button class="auth__hide-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">Закрыть</button>
+          </div>
+        </div>
+        <div class="auth__inner auth__inner--registration">
+          <button class="auth__close-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"></path>
+            </svg>
+          </button>
+          <div class="auth__top">
+            <h2 class="auth__title">регистрация</h2>
+          </div>
+          <div class="auth__form-container">
+            <form class="auth__form" action="#" novalidate>
+              <div class="auth__input-wrapper">
+                <input class="auth__input auth__input--required" type="text" placeholder="ФИО*" required name="user_name">
+              </div>
+              <div class="auth__input-wrapper">
+                <input class="auth__input auth__input--required" type="email" placeholder="Email*" required name="user_email">
+              </div>
+              <div class="auth__input-wrapper">
+                <input class="auth__input" type="text" placeholder="Телефон" name="user_phone">
+              </div>
+              <div class="auth__input-wrapper auth__hidden-content">
+                <input class="auth__input auth__input--required" type="password" placeholder="Пароль*" name="user_password" required>
+              </div>
+              <div class="auth__input-wrapper auth__hidden-content">
+                <input class="auth__input auth__input--required" type="password" placeholder="Подтверждения пароля*" name="user_password" required>
+              </div>
+              <button class="auth__submit" type="submit" aria-label="Войти в кабинет пользователя">Зарегистрироваться</button>
+            </form>
+            <div class="auth__policy"><span>Продолжая, вы соглашаетесь с<br></span><a href="#" target="_blank">политикой конфиденциальности</a></div>
+            <button class="auth__hide-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer class="footer">
       <div class="footer__main"> 
         <div class="container">

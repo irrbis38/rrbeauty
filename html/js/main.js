@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
   doHeaderInit();
   doPanelInit();
   doToggleFooterAccordion();
+  doShowAuth();
+  doShowRegistration();
+  doHideAuth();
+  checkAuthForm();
 
   // init GSAP ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
@@ -2237,4 +2241,108 @@ function doToggleAddToCartButton() {
   add_to_cart_btn.addEventListener("click", () =>
     document.body.classList.toggle("added-to-cart")
   );
+}
+
+// AUTH / REGISTRATION
+
+// === ONECLICK
+
+function doShowAuth() {
+  var panel_user_btn = document.querySelector(".panel__user");
+  var auth = document.querySelector(".auth");
+  var body = document.body;
+
+  panel_user_btn.addEventListener("click", () => {
+    requestAnimationFrame(() => {
+      auth.classList.add("active");
+      body.classList.add("noscroll");
+    });
+  });
+}
+
+function doShowRegistration() {
+  var show_registration_btn = document.querySelector(".auth__to-registration");
+  var auth = document.querySelector(".auth");
+
+  show_registration_btn.addEventListener("click", () => {
+    requestAnimationFrame(() => {
+      auth.classList.remove("signin");
+      auth.classList.add("registration");
+    });
+  });
+}
+
+function doHideAuth() {
+  var close_buttons_buttons = document.querySelectorAll(".auth-close");
+  var auth = document.querySelector(".auth");
+  var body = document.body;
+  var auth_inputs = document.querySelectorAll(".auth__input");
+
+  close_buttons_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      requestAnimationFrame(() => handleHideAuth(auth, body, auth_inputs));
+    })
+  );
+}
+
+function handleHideAuth(auth, body, auth_inputs) {
+  auth.classList.remove("active", "registration");
+  auth.classList.add("signin");
+  body.classList.remove("noscroll");
+  clearFormInputs(auth_inputs);
+  auth_inputs.forEach((input) => input.classList.remove("error"));
+}
+
+// === AUTH and REGISTRATION FORMS CHECK
+
+function checkAuthForm() {
+  var auth = document.querySelector(".auth");
+  var auth_inputs = document.querySelectorAll(".auth__input");
+  var body = document.body;
+  var forms = Array.from(document.querySelectorAll(".auth__form"));
+
+  forms.forEach((form) => {
+    var all_inputs = Array.from(form.querySelectorAll(".auth__input"));
+    var required_inputs = all_inputs.filter((input) =>
+      input.classList.contains("auth__input--required")
+    );
+
+    // add listener to submit form button
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      required_inputs.forEach((input) => {
+        input.validity.valueMissing && input.classList.add("error");
+      });
+
+      !checkContainingErrorClassName(required_inputs) &&
+        doSubmitAuth(auth, body, auth_inputs);
+    });
+
+    // adds listeners to all elements that can have an error className
+    doRemoveErrorClassNameInAuth(required_inputs);
+  });
+}
+
+// clear all form inputs
+function clearFormInputs(inputs) {
+  inputs.forEach((el) => (el.value = ""));
+}
+
+// remove 'error' class in oneclick form
+function doRemoveErrorClassNameInAuth(inputs) {
+  inputs.forEach((el) =>
+    el.addEventListener("input", (e) => e.target.classList.remove("error"))
+  );
+}
+
+function doSubmitAuth(auth, body, auth_inputs) {
+  handleHideAuth(auth, body, auth_inputs);
+
+  // var panel_user = document.querySelector(".panel__user");
+  // panel_user.classList.remove("not-authorized");
+
+  console.log("form submited");
+
+  // DO SOMETHING TO AUTH OR REGISTRATION FORM SUBMIT
 }

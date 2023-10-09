@@ -1,0 +1,71 @@
+section.auth.signin
+    .auth__overlay.auth-close
+    .auth__wrapper
+
+
+        //- ENTRANCE
+        .auth__inner.auth__inner--signin
+            button.auth__close-btn.auth-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'")
+                svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                    path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+            .auth__top
+                h2.auth__title вход
+
+            .auth__form-container
+
+                form.auth__form(action="#" novalidate)
+                    .auth__input-wrapper
+                        input.auth__input.auth__input--required(type="text" placeholder="Логин" required name="user_login")
+                    .auth__input-wrapper.auth__hidden-content
+                        input.auth__input.auth__input--required(type="password" placeholder="Пароль" name="user_password" required)
+
+                    .auth__additional
+                        .auth__item
+                            label.auth__label
+                                input.auth__checkbox(type="checkbox" value="remember_me")
+                                span
+                                span Запомнить меня
+
+                        a.auth__restore(href="#") Забыли пароль?
+
+                    button.auth__submit(type="submit" aria-label="Войти в кабинет пользователя") Войти
+
+                    button.auth__to-registration.btn__white(type="button" aria-label="Пройти регистрацию пользователя") Регистрация
+
+                .auth__policy
+                    span Продолжая, вы соглашаетесь с#[br]
+                    a(href="#" target="_blank") политикой конфиденциальности
+
+                button.auth__hide-btn.auth-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'") Закрыть
+
+        //- REGISTRATION
+
+        .auth__inner.auth__inner--registration
+            button.auth__close-btn.auth-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'")
+                svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                    path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+            .auth__top
+                h2.auth__title регистрация
+
+            .auth__form-container
+
+                form.auth__form(action="#" novalidate)
+                    .auth__input-wrapper
+                        input.auth__input.auth__input--required(type="text" placeholder="ФИО*" required name="user_name")
+                    .auth__input-wrapper
+                        input.auth__input.auth__input--required(type="email" placeholder="Email*" required name="user_email")
+                    .auth__input-wrapper
+                        input.auth__input(type="text" placeholder="Телефон" name="user_phone")
+                    .auth__input-wrapper.auth__hidden-content
+                        input.auth__input.auth__input--required(type="password" placeholder="Пароль*" name="user_password" required)
+                    .auth__input-wrapper.auth__hidden-content
+                        input.auth__input.auth__input--required(type="password" placeholder="Подтверждения пароля*" name="user_password" required)
+
+
+                    button.auth__submit(type="submit" aria-label="Войти в кабинет пользователя") Зарегистрироваться
+
+                .auth__policy
+                    span Продолжая, вы соглашаетесь с#[br]
+                    a(href="#" target="_blank") политикой конфиденциальности
+
+                button.auth__hide-btn.auth-close(type="button" aria-label="Закрыть окно заказа \'В один клик\'") Закрыть

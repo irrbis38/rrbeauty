@@ -1,4 +1,4 @@
-.oneclick {
+.auth {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,13 +19,13 @@
   }
 }
 
-.oneclick__overlay {
+.auth__overlay {
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
 
-.oneclick__wrapper {
+.auth__wrapper {
   position: absolute;
   right: 0;
   top: 0;
@@ -53,20 +53,32 @@
   }
 }
 
-.oneclick__inner {
-  position: relative;
+.auth__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   padding: 147px 0;
-
   overflow-y: auto;
+
+  visibility: hidden;
+  pointer-events: none;
 
   @include xs {
     padding: 15px 0;
   }
 }
 
-.oneclick__close-btn {
+.signin.active .auth__inner--signin,
+.registration.active .auth__inner--registration {
+  & {
+    visibility: visible;
+    pointer-events: all;
+  }
+}
+
+.auth__close-btn {
   position: absolute;
   top: 96px;
   right: 188px;
@@ -101,14 +113,14 @@
   }
 }
 
-.oneclick__top {
+.auth__top {
   padding: 0 50px 30px;
   border-bottom: 1px solid #d9d9d9;
 }
 
-.oneclick__title {
+.auth__title {
   padding-top: 63px;
-  padding-bottom: 5px;
+  padding-bottom: 52px;
   text-align: center;
   font-size: 74px;
   font-weight: 600;
@@ -128,38 +140,36 @@
   }
 
   @include xs {
-    font-size: 32px;
-    letter-spacing: 1.6px;
+    font-size: 28px;
+    letter-spacing: 1.4px;
+    padding-bottom: 10px;
   }
 }
 
-.oneclick__title--submited {
-  display: none;
-  padding-top: 154px;
-}
-
-.oneclick__subtitle {
-  max-width: 350px;
-  margin: 0 auto;
-  color: #838383;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 140%;
-
-  @include xs {
-    display: none;
-  }
-}
-
-.oneclick__form-container {
+.auth__form-container {
   width: 100%;
   max-width: 504px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
-.oneclick__input {
+.auth__input-wrapper {
+  position: relative;
+
+  &.auth__hidden-content {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 11px;
+      right: 10px;
+      width: 24px;
+      height: 24px;
+      background: url("../images/icon-hide-pass.svg") center / contain no-repeat;
+    }
+  }
+}
+
+.auth__input {
   display: block;
   width: 100%;
   margin-bottom: 16px;
@@ -184,10 +194,93 @@
   }
 }
 
-.oneclick__submit {
+.auth__hidden-content {
+  .auth__input {
+    padding-right: 40px;
+  }
+}
+
+.auth__pass {
+  .auth__input {
+    padding: 12px 44px 12px 23px;
+  }
+}
+
+.auth__additional {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px 20px;
+
+  @include xs {
+    flex-wrap: wrap;
+  }
+}
+
+.auth__label {
+  position: relative;
+  padding-left: 36px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+
+  span:nth-child(2) {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    z-index: 2;
+    transform: rotate(-45deg);
+    width: 13px;
+    height: 7px;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    opacity: 0;
+  }
+
+  span:nth-child(3) {
+    transition: color 0.2s ease-out;
+  }
+
+  &:hover span:nth-child(3) {
+    color: #757575;
+  }
+}
+
+.auth__checkbox:checked + span {
+  opacity: 1;
+}
+
+.auth__restore {
+  color: #000;
+  text-align: right;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  transition: color 0.2s ease-out;
+
+  &:hover {
+    color: #757575;
+  }
+}
+
+.auth__submit {
   display: block;
   width: 100%;
-  margin: 36px auto 20px;
+  margin: 36px auto 15px;
   padding: 17px 20px;
   color: #fff;
   background-color: #000;
@@ -204,7 +297,11 @@
   }
 }
 
-.oneclick__policy {
+.auth__to-registration {
+  margin-bottom: 18px;
+}
+
+.auth__policy {
   color: #838383;
   text-align: center;
   font-size: 14px;
@@ -228,7 +325,7 @@
   }
 }
 
-.oneclick__hide-btn {
+.auth__hide-btn {
   display: none;
   width: 100%;
   padding: 17px 20px;
@@ -244,59 +341,5 @@
 
   @include xs {
     display: block;
-  }
-}
-
-// form submited
-
-.oneclick.submited {
-  .oneclick__wrapper {
-    @include xs {
-      height: 37.12vh;
-    }
-  }
-
-  .oneclick__top {
-    @include xs {
-      padding: 0 20px 18px;
-    }
-  }
-
-  .oneclick__title {
-    display: none;
-  }
-
-  .oneclick__title--submited {
-    display: block;
-
-    @include xs {
-      padding-top: 20px;
-      padding-bottom: 12px;
-    }
-  }
-
-  .oneclick__subtitle {
-    display: block;
-  }
-
-  .oneclick__form {
-    display: none;
-  }
-
-  .oneclick__policy {
-    display: none;
-  }
-
-  .oneclick__hide-btn {
-    display: block;
-    max-width: 464px;
-    margin: 24px auto 0;
-    color: #fff;
-    background-color: #000;
-
-    &:hover {
-      color: #000;
-      background-color: #fff;
-    }
   }
 }

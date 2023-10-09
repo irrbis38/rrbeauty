@@ -139,7 +139,7 @@ button {
   color: #fff;
   background-color: #000;
   border: 1px solid #000;
-  transition: all 0.2s ease-out;
+  transition: color 0.2s ease-out, background-color 0.2s ease-out;
 
   &:hover {
     color: #000;
@@ -154,7 +154,7 @@ button {
   color: #000;
   background-color: #fff;
   border: 1px solid #000;
-  transition: all 0.2s ease-out;
+  transition: color 0.2s ease-out, background-color 0.2s ease-out;
 
   &:hover {
     color: #fff;
