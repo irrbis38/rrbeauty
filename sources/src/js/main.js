@@ -137,6 +137,33 @@ document.addEventListener("DOMContentLoaded", function (event) {
       setTimeout(doInitMap, 0);
     }
   }
+
+  // cabinet-user-orders page
+  const cabinet_user_orders_page = document.querySelector(
+    ".cabinet-user-orders-page"
+  );
+
+  if (cabinet_user_orders_page) {
+    doToggleCabinetNav();
+  }
+
+  // cabinet-personal-data page
+  const cabinet_personal_data_page = document.querySelector(
+    ".cabinet-personal-data-page"
+  );
+
+  if (cabinet_personal_data_page) {
+    checkCabinetForms();
+  }
+
+  // cabinet-personal-data page
+  const cabinet_orders_item_page = document.querySelector(
+    ".cabinet-orders-item-page"
+  );
+
+  if (cabinet_orders_item_page) {
+    doToggleCabinetAccordion();
+  }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -2344,5 +2371,71 @@ function doSubmitAuth(auth, body, auth_inputs) {
 
   console.log("form submited");
 
-  // DO SOMETHING TO AUTH OR REGISTRATION FORM SUBMIT
+  // HERE DO SOMETHING TO AUTH OR REGISTRATION FORM SUBMIT
+}
+
+// ===== CABINET =====
+function doToggleCabinetNav() {
+  var cabinet_nav_buttons = Array.from(
+    document.querySelectorAll(".cabinet__nav-btn")
+  );
+
+  cabinet_nav_buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      var curr_btn = e.target;
+      !btn.classList.contains("active") &&
+        handleCabinetNav(cabinet_nav_buttons, curr_btn);
+    });
+  });
+}
+
+function handleCabinetNav(buttons, curr_btn) {
+  buttons.forEach((btn) => btn.classList.remove("active"));
+  curr_btn.classList.add("active");
+
+  // HERE CHANGE CONTENT OF ORDER LIST ON THE CABINET-USER-ORDERS PAGE
+}
+
+function checkCabinetForms() {
+  var forms = Array.from(document.querySelectorAll(".cabinet__form"));
+
+  forms.forEach((form) => {
+    var all_inputs = Array.from(form.querySelectorAll(".cabinet__input"));
+    var required_inputs = all_inputs.filter((input) =>
+      input.classList.contains("cabinet__input--required")
+    );
+
+    // add listener to submit form button
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      required_inputs.forEach((input) => {
+        input.validity.valueMissing && input.classList.add("error");
+      });
+
+      !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
+    });
+
+    // adds listeners to all elements that can have an error className
+    doRemoveErrorClassNameInAuth(required_inputs);
+  });
+}
+
+function doSavePersonalData() {
+  console.log("all changes saved");
+  // HERE DO LOGIC TO SAVE PERSONAL DATA
+}
+
+// accordion in cabinet
+
+function doToggleCabinetAccordion() {
+  var accordions = Array.from(document.querySelectorAll(".cabinet__accordion"));
+
+  accordions.forEach((acc) => {
+    var acc_toggle_btn = acc.querySelector(".cabinet__orders-top");
+
+    acc_toggle_btn.addEventListener("click", () =>
+      acc.classList.toggle("show")
+    );
+  });
 }

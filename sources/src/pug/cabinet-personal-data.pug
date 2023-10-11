@@ -1,0 +1,64 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'cabinet-personal-data-page';
+block head
+    title RR Beauty - Личный кабинет (Личные данные)
+block page
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title кабинет
+
+    .cabinet 
+        .container.cabinet__container
+
+            ul.cabinet__menu
+
+                li.cabinet__menu-item: a.cabinet__menu-link(href="./cabinet-user-orders.html")
+                    span Заказы
+                    include ./blocks/_icon-cart
+
+                li.cabinet__menu-item: a.cabinet__menu-link.active(href="./cabinet-personal-data.html")
+                    span Личные данные
+                    include ./blocks/_icon-settings
+
+                li.cabinet__menu-item: a.cabinet__menu-link(href="./cabinet-favorites.html")
+                    span Избранное
+                    include ./blocks/_icon-favorites
+
+                li.cabinet__menu-item: button.cabinet__menu-link(type="button" aria-label="Выйти из учётной записи")
+                    span Выход
+                    include ./blocks/_icon-exit
+
+            .cabinet__content
+
+                h3.cabinet__block-title Личные данные
+
+                form.cabinet__form(action="#" novalidate)
+                    .cabinet__input-wrapper
+                        input.cabinet__input.cabinet__input--required(type="text" placeholder="ФИО*" required name="user_name")
+                        input.cabinet__input.cabinet__input--required(type="text" placeholder="Email*" required name="user_email")
+                        input.cabinet__input.cabinet__input--required(type="text" placeholder="Телефон*" required name="user_phone")
+
+
+                    button.cabinet__submit(type="submit" aria-label="Сохранить внесённые изменения") Сохранить изменения
+
+                h3.cabinet__block-title Изменить пароль
+
+                form.cabinet__form(action="#" novalidate)
+                    .cabinet__input-wrapper
+                        input.cabinet__input.cabinet__input--required(type="text" placeholder="Новый пароль*" required name="user_password")
+                    .cabinet__input-wrapper
+                        input.cabinet__input.cabinet__input--required(type="text" placeholder="Новый пароль еще раз*" name="user_password_repeat" required)
+
+
+                    button.cabinet__submit(type="submit" aria-label="Сохранить введённый новый пароль") Сохранить новый пароль
+
+

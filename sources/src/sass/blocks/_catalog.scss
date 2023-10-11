@@ -84,25 +84,31 @@
   gap: 41px 24px;
   margin-bottom: 90px;
 
-  /// ++++++++++++++++++
-  /// TODO: auto-fit for >=992px
   @include lg {
     grid-template-columns: repeat(3, 1fr);
   }
-  /// ++++++++++++++++++
+
   @include sm {
     grid-template-columns: repeat(2, 1fr);
   }
 
   @include xs {
-    // grid-template-columns: repeat(2, 1fr);
     margin-bottom: 48px;
   }
 
   @include xxs {
-    // max-width: 335px;
     margin: 0 auto;
     grid-template-columns: 1fr;
+  }
+}
+
+.cabinet-favorites-page {
+  .catalog__wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    @include xxs {
+      grid-template-columns: 1fr;
+    }
   }
 }
 

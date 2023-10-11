@@ -1,0 +1,158 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'cabinet-orders-item-page';
+block head
+    title RR Beauty - Личный кабинет (заказы)
+block page
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title кабинет
+
+    .cabinet 
+        .container.cabinet__container
+
+            ul.cabinet__menu
+
+                li.cabinet__menu-item: a.cabinet__menu-link.active(href="./cabinet-user-orders.html")
+                    span Заказы
+                    include ./blocks/_icon-cart
+
+                li.cabinet__menu-item: a.cabinet__menu-link(href="./cabinet-personal-data.html")
+                    span Личные данные
+                    include ./blocks/_icon-settings
+
+                li.cabinet__menu-item: a.cabinet__menu-link(href="./cabinet-favorites.html")
+                    span Избранное
+                    include ./blocks/_icon-favorites
+
+                li.cabinet__menu-item: button.cabinet__menu-link(type="button" aria-label="Выйти из учётной записи")
+                    span Выход
+                    include ./blocks/_icon-exit
+
+            .cabinet__content
+
+
+                a.cabinet__return(href="./cabinet-user-orders.html")
+                    include ./blocks/_icon-arrow-return
+                    span Вернуться к списку заказов
+
+                ul.cabinet__orders.cabinet__single-order
+                    li.cabinet__orders-item.status-in-progress
+                        .cabinet__orders-top
+                            h3.cabinet__orders-title Заказ №21
+                        .cabinet__orders-descr
+                            .cabinet__orders-block
+                                .cabinet__orders-name Дата создания
+                                .cabinet__orders-value 29.04.2023
+                            .cabinet__orders-block
+                                .cabinet__orders-name Количество
+                                .cabinet__orders-value 4 товара
+                            .cabinet__orders-block
+                                .cabinet__orders-name Сумма
+                                .cabinet__orders-value 25 800₸
+                            .cabinet__orders-block.cabinet__orders-status
+                                .cabinet__orders-name Статус
+                                .cabinet__orders-value Выполняется
+
+                    li.cabinet__orders-item.cabinet__accordion.status-canceled
+                        button.cabinet__orders-top(type="button" aria-label="Скрыть / показать детали оплаты")
+                            span.cabinet__orders-title Оплата
+                            span.cabinet__toggle-descr
+
+                        .cabinet__order-wrapper
+
+                            .cabinet__orders-descr
+                                .cabinet__orders-block
+                                    .cabinet__orders-name Счет №123 от 29.01.2023
+                                    .cabinet__orders-value 25 800₸
+
+                                .cabinet__orders-block.cabinet__orders-status
+                                    .cabinet__orders-name Статус
+                                    .cabinet__orders-value Не оплачено
+
+                            .cabinet__orders-payment
+                                button.cabinet__pay.btn__black(type="button" aria-label="Оплатить заказ") Оплатить
+                                button.cabinet__change-payment(type="button" aria-label="Изменить способ оплаты заказа") Изменить способ оплаты
+
+
+                    li.cabinet__orders-item.cabinet__accordion.status-in-progress
+                        button.cabinet__orders-top(type="button" aria-label="Скрыть / показать детали доставки")
+                            span.cabinet__orders-title Доставка
+                            span.cabinet__toggle-descr
+
+                        .cabinet__order-wrapper
+
+                            .cabinet__orders-descr
+                                .cabinet__orders-block
+                                    .cabinet__orders-name Служба доставки
+                                    .cabinet__orders-value Без доставки
+
+                                .cabinet__orders-block
+                                    .cabinet__orders-name Стоимость
+                                    .cabinet__orders-value 800₸
+
+                                .cabinet__orders-block.cabinet__orders-status
+                                    .cabinet__orders-name Статус
+                                    .cabinet__orders-value Ожидает обработки
+
+
+                    li.cabinet__orders-item.cabinet__orders-contents.cabinet__accordion.show
+                        button.cabinet__orders-top(type="button" aria-label="Скрыть / показать содержимое заказа")
+                            span.cabinet__orders-title Содержимое заказа
+                            span.cabinet__toggle-descr
+
+
+
+                        .cabinet__order-wrapper
+
+                            .cabinet__orders-descr
+
+                                .cabinet__orders-good.orders-good
+
+                                    .orders-good__descr
+
+                                        img.orders-good__img(src="./images/view-small-1.png" alt="фото товара 1")
+
+                                        h4.orders-good__name INTENZE Products Lemon Yellow 2 oz
+
+                                        .orders-good__price
+                                            span.orders-good__price-new 3 800₸
+
+                                    .orders-good__total
+
+                                        span.orders-good__amount 2
+
+                                        .orders-good__sum
+                                            span.orders-good__sum-new 12 800₸
+
+                            .cabinet__orders-descr
+
+                                .cabinet__orders-good.orders-good
+
+                                    .orders-good__descr
+
+                                        img.orders-good__img(src="./images/view-small-2.png" alt="фото товара 2")
+
+                                        h4.orders-good__name INTENZE Products Lemon Yellow 2 oz
+
+                                        .orders-good__price
+                                            span.orders-good__price-new 3 800₸
+                                            span.orders-good__price-old 5 800₸
+
+                                    .orders-good__total
+
+                                        span.orders-good__amount 2
+
+                                        .orders-good__sum
+                                            span.orders-good__sum-new 12 800₸
+                                            span.orders-good__sum-old 15 800₸
+
+
