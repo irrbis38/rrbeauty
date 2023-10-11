@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>RR Beauty - Оформление заказа</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="images/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicons/android-chrome-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="images/favicons/manifest.json">
+    <link rel="yandex-tableau-widget" href="images/favicons/yandex-browser-manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/main.min.css">
+  </head>
+  <body class="order-placement-page">
+    <header class="header">
+      <div class="header__container">
+        <div class="container">
+          <button class="header__btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7 10L12 15L17 10H7Z" fill="#838383"></path>
+            </svg><span>Информация</span>
+          </button>
+          <nav class="header__menu">
+            <ul>
+              <li><a href="#">Бренды</a></li>
+              <li><a href="#">Наши магазины</a></li>
+              <li><a href="#">Акции</a></li>
+              <li><a href="#">О компании</a></li>
+              <li><a href="#">Доставка и оплата</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Гарантия и возврат товара</a></li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="header__overlay"></div>
+      <div class="panel">
+        <div class="panel__line"></div>
+        <div class="panel__container"> 
+          <div class="panel__nav">
+            <button class="panel__showCategories" id="show-menu" aria-label="Показать или скрыть категории каталога"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.25 13C10.319 13 10.5 14.38 10.5 17.25C10.5 18.688 10.5 19.711 9.896 20.46C9.201 21.323 7.936 21.5 6.25 21.5C4.564 21.5 3.299 21.323 2.604 20.46C2 19.711 2 18.689 2 17.275L2.75 17.25H2C2 14.38 2.181 13 6.25 13ZM17.25 13C21.319 13 21.5 14.38 21.5 17.25C21.5 18.688 21.5 19.711 20.896 20.46C20.201 21.323 18.936 21.5 17.25 21.5C15.564 21.5 14.299 21.323 13.604 20.46C13 19.711 13 18.689 13 17.275L13.75 17.25H13C13 14.38 13.181 13 17.25 13ZM6.45616 14.5004L6.25 14.5C3.64103 14.5 3.50723 14.6872 3.50037 16.8771L3.50079 17.7302C3.50553 18.6011 3.53871 19.2303 3.771 19.52C4.036 19.848 4.823 20 6.25 20C7.677 20 8.464 19.847 8.729 19.519C9 19.182 9 18.382 9 17.274C9 14.7738 9 14.5122 6.45616 14.5004ZM17.4562 14.5004L17.25 14.5C14.641 14.5 14.5072 14.6872 14.5004 16.8771L14.5008 17.7302C14.5055 18.6011 14.5387 19.2303 14.771 19.52C15.036 19.848 15.823 20 17.25 20C18.677 20 19.464 19.847 19.729 19.519C20 19.182 20 18.382 20 17.274C20 14.7738 20 14.5122 17.4562 14.5004ZM6.25 2C10.319 2 10.5 3.38 10.5 6.25C10.5 7.688 10.5 8.711 9.896 9.46C9.201 10.323 7.936 10.5 6.25 10.5C4.564 10.5 3.299 10.323 2.604 9.46C2 8.711 2 7.689 2 6.275L2.75 6.25H2C2 3.38 2.181 2 6.25 2ZM17.25 2C21.319 2 21.5 3.38 21.5 6.25C21.5 7.688 21.5 8.711 20.896 9.46C20.201 10.323 18.936 10.5 17.25 10.5C15.564 10.5 14.299 10.323 13.604 9.46C13 8.711 13 7.689 13 6.275L13.75 6.25H13C13 3.38 13.181 2 17.25 2ZM6.45616 3.50045L6.25 3.5C3.64103 3.5 3.50723 3.68721 3.50037 5.87705L3.50079 6.73018C3.50553 7.60114 3.53871 8.23029 3.771 8.52C4.036 8.848 4.823 9 6.25 9C7.677 9 8.464 8.847 8.729 8.519C9 8.182 9 7.382 9 6.274C9 3.7738 9 3.51222 6.45616 3.50045ZM17.4562 3.50045L17.25 3.5C14.641 3.5 14.5072 3.68721 14.5004 5.87705L14.5008 6.73018C14.5055 7.60114 14.5387 8.23029 14.771 8.52C15.036 8.848 15.823 9 17.25 9C18.677 9 19.464 8.847 19.729 8.519C20 8.182 20 7.382 20 6.274C20 3.7738 20 3.51222 17.4562 3.50045Z" fill="black" stroke="black" stroke-width="0.5"/>
+</svg><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_686_486)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7674 1C20.4953 1 23 3.6158 23 7.5076V16.4924C23 20.3842 20.4953 23 16.7663 23H7.2315C3.5036 23 1 20.3842 1 16.4924V7.5076C1 3.6158 3.5036 1 7.2315 1H16.7674ZM16.7674 2.65H7.2315C4.4485 2.65 2.65 4.5563 2.65 7.5076V16.4924C2.65 19.4437 4.4485 21.35 7.2315 21.35H16.7663C19.5504 21.35 21.35 19.4437 21.35 16.4924V7.5076C21.35 4.5563 19.5504 2.65 16.7674 2.65ZM9.94355 8.76886L11.9978 10.823L14.051 8.77117C14.3733 8.44887 14.8947 8.44887 15.217 8.77117C15.5393 9.09347 15.5393 9.61487 15.217 9.93717L13.1638 11.989L15.2192 14.0456C15.5415 14.3679 15.5415 14.8893 15.2192 15.2116C15.0586 15.3733 14.8462 15.4536 14.6362 15.4536C14.4249 15.4536 14.2137 15.3733 14.0532 15.2116L11.9978 13.155L9.94575 15.2084C9.78515 15.3701 9.57395 15.4504 9.36275 15.4504C9.15155 15.4504 8.94035 15.3701 8.77975 15.2084C8.45745 14.8861 8.45745 14.3647 8.77975 14.0424L10.8318 11.989L8.77755 9.93486C8.45525 9.61256 8.45525 9.09116 8.77755 8.76886C9.10095 8.44656 9.62235 8.44656 9.94355 8.76886Z" fill="black" stroke="black" stroke-width="0.3"/>
+</g>
+<defs>
+<clipPath id="clip0_686_486">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg><span>Каталог</span>
+            </button>
+            <div class="panel__search"><img src="./images/icon-search.svg" alt="">
+              <input class="panel__input" type="text" aria-label="Поиск" placeholder="Поиск">
+              <svg class="panel__clear" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Очистить поле поиска">
+                <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"></path>
+              </svg>
+            </div>
+          </div>
+          <h1 class="panel__title"><a class="panel__logo" href="#" aria-label="На главную"><img src="./images/logo.svg" alt="logo"><span class="visualhidden">Оборудование для тату и татуажа (перманентный макияж) с доставкой по Алматы (Казахстан)</span></a></h1>
+          <div class="panel__menu"><a class="panel__user not-authorized" href="#" aria-label="Авторизация"><span class="panel__nonAuth"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M19.84 18.1929C19.84 21.4889 15.32 21.8699 11.921 21.8699L11.6778 21.8697C9.5122 21.8644 4 21.7277 4 18.1729C4 14.9442 8.33835 14.5127 11.7115 14.4964L12.1642 14.4961C14.3296 14.5014 19.84 14.6381 19.84 18.1929ZM11.921 15.9959C7.66 15.9959 5.5 16.7279 5.5 18.1729C5.5 19.6309 7.66 20.3699 11.921 20.3699C16.181 20.3699 18.34 19.6379 18.34 18.1929C18.34 16.7349 16.181 15.9959 11.921 15.9959ZM11.921 1.99951C14.849 1.99951 17.23 4.38151 17.23 7.30951C17.23 10.2375 14.849 12.6185 11.921 12.6185H11.889C8.967 12.6095 6.6 10.2265 6.60997 7.30651C6.60997 4.38151 8.992 1.99951 11.921 1.99951ZM11.921 3.42751C9.78 3.42751 8.03798 5.16851 8.03798 7.30951C8.031 9.44351 9.76 11.1835 11.892 11.1915L11.921 11.9055V11.1915C14.061 11.1915 15.802 9.44951 15.802 7.30951C15.802 5.16851 14.061 3.42751 11.921 3.42751Z" fill="black" stroke="black" stroke-width="0.5"/>
+</svg><span class="user__name">Войти</span></span><span class="panel__auth"><span class="user__icon">a</span><span class="user__name">Алексей П. </span></span></a><a class="panel__favorites non-empty" href="#" aria-label="Перейти в избранное">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.235 4.03912C13.861 3.01112 16.021 2.72712 17.887 3.32512C21.946 4.63412 23.206 9.05912 22.079 12.5801C20.34 18.1101 12.913 22.2351 12.598 22.4081C12.486 22.4701 12.362 22.5011 12.238 22.5011C12.114 22.5011 11.991 22.4711 11.879 22.4101C11.566 22.2391 4.19296 18.1751 2.39596 12.5811L2.39496 12.5801C1.26696 9.05812 2.52296 4.63212 6.57796 3.32512C8.48196 2.70912 10.557 2.98012 12.235 4.03912ZM7.03796 4.75312C3.75696 5.81112 2.93296 9.34012 3.82396 12.1231C5.22596 16.4851 10.765 20.0121 12.237 20.8851C13.714 20.0031 19.293 16.4371 20.65 12.1271C21.541 9.34112 20.714 5.81212 17.428 4.75312C15.836 4.24212 13.979 4.55312 12.697 5.54512C12.429 5.75112 12.057 5.75512 11.787 5.55112C10.429 4.53012 8.65496 4.23112 7.03796 4.75312Z" fill="black" stroke="black" stroke-width="0.5"></path>
+              </svg><span class="panel__amount"><span>4</span></span></a><a class="panel__cart" href="#" aria-label="Перейти в корзину"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.54339 19.9519C8.25739 19.9519 8.83839 20.5319 8.83839 21.2459C8.83839 21.9599 8.25739 22.5409 7.54339 22.5409C6.82939 22.5409 6.24939 21.9599 6.24939 21.2459C6.24939 20.5319 6.82939 19.9519 7.54339 19.9519ZM18.8237 19.9519C19.5387 19.9519 20.1197 20.5319 20.1197 21.2459C20.1197 21.9599 19.5387 22.5409 18.8237 22.5409C18.1097 22.5409 17.5297 21.9599 17.5297 21.2459C17.5297 20.5319 18.1097 19.9519 18.8237 19.9519ZM3.26759 3.00949L5.34759 3.36949C5.68259 3.42849 5.93759 3.70649 5.96659 4.04649L6.20159 6.84749L7.07544 6.84786C7.21804 6.84793 7.35913 6.84799 7.49871 6.84805L9.10302 6.84882C9.2309 6.84888 9.35735 6.84894 9.48238 6.84901L11.2538 6.84998C11.3651 6.85004 11.475 6.85011 11.5836 6.85018L12.825 6.85097C12.9233 6.85103 13.0204 6.8511 13.1163 6.85117L14.2081 6.85197C14.2943 6.85204 14.3793 6.85211 14.4632 6.85217L15.4151 6.85299C15.49 6.85306 15.5638 6.85313 15.6365 6.8532L16.2621 6.85382C16.3285 6.85389 16.3939 6.85396 16.4582 6.85403L17.1828 6.85487C17.2393 6.85494 17.2949 6.85501 17.3495 6.85508L17.9613 6.85594C18.0087 6.85601 18.0552 6.85608 18.101 6.85615L18.4898 6.8568C18.5305 6.85687 18.5704 6.85695 18.6096 6.85702L19.0427 6.8579C19.0758 6.85797 19.1082 6.85804 19.1399 6.85812L19.4065 6.85878C19.4341 6.85886 19.461 6.85893 19.4873 6.85901L19.773 6.85991C19.7945 6.85998 19.8153 6.86006 19.8356 6.86014L20.0034 6.86082C20.0204 6.8609 20.037 6.86097 20.053 6.86105L20.2227 6.86197C20.2351 6.86205 20.247 6.86213 20.2584 6.86221L20.351 6.86291C20.3601 6.86299 20.3688 6.86307 20.3772 6.86314L20.4438 6.86385C20.4503 6.86393 20.4564 6.86401 20.4623 6.86409L20.5076 6.86481C20.5118 6.86489 20.5159 6.86497 20.5197 6.86505L20.5483 6.86578C20.551 6.86586 20.5534 6.86594 20.5557 6.86602L20.5764 6.867L20.58 6.86725C20.5897 6.86815 20.5926 6.86849 20.5926 6.86849C21.1496 6.94949 21.6396 7.24049 21.9736 7.68849C22.3076 8.13549 22.4476 8.68649 22.3676 9.23849L21.4186 15.7965C21.2396 17.0445 20.1556 17.9855 18.8956 17.9855H7.97459C6.65759 17.9855 5.54259 16.9575 5.43559 15.6425L4.51959 4.74849L3.01259 4.48849C2.60359 4.41649 2.33059 4.02949 2.40059 3.62049C2.47259 3.21149 2.86759 2.94549 3.26759 3.00949ZM6.87483 8.34783L6.32759 8.34749L6.93059 15.5195C6.97459 16.0715 7.42559 16.4855 7.97659 16.4855H18.8936C19.4146 16.4855 19.8596 16.0975 19.9336 15.5825L20.8836 9.02349C20.9056 8.86749 20.8666 8.71149 20.7716 8.58549C20.6776 8.45849 20.5396 8.37649 20.3836 8.35449C20.3764 8.35476 20.3591 8.35502 20.3323 8.35524L20.2235 8.35587C20.2008 8.35596 20.1757 8.35605 20.1485 8.35613L19.582 8.35699C19.5342 8.35702 19.4845 8.35705 19.433 8.35708L18.101 8.35702C18.0267 8.357 17.9509 8.35696 17.8739 8.35693L16.3538 8.35601C16.2627 8.35594 16.1706 8.35587 16.0776 8.3558L15.2175 8.35511C15.1195 8.35503 15.0208 8.35495 14.9214 8.35486L14.0103 8.35406C13.9074 8.35397 13.8041 8.35387 13.7002 8.35378L13.0727 8.3532C12.9674 8.35311 12.8617 8.35301 12.7559 8.35291L11.7982 8.35201C11.6914 8.35191 11.5846 8.35181 11.4777 8.35171L10.8371 8.35112C10.7304 8.35102 10.6239 8.35092 10.5176 8.35082L9.88243 8.35025C9.77709 8.35015 9.67205 8.35006 9.56738 8.34997L8.63687 8.34917C8.53495 8.34908 8.43357 8.349 8.33281 8.34892L7.15688 8.34802C7.06199 8.34795 6.96795 8.34789 6.87483 8.34783Z" fill="black" stroke="black" stroke-width="0.5"/>
+</svg><span class="panel__amount"><span>4</span></span></a></div>
+        </div>
+        <nav class="menu" id="menu">
+          <div class="menu__search">
+            <div class="panel__search"><img src="./images/icon-search.svg" alt="">
+              <input class="panel__input" type="text" aria-label="Поиск" placeholder="Поиск">
+              <svg class="panel__clear" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label="Очистить поле поиска">
+                <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"></path>
+              </svg>
+            </div>
+          </div>
+          <ul class="menu__container">
+            <li><a href="#">Комплектующее к машинкам</a></li>
+            <li><a href="#">Анестетики</a></li>
+            <li><a href="#">Отрисовка эскиза</a></li>
+            <li><a href="#">Отрисовка эскиза</a></li>
+            <li><a href="#">Микроблейдинг</a></li>
+            <li><a href="#">Отрисовка эскиза</a></li>
+            <li><a href="#">Микроблейдинг</a></li>
+            <li><a href="#">Анестетики</a></li>
+            <li><a href="#">Анестетики</a></li>
+            <li><a href="#">Пигменты</a></li>
+            <li><a href="#">Уход и разбавители</a></li>
+            <li><a href="#">Комплектующее к машинкам</a></li>
+            <li><a href="#">Комплектующее к машинкам</a></li>
+            <li><a href="#">Комплектующее</a></li>
+            <li><a href="#">Отрисовка</a></li>
+            <li><a href="#">Уход и разбавители</a></li>
+            <li><a href="#">Комплектующее к машинкам</a></li>
+            <li><a href="#">Комплектующее к машинкам</a></li>
+            <li><a href="#">Комплектующее</a></li>
+            <li><a href="#">Отрисовка</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="menu__overlay" id="menu-overlay"></div>
+    </header>
+    <main class="main">
+      <section class="top">
+        <div class="container">
+          <ul class="top__breadcrumps">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Каталог</a></li>
+            <li><span>Средства ухода</span></li>
+          </ul>
+          <h2 class="top__title">Оформление заказа</h2>
+        </div>
+      </section>
+      <div class="order">
+        <div class="container order__container">
+          <div class="order__info">
+            <div class="order__step">
+              <h3 class="order__heading"><span>1/3</span><span>ПОКУПАТЕЛЬ</span></h3>
+              <form class="order__form" action="#">
+                <ul class="order__list">
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="customer" value="individual" checked><span></span><span>Физическое лицо</span>
+                    </label>
+                  </li>
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="customer" value="individual"><span></span><span>Компании</span>
+                    </label>
+                  </li>
+                </ul>
+                <div class="order__inputs-row"> 
+                  <input class="order__input" type="text" placeholder="ФИО">
+                  <input class="order__input" type="text" placeholder="Email">
+                  <input class="order__input" type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*">
+                </div>
+                <div class="order__inputs-row"> 
+                  <input class="order__input" type="text" placeholder="ФИО">
+                  <input class="order__input" type="text" placeholder="Email">
+                  <input class="order__input" type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*">
+                </div>
+              </form>
+              <div class="order__nav"> 
+                <button class="order__prev btn__white" type="button" aria-label="Вернуться к предыдущему шагу">Назад</button>
+                <button class="order__next btn__black" type="button" aria-label="Перейти к следующему шагу">Далее</button>
+              </div>
+            </div>
+            <div class="order__step order__step--map">
+              <h3 class="order__heading"><span>2/3</span><span>доставка</span></h3>
+              <form class="order__form" action="#">
+                <ul class="order__list">
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="delivery" value="sdek" checked><span></span><span>СДЭК</span>
+                    </label>
+                  </li>
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="delivery" value="avis"><span></span><span>Avis</span>
+                    </label>
+                  </li>
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="delivery" value="pickup"><span></span><span>Самовывоз из магазина</span>
+                    </label>
+                  </li>
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="delivery" value="courier"><span></span><span>Курьерская доставка (Алматы)</span>
+                    </label>
+                  </li>
+                </ul><span class="order__note">При заказе от 5 000 тенге - доставка по городу бесплатная, если менее 5 000 - 1 300 тенге.</span>
+              </form>
+              <div class="map">
+                <div class="mapSection__container">
+                  <div class="map__info">
+                    <select class="map__stores" name="stores" aria-label="Выбрать магазин"> 
+                      <option value="Almaty">Алматы</option>
+                      <option value="Astana">Астана</option>
+                      <option value="Moscow">Москва</option>
+                    </select>
+                    <div class="map__description">
+                      <div class="map__description-wrapper">
+                        <h3 class="map__storeName">магазин №214</h3>
+                        <div class="map__data">
+                          <p class="map__name">Адрес</p>
+                          <p class="map__value">Краснодар, В. Головатого, 313 </p>
+                        </div>
+                        <div class="map__data">
+                          <p class="map__name">График работы</p>
+                          <p class="map__value">Ежедневно, 10:00 — 22:00</p>
+                        </div>
+                        <div class="map__data">
+                          <p class="map__name">Горячая линия</p>
+                          <p class="map__value"><a href="tel:88008805060">8 800 880 50 60</a></p>
+                        </div>
+                        <div class="map__data">
+                          <p class="map__name">Почта</p>
+                          <p class="map__value"><a href="mailto:rrbeauty@gmail.com">rrbeauty@gmail.com</a></p>
+                        </div>
+                      </div>
+                      <button class="map__close" type="button" aria-label="Закрыть окно с описанием магазина">Закрыть</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="mapSection__wrapper" id="map-section-wrapper">
+                  <div class="mapSection__overlay"></div>
+                </div>
+              </div>
+            </div>
+            <div class="order__step order__step--payment">
+              <h3 class="order__heading"><span>3/3</span><span>оплата</span></h3>
+              <form class="order__form" action="#">
+                <ul class="order__list">
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="payment" value="card" checked><span></span><span>Оплата картой</span>
+                    </label>
+                  </li>
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="payment" value="cash"><span></span><span>Наличные</span>
+                    </label>
+                  </li>
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="payment" value="bank-transfer"><span></span><span>Банковский перевод</span>
+                    </label>
+                  </li>
+                  <li class="order__item">
+                    <label class="order__label">
+                      <input class="order__radio" type="radio" name="payment" value="payment-on-account"><span></span><span>Оплата по счету</span>
+                    </label>
+                  </li>
+                </ul>
+              </form>
+            </div>
+          </div>
+          <div class="order__checkout">
+            <input class="cart__promocode order__promocode" type="text" placeholder="Есть промокод">
+            <div class="cart__checkout-inner">
+              <div class="cart__total"><span>Итого:</span><span class="cart__total-price">25 800₸</span></div>
+              <ul class="order__checkout-list">
+                <li><span>Товаров:</span><span>8</span></li>
+                <li><span>Способ доставки:</span><span>СДЭК</span></li>
+                <li><span>Стоимость доставки:</span><span>800₸</span></li>
+              </ul><span class="order__msg">Оплата осуществляется после оформления заказа. С вами свяжется менеджер магазина для подтверждения заказа!</span>
+              <button class="cart__order btn__black" type="button" aria-label="Оформить заказ товаров">Оформить заказ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <section class="auth signin">
+      <div class="auth__overlay auth-close"></div>
+      <div class="auth__wrapper">
+        <div class="auth__inner auth__inner--signin">
+          <button class="auth__close-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"></path>
+            </svg>
+          </button>
+          <div class="auth__top">
+            <h2 class="auth__title">вход</h2>
+          </div>
+          <div class="auth__form-container">
+            <form class="auth__form" action="#" novalidate>
+              <div class="auth__input-wrapper">
+                <input class="auth__input auth__input--required" type="text" placeholder="Логин" required name="user_login">
+              </div>
+              <div class="auth__input-wrapper auth__hidden-content">
+                <input class="auth__input auth__input--required" type="password" placeholder="Пароль" name="user_password" required>
+              </div>
+              <div class="auth__additional">
+                <div class="auth__item">
+                  <label class="auth__label">
+                    <input class="auth__checkbox" type="checkbox" value="remember_me"><span></span><span>Запомнить меня</span>
+                  </label>
+                </div><a class="auth__restore" href="#">Забыли пароль?</a>
+              </div>
+              <button class="auth__submit" type="submit" aria-label="Войти в кабинет пользователя">Войти</button>
+              <button class="auth__to-registration btn__white" type="button" aria-label="Пройти регистрацию пользователя">Регистрация</button>
+            </form>
+            <div class="auth__policy"><span>Продолжая, вы соглашаетесь с<br></span><a href="#" target="_blank">политикой конфиденциальности</a></div>
+            <button class="auth__hide-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">Закрыть</button>
+          </div>
+        </div>
+        <div class="auth__inner auth__inner--registration">
+          <button class="auth__close-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black"></path>
+            </svg>
+          </button>
+          <div class="auth__top">
+            <h2 class="auth__title">регистрация</h2>
+          </div>
+          <div class="auth__form-container">
+            <form class="auth__form" action="#" novalidate>
+              <div class="auth__input-wrapper">
+                <input class="auth__input auth__input--required" type="text" placeholder="ФИО*" required name="user_name">
+              </div>
+              <div class="auth__input-wrapper">
+                <input class="auth__input auth__input--required" type="email" placeholder="Email*" required name="user_email">
+              </div>
+              <div class="auth__input-wrapper">
+                <input class="auth__input" type="text" placeholder="Телефон" name="user_phone">
+              </div>
+              <div class="auth__input-wrapper auth__hidden-content">
+                <input class="auth__input auth__input--required" type="password" placeholder="Пароль*" name="user_password" required>
+              </div>
+              <div class="auth__input-wrapper auth__hidden-content">
+                <input class="auth__input auth__input--required" type="password" placeholder="Подтверждения пароля*" name="user_password" required>
+              </div>
+              <button class="auth__submit" type="submit" aria-label="Войти в кабинет пользователя">Зарегистрироваться</button>
+            </form>
+            <div class="auth__policy"><span>Продолжая, вы соглашаетесь с<br></span><a href="#" target="_blank">политикой конфиденциальности</a></div>
+            <button class="auth__hide-btn auth-close" type="button" aria-label="Закрыть окно заказа 'В один клик'">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer__main"> 
+        <div class="container">
+          <div class="footer__main-wrapper">
+            <div class="footer__column"> 
+              <h3 class="footer__title">Компания</h3>
+              <div class="footer__wrapper">
+                <ul class="footer__list"> 
+                  <li><a href="#">Каталог товаров</a></li>
+                  <li><a href="#">Каталог товаров</a></li>
+                  <li><a href="#">Каталог товаров</a></li>
+                  <li><a href="#">Каталог товаров</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer__column"> 
+              <h3 class="footer__title">Покупателям</h3>
+              <div class="footer__wrapper">
+                <ul class="footer__list"> 
+                  <li><a href="#">Оплата</a></li>
+                  <li><a href="#">Доставка</a></li>
+                  <li><a href="#">Оплата лучшей цены</a></li>
+                  <li><a href="#">Оплата лучшей цены</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer__column"> 
+              <h3 class="footer__title">Информация</h3>
+              <div class="footer__wrapper">
+                <ul class="footer__list"> 
+                  <li><a href="#">Акции</a></li>
+                  <li><a href="#">Сезонные предложения</a></li>
+                  <li><a href="#">Сезонные предложения</a></li>
+                  <li><a href="#">Сезонные предложения</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer__column">
+              <h3 class="footer__title">Контакты</h3>
+              <div class="footer__wrapper">
+                <ul class="footer__list"> 
+                  <li><a href="mailto:rrbeauty@gmail.com">rrbeauty@gmail.com</a></li>
+                  <li><a href="tel:88008805060">8 800 880 50 60</a></li>
+                </ul>
+                <ul class="footer__social"> 
+                  <li><a href="#"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="48" height="48" fill="white"/>
+<path d="M24.0466 12.334C17.6766 12.334 12.4849 17.5257 12.4849 23.8957C12.4849 25.9373 13.0216 27.9207 14.0249 29.6707L12.3916 35.6673L18.5166 34.0573C20.2083 34.979 22.1099 35.469 24.0466 35.469C30.4166 35.469 35.6083 30.2773 35.6083 23.9073C35.6083 20.8157 34.4066 17.9107 32.2249 15.729C30.0433 13.5357 27.1383 12.334 24.0466 12.334ZM24.0583 14.2823C26.6249 14.2823 29.0283 15.2857 30.8483 17.1057C32.6566 18.9257 33.6599 21.3407 33.6599 23.9073C33.6599 29.204 29.3433 33.509 24.0466 33.509C22.3199 33.509 20.6283 33.054 19.1583 32.1673L18.8083 31.969L15.1683 32.9257L16.1366 29.379L15.9033 29.0057C14.9466 27.5007 14.4333 25.7157 14.4333 23.8957C14.4449 18.599 18.7499 14.2823 24.0583 14.2823ZM19.9516 18.5523C19.7649 18.5523 19.4499 18.6223 19.1816 18.914C18.9249 19.2057 18.1666 19.9173 18.1666 21.329C18.1666 22.7523 19.2049 24.1173 19.3333 24.3157C19.4966 24.514 21.3866 27.4307 24.2916 28.6673C24.9799 28.9823 25.5166 29.1573 25.9366 29.2857C26.6249 29.5073 27.2549 29.4723 27.7566 29.4023C28.3166 29.3207 29.4599 28.7023 29.7049 28.0257C29.9499 27.349 29.9499 26.7773 29.8799 26.649C29.7983 26.5323 29.6116 26.4623 29.3199 26.334C29.0283 26.1707 27.6049 25.4707 27.3483 25.3773C27.0799 25.284 26.9166 25.2373 26.6949 25.5173C26.5083 25.809 25.9483 26.4623 25.7849 26.649C25.6099 26.8473 25.4466 26.8707 25.1666 26.7307C24.8633 26.579 23.9299 26.2757 22.8333 25.2957C21.9699 24.5257 21.3983 23.5807 21.2233 23.289C21.0833 23.009 21.2116 22.834 21.3516 22.7057C21.4799 22.5773 21.6666 22.3673 21.7833 22.1923C21.9349 22.029 21.9816 21.9007 22.0749 21.714C22.1683 21.5157 22.1216 21.3523 22.0516 21.2123C21.9816 21.084 21.3983 19.6373 21.1533 19.0657C20.9199 18.5057 20.6866 18.5757 20.4999 18.564C20.3366 18.564 20.1499 18.5523 19.9516 18.5523Z" fill="black"/>
+</svg></a></li>
+                  <li><a href="#"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="48" height="48" fill="white"/>
+<path d="M19.0997 12.334H28.8997C32.633 12.334 35.6663 15.3673 35.6663 19.1007V28.9007C35.6663 30.6953 34.9534 32.4164 33.6844 33.6854C32.4154 34.9544 30.6943 35.6673 28.8997 35.6673H19.0997C15.3663 35.6673 12.333 32.634 12.333 28.9007V19.1007C12.333 17.306 13.0459 15.5849 14.3149 14.3159C15.5839 13.0469 17.305 12.334 19.0997 12.334ZM18.8663 14.6673C17.7524 14.6673 16.6841 15.1098 15.8965 15.8975C15.1088 16.6851 14.6663 17.7534 14.6663 18.8673V29.134C14.6663 31.4557 16.5447 33.334 18.8663 33.334H29.133C30.2469 33.334 31.3152 32.8915 32.1029 32.1038C32.8905 31.3162 33.333 30.2479 33.333 29.134V18.8673C33.333 16.5457 31.4547 14.6673 29.133 14.6673H18.8663ZM30.1247 16.4173C30.5114 16.4173 30.8824 16.571 31.1559 16.8445C31.4294 17.1179 31.583 17.4889 31.583 17.8757C31.583 18.2624 31.4294 18.6334 31.1559 18.9068C30.8824 19.1803 30.5114 19.334 30.1247 19.334C29.7379 19.334 29.367 19.1803 29.0935 18.9068C28.82 18.6334 28.6663 18.2624 28.6663 17.8757C28.6663 17.4889 28.82 17.1179 29.0935 16.8445C29.367 16.571 29.7379 16.4173 30.1247 16.4173ZM23.9997 18.1673C25.5468 18.1673 27.0305 18.7819 28.1245 19.8759C29.2184 20.9698 29.833 22.4536 29.833 24.0007C29.833 25.5477 29.2184 27.0315 28.1245 28.1254C27.0305 29.2194 25.5468 29.834 23.9997 29.834C22.4526 29.834 20.9688 29.2194 19.8749 28.1254C18.7809 27.0315 18.1663 25.5477 18.1663 24.0007C18.1663 22.4536 18.7809 20.9698 19.8749 19.8759C20.9688 18.7819 22.4526 18.1673 23.9997 18.1673ZM23.9997 20.5007C23.0714 20.5007 22.1812 20.8694 21.5248 21.5258C20.8684 22.1822 20.4997 23.0724 20.4997 24.0007C20.4997 24.9289 20.8684 25.8191 21.5248 26.4755C22.1812 27.1319 23.0714 27.5007 23.9997 27.5007C24.9279 27.5007 25.8182 27.1319 26.4745 26.4755C27.1309 25.8191 27.4997 24.9289 27.4997 24.0007C27.4997 23.0724 27.1309 22.1822 26.4745 21.5258C25.8182 20.8694 24.9279 20.5007 23.9997 20.5007Z" fill="black"/>
+</svg></a></li>
+                  <li><a href="#"><svg height="512px" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="comp_x5F_335-telegram"><g><path d="    M477.805,102.98l-67.327,317.516c-5.08,22.41-18.326,27.984-37.15,17.431l-102.585-75.596l-49.497,47.607    c-5.477,5.478-10.06,10.061-20.617,10.061l7.37-104.479l190.129-171.805c8.268-7.37-1.792-11.454-12.848-4.083L150.233,287.633    l-101.19-31.672c-22.011-6.873-22.408-22.012,4.581-32.568L449.419,70.911C467.744,64.039,483.779,74.993,477.805,102.98z" style="fill:none;stroke:#000000;stroke-width:35;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;"/></g></g><g id="Layer_1"/></svg></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__copyright">
+        <div class="container">
+          <div class="footer__period">©  2014-2022  RR</div><a class="footer__developedBy" href="#"><img src="./images/art6-logo.svg" alt="Сделано в ART6"></a><a class="footer__policy" href="#">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=key&amp;lang=ru_RU"></script>
+    <script src="js/main.min.js"></script>
+  </body>
+</html>
