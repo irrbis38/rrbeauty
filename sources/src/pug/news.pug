@@ -1,0 +1,22 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'news-page';
+block head
+    title RR Beauty - Новости
+block page
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title Новости
+
+
+    .news
+        .container
+            .news__wrapper

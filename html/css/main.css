@@ -1329,6 +1329,7 @@ button {
   display: none
 }
 .goodsSection {
+  content-visibility: auto;
   margin-top: 100px
 }
 @media (max-width:991px) {
@@ -2604,6 +2605,7 @@ body.lock .header {
   }
 }
 .popularCategories {
+  content-visibility: auto;
   margin-top: 159px
 }
 @media (max-width:991px) {
@@ -2694,6 +2696,7 @@ body.lock .header {
   }
 }
 .brandsSection {
+  content-visibility: auto;
   margin-top: 232px
 }
 @media (max-width:1600px) {
@@ -2768,6 +2771,7 @@ body.lock .header {
   opacity: 1!important
 }
 .promotionsSection {
+  content-visibility: auto;
   position: relative;
   margin-top: 265px;
   overflow: hidden;
@@ -3238,6 +3242,7 @@ body.lock .header {
   transform: translateX(-90%)
 }
 .discountedProducts {
+  content-visibility: auto;
   position: relative;
   overflow: hidden
 }
@@ -3440,6 +3445,7 @@ body.lock .header {
   }
 }
 .mapSection {
+  content-visibility: auto;
   position: relative;
   margin-top: 265px;
   overflow: hidden
@@ -3776,6 +3782,7 @@ body.lock .header {
 .cabinet-user-favorites-page .top__title,
 .cabinet-user-orders-page .top__title,
 .cart-page .top__title,
+.news-page .top__title,
 .order-completed-page .top__title,
 .order-placement-page .top__title {
   font-size: 74px;
@@ -3787,6 +3794,7 @@ body.lock .header {
   .cabinet-user-favorites-page .top__title,
   .cabinet-user-orders-page .top__title,
   .cart-page .top__title,
+  .news-page .top__title,
   .order-completed-page .top__title,
   .order-placement-page .top__title {
     padding: 50px 0 60px;
@@ -3800,6 +3808,7 @@ body.lock .header {
   .cabinet-user-favorites-page .top__title,
   .cabinet-user-orders-page .top__title,
   .cart-page .top__title,
+  .news-page .top__title,
   .order-completed-page .top__title,
   .order-placement-page .top__title {
     padding: 40px 0 50px;
@@ -3813,6 +3822,7 @@ body.lock .header {
   .cabinet-user-favorites-page .top__title,
   .cabinet-user-orders-page .top__title,
   .cart-page .top__title,
+  .news-page .top__title,
   .order-completed-page .top__title,
   .order-placement-page .top__title {
     padding: 29px 0 36px;
@@ -9183,6 +9193,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   }
 }
 .footer {
+  content-visibility: auto;
   padding-top: 71px;
   border-top: 4px solid #000
 }
