@@ -474,7 +474,8 @@ function doAddMapStoresListener() {
   const select = document.querySelector(".map__stores");
   const map_description = document.querySelector(".map__description");
 
-  select.addEventListener("change", (e) => {
+  select.addEventListener("choice", (e) => {
+    console.log("asdf");
     map_description.classList.remove("hidden");
   });
 }

@@ -644,7 +644,8 @@
   align-items: center;
 
   @include sm {
-    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
 }
 
@@ -733,6 +734,7 @@
 }
 
 .orders-good__amount {
+  flex: 0 0 56px;
   min-width: 56px;
   height: 56px;
   display: flex;
@@ -740,11 +742,11 @@
   align-items: center;
   border: 1px solid #f2f2f2;
 
-  @include sm {
-    margin-top: 25px;
-    margin-bottom: 25px;
-    width: 56px;
-  }
+  // @include sm {
+  //   margin-top: 25px;
+  //   margin-bottom: 25px;
+  //   width: 56px;
+  // }
 }
 
 .orders-good__sum {
@@ -758,8 +760,7 @@
     gap: 10px;
     // padding-top: 15px;
     padding: 15px 6px 10px 0;
-    margin-left: 6px;
-    border-top: 1px solid #f1f1f1;
+    // border-top: 1px solid #f1f1f1;
   }
 }
 

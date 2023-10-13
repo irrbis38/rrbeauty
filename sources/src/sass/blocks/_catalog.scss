@@ -102,15 +102,15 @@
   }
 }
 
-.cabinet-favorites-page {
-  .catalog__wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+// .cabinet-favorites-page {
+//   .catalog__wrapper {
+//     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 
-    @include xxs {
-      grid-template-columns: 1fr;
-    }
-  }
-}
+//     @include xxs {
+//       grid-template-columns: 1fr;
+//     }
+//   }
+// }
 
 .catalog-page {
   @include xs {
