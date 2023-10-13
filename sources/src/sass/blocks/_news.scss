@@ -1,0 +1,32 @@
+.news__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(464px, 1fr));
+  grid-auto-rows: 10px;
+  gap: 0 24px;
+}
+
+.news__unit {
+  margin-bottom: 28px;
+  font-size: 32px;
+  padding: 20px;
+}
+
+.news__unit--l {
+  grid-row-end: span 64;
+  background-color: aqua;
+}
+
+.news__unit--m {
+  grid-row-end: span 55;
+  background-color: brown;
+}
+
+.news__unit--s {
+  grid-row-end: span 41;
+  background-color: chartreuse;
+}
+
+.news__unit--xs {
+  grid-row-end: span 29;
+  background-color: darkorchid;
+}
