@@ -126,129 +126,135 @@
           <h2 class="top__title">Оформление заказа</h2>
         </div>
       </section>
-      <div class="order">
+      <form class="order" action="#">
         <div class="container order__container">
-          <div class="order__info">
+          <div class="order__info first-step-is-active">
             <div class="order__step">
               <h3 class="order__heading"><span>1/3</span><span>ПОКУПАТЕЛЬ</span></h3>
-              <form class="order__form" action="#">
-                <ul class="order__list">
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="customer" value="individual" checked><span></span><span>Физическое лицо</span>
-                    </label>
-                  </li>
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="customer" value="individual"><span></span><span>Компании</span>
-                    </label>
-                  </li>
-                </ul>
-                <div class="order__inputs-row"> 
-                  <input class="order__input" type="text" placeholder="ФИО">
-                  <input class="order__input" type="text" placeholder="Email">
-                  <input class="order__input" type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*">
-                </div>
-                <div class="order__inputs-row"> 
-                  <input class="order__input" type="text" placeholder="ФИО">
-                  <input class="order__input" type="text" placeholder="Email">
-                  <input class="order__input" type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*">
-                </div>
-              </form>
-              <div class="order__nav"> 
-                <button class="order__prev btn__white" type="button" aria-label="Вернуться к предыдущему шагу">Назад</button>
-                <button class="order__next btn__black" type="button" aria-label="Перейти к следующему шагу">Далее</button>
-              </div>
-            </div>
-            <div class="order__step order__step--map">
-              <h3 class="order__heading"><span>2/3</span><span>доставка</span></h3>
-              <form class="order__form" action="#">
-                <ul class="order__list">
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="delivery" value="sdek" checked><span></span><span>СДЭК</span>
-                    </label>
-                  </li>
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="delivery" value="avis"><span></span><span>Avis</span>
-                    </label>
-                  </li>
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="delivery" value="pickup"><span></span><span>Самовывоз из магазина</span>
-                    </label>
-                  </li>
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="delivery" value="courier"><span></span><span>Курьерская доставка (Алматы)</span>
-                    </label>
-                  </li>
-                </ul><span class="order__note">При заказе от 5 000 тенге - доставка по городу бесплатная, если менее 5 000 - 1 300 тенге.</span>
-              </form>
-              <div class="map">
-                <div class="mapSection__container">
-                  <div class="map__info">
-                    <select class="map__stores" name="stores" aria-label="Выбрать магазин"> 
-                      <option value="Almaty">Алматы</option>
-                      <option value="Astana">Астана</option>
-                      <option value="Moscow">Москва</option>
-                    </select>
-                    <div class="map__description">
-                      <div class="map__description-wrapper">
-                        <h3 class="map__storeName">магазин №214</h3>
-                        <div class="map__data">
-                          <p class="map__name">Адрес</p>
-                          <p class="map__value">Краснодар, В. Головатого, 313 </p>
-                        </div>
-                        <div class="map__data">
-                          <p class="map__name">График работы</p>
-                          <p class="map__value">Ежедневно, 10:00 — 22:00</p>
-                        </div>
-                        <div class="map__data">
-                          <p class="map__name">Горячая линия</p>
-                          <p class="map__value"><a href="tel:88008805060">8 800 880 50 60</a></p>
-                        </div>
-                        <div class="map__data">
-                          <p class="map__name">Почта</p>
-                          <p class="map__value"><a href="mailto:rrbeauty@gmail.com">rrbeauty@gmail.com</a></p>
-                        </div>
-                      </div>
-                      <button class="map__close" type="button" aria-label="Закрыть окно с описанием магазина">Закрыть</button>
-                    </div>
+              <div class="order__step-content">
+                <div class="order__section">
+                  <ul class="order__list">
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="customer" value="individual" checked><span></span><span>Физическое лицо</span>
+                      </label>
+                    </li>
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="customer" value="individual"><span></span><span>Компании</span>
+                      </label>
+                    </li>
+                  </ul>
+                  <div class="order__inputs-row"> 
+                    <input class="order__input input" type="text" placeholder="ФИО" name="user_name">
+                    <input class="order__input input" type="text" placeholder="Email" name="user_email">
+                    <input class="order__input input input-required" type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone">
+                  </div>
+                  <div class="order__inputs-row"> 
+                    <input class="order__input input" type="text" placeholder="ФИО" name="user_name">
+                    <input class="order__input input" type="text" placeholder="Email" name="user_email">
+                    <input class="order__input input input-required" type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone">
                   </div>
                 </div>
-                <div class="mapSection__wrapper" id="map-section-wrapper">
-                  <div class="mapSection__overlay"></div>
+              </div>
+            </div>
+            <div class="order__step order__step--map hidden">
+              <h3 class="order__heading"><span>2/3</span><span>доставка</span></h3>
+              <div class="order__step-content">
+                <div class="order__section">
+                  <ul class="order__list">
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="delivery" value="sdek"><span></span><span>СДЭК</span>
+                      </label>
+                    </li>
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="delivery" value="avis"><span></span><span>Avis</span>
+                      </label>
+                    </li>
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="delivery" value="pickup" checked><span></span><span>Самовывоз из магазина</span>
+                      </label>
+                    </li>
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="delivery" value="courier"><span></span><span>Курьерская доставка (Алматы)</span>
+                      </label>
+                    </li>
+                  </ul><span class="order__note">При заказе от 5 000 тенге - доставка по городу бесплатная, если менее 5 000 - 1 300 тенге.</span>
+                </div>
+                <div class="map">
+                  <div class="mapSection__container">
+                    <div class="map__info">
+                      <select class="map__stores" name="stores" aria-label="Выбрать магазин"> 
+                        <option value="Almaty">Алматы</option>
+                        <option value="Astana">Астана</option>
+                        <option value="Moscow">Москва</option>
+                      </select>
+                      <div class="map__description">
+                        <div class="map__description-wrapper">
+                          <h3 class="map__storeName">магазин №214</h3>
+                          <div class="map__data">
+                            <p class="map__name">Адрес</p>
+                            <p class="map__value">Краснодар, В. Головатого, 313 </p>
+                          </div>
+                          <div class="map__data">
+                            <p class="map__name">График работы</p>
+                            <p class="map__value">Ежедневно, 10:00 — 22:00</p>
+                          </div>
+                          <div class="map__data">
+                            <p class="map__name">Горячая линия</p>
+                            <p class="map__value"><a href="tel:88008805060">8 800 880 50 60</a></p>
+                          </div>
+                          <div class="map__data">
+                            <p class="map__name">Почта</p>
+                            <p class="map__value"><a href="mailto:rrbeauty@gmail.com">rrbeauty@gmail.com</a></p>
+                          </div>
+                        </div>
+                        <button class="map__close" type="button" aria-label="Закрыть окно с описанием магазина">Закрыть</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mapSection__wrapper" id="map-section-wrapper">
+                    <div class="mapSection__overlay"></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="order__step order__step--payment">
+            <div class="order__step order__step--payment hidden">
               <h3 class="order__heading"><span>3/3</span><span>оплата</span></h3>
-              <form class="order__form" action="#">
-                <ul class="order__list">
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="payment" value="card" checked><span></span><span>Оплата картой</span>
-                    </label>
-                  </li>
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="payment" value="cash"><span></span><span>Наличные</span>
-                    </label>
-                  </li>
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="payment" value="bank-transfer"><span></span><span>Банковский перевод</span>
-                    </label>
-                  </li>
-                  <li class="order__item">
-                    <label class="order__label">
-                      <input class="order__radio" type="radio" name="payment" value="payment-on-account"><span></span><span>Оплата по счету</span>
-                    </label>
-                  </li>
-                </ul>
-              </form>
+              <div class="order__step-content">
+                <div class="order__section">
+                  <ul class="order__list">
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="payment" value="card" checked><span></span><span>Оплата картой</span>
+                      </label>
+                    </li>
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="payment" value="cash"><span></span><span>Наличные</span>
+                      </label>
+                    </li>
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="payment" value="bank-transfer"><span></span><span>Банковский перевод</span>
+                      </label>
+                    </li>
+                    <li class="order__item">
+                      <label class="order__label">
+                        <input class="order__radio" type="radio" name="payment" value="payment-on-account"><span></span><span>Оплата по счету</span>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="order__nav"> 
+              <button class="order__prev btn__white" type="button" aria-label="Вернуться к предыдущему шагу">Назад</button>
+              <button class="order__next btn__black" type="button" aria-label="Перейти к следующему шагу">Далее</button>
             </div>
           </div>
           <div class="order__checkout">
@@ -260,11 +266,11 @@
                 <li><span>Способ доставки:</span><span>СДЭК</span></li>
                 <li><span>Стоимость доставки:</span><span>800₸</span></li>
               </ul><span class="order__msg">Оплата осуществляется после оформления заказа. С вами свяжется менеджер магазина для подтверждения заказа!</span>
-              <button class="cart__order btn__black" type="button" aria-label="Оформить заказ товаров">Оформить заказ</button>
+              <button class="cart__order btn__black" type="submit" aria-label="Оформить заказ товаров">Оформить заказ</button>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </main>
     <section class="auth signin">
       <div class="auth__overlay auth-close"></div>
@@ -318,13 +324,13 @@
                 <input class="auth__input auth__input--required" type="email" placeholder="Email*" required name="user_email">
               </div>
               <div class="auth__input-wrapper">
-                <input class="auth__input" type="text" placeholder="Телефон" name="user_phone">
+                <input class="auth__input auth__input--required" type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone">
               </div>
               <div class="auth__input-wrapper auth__hidden-content">
                 <input class="auth__input auth__input--required" type="password" placeholder="Пароль*" name="user_password" required>
               </div>
               <div class="auth__input-wrapper auth__hidden-content">
-                <input class="auth__input auth__input--required" type="password" placeholder="Подтверждения пароля*" name="user_password" required>
+                <input class="auth__input auth__input--required" type="password" placeholder="Подтверждения пароля*" name="user_password_repeat" required>
               </div>
               <button class="auth__submit" type="submit" aria-label="Войти в кабинет пользователя">Зарегистрироваться</button>
             </form>

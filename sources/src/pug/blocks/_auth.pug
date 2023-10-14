@@ -55,11 +55,11 @@ section.auth.signin
                     .auth__input-wrapper
                         input.auth__input.auth__input--required(type="email" placeholder="Email*" required name="user_email")
                     .auth__input-wrapper
-                        input.auth__input(type="text" placeholder="Телефон" name="user_phone")
+                        input.auth__input.auth__input--required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone")
                     .auth__input-wrapper.auth__hidden-content
                         input.auth__input.auth__input--required(type="password" placeholder="Пароль*" name="user_password" required)
                     .auth__input-wrapper.auth__hidden-content
-                        input.auth__input.auth__input--required(type="password" placeholder="Подтверждения пароля*" name="user_password" required)
+                        input.auth__input.auth__input--required(type="password" placeholder="Подтверждения пароля*" name="user_password_repeat" required)
 
 
                     button.auth__submit(type="submit" aria-label="Войти в кабинет пользователя") Зарегистрироваться

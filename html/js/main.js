@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   doShowAuth();
   doShowRegistration();
   doHideAuth();
+  doInitMaskInput();
   checkAuthForm();
 
   // init GSAP ScrollTrigger
@@ -96,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doShowOneclick();
     doHideOneclick();
     checkOneclickForm();
-    doInitMaskInput();
+    // doInitMaskInput();
     doSetCursorToEnd();
     initAllGoodsSectionsSliders();
     doToggleFavoritesIcons();
@@ -127,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const order_placement_page = document.querySelector(".order-placement-page");
 
   if (order_placement_page) {
-    doInitMaskInput();
+    // doInitMaskInput();
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
@@ -153,7 +154,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   );
 
   if (cabinet_personal_data_page) {
-    checkCabinetForms();
+    doInitMaskInput();
+    checkRequiredFormInputs();
   }
 
   // cabinet-personal-data page
@@ -474,10 +476,9 @@ function doAddMapStoresListener() {
   const select = document.querySelector(".map__stores");
   const map_description = document.querySelector(".map__description");
 
-  select.addEventListener("choice", (e) => {
-    console.log("asdf");
-    map_description.classList.remove("hidden");
-  });
+  select.addEventListener("choice", () =>
+    map_description.classList.remove("hidden")
+  );
 }
 
 // hide map__description
@@ -2325,7 +2326,6 @@ function handleHideAuth(auth, body, auth_inputs) {
 
 function checkAuthForm() {
   var auth = document.querySelector(".auth");
-  var auth_inputs = document.querySelectorAll(".auth__input");
   var body = document.body;
   var forms = Array.from(document.querySelectorAll(".auth__form"));
 
@@ -2339,12 +2339,10 @@ function checkAuthForm() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      required_inputs.forEach((input) => {
-        input.validity.valueMissing && input.classList.add("error");
-      });
+      required_inputs.forEach((input) => doCheckForm(input, all_inputs));
 
       !checkContainingErrorClassName(required_inputs) &&
-        doSubmitAuth(auth, body, auth_inputs);
+        doSubmitAuth(auth, body, all_inputs);
     });
 
     // adds listeners to all elements that can have an error className
@@ -2366,9 +2364,6 @@ function doRemoveErrorClassNameInAuth(inputs) {
 
 function doSubmitAuth(auth, body, auth_inputs) {
   handleHideAuth(auth, body, auth_inputs);
-
-  // var panel_user = document.querySelector(".panel__user");
-  // panel_user.classList.remove("not-authorized");
 
   console.log("form submited");
 
@@ -2397,31 +2392,6 @@ function handleCabinetNav(buttons, curr_btn) {
   // HERE CHANGE CONTENT OF ORDER LIST ON THE CABINET-USER-ORDERS PAGE
 }
 
-function checkCabinetForms() {
-  var forms = Array.from(document.querySelectorAll(".cabinet__form"));
-
-  forms.forEach((form) => {
-    var all_inputs = Array.from(form.querySelectorAll(".cabinet__input"));
-    var required_inputs = all_inputs.filter((input) =>
-      input.classList.contains("cabinet__input--required")
-    );
-
-    // add listener to submit form button
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      required_inputs.forEach((input) => {
-        input.validity.valueMissing && input.classList.add("error");
-      });
-
-      !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
-    });
-
-    // adds listeners to all elements that can have an error className
-    doRemoveErrorClassNameInAuth(required_inputs);
-  });
-}
-
 function doSavePersonalData() {
   console.log("all changes saved");
   // HERE DO LOGIC TO SAVE PERSONAL DATA
@@ -2439,4 +2409,59 @@ function doToggleCabinetAccordion() {
       acc.classList.toggle("show")
     );
   });
+}
+
+// FORM VALIDATION
+
+function checkRequiredFormInputs() {
+  var forms = Array.from(document.querySelectorAll(".form"));
+
+  forms.forEach((form) => {
+    var all_inputs = Array.from(form.querySelectorAll(".input"));
+    var required_inputs = all_inputs.filter((input) =>
+      input.classList.contains("input-required")
+    );
+
+    // add listener to submit form button
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      required_inputs.forEach((input) => doCheckForm(input, all_inputs));
+
+      !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
+    });
+
+    // adds listeners to all elements that can have an error className
+    doRemoveErrorClassNameInAuth(required_inputs);
+  });
+}
+
+function doCheckForm(input, all_inputs) {
+  // check 'user_phone' input
+  if (input.name === "user_phone") {
+    var len = parseInt(input.dataset.minPhoneLength);
+    minPhoneLen = !Number.isNaN(len) && len > 7 ? len : 18;
+    input.value.length < minPhoneLen && input.classList.add("error");
+  }
+  // check 'user_email' input
+  else if (input.name === "user_email") {
+    !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.value) &&
+      input.classList.add("error");
+  }
+  // check 'user_password' input
+  else if (input.name === "user_password") {
+    input.value.length < 5 && input.classList.add("error");
+  }
+  // check 'user_password_repeat' input
+  else if (input.name === "user_password_repeat") {
+    var input_pass = all_inputs.filter(
+      (input) => input.name === "user_password"
+    )[0];
+    var pass = input_pass.value;
+    (input.value < 5 || input.value !== pass) && input.classList.add("error");
+  }
+  // check another required input
+  else {
+    input.validity.valueMissing && input.classList.add("error");
+  }
 }

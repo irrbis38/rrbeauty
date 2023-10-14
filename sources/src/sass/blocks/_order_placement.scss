@@ -44,18 +44,20 @@
 }
 
 .order__step {
-  padding-bottom: 120px;
+  // padding-bottom: 120px;
+  border-bottom: 1px solid #d9d9d9;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid #d9d9d9;
-  }
+  // &:not(:last-child) {
+  //   border-bottom: 1px solid #d9d9d9;
+  // }
 
   @include xs {
     position: relative;
-    padding-bottom: 74px;
+    // padding-bottom: 74px;
+    border-bottom: none;
 
     &:not(:last-child) {
-      border-bottom: none;
+      // border-bottom: none;
       &::after {
         content: "";
         position: absolute;
@@ -65,6 +67,23 @@
         height: 1px;
         background-color: #d9d9d9;
       }
+    }
+  }
+
+  &.hidden {
+    content-visibility: none;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &.collapse {
+    .order__step-content {
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      pointer-events: none;
     }
   }
 }
@@ -94,10 +113,10 @@
   }
 }
 
-.order__form {
+.order__section {
   padding-right: 27px;
   padding-bottom: 28px;
-  border-bottom: 1px solid #d9d9d9;
+  // border-bottom: 1px solid #d9d9d9;
 
   @include md {
     padding-right: 0;
@@ -105,25 +124,25 @@
 }
 
 .order__step--map {
-  .order__form {
+  .order__section {
     border-bottom: none;
   }
 
   @include xs {
-    .order__form {
+    .order__section {
       padding-bottom: 20px;
     }
   }
 }
 
 .order__step--payment {
-  .order__form {
+  .order__section {
     border-bottom: none;
   }
 
   @include xs {
     padding-bottom: 0;
-    .order__form {
+    .order__section {
       padding-bottom: 0;
     }
   }
@@ -146,6 +165,12 @@
     gap: 28px 0;
   }
 }
+
+// .order__step--payment {
+//   .order__list {
+//     padding-bottom: 0;
+//   }
+// }
 
 .order__item {
   @include xxs {
@@ -269,13 +294,19 @@
   }
 }
 
-.order__prev {
-  order: 2;
+.first-step-is-active .order__prev,
+.last-step-is-active .order__next {
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.order__next {
-  order: 1;
-}
+// .order__prev {
+//   order: 2;
+// }
+
+// .order__next {
+//   order: 1;
+// }
 
 .order__note {
   color: #838383;
