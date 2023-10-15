@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   doShowAuth();
   doShowRegistration();
   doHideAuth();
+  doInitMaskInput();
   checkAuthForm();
 
   // init GSAP ScrollTrigger
@@ -34,9 +35,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // sliders in goodsCard sections
     initAllGoodsSectionsSliders();
 
-    if (typeof ymaps !== "undefined" && ymaps !== null) {
-      setTimeout(doInitMap, 0);
-    }
+    doCreateMapScript();
+    // if (typeof ymaps !== "undefined" && ymaps !== null) {
+    //   setTimeout(doInitMap, 0);
+    // }
   }
 
   // catalog page
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doShowOneclick();
     doHideOneclick();
     checkOneclickForm();
-    doInitMaskInput();
+    // doInitMaskInput();
     doSetCursorToEnd();
     initAllGoodsSectionsSliders();
     doToggleFavoritesIcons();
@@ -127,15 +129,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const order_placement_page = document.querySelector(".order-placement-page");
 
   if (order_placement_page) {
-    doInitMaskInput();
+    // doInitMaskInput();
     doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     doAddMapStoresListener();
     doHideMapDescription();
+    doSwitchOrderStep();
 
-    if (typeof ymaps !== "undefined" && ymaps !== null) {
-      setTimeout(doInitMap, 0);
-    }
+    doCreateMapScript();
+
+    // if (typeof ymaps !== "undefined" && ymaps !== null) {
+    //   setTimeout(doInitMap, 0);
+    // }
   }
 
   // cabinet-user-orders page
@@ -153,7 +158,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   );
 
   if (cabinet_personal_data_page) {
-    checkCabinetForms();
+    doInitMaskInput();
+    checkRequiredFormInputs();
   }
 
   // cabinet-personal-data page
@@ -413,7 +419,17 @@ function doPanelInit() {
 
 // init map on main page
 
-async function doInitMap() {
+function doCreateMapScript() {
+  setTimeout(function () {
+    var script = document.createElement("script");
+    script.async = false;
+    script.src = "https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU";
+    document.body.appendChild(script);
+    script.onload = () => doInitMap();
+  }, 2000);
+}
+
+function doInitMap() {
   const mark_link = "images/map-current-mark.svg";
   function init() {
     let center = [51.158562572612595, 71.43921449999996];
@@ -474,9 +490,9 @@ function doAddMapStoresListener() {
   const select = document.querySelector(".map__stores");
   const map_description = document.querySelector(".map__description");
 
-  select.addEventListener("change", (e) => {
-    map_description.classList.remove("hidden");
-  });
+  select.addEventListener("choice", () =>
+    map_description.classList.remove("hidden")
+  );
 }
 
 // hide map__description
@@ -2324,7 +2340,6 @@ function handleHideAuth(auth, body, auth_inputs) {
 
 function checkAuthForm() {
   var auth = document.querySelector(".auth");
-  var auth_inputs = document.querySelectorAll(".auth__input");
   var body = document.body;
   var forms = Array.from(document.querySelectorAll(".auth__form"));
 
@@ -2338,12 +2353,10 @@ function checkAuthForm() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      required_inputs.forEach((input) => {
-        input.validity.valueMissing && input.classList.add("error");
-      });
+      required_inputs.forEach((input) => doCheckForm(input, all_inputs));
 
       !checkContainingErrorClassName(required_inputs) &&
-        doSubmitAuth(auth, body, auth_inputs);
+        doSubmitAuth(auth, body, all_inputs);
     });
 
     // adds listeners to all elements that can have an error className
@@ -2365,9 +2378,6 @@ function doRemoveErrorClassNameInAuth(inputs) {
 
 function doSubmitAuth(auth, body, auth_inputs) {
   handleHideAuth(auth, body, auth_inputs);
-
-  // var panel_user = document.querySelector(".panel__user");
-  // panel_user.classList.remove("not-authorized");
 
   console.log("form submited");
 
@@ -2396,31 +2406,6 @@ function handleCabinetNav(buttons, curr_btn) {
   // HERE CHANGE CONTENT OF ORDER LIST ON THE CABINET-USER-ORDERS PAGE
 }
 
-function checkCabinetForms() {
-  var forms = Array.from(document.querySelectorAll(".cabinet__form"));
-
-  forms.forEach((form) => {
-    var all_inputs = Array.from(form.querySelectorAll(".cabinet__input"));
-    var required_inputs = all_inputs.filter((input) =>
-      input.classList.contains("cabinet__input--required")
-    );
-
-    // add listener to submit form button
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      required_inputs.forEach((input) => {
-        input.validity.valueMissing && input.classList.add("error");
-      });
-
-      !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
-    });
-
-    // adds listeners to all elements that can have an error className
-    doRemoveErrorClassNameInAuth(required_inputs);
-  });
-}
-
 function doSavePersonalData() {
   console.log("all changes saved");
   // HERE DO LOGIC TO SAVE PERSONAL DATA
@@ -2438,4 +2423,156 @@ function doToggleCabinetAccordion() {
       acc.classList.toggle("show")
     );
   });
+}
+
+// FORM VALIDATION
+
+function checkRequiredFormInputs() {
+  var forms = Array.from(document.querySelectorAll(".form"));
+
+  forms.forEach((form) => {
+    var all_inputs = Array.from(form.querySelectorAll(".input"));
+    var required_inputs = all_inputs.filter((input) =>
+      input.classList.contains("input-required")
+    );
+
+    // add listener to submit form button
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      required_inputs.forEach((input) => doCheckForm(input, all_inputs));
+
+      !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
+    });
+
+    // adds listeners to all elements that can have an error className
+    doRemoveErrorClassNameInAuth(required_inputs);
+  });
+}
+
+function doCheckForm(input, all_inputs) {
+  // check 'user_phone' input
+  if (input.name === "user_phone") {
+    var len = parseInt(input.dataset.minPhoneLength);
+    minPhoneLen = !Number.isNaN(len) && len > 7 ? len : 18;
+    input.value.length < minPhoneLen && input.classList.add("error");
+  }
+  // check 'user_email' input
+  else if (input.name === "user_email") {
+    !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.value) &&
+      input.classList.add("error");
+  }
+  // check 'user_password' input
+  else if (input.name === "user_password") {
+    input.value.length < 5 && input.classList.add("error");
+  }
+  // check 'user_password_repeat' input
+  else if (input.name === "user_password_repeat") {
+    var input_pass = all_inputs.filter(
+      (input) => input.name === "user_password"
+    )[0];
+    var pass = input_pass.value;
+    (input.value < 5 || input.value !== pass) && input.classList.add("error");
+  }
+  // check another required input
+  else {
+    input.validity.valueMissing && input.classList.add("error");
+  }
+}
+
+// ORDER-PLACEMENT PAGE
+
+function doSwitchOrderStep() {
+  var order_info = document.querySelector(".order__info");
+  var steps = Array.from(document.querySelectorAll(".order__step"));
+  var prev_btn = document.querySelector(".order__prev");
+  var next_btn = document.querySelector(".order__next");
+
+  next_btn.addEventListener("click", () =>
+    handleOrderNextBtn(order_info, steps)
+  );
+
+  prev_btn.addEventListener("click", () =>
+    handleOrderPrevBtn(order_info, steps)
+  );
+}
+
+function handleOrderNextBtn(order_info, steps) {
+  var max_idx = steps.length - 1;
+  var curr_idx = steps.findIndex((step) => step.classList.contains("current"));
+  var curr = steps[curr_idx];
+  var next = steps[curr_idx + 1];
+
+  // first step
+  var first_step = document.querySelector(".step-first");
+  var all_inputs = Array.from(first_step.querySelectorAll(".input"));
+  var required_inputs = all_inputs.filter((input) =>
+    input.classList.contains("input-required")
+  );
+
+  // check
+
+  if (curr_idx === 0 && curr_idx !== max_idx) {
+    required_inputs.forEach((input) => doCheckForm(input, all_inputs));
+
+    if (!checkContainingErrorClassName(required_inputs)) {
+      order_info.classList.remove("first-step-is-current");
+      doSetNextStep(curr, next);
+    }
+    // adds listeners to all elements that can have an error className
+    doRemoveErrorClassNameInAuth(required_inputs);
+  } else if (curr_idx > 0 && curr_idx < max_idx - 1) {
+    doSetNextStep(curr, next);
+  } else if (curr_idx === max_idx - 1) {
+    order_info.classList.add("last-step-is-current");
+    doSetNextStep(curr, next);
+  } else {
+    return;
+  }
+}
+
+function doSetNextStep(curr, next) {
+  curr.classList.add("collapse");
+  curr.classList.remove("current");
+  next.classList.add("current");
+  next.classList.remove("hidden");
+}
+
+function handleOrderPrevBtn(order_info, steps) {
+  var max_idx = steps.length - 1;
+  var curr_idx = steps.findIndex((step) => step.classList.contains("current"));
+  var curr = steps[curr_idx];
+  var next = steps[curr_idx - 1];
+
+  if (curr_idx === max_idx && curr_idx !== 0) {
+    order_info.classList.remove("last-step-is-current");
+    doSetPrevStep(curr, next);
+  } else if (curr_idx > 1 && curr_idx < max_idx) {
+    doSetPrevStep(curr, next);
+  } else if (curr_idx === 1) {
+    order_info.classList.add("first-step-is-current");
+    doSetPrevStep(curr, next);
+  } else {
+    return;
+  }
+}
+
+function doSetPrevStep(curr, next) {
+  curr.classList.add("hidden");
+  curr.classList.remove("current");
+  next.classList.add("current");
+  next.classList.remove("collapse");
+}
+
+function doCheckOrderPlacementFirstStepInputs() {
+  var first_step = Array.from(document.querySelectorAll(".step-first"));
+  var all_inputs = Array.from(first_step.querySelectorAll(".input"));
+  var required_inputs = all_inputs.filter((input) =>
+    input.classList.contains("input-required")
+  );
+  required_inputs.forEach((input) => doCheckForm(input, all_inputs));
+
+  !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
+  // adds listeners to all elements that can have an error className
+  doRemoveErrorClassNameInAuth(required_inputs);
 }
