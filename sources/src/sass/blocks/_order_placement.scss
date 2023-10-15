@@ -79,6 +79,7 @@
   }
 
   &.collapse {
+    border-bottom: none;
     .order__step-content {
       height: 0;
       overflow: hidden;
@@ -254,6 +255,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
+  border: 1px solid #f1f1f1;
 
   &::placeholder {
     color: #757575;
@@ -294,8 +296,8 @@
   }
 }
 
-.first-step-is-active .order__prev,
-.last-step-is-active .order__next {
+.first-step-is-current .order__prev,
+.last-step-is-current .order__next {
   visibility: hidden;
   pointer-events: none;
 }

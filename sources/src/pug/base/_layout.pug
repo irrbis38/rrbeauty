@@ -46,12 +46,15 @@ html(lang="ru")
         block footer
             include ../blocks/_footer
 
-            if mapInclue
-                block js
-                    script(src="https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU")
-                    script(src="js/main.min.js")
-            else 
-                block js
-                    script(src="js/main.min.js")
+            //- if mapInclue
+            //-     block js
+            //-         script(src="https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU")
+            //-         script(src="js/main.min.js")
+            //- else 
+            //-     block js
+            //-         script(src="js/main.min.js")
+
+            block js
+                script(src="js/main.min.js")
 
 
