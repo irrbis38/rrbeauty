@@ -43,9 +43,9 @@ block page
 
                 form.cabinet__form.form(action="#" novalidate)
                     .cabinet__input-wrapper
-                        input.cabinet__input.input.input-required(type="text" placeholder="ФИО*" required name="user_name")
-                        input.cabinet__input.input.input-required(type="text" placeholder="Email*" required name="user_email")
-                        input.cabinet__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone")
+                        input.cabinet__input.input.input-required(type="text" placeholder="ФИО*" required name="user_name" autocomplete="off")
+                        input.cabinet__input.input.input-required(type="text" placeholder="Email*" required name="user_email" autocomplete="off")
+                        input.cabinet__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
 
 
                     button.cabinet__submit(type="submit" aria-label="Сохранить внесённые изменения") Сохранить изменения
@@ -54,9 +54,9 @@ block page
 
                 form.cabinet__form.form(action="#" novalidate)
                     .cabinet__input-wrapper
-                        input.cabinet__input.input.input-required(type="text" placeholder="Новый пароль*" required name="user_password")
+                        input.cabinet__input.input.input-required(type="text" placeholder="Новый пароль*" required name="user_password" autocomplete="off")
                     .cabinet__input-wrapper
-                        input.cabinet__input.input.input-required(type="text" placeholder="Новый пароль еще раз*" name="user_password_repeat" required)
+                        input.cabinet__input.input.input-required(type="text" placeholder="Новый пароль еще раз*" name="user_password_repeat" required autocomplete="off")
 
 
                     button.cabinet__submit(type="submit" aria-label="Сохранить введённый новый пароль") Сохранить новый пароль

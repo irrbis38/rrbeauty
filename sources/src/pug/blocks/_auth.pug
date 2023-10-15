@@ -51,15 +51,15 @@ section.auth.signin
 
                 form.auth__form(action="#" novalidate)
                     .auth__input-wrapper
-                        input.auth__input.auth__input--required(type="text" placeholder="ФИО*" required name="user_name")
+                        input.auth__input.auth__input--required(type="text" placeholder="ФИО*" required name="user_name" autocomplete="off")
                     .auth__input-wrapper
-                        input.auth__input.auth__input--required(type="email" placeholder="Email*" required name="user_email")
+                        input.auth__input.auth__input--required(type="email" placeholder="Email*" required name="user_email" autocomplete="off")
                     .auth__input-wrapper
-                        input.auth__input.auth__input--required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone")
+                        input.auth__input.auth__input--required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
                     .auth__input-wrapper.auth__hidden-content
-                        input.auth__input.auth__input--required(type="password" placeholder="Пароль*" name="user_password" required)
+                        input.auth__input.auth__input--required(type="password" placeholder="Пароль*" name="user_password" required autocomplete="off")
                     .auth__input-wrapper.auth__hidden-content
-                        input.auth__input.auth__input--required(type="password" placeholder="Подтверждения пароля*" name="user_password_repeat" required)
+                        input.auth__input.auth__input--required(type="password" placeholder="Подтверждения пароля*" name="user_password_repeat" required autocomplete="off")
 
 
                     button.auth__submit(type="submit" aria-label="Войти в кабинет пользователя") Зарегистрироваться

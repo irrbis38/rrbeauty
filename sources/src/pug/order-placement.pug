@@ -45,14 +45,14 @@ block page
                                         span Компании
 
                             .order__inputs-row 
-                                input.order__input.input(type="text" placeholder="ФИО" name="user_name")
-                                input.order__input.input(type="text" placeholder="Email" name="user_email")
-                                input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone")
+                                input.order__input.input(type="text" placeholder="ФИО" name="user_name" autocomplete="off")
+                                input.order__input.input(type="text" placeholder="Email" name="user_email" autocomplete="off")
+                                input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
 
                             .order__inputs-row 
-                                input.order__input.input(type="text" placeholder="ФИО" name="user_name")
-                                input.order__input.input(type="text" placeholder="Email" name="user_email")
-                                input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone")
+                                input.order__input.input(type="text" placeholder="ФИО" name="user_name" autocomplete="off")
+                                input.order__input.input(type="text" placeholder="Email" name="user_email" autocomplete="off")
+                                input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
 
 
                 .order__step.order__step--map.hidden
@@ -165,7 +165,7 @@ block page
                     button.order__next.btn__black(type="button" aria-label="Перейти к следующему шагу") Далее
 
             .order__checkout
-                input.cart__promocode.order__promocode(type="text" placeholder="Есть промокод")
+                input.cart__promocode.order__promocode(type="text" placeholder="Есть промокод" autocomplete="off")
 
                 .cart__checkout-inner
                     .cart__total

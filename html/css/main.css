@@ -8929,6 +8929,10 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
 }
 @media (max-width:991px) {
   .orders-good__total {
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    gap: 15px;
     margin-top: 25px;
     margin-bottom: 25px
   }

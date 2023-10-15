@@ -227,8 +227,8 @@ block page
                             form(action="#" novalidate).add__form
                                 .add__wrapper
                                     .add__data
-                                        input.add__input(type="text" name="user_name" placeholder="Ваше имя" maxlength="30" required)
-                                        input.add__input(type="email" name="email" placeholder="Email" required)
+                                        input.add__input(type="text" name="user_name" placeholder="Ваше имя" maxlength="30" required autocomplete="off")
+                                        input.add__input(type="email" name="email" placeholder="Email" required autocomplete="off")
 
                                     +starRating('add__rating', false, 2)
 
@@ -263,8 +263,8 @@ block page
                 .oneclick__form-container
 
                     form.oneclick__form(action="#" novalidate)
-                        input.oneclick__input(type="text" placeholder="Ваше имя*" required name="customer_name")
-                        input.oneclick__input.oneclick__phone(type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18")
+                        input.oneclick__input(type="text" placeholder="Ваше имя*" required name="customer_name" autocomplete="off")
+                        input.oneclick__input.oneclick__phone(type="text" placeholder="Ваш телефон*" name="customer_phone" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" autocomplete="off")
                         input.oneclick__input(type="text" placeholder="Ваша почта" name="customer_email")
 
                         button.oneclick__submit(type="submit" aria-label="Отправить данные для заказа в 1 клик") Отправить
