@@ -81,16 +81,19 @@
 .catalog__wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(332px, 1fr));
+  // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 41px 24px;
   margin-bottom: 90px;
 
   @include lg {
-    grid-template-columns: repeat(3, 1fr);
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 
-  @include sm {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  // @include sm {
+  //   // grid-template-columns: repeat(2, 1fr);
+  //   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  // }
 
   @include xs {
     margin-bottom: 48px;
