@@ -1,0 +1,83 @@
+.notfound {
+  overflow-x: hidden;
+  padding-bottom: 241px;
+
+  @include xs {
+    padding-bottom: 190px;
+  }
+}
+
+.notfound__title {
+  position: relative;
+  max-width: 512px;
+  margin: 0 auto;
+  padding: 30px 24px 30px;
+  color: #000;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: -0.56px;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 1px;
+    background-color: #000;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: calc(100% + 10px);
+    width: 100vw;
+    height: 1px;
+    background-color: #d9d9d9;
+  }
+
+  @include xs {
+    padding-bottom: 22px;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.36px;
+  }
+}
+
+.notfound__info {
+  position: relative;
+  max-width: 512px;
+  margin: 0 auto;
+  padding: 27px 24px 0 24px;
+  border-right: 1px solid #000;
+
+  @include xs {
+    padding-top: 20px;
+  }
+}
+
+.notfound__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 24px;
+
+  a {
+    padding: 18px 20px;
+    text-align: center;
+  }
+
+  @include xs {
+    flex-wrap: wrap;
+    gap: 20px 0;
+
+    a {
+      width: 100%;
+    }
+  }
+}

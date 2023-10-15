@@ -1,0 +1,28 @@
+extends base/_layout
+block vars
+    -
+        var bodyClass = 'notfound-page';
+block head
+    title RR Beauty - Страница не найдена
+block page
+
+    section.top
+
+        .container
+
+            ul.top__breadcrumps
+                li: a(href="#") Главная
+                li: a(href="#") Каталог
+                li: span Средства ухода
+
+            h2.top__title 404
+
+    .notfound
+        .container
+
+            h3.notfound__title Извините, мы не можем#[br]найти эту страницу! 
+
+            .notfound__info
+
+                .notfound__nav
+                    a.notfound__to-main.btn__black(href="#") Вернуться на главную
