@@ -20,12 +20,24 @@ block page
     .news
         .container
             .news__wrapper
-                .news__unit.news__unit--m 1
-                .news__unit.news__unit--xs 2
-                .news__unit.news__unit--l 3
-                .news__unit.news__unit--l 4
-                .news__unit.news__unit--s 5
-                .news__unit.news__unit--s 6
-                .news__unit.news__unit--m 7
-                .news__unit.news__unit--l 8
-                .news__unit.news__unit--xs 9
+
+                -
+                    var newsList = [
+                        {className: 'news__unit--m', img: '1'},
+                        {className: 'news__unit--xs', img: '2'},
+                        {className: 'news__unit--l', img: '3'},
+                        {className: 'news__unit--l', img: '4'},
+                        {className: 'news__unit--s', img: '5'},
+                        {className: 'news__unit--s', img: '5'},
+                        {className: 'news__unit--m', img: '1'},
+                        {className: 'news__unit--l', img: '3'},
+                        {className: 'news__unit--s', img: '9'},
+                    ]
+
+                each item in newsList
+                    +newsCard(item.img)
+
+
+            +pagination('news__pagination')
+
+            button.catalog__btn.showmore__btn Показать еще

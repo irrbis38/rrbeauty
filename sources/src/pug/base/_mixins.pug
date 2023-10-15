@@ -301,3 +301,16 @@ mixin cartRegularRow(imgNum)
 mixin brandsAbcItem(letter)
     li.brands-abc__item: a(href="#")= letter
 
+
+mixin newsCard(img)
+    .news__unit
+        .news__content
+            .news__img 
+                img(src= "./images/news-" + img + ".jpg" alt= "Новость номер " + img)
+            h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
+            p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
+
+        .news__bottom 
+            a.news__link(href="#") Читать дальше
+            time.news__published(datetime="2022-10-11") 10.11.2022
+
