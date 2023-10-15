@@ -124,6 +124,32 @@
   }
 }
 
+.regular-page {
+  .top__title {
+    text-align: left;
+    font-size: 74px;
+    padding: 136px 0 28px;
+
+    @include lg {
+      padding: 100px 0 28px;
+      font-size: 52px;
+      letter-spacing: 4px;
+    }
+
+    @include sm {
+      padding: 80px 0 28px;
+      font-size: 40px;
+      letter-spacing: 2.5px;
+    }
+
+    @include xs {
+      padding: 74px 0 21px;
+      font-size: 28px;
+      letter-spacing: 1.4px;
+    }
+  }
+}
+
 // order-completed-page
 
 .order-completed-page {
