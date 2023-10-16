@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
     // doAddMapStoresListener();
+    doChooseStore();
     doHideMapDescription();
     doSwitchOrderStep();
 
@@ -521,6 +522,17 @@ function doInitMapStoresSelect() {
 //     map_description.classList.remove("hidden")
 //   );
 // }
+
+// choose current store
+
+function doChooseStore() {
+  var map_description = document.querySelector(".map__description");
+  var choose_btn = document.querySelector(".map__choose");
+
+  choose_btn.addEventListener("click", () =>
+    map_description.classList.toggle("checked")
+  );
+}
 
 // hide map__description
 

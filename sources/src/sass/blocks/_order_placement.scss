@@ -41,6 +41,10 @@
   @include xs {
     margin-bottom: 79px;
   }
+
+  @include xxs {
+    margin-bottom: 70px;
+  }
 }
 
 .order__step {
@@ -111,6 +115,10 @@
     span:first-child {
       margin-right: 32px;
     }
+  }
+
+  .collapse & {
+    color: #acacac;
   }
 }
 
@@ -230,7 +238,8 @@
   display: grid;
   // grid-template-columns: repeat(auto-fit, minmax(334px, 1fr));
   // grid-template-columns: repeat(3, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 16px 23px;
 
@@ -242,9 +251,15 @@
   //   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   // }
 
-  @include xxs {
+  @include lg {
+    max-width: 600px;
+    margin: 0 auto;
     grid-template-columns: 1fr;
   }
+
+  // @include xxs {
+  //   grid-template-columns: 1fr;
+  // }
 }
 
 .order__input {
@@ -306,15 +321,20 @@
 .last-step-is-current .order__next {
   visibility: hidden;
   pointer-events: none;
+  height: 0;
+  padding: 0;
+  // display: none;
 }
 
-// .order__prev {
-//   order: 2;
-// }
+@include xxs {
+  .order__prev {
+    order: 2;
+  }
 
-// .order__next {
-//   order: 1;
-// }
+  .order__next {
+    order: 1;
+  }
+}
 
 .order__note {
   color: #838383;

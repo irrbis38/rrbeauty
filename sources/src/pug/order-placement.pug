@@ -16,7 +16,7 @@ block page
                 li: a(href="#") Каталог
                 li: span Средства ухода
 
-            h2.top__title Оформление заказа
+            h2.top__title Оформление #[span(class="hidden-on-mobile") заказа]
     form.order(action="#")
         .container.order__container
 
@@ -118,7 +118,10 @@ block page
                                                 p.map__name Почта
                                                 p.map__value: a(href="mailto:rrbeauty@gmail.com") rrbeauty@gmail.com
 
-                                        button.map__close(type="button" aria-label="Закрыть окно с описанием магазина") Закрыть
+                                        button.map__choose.btn__black(type="button" aria-label="Выбрать текущий магазин")
+                                            span Выбрать
+                                            span Выбрано
+                                        button.map__close.btn__white(type="button" aria-label="Закрыть окно с описанием магазина") Закрыть
 
 
                             .mapSection__wrapper#map-section-wrapper

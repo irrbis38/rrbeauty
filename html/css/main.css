@@ -1253,6 +1253,8 @@ button {
   display: block;
   width: 100%;
   padding: 18px 20px;
+  font-size: 17px;
+  font-weight: 600;
   color: #000;
   background-color: #fff;
   border: 1px solid #000;
@@ -1671,6 +1673,11 @@ button {
 }
 .input-required.error::placeholder {
   color: red
+}
+@media (max-width:575px) {
+  .hidden-on-mobile {
+    display: none
+  }
 }
 .header {
   position: relative;
@@ -3563,11 +3570,12 @@ body.lock .header {
   padding: 27px 26px 20px;
   border: 2px solid #000;
   background-color: #fff;
-  pointer-events: all
+  pointer-events: all;
+  transition: opacity .2s ease-out
 }
 @media (max-width:767px) {
   .map__description {
-    max-height: 530px;
+    min-height: 530px;
     max-width: 362px
   }
 }
@@ -3612,17 +3620,32 @@ body.lock .header {
   text-transform: uppercase;
   color: #000
 }
+.map__choose {
+  margin-bottom: 10px;
+  padding: 14px 20px
+}
+.map__choose span {
+  text-align: center
+}
+.map__choose span:nth-child(2) {
+  display: none
+}
+.map__description.checked .map__choose {
+  background-color: #2dab17;
+  border-color: #2dab17
+}
+.map__description.checked .map__choose span:nth-child(1) {
+  display: none
+}
+.map__description.checked .map__choose span:nth-child(2) {
+  display: block
+}
+.map__description.checked .map__choose:hover {
+  background-color: #fff
+}
 .map__close {
   width: 100%;
-  padding: 14px 20px;
-  color: #fff;
-  background-color: #000;
-  border: 1px solid #000;
-  transition: all .2s ease-out
-}
-.map__close:hover {
-  color: #000;
-  background-color: #fff
+  padding: 14px 20px
 }
 .mapSection__wrapper {
   position: absolute;
@@ -6529,12 +6552,14 @@ input[type=number]:hover {
   display: block;
   width: 100%;
   margin-bottom: 41px;
-  padding: 29px 24px;
+  padding: 29px 24px 28px;
   color: #000;
   background-color: #f1f1f1;
   font-size: 16px;
   font-weight: 500;
-  line-height: 22px
+  line-height: 22px;
+  border-right: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9
 }
 .cart__promocode::-webkit-input-placeholder {
   color: #acacac
@@ -6551,7 +6576,8 @@ input[type=number]:hover {
 @media (max-width:1000px) {
   .cart__promocode {
     margin-bottom: 31px;
-    padding: 17px 24px
+    padding: 17px 24px;
+    border: none
   }
 }
 .cart__checkout-inner {
@@ -7286,6 +7312,11 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     margin-bottom: 79px
   }
 }
+@media (max-width:575px) {
+  .order__info {
+    margin-bottom: 70px
+  }
+}
 .order__step {
   border-bottom: 1px solid #d9d9d9
 }
@@ -7342,6 +7373,9 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   .order__heading span:first-child {
     margin-right: 32px
   }
+}
+.collapse .order__heading {
+  color: #acacac
 }
 .order__section {
   padding-right: 27px;
@@ -7447,14 +7481,16 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
 }
 .order__inputs-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns: repeat(3,1fr);
   gap: 16px 23px
 }
 .order__inputs-row:not(:last-child) {
   margin-bottom: 16px
 }
-@media (max-width:575px) {
+@media (max-width:1300px) {
   .order__inputs-row {
+    max-width: 600px;
+    margin: 0 auto;
     grid-template-columns: 1fr
   }
 }
@@ -7529,7 +7565,21 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
 .first-step-is-current .order__prev,
 .last-step-is-current .order__next {
   visibility: hidden;
-  pointer-events: none
+  pointer-events: none;
+  height: 0;
+  padding: 0
+}
+@media (max-width:575px) {
+  .order__prev {
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2
+  }
+  .order__next {
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1
+  }
 }
 .order__note {
   color: #838383;

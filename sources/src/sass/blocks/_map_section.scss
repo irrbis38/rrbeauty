@@ -119,9 +119,10 @@
   border: 2px solid #000;
   background-color: #fff;
   pointer-events: all;
+  transition: opacity 0.2s ease-out;
 
   @include xs {
-    max-height: 530px;
+    min-height: 530px;
     max-width: 362px;
     // left: 50%;
     // transform: translateX(-50%);
@@ -188,19 +189,51 @@
   color: #000;
 }
 
+.map__choose {
+  margin-bottom: 10px;
+  padding: 14px 20px;
+
+  span {
+    text-align: center;
+  }
+
+  span:nth-child(2) {
+    display: none;
+  }
+}
+
+.map__description.checked {
+  .map__choose {
+    background-color: #2dab17;
+    border-color: #2dab17;
+
+    span:nth-child(1) {
+      display: none;
+    }
+
+    span:nth-child(2) {
+      display: block;
+    }
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}
+
 .map__close {
   width: 100%;
   // margin-top: 10px;
   padding: 14px 20px;
-  color: #fff;
-  background-color: #000;
-  border: 1px solid #000;
-  transition: all 0.2s ease-out;
+  // color: #000;
+  // background-color: #fff;
+  // border: 1px solid #000;
+  // transition: all 0.2s ease-out;
 
-  &:hover {
-    color: #000;
-    background-color: #fff;
-  }
+  // &:hover {
+  //   color: #fff;
+  //   background-color: #000;
+  // }
 }
 
 .mapSection__wrapper {
