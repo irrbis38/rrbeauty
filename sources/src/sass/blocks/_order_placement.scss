@@ -1,6 +1,6 @@
 .order {
   width: 100%;
-  overflow-x: hidden;
+  // overflow: hidden;
 
   @include xs {
     padding-bottom: 108px;
@@ -19,7 +19,7 @@
 
   @include md {
     display: block;
-    overflow-x: hidden;
+    // overflow: hidden;
   }
 }
 
@@ -48,20 +48,16 @@
 }
 
 .order__step {
-  // padding-bottom: 120px;
-  border-bottom: 1px solid #d9d9d9;
-
-  // &:not(:last-child) {
-  //   border-bottom: 1px solid #d9d9d9;
-  // }
+  max-height: 0;
+  visibility: visible;
+  transition: all 0.2s ease-out;
+  overflow: hidden;
 
   @include xs {
     position: relative;
-    // padding-bottom: 74px;
     border-bottom: none;
 
     &:not(:last-child) {
-      // border-bottom: none;
       &::after {
         content: "";
         position: absolute;
@@ -74,23 +70,41 @@
     }
   }
 
+  &.step-first {
+    max-height: none;
+  }
+
   &.hidden {
-    content-visibility: none;
+    // content-visibility: auto;
     max-height: 0;
-    overflow: hidden;
-    visibility: hidden;
+
+    // visibility: hidden;
     pointer-events: none;
   }
 
   &.collapse {
     border-bottom: none;
+
+    // &:not(:last-child) {
+    //   &::after {
+    //     display: none;
+    //   }
+    // }
+
     .order__step-content {
-      height: 0;
-      overflow: hidden;
-      visibility: hidden;
+      max-height: 0;
+      // visibility: hidden;
       pointer-events: none;
+      border-bottom: none;
     }
   }
+}
+
+.order__step-content {
+  border-bottom: 1px solid #d9d9d9;
+
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 
 .order__heading {
@@ -145,6 +159,10 @@
 }
 
 .order__step--payment {
+  // display: none;
+  // // .order__step-content {
+  // //   display: none;
+  // // }
   .order__section {
     border-bottom: none;
   }
@@ -175,11 +193,15 @@
   }
 }
 
-// .order__step--payment {
-//   .order__list {
-//     padding-bottom: 0;
-//   }
-// }
+.order__step--payment {
+  .order__list {
+    padding-bottom: 0;
+
+    @include xs {
+      padding-bottom: 23px;
+    }
+  }
+}
 
 .order__item {
   @include xxs {

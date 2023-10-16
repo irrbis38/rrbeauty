@@ -2575,6 +2575,8 @@ function doSetNextStep(curr, next) {
   curr.classList.remove("current");
   next.classList.add("current");
   next.classList.remove("hidden");
+  curr.style.maxHeight = curr.children[0].scrollHeight + 2 + "px";
+  next.style.maxHeight = next.scrollHeight + "px";
 }
 
 function handleOrderPrevBtn(order_info, steps) {
@@ -2601,6 +2603,8 @@ function doSetPrevStep(curr, next) {
   curr.classList.remove("current");
   next.classList.add("current");
   next.classList.remove("collapse");
+  curr.style.maxHeight = 0;
+  next.style.maxHeight = next.scrollHeight + "px";
 }
 
 function doCheckOrderPlacementFirstStepInputs() {
