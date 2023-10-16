@@ -13,15 +13,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // main page
 
-  const intro_section = document.querySelector(".intro");
-  if (intro_section) {
+  const index_page = document.querySelector(".index");
+  if (index_page) {
     doStartFirstScreenAnimation();
 
     doAnimationByScrollMainPage();
     doFooterAnimationByScroll();
-    doRemoveMapOverlayByClick();
+    // doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
-    doAddMapStoresListener();
+    // doAddMapStoresListener();
     doHideMapDescription();
     doToggleFavoritesIcons();
 
@@ -130,9 +130,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   if (order_placement_page) {
     // doInitMaskInput();
-    doRemoveMapOverlayByClick();
+    // doRemoveMapOverlayByClick();
     doInitMapStoresSelect();
-    doAddMapStoresListener();
+    // doAddMapStoresListener();
     doHideMapDescription();
     doSwitchOrderStep();
 
@@ -430,24 +430,36 @@ function doCreateMapScript() {
 }
 
 function doInitMap() {
-  const mark_link = "images/map-current-mark.svg";
+  const mark_link = "images/map-mark.svg";
+  const mark_current_link = "images/map-current-mark.svg";
+  const stores_coordinats = [
+    [51.158562572612595, 71.43921449999996],
+    [51.159952, 71.441514],
+    [51.157783, 71.442053],
+  ];
+
   function init() {
-    let center = [51.158562572612595, 71.43921449999996];
+    let center = stores_coordinats[0];
     if (ymaps) {
       let map = new ymaps.Map("map-section-wrapper", {
         center: center,
         zoom: 17,
       });
 
-      let mark = new ymaps.Placemark(
-        center,
-        {},
-        {
-          iconLayout: "default#image",
-          iconImageHref: mark_link,
-          iconImageSize: [40, 40],
-          iconImageOffset: [-15, -5],
-        }
+      const map_description = document.querySelector(".map__description");
+
+      const marks = stores_coordinats.map(
+        (coord) =>
+          new ymaps.Placemark(
+            coord,
+            {},
+            {
+              iconLayout: "default#image",
+              iconImageHref: mark_link,
+              iconImageSize: [32, 32],
+              iconImageOffset: [-15, -5],
+            }
+          )
       );
 
       map.controls.remove("geolocationControl"); // удаляем геолокацию
@@ -457,22 +469,37 @@ function doInitMap() {
       map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
       map.controls.remove("zoomControl"); // удаляем контрол зуммирования
       map.controls.remove("rulerControl"); // удаляем контрол правил
-      //map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
+      map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
 
-      map.geoObjects.add(mark);
+      marks.forEach((mark) => map.geoObjects.add(mark));
+
+      marks.forEach((item) =>
+        item.events.add("click", (e) => {
+          // reset icon to default for all marks
+          marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
+          marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
+
+          // set new icon to current mark
+          e.get("target").options.set("iconImageHref", mark_current_link);
+          e.get("target").options.set("iconImageSize", [40, 40]);
+
+          // show store card
+          map_description.classList.remove("hidden");
+        })
+      );
     }
   }
 
   ymaps.ready(init);
 }
 
-function doRemoveMapOverlayByClick() {
-  const mapSection_overlay = document.querySelector(".mapSection__overlay");
+// function doRemoveMapOverlayByClick() {
+//   const mapSection_overlay = document.querySelector(".mapSection__overlay");
 
-  mapSection_overlay.addEventListener("click", () => {
-    mapSection_overlay.classList.add("hidden");
-  });
-}
+//   mapSection_overlay.addEventListener("click", () => {
+//     mapSection_overlay.classList.add("hidden");
+//   });
+// }
 
 // init map__stores select
 
@@ -486,14 +513,14 @@ function doInitMapStoresSelect() {
 
 // add listeners to .map__stores select element
 
-function doAddMapStoresListener() {
-  const select = document.querySelector(".map__stores");
-  const map_description = document.querySelector(".map__description");
+// function doAddMapStoresListener() {
+//   const select = document.querySelector(".map__stores");
+//   const map_description = document.querySelector(".map__description");
 
-  select.addEventListener("choice", () =>
-    map_description.classList.remove("hidden")
-  );
-}
+//   select.addEventListener("choice", () =>
+//     map_description.classList.remove("hidden")
+//   );
+// }
 
 // hide map__description
 

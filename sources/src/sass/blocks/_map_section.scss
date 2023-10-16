@@ -55,7 +55,7 @@
   z-index: 3;
   width: 100%;
   max-width: 342px;
-  pointer-events: all;
+  pointer-events: none;
   // margin-top: 26px;
 
   @include xs {
@@ -76,6 +76,7 @@
   .choices {
     width: 100%;
     margin: 0 auto;
+    pointer-events: all;
   }
 
   .choices__inner {
@@ -117,6 +118,7 @@
   padding: 27px 26px 20px;
   border: 2px solid #000;
   background-color: #fff;
+  pointer-events: all;
 
   @include xs {
     max-height: 530px;
@@ -215,19 +217,19 @@
   // }
 }
 
-.mapSection__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+// .mapSection__overlay {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 3;
+//   width: 100%;
+//   height: 100%;
+//   cursor: pointer;
 
-  &.hidden {
-    display: none;
-  }
-}
+//   &.hidden {
+//     display: none;
+//   }
+// }
 
 // map on the order-placement-page
 
