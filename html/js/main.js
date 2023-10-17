@@ -2574,9 +2574,37 @@ function doSetNextStep(curr, next) {
   curr.classList.add("collapse");
   curr.classList.remove("current");
   next.classList.add("current");
-  next.classList.remove("hidden");
-  curr.style.maxHeight = curr.children[0].scrollHeight + 2 + "px";
-  next.style.maxHeight = next.scrollHeight + "px";
+
+  var curr_content = curr.children[1];
+  var next_content = next.children[1];
+
+  const TL = gsap.timeline();
+  TL.to(curr_content, {
+    opacity: 0,
+    duration: 0.2,
+  })
+    .to(curr_content, {
+      height: 0,
+      duration: 0.2,
+    })
+    .to(
+      next,
+      {
+        opacity: 1,
+        height: "auto",
+        overflow: "visible",
+        duration: 0.2,
+        onStart: () => next.classList.remove("hidden"),
+      },
+      0
+    )
+    .set(
+      curr,
+      {
+        overflow: "hidden",
+      },
+      0
+    );
 }
 
 function handleOrderPrevBtn(order_info, steps) {
@@ -2598,13 +2626,40 @@ function handleOrderPrevBtn(order_info, steps) {
   }
 }
 
-function doSetPrevStep(curr, next) {
-  curr.classList.add("hidden");
+function doSetPrevStep(curr, prev) {
+  // curr.classList.add("hidden");
   curr.classList.remove("current");
-  next.classList.add("current");
-  next.classList.remove("collapse");
-  curr.style.maxHeight = 0;
-  next.style.maxHeight = next.scrollHeight + "px";
+  prev.classList.add("current");
+  prev.classList.remove("collapse");
+
+  var prev_content = prev.children[1];
+
+  const TL = gsap.timeline();
+  TL.to(curr, {
+    opacity: 0,
+    duration: 0.2,
+  })
+    .to(curr, {
+      duration: 0.2,
+      height: 0,
+      onComplete: () => curr.classList.add("hidden"),
+    })
+    .to(
+      prev_content,
+      {
+        opacity: 1,
+        height: "auto",
+        duration: 0.2,
+      },
+      0
+    )
+    .set(
+      prev,
+      {
+        overflow: "visible",
+      },
+      0
+    );
 }
 
 function doCheckOrderPlacementFirstStepInputs() {
