@@ -1245,9 +1245,11 @@ button {
   border: 1px solid #000;
   transition: color .2s ease-out,background-color .2s ease-out
 }
-.btn__black:hover {
-  color: #000;
-  background-color: #fff
+@media (hover:hover) {
+  .btn__black:hover {
+    color: #000;
+    background-color: #fff
+  }
 }
 .btn__white {
   display: block;
@@ -1260,9 +1262,11 @@ button {
   border: 1px solid #000;
   transition: color .2s ease-out,background-color .2s ease-out
 }
-.btn__white:hover {
-  color: #fff;
-  background-color: #000
+@media (hover:hover) {
+  .btn__white:hover {
+    color: #fff;
+    background-color: #000
+  }
 }
 .showmore__btn {
   display: none;
@@ -1284,9 +1288,11 @@ button {
   border: 1px solid #000;
   transition: all .2s ease-out
 }
-.showmore__btn:hover {
-  color: #000;
-  background-color: #fff
+@media (hover:hover) {
+  .showmore__btn:hover {
+    color: #000;
+    background-color: #fff
+  }
 }
 @media (max-width:767px) {
   .showmore__btn {
@@ -1449,20 +1455,22 @@ button {
   visibility: hidden;
   pointer-events: none
 }
-.goodsCard__addToFavorites:hover img:nth-child(1) {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none
-}
-.goodsCard__addToFavorites:hover img:nth-child(2) {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all
-}
-.goodsCard__addToFavorites:hover img:nth-child(3) {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none
+@media (hover:hover) {
+  .goodsCard__addToFavorites:hover img:nth-child(1) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none
+  }
+  .goodsCard__addToFavorites:hover img:nth-child(2) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all
+  }
+  .goodsCard__addToFavorites:hover img:nth-child(3) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none
+  }
 }
 .goodsCard__item.addedToFavorites .goodsCard__addToFavorites img:nth-child(1) {
   opacity: 0;
@@ -1543,10 +1551,12 @@ button {
   border: 1px solid #d0d0d0;
   transition: all .2s ease-out
 }
-.goodsCard__addToCart:hover {
-  color: #fff;
-  background-color: #000;
-  border: 1px solid #000
+@media (hover:hover) {
+  .goodsCard__addToCart:hover {
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #000
+  }
 }
 .goodsCard__nav {
   position: absolute;
@@ -3640,8 +3650,10 @@ body.lock .header {
 .map__description.checked .map__choose span:nth-child(2) {
   display: block
 }
-.map__description.checked .map__choose:hover {
-  background-color: #fff
+@media (hover:hover) {
+  .map__description.checked .map__choose:hover {
+    background-color: #fff
+  }
 }
 .map__close {
   width: 100%;
