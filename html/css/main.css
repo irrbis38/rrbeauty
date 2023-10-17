@@ -7292,6 +7292,11 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     display: block
   }
 }
+@media (max-width:767px) {
+  .order__container {
+    overflow: hidden
+  }
+}
 .order__info {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;

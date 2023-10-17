@@ -468,9 +468,26 @@ function doInitMap() {
       map.controls.remove("trafficControl"); // удаляем контроль трафика
       map.controls.remove("typeSelector"); // удаляем тип
       map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
-      map.controls.remove("zoomControl"); // удаляем контрол зуммирования
+      // map.controls.remove("zoomControl"); // удаляем контрол зуммирования
       map.controls.remove("rulerControl"); // удаляем контрол правил
       map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
+
+      if (window.innerWidth <= 767) {
+        map.behaviors.disable("drag");
+      }
+
+      const mq767 = window.matchMedia("(max-width: 767px)");
+
+      mq767.addEventListener("change", (e) => {
+        // became less than 767px
+        if (e.matches) {
+          map.behaviors.disable("drag");
+        }
+        // became larger than 767px
+        else {
+          map.behaviors.enable("drag");
+        }
+      });
 
       marks.forEach((mark) => map.geoObjects.add(mark));
 

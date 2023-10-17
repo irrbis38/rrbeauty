@@ -21,6 +21,10 @@
     display: block;
     // overflow: hidden;
   }
+
+  @include xs {
+    overflow: hidden;
+  }
 }
 
 .order__info {
