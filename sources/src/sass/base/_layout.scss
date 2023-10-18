@@ -125,6 +125,8 @@ button {
 
   // hide scrollbar in Chrome, Safari
   &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    display: none;
     width: 0;
     height: 0;
   }

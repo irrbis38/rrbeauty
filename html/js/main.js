@@ -472,6 +472,8 @@ function doInitMap() {
       map.controls.remove("rulerControl"); // удаляем контрол правил
       map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
 
+      // отключаем скролл карты на малых экранах
+
       if (window.innerWidth <= 767) {
         map.behaviors.disable("drag");
       }
