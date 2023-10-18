@@ -1245,11 +1245,9 @@ button {
   border: 1px solid #000;
   transition: color .2s ease-out,background-color .2s ease-out
 }
-@media (hover:hover) {
-  .btn__black:hover {
-    color: #000;
-    background-color: #fff
-  }
+.btn__black:hover {
+  color: #000;
+  background-color: #fff
 }
 .btn__white {
   display: block;
@@ -1262,11 +1260,9 @@ button {
   border: 1px solid #000;
   transition: color .2s ease-out,background-color .2s ease-out
 }
-@media (hover:hover) {
-  .btn__white:hover {
-    color: #fff;
-    background-color: #000
-  }
+.btn__white:hover {
+  color: #fff;
+  background-color: #000
 }
 .showmore__btn {
   display: none;
@@ -1288,11 +1284,9 @@ button {
   border: 1px solid #000;
   transition: all .2s ease-out
 }
-@media (hover:hover) {
-  .showmore__btn:hover {
-    color: #000;
-    background-color: #fff
-  }
+.showmore__btn:hover {
+  color: #000;
+  background-color: #fff
 }
 @media (max-width:767px) {
   .showmore__btn {
@@ -1455,22 +1449,20 @@ button {
   visibility: hidden;
   pointer-events: none
 }
-@media (hover:hover) {
-  .goodsCard__addToFavorites:hover img:nth-child(1) {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none
-  }
-  .goodsCard__addToFavorites:hover img:nth-child(2) {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all
-  }
-  .goodsCard__addToFavorites:hover img:nth-child(3) {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none
-  }
+.goodsCard__addToFavorites:hover img:nth-child(1) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none
+}
+.goodsCard__addToFavorites:hover img:nth-child(2) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all
+}
+.goodsCard__addToFavorites:hover img:nth-child(3) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none
 }
 .goodsCard__item.addedToFavorites .goodsCard__addToFavorites img:nth-child(1) {
   opacity: 0;
@@ -1551,12 +1543,10 @@ button {
   border: 1px solid #d0d0d0;
   transition: all .2s ease-out
 }
-@media (hover:hover) {
-  .goodsCard__addToCart:hover {
-    color: #fff;
-    background-color: #000;
-    border: 1px solid #000
-  }
+.goodsCard__addToCart:hover {
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #000
 }
 .goodsCard__nav {
   position: absolute;
@@ -3581,7 +3571,10 @@ body.lock .header {
   border: 2px solid #000;
   background-color: #fff;
   pointer-events: all;
-  transition: opacity .2s ease-out
+  transition: opacity .2s ease-out;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none
 }
 @media (max-width:767px) {
   .map__description {
@@ -3589,10 +3582,10 @@ body.lock .header {
     max-width: 362px
   }
 }
-.map__description.hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none
+.map__description.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all
 }
 .map__storeName {
   padding: 10px 0 32px;
@@ -3650,10 +3643,8 @@ body.lock .header {
 .map__description.checked .map__choose span:nth-child(2) {
   display: block
 }
-@media (hover:hover) {
-  .map__description.checked .map__choose:hover {
-    background-color: #fff
-  }
+.map__description.checked .map__choose:hover {
+  background-color: #fff
 }
 .map__close {
   width: 100%;
@@ -3817,54 +3808,26 @@ body.lock .header {
     letter-spacing: 1.4px
   }
 }
-.brands-page .top__title,
-.cabinet-personal-data-page .top__title,
-.cabinet-user-favorites-page .top__title,
-.cabinet-user-orders-page .top__title,
-.cart-page .top__title,
-.news-page .top__title,
-.order-completed-page .top__title,
-.order-placement-page .top__title {
+.top__title.top__title--large {
   font-size: 74px;
   padding: 56px 0 83px
 }
 @media (max-width:1300px) {
-  .brands-page .top__title,
-  .cabinet-personal-data-page .top__title,
-  .cabinet-user-favorites-page .top__title,
-  .cabinet-user-orders-page .top__title,
-  .cart-page .top__title,
-  .news-page .top__title,
-  .order-completed-page .top__title,
-  .order-placement-page .top__title {
+  .top__title.top__title--large {
     padding: 50px 0 60px;
     font-size: 52px;
     letter-spacing: 4px
   }
 }
 @media (max-width:991px) {
-  .brands-page .top__title,
-  .cabinet-personal-data-page .top__title,
-  .cabinet-user-favorites-page .top__title,
-  .cabinet-user-orders-page .top__title,
-  .cart-page .top__title,
-  .news-page .top__title,
-  .order-completed-page .top__title,
-  .order-placement-page .top__title {
+  .top__title.top__title--large {
     padding: 40px 0 50px;
     font-size: 40px;
     letter-spacing: 2.5px
   }
 }
 @media (max-width:767px) {
-  .brands-page .top__title,
-  .cabinet-personal-data-page .top__title,
-  .cabinet-user-favorites-page .top__title,
-  .cabinet-user-orders-page .top__title,
-  .cart-page .top__title,
-  .news-page .top__title,
-  .order-completed-page .top__title,
-  .order-placement-page .top__title {
+  .top__title.top__title--large {
     padding: 29px 0 36px;
     font-size: 28px;
     letter-spacing: 1.4px
@@ -8410,6 +8373,9 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     display: block
   }
 }
+.cabinet {
+  overflow-x: hidden
+}
 .cabinet__container {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -8536,8 +8502,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
   padding-top: 28px;
-  padding-left: 24px;
-  overflow-x: hidden
+  padding-left: 24px
 }
 @media (max-width:767px) {
   .cabinet__content {
@@ -8555,18 +8520,41 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   position: relative;
   margin-bottom: 27px
 }
-.cabinet__nav::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #d9d9d9
-}
 @media (max-width:767px) {
   .cabinet__nav {
     margin-bottom: 34px
+  }
+}
+.cabinet__empty {
+  width: 100%;
+  height: 58px;
+  border-bottom: 1px solid #d9d9d9
+}
+@media (max-width:991px) {
+  .cabinet__empty {
+    height: 73px
+  }
+}
+@media (max-width:767px) {
+  .cabinet__empty {
+    height: 57px
+  }
+}
+.cabinet__nav-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow-x: auto
+}
+@media (max-width:1000px) {
+  .cabinet__nav-wrapper {
+    width: calc(100% + 40px)
+  }
+}
+@media (max-width:767px) {
+  .cabinet__nav-wrapper {
+    width: calc(100% + 20px)
   }
 }
 .cabinet__nav-list {
@@ -8575,8 +8563,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   display: flex;
   -webkit-align-items: center;
   -ms-flex-align: center;
-  align-items: center;
-  overflow-x: auto
+  align-items: center
 }
 .cabinet__nav-list li {
   width: -webkit-max-content;
@@ -8584,6 +8571,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   width: max-content
 }
 .cabinet__nav-btn {
+  height: 58px;
   position: relative;
   z-index: 2;
   padding: 4px 36px 33px 36px;
@@ -8592,7 +8580,8 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   font-weight: 600;
   letter-spacing: -.17px;
   transition: color .2s ease-out;
-  white-space: nowrap
+  white-space: nowrap;
+  border-bottom: 1px solid #d9d9d9
 }
 .cabinet__nav-btn::after {
   content: "";
@@ -8609,16 +8598,18 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
 }
 @media (max-width:991px) {
   .cabinet__nav-btn {
+    height: 73px;
     padding: 26px 37px
   }
 }
 @media (max-width:767px) {
   .cabinet__nav-btn {
+    height: 57px;
     padding: 10px 24px 26px
   }
 }
 .cabinet__nav-btn.active::after {
-  bottom: 0;
+  bottom: -1px;
   height: 3px;
   background-color: #000
 }
@@ -8640,7 +8631,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   border: 1px solid #000
 }
 .cabinet__orders-item:not(:last-child) {
-  margin-bottom: 24px
+  margin-bottom: 17px
 }
 .cabinet__orders-item a {
   position: absolute;
@@ -8675,6 +8666,8 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  padding-left: 0;
+  padding-right: 0;
   padding-bottom: 29px;
   gap: 0 24px
 }
@@ -8787,8 +8780,8 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   flex: 0 1 196px
 }
 @media (max-width:991px) {
-  .cabinet__orders-block,
-  .cabinet__orders-block.cabinet__orders-status {
+  .cabinet__orders-block.cabinet__orders-status:not(:last-child),
+  .cabinet__orders-block:not(:last-child) {
     margin-bottom: 40px
   }
 }

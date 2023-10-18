@@ -123,7 +123,7 @@
             <li><a href="#">Каталог</a></li>
             <li><span>Средства ухода</span></li>
           </ul>
-          <h2 class="top__title">кабинет</h2>
+          <h2 class="top__title top__title--large">кабинет</h2>
         </div>
       </section>
       <div class="cabinet"> 
@@ -149,20 +149,23 @@
           </ul>
           <div class="cabinet__content">
             <div class="cabinet__nav">
-              <ul class="cabinet__nav-list hidescrollbar">
-                <li>
-                  <button class="cabinet__nav-btn active" type="button" data-order="all" aria-label="Показать все заказы">Все</button>
-                </li>
-                <li>
-                  <button class="cabinet__nav-btn" type="button" aria-label="Показать текущие заказы" data-order="current">Текущие</button>
-                </li>
-                <li>
-                  <button class="cabinet__nav-btn" type="button" aria-label="Показать выполненные заказы" data-order="completed">Выполненные</button>
-                </li>
-                <li>
-                  <button class="cabinet__nav-btn" type="button" aria-label="Показать отменённые заказы" data-order="canceled">Отмененные</button>
-                </li>
-              </ul>
+              <div class="cabinet__empty"></div>
+              <div class="cabinet__nav-wrapper hidescrollbar">
+                <ul class="cabinet__nav-list hidescrollbar">
+                  <li>
+                    <button class="cabinet__nav-btn active" type="button" data-order="all" aria-label="Показать все заказы">Все</button>
+                  </li>
+                  <li>
+                    <button class="cabinet__nav-btn" type="button" aria-label="Показать текущие заказы" data-order="current">Текущие</button>
+                  </li>
+                  <li>
+                    <button class="cabinet__nav-btn" type="button" aria-label="Показать выполненные заказы" data-order="completed">Выполненные</button>
+                  </li>
+                  <li>
+                    <button class="cabinet__nav-btn" type="button" aria-label="Показать отменённые заказы" data-order="canceled">Отмененные</button>
+                  </li>
+                </ul>
+              </div>
             </div>
             <ul class="cabinet__orders">
               <li class="cabinet__orders-item status-in-progress"><a href="./cabinet-user-orders-item.html"></a>
