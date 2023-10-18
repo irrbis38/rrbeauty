@@ -506,16 +506,19 @@ function doInitMap() {
           // show store card
           map_description.classList.add("show");
           const TL = gsap.timeline();
-          TL.from([".map__storeName", ".map__data", ".map__close"], {
-            autoAlpha: 0,
-            // y: 20,
-            x: 20,
-            ease: Power4.easeOut,
-            duration: 0.5,
-            stagger: {
-              each: 0.08,
-            },
-          });
+          TL.from(
+            [".map__storeName", ".map__data", ".map__choose", ".map__close"],
+            {
+              autoAlpha: 0,
+              // y: 20,
+              x: 20,
+              ease: Power4.easeOut,
+              duration: 0.5,
+              stagger: {
+                each: 0.08,
+              },
+            }
+          );
         })
       );
     }
