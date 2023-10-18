@@ -121,6 +121,10 @@
   pointer-events: all;
   transition: opacity 0.2s ease-out;
 
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
   @include xs {
     min-height: 530px;
     max-width: 362px;
@@ -132,12 +136,32 @@
   //   width: calc(100% - 40px);
   // }
 
-  &.hidden {
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+    // animation-fill-mode: forwards;
+
+    // .map__description-wrapper {
+    //   animation: mapDescrShow 0.3s ease-out forwards;
+    // }
   }
+
+  // &.hidden {
+  //   visibility: hidden;
+  //   opacity: 0;
+  //   pointer-events: none;
+  // }
 }
+
+// @keyframes mapDescrShow {
+//   from {
+//     transform: translateY(10px);
+//   }
+//   to {
+//     transform: translateY(0);
+//   }
+// }
 
 // .map__description-wrapper {
 //   // min-height: 403px;

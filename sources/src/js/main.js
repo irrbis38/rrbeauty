@@ -493,6 +493,8 @@ function doInitMap() {
 
       marks.forEach((item) =>
         item.events.add("click", (e) => {
+          map_description.classList.remove("show");
+
           // reset icon to default for all marks
           marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
           marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
@@ -502,7 +504,18 @@ function doInitMap() {
           e.get("target").options.set("iconImageSize", [40, 40]);
 
           // show store card
-          map_description.classList.remove("hidden");
+          map_description.classList.add("show");
+          const TL = gsap.timeline();
+          TL.from([".map__storeName", ".map__data", ".map__close"], {
+            autoAlpha: 0,
+            // y: 20,
+            x: 20,
+            ease: Power4.easeOut,
+            duration: 0.5,
+            stagger: {
+              each: 0.08,
+            },
+          });
         })
       );
     }
@@ -526,6 +539,7 @@ function doInitMapStoresSelect() {
   const choices = new Choices(select, {
     silent: false,
     searchEnabled: false,
+    itemSelectText: "",
   });
 }
 
@@ -558,7 +572,7 @@ function doHideMapDescription() {
   const map_close_btn = document.querySelector(".map__close");
 
   map_close_btn.addEventListener("click", () => {
-    map_description.classList.add("hidden");
+    map_description.classList.remove("show");
   });
 }
 

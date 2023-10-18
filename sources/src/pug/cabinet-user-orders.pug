@@ -14,7 +14,7 @@ block page
                 li: a(href="#") Каталог
                 li: span Средства ухода
 
-            h2.top__title кабинет
+            h2.top__title.top__title--large кабинет
 
     .cabinet 
         .container.cabinet__container
@@ -41,11 +41,13 @@ block page
 
 
                 .cabinet__nav
-                    ul.cabinet__nav-list.hidescrollbar
-                        li: button.cabinet__nav-btn.active(type="button" data-order="all" aria-label="Показать все заказы") Все
-                        li: button.cabinet__nav-btn(type="button" aria-label="Показать текущие заказы" data-order="current") Текущие
-                        li: button.cabinet__nav-btn(type="button" aria-label="Показать выполненные заказы" data-order="completed") Выполненные
-                        li: button.cabinet__nav-btn(type="button" aria-label="Показать отменённые заказы" data-order="canceled") Отмененные
+                    .cabinet__empty
+                    .cabinet__nav-wrapper.hidescrollbar
+                        ul.cabinet__nav-list.hidescrollbar
+                            li: button.cabinet__nav-btn.active(type="button" data-order="all" aria-label="Показать все заказы") Все
+                            li: button.cabinet__nav-btn(type="button" aria-label="Показать текущие заказы" data-order="current") Текущие
+                            li: button.cabinet__nav-btn(type="button" aria-label="Показать выполненные заказы" data-order="completed") Выполненные
+                            li: button.cabinet__nav-btn(type="button" aria-label="Показать отменённые заказы" data-order="canceled") Отмененные
 
                 ul.cabinet__orders
                     li.cabinet__orders-item.status-in-progress
