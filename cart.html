@@ -116,17 +116,19 @@
       <div class="menu__overlay" id="menu-overlay"></div>
     </header>
     <main class="main">
-      <section class="top">
+      <div class="top">
         <div class="container">
-          <ul class="top__breadcrumps">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Каталог</a></li>
-            <li><span>Средства ухода</span></li>
-          </ul>
-          <h2 class="top__title top__title--large">Корзина</h2>
+          <nav>
+            <ol class="top__breadcrumps">
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Каталог</a></li>
+              <li><span>Средства ухода</span></li>
+            </ol>
+          </nav>
         </div>
-      </section>
-      <div class="cart"> 
+      </div>
+      <section class="cart">
+        <h2 class="top__title top__title--large"><span class="container">Корзина</span></h2>
         <div class="container cart__container">
           <div class="cart__checkout">
             <input class="cart__promocode" type="text" placeholder="Есть промокод" autocomplete="off">
@@ -145,7 +147,7 @@
               <div class="cart__empty"></div>
             </div>
             <div class="cart__list">
-              <div class="cart__regular-row">
+              <article class="cart__regular-row">
                 <div class="cart__descr"><img class="cart__img" src="./images/view-small-1.png" alt="фото товара 1"/>
                   <h4 class="cart__name">INTENZE Products Lemon Yellow 2 oz</h4>
                   <div class="cart__price"><span class="cart__price-new">3 800₸</span><span class="cart__price-old">5 800₸</span></div>
@@ -185,8 +187,8 @@
                     </button>
                   </div>
                 </div>
-              </div>
-              <div class="cart__regular-row">
+              </article>
+              <article class="cart__regular-row">
                 <div class="cart__descr"><img class="cart__img" src="./images/view-small-2.png" alt="фото товара 1"/>
                   <h4 class="cart__name">INTENZE Products Lemon Yellow 2 oz</h4>
                   <div class="cart__price"><span class="cart__price-new">3 800₸</span><span class="cart__price-old">5 800₸</span></div>
@@ -226,8 +228,8 @@
                     </button>
                   </div>
                 </div>
-              </div>
-              <div class="cart__regular-row">
+              </article>
+              <article class="cart__regular-row">
                 <div class="cart__descr"><img class="cart__img" src="./images/view-small-1.png" alt="фото товара 1"/>
                   <h4 class="cart__name">INTENZE Products Lemon Yellow 2 oz</h4>
                   <div class="cart__price"><span class="cart__price-new">3 800₸</span><span class="cart__price-old">5 800₸</span></div>
@@ -267,7 +269,7 @@
                     </button>
                   </div>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
           <div class="cart__gift">
@@ -281,7 +283,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <section class="auth signin">
       <div class="auth__overlay auth-close"></div>

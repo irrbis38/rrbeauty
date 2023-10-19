@@ -3714,8 +3714,7 @@ body.lock .header {
   }
 }
 .top {
-  padding: 24px 0 0 0;
-  border-bottom: 1px solid #d9d9d9
+  padding: 24px 0 0 0
 }
 @media (max-width:767px) {
   .top {
@@ -3787,7 +3786,8 @@ body.lock .header {
   font-size: 64px;
   font-weight: 600;
   letter-spacing: 6.4px;
-  text-transform: uppercase
+  text-transform: uppercase;
+  border-bottom: 1px solid #d9d9d9
 }
 @media (max-width:1300px) {
   .top__title {
@@ -3835,28 +3835,33 @@ body.lock .header {
     letter-spacing: 1.4px
   }
 }
+.regular-page .regular__top {
+  border-bottom: 2px solid #000
+}
 .regular-page .top__title {
+  margin-bottom: 0;
+  padding: 150px 0 40px;
   text-align: left;
   font-size: 74px;
-  padding: 136px 0 28px
+  border-bottom: none
 }
 @media (max-width:1300px) {
   .regular-page .top__title {
-    padding: 100px 0 28px;
+    padding: 100px 0 30px;
     font-size: 52px;
     letter-spacing: 4px
   }
 }
 @media (max-width:991px) {
   .regular-page .top__title {
-    padding: 80px 0 28px;
+    padding: 80px 0 30px;
     font-size: 40px;
     letter-spacing: 2.5px
   }
 }
 @media (max-width:767px) {
   .regular-page .top__title {
-    padding: 74px 0 21px;
+    padding: 74px 0 25px;
     font-size: 28px;
     letter-spacing: 1.4px
   }
@@ -3886,10 +3891,16 @@ body.lock .header {
     letter-spacing: 1.4px
   }
 }
-.order-completed-page .top {
+.order-completed-page .top__title {
   border-bottom: none
 }
-.notfound-page .top {
+.notfound-page .top__title {
+  border-bottom: none
+}
+.catalog__top {
+  border-bottom: 1px solid #d9d9d9
+}
+.catalog__top .top__title {
   border-bottom: none
 }
 .catalog-brand-page.sort-list-open .catalog,
@@ -9537,11 +9548,11 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   }
 }
 .regular {
-  padding: 70px 0 380px
+  padding: 0 0 380px
 }
 @media (max-width:767px) {
   .regular {
-    padding: 50px 0 153px
+    padding: 0 0 153px
   }
 }
 .regular h2 {
@@ -9644,13 +9655,15 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   padding: 0 20px
 }
 .regular__wrapper {
-  border-right: 1px solid #d9d9d9;
-  padding-right: 55px
+  padding-top: 65px;
+  padding-right: 55px;
+  border-right: 1px solid #d9d9d9
 }
 @media (max-width:991px) {
   .regular__wrapper {
-    border-right: none;
-    padding-right: 0
+    padding-top: 50px;
+    padding-right: 0;
+    border-right: none
   }
 }
 .notfound {
@@ -9697,9 +9710,9 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
 @media (max-width:767px) {
   .notfound__title {
     padding-bottom: 22px;
-    font-size: 18px;
-    line-height: 27px;
-    letter-spacing: -.36px
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: -.44px
   }
 }
 .notfound__info {

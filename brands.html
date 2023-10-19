@@ -116,17 +116,19 @@
       <div class="menu__overlay" id="menu-overlay"></div>
     </header>
     <main class="main">
-      <section class="top">
+      <div class="top">
         <div class="container">
-          <ul class="top__breadcrumps">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Каталог</a></li>
-            <li><span>Средства ухода</span></li>
-          </ul>
-          <h2 class="top__title top__title--large">Бренды</h2>
+          <nav>
+            <ol class="top__breadcrumps">
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Каталог</a></li>
+              <li><span>Средства ухода</span></li>
+            </ol>
+          </nav>
         </div>
-      </section>
-      <div class="brands">
+      </div>
+      <section class="brands">
+        <h2 class="top__title top__title--large"><span class="container">Бренды</span></h2>
         <div class="brands-popular">
           <div class="container"> 
             <ul class="brands-popular__list">
@@ -324,7 +326,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <section class="auth signin">
       <div class="auth__overlay auth-close"></div>

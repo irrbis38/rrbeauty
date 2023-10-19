@@ -116,17 +116,19 @@
       <div class="menu__overlay" id="menu-overlay"></div>
     </header>
     <main class="main">
-      <section class="top">
+      <div class="top">
         <div class="container">
-          <ul class="top__breadcrumps">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Каталог</a></li>
-            <li><span>Средства ухода</span></li>
-          </ul>
-          <h2 class="top__title top__title--large">кабинет</h2>
+          <nav>
+            <ol class="top__breadcrumps">
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Каталог</a></li>
+              <li><span>Средства ухода</span></li>
+            </ol>
+          </nav>
         </div>
-      </section>
-      <div class="cabinet"> 
+      </div>
+      <section class="cabinet">
+        <h2 class="top__title top__title--large"><span class="container">кабинет</span></h2>
         <div class="container cabinet__container">
           <ul class="cabinet__menu">
             <li class="cabinet__menu-item"><a class="cabinet__menu-link active" href="./cabinet-user-orders.html"><span>Заказы</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -242,7 +244,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <section class="auth signin">
       <div class="auth__overlay auth-close"></div>
