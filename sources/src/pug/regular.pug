@@ -5,19 +5,20 @@ block head
     title RR Beauty - Типовая
 block page
 
-    section.top
+    .top
         .container
-
-            ul.top__breadcrumps
-                li: a(href="#") Главная
-                li: a(href="#") Каталог
-                li: span Средства ухода
+            include ./blocks/_breadcrupms
 
 
-        .regular__container
-            h2.top__title кабинет
+
 
     section.regular
+
+        .regular__top
+            .regular__container
+                h2.top__title кабинет
+
+
         .regular__container
             .regular__wrapper
 

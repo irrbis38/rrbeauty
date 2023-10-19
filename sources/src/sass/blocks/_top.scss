@@ -1,6 +1,5 @@
 .top {
   padding: 24px 0 0 0;
-  border-bottom: 1px solid #d9d9d9;
 
   @include xs {
     padding-top: 9px;
@@ -72,6 +71,7 @@
   font-weight: 600;
   letter-spacing: 6.4px;
   text-transform: uppercase;
+  border-bottom: 1px solid #d9d9d9;
 
   @include lg {
     padding: 50px 0 60px;
@@ -115,60 +115,33 @@
   }
 }
 
-// .cart-page,
-// .brands-page,
-// .order-placement-page,
-// .order-completed-page,
-// .cabinet-user-orders-page,
-// .cabinet-orders-item-page,
-// .cabinet-user-favorites-page,
-// .cabinet-personal-data-page,
-// .cabinet-favorites-page,
-// .news-page {
-//   .top__title {
-//     font-size: 74px;
-//     padding: 56px 0 83px;
-
-//     @include lg {
-//       padding: 50px 0 60px;
-//       font-size: 52px;
-//       letter-spacing: 4px;
-//     }
-
-//     @include sm {
-//       padding: 40px 0 50px;
-//       font-size: 40px;
-//       letter-spacing: 2.5px;
-//     }
-
-//     @include xs {
-//       padding: 29px 0 36px;
-//       font-size: 28px;
-//       letter-spacing: 1.4px;
-//     }
-//   }
-// }
-
 .regular-page {
+  .regular__top {
+    border-bottom: 2px solid #000;
+  }
+
   .top__title {
+    margin-bottom: 0;
+    padding: 150px 0 40px;
     text-align: left;
     font-size: 74px;
-    padding: 136px 0 28px;
+
+    border-bottom: none;
 
     @include lg {
-      padding: 100px 0 28px;
+      padding: 100px 0 30px;
       font-size: 52px;
       letter-spacing: 4px;
     }
 
     @include sm {
-      padding: 80px 0 28px;
+      padding: 80px 0 30px;
       font-size: 40px;
       letter-spacing: 2.5px;
     }
 
     @include xs {
-      padding: 74px 0 21px;
+      padding: 74px 0 25px;
       font-size: 28px;
       letter-spacing: 1.4px;
     }
@@ -203,7 +176,7 @@
 // order-completed-page
 
 .order-completed-page {
-  .top {
+  .top__title {
     border-bottom: none;
   }
 }
@@ -211,7 +184,16 @@
 // notfound-page
 
 .notfound-page {
-  .top {
+  .top__title {
+    border-bottom: none;
+  }
+}
+
+// catalog-search-result page
+.catalog__top {
+  border-bottom: 1px solid #d9d9d9;
+
+  .top__title {
     border-bottom: none;
   }
 }

@@ -5,20 +5,19 @@ block head
     title RR Beauty - Новости
 block page
 
-    section.top
+    .top
+        .container
+            include ./blocks/_breadcrupms
+
+
+
+    section.news
+
+        h2.top__title.top__title--large
+            span.container Новости
 
         .container
 
-            ul.top__breadcrumps
-                li: a(href="#") Главная
-                li: a(href="#") Каталог
-                li: span Средства ухода
-
-            h2.top__title.top__title--large Новости
-
-
-    .news
-        .container
             .news__wrapper
 
                 -

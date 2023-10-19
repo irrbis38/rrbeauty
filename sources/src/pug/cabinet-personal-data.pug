@@ -5,18 +5,14 @@ block head
     title RR Beauty - Личный кабинет (Личные данные)
 block page
 
-    section.top
-
+    .top
         .container
+            include ./blocks/_breadcrupms
 
-            ul.top__breadcrumps
-                li: a(href="#") Главная
-                li: a(href="#") Каталог
-                li: span Средства ухода
+    section.cabinet
 
-            h2.top__title.top__title--large кабинет
+        h2.top__title.top__title--large: span.container кабинет
 
-    .cabinet 
         .container.cabinet__container
 
             ul.cabinet__menu

@@ -7,186 +7,182 @@ block head
     title RR Beauty - Оформление заказа
 block page
 
-    section.top
-
+    .top
         .container
+            include ./blocks/_breadcrupms
 
-            ul.top__breadcrumps
-                li: a(href="#") Главная
-                li: a(href="#") Каталог
-                li: span Средства ухода
+    section.order
+        h2.top__title.top__title--large: span.container Оформление #[span(class="hidden-on-mobile") заказа]
 
-            h2.top__title.top__title--large Оформление #[span(class="hidden-on-mobile") заказа]
+        form.order__form(action="#")
+            .container.order__container
 
-    form.order(action="#")
-        .container.order__container
+                .order__info.first-step-is-current
 
-            .order__info.first-step-is-current
+                    .order__step.step-first.current
 
-                .order__step.step-first.current
+                        h3.order__heading
+                            span 1/3
+                            span ПОКУПАТЕЛЬ
 
-                    h3.order__heading
-                        span 1/3
-                        span ПОКУПАТЕЛЬ
+                        .order__step-content
 
-                    .order__step-content
+                            .order__section
+                                ul.order__list
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="customer" value="individual" checked)
+                                            span
+                                            span Физическое лицо
 
-                        .order__section
-                            ul.order__list
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="customer" value="individual" checked)
-                                        span
-                                        span Физическое лицо
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="customer" value="individual")
+                                            span
+                                            span Компании
 
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="customer" value="individual")
-                                        span
-                                        span Компании
+                                .order__inputs-row 
+                                    input.order__input.input(type="text" placeholder="ФИО" name="user_name" autocomplete="off")
+                                    input.order__input.input(type="text" placeholder="Email" name="user_email" autocomplete="off")
+                                    input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
 
-                            .order__inputs-row 
-                                input.order__input.input(type="text" placeholder="ФИО" name="user_name" autocomplete="off")
-                                input.order__input.input(type="text" placeholder="Email" name="user_email" autocomplete="off")
-                                input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
-
-                            .order__inputs-row 
-                                input.order__input.input(type="text" placeholder="ФИО" name="user_name" autocomplete="off")
-                                input.order__input.input(type="text" placeholder="Email" name="user_email" autocomplete="off")
-                                input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
+                                .order__inputs-row 
+                                    input.order__input.input(type="text" placeholder="ФИО" name="user_name" autocomplete="off")
+                                    input.order__input.input(type="text" placeholder="Email" name="user_email" autocomplete="off")
+                                    input.order__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Номер телефона*" name="user_phone" autocomplete="off")
 
 
-                .order__step.order__step--map.hidden
+                    .order__step.order__step--map.hidden
 
-                    h3.order__heading
-                        span 2/3
-                        span доставка
+                        h3.order__heading
+                            span 2/3
+                            span доставка
 
-                    .order__step-content
+                        .order__step-content
 
-                        .order__section
-                            ul.order__list
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="delivery" value="sdek" )
-                                        span
-                                        span СДЭК
+                            .order__section
+                                ul.order__list
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="delivery" value="sdek" )
+                                            span
+                                            span СДЭК
 
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="delivery" value="avis")
-                                        span
-                                        span Avis
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="delivery" value="avis")
+                                            span
+                                            span Avis
 
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="delivery" value="pickup" checked)
-                                        span
-                                        span Самовывоз из магазина
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="delivery" value="pickup" checked)
+                                            span
+                                            span Самовывоз из магазина
 
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="delivery" value="courier")
-                                        span
-                                        span Курьерская доставка (Алматы)
-
-
-                            span.order__note При заказе от 5 000 тенге - доставка по городу бесплатная, если менее 5 000 - 1 300 тенге.
-
-                        .map
-
-                            .mapSection__container
-
-                                .map__info
-                                    select.map__stores(name="stores" aria-label="Выбрать магазин") 
-                                        option(value="Almaty") Алматы
-                                        option(value="Astana") Астана
-                                        option(value="Moscow") Москва
-
-                                    .map__description.hidden
-                                        .map__description-wrapper
-                                            h3.map__storeName магазин №214
-                                            .map__data
-                                                p.map__name Адрес
-                                                p.map__value Краснодар, В. Головатого, 313 
-                                            .map__data
-                                                p.map__name График работы
-                                                p.map__value Ежедневно, 10:00 — 22:00
-                                            .map__data
-                                                p.map__name Горячая линия
-                                                p.map__value: a(href="tel:88008805060") 8 800 880 50 60
-                                            .map__data
-                                                p.map__name Почта
-                                                p.map__value: a(href="mailto:rrbeauty@gmail.com") rrbeauty@gmail.com
-
-                                        button.map__choose.btn__black(type="button" aria-label="Выбрать текущий магазин")
-                                            span Выбрать
-                                            span Выбрано
-                                        button.map__close.btn__white(type="button" aria-label="Закрыть окно с описанием магазина") Закрыть
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="delivery" value="courier")
+                                            span
+                                            span Курьерская доставка (Алматы)
 
 
-                            .mapSection__wrapper#map-section-wrapper
+                                span.order__note При заказе от 5 000 тенге - доставка по городу бесплатная, если менее 5 000 - 1 300 тенге.
 
-                                //- .mapSection__overlay
+                            .map
+
+                                .mapSection__container
+
+                                    .map__info
+                                        select.map__stores(name="stores" aria-label="Выбрать магазин") 
+                                            option(value="Almaty") Алматы
+                                            option(value="Astana") Астана
+                                            option(value="Moscow") Москва
+
+                                        .map__description.hidden
+                                            .map__description-wrapper
+                                                h3.map__storeName магазин №214
+                                                .map__data
+                                                    p.map__name Адрес
+                                                    p.map__value Краснодар, В. Головатого, 313 
+                                                .map__data
+                                                    p.map__name График работы
+                                                    p.map__value Ежедневно, 10:00 — 22:00
+                                                .map__data
+                                                    p.map__name Горячая линия
+                                                    p.map__value: a(href="tel:88008805060") 8 800 880 50 60
+                                                .map__data
+                                                    p.map__name Почта
+                                                    p.map__value: a(href="mailto:rrbeauty@gmail.com") rrbeauty@gmail.com
+
+                                            button.map__choose.btn__black(type="button" aria-label="Выбрать текущий магазин")
+                                                span Выбрать
+                                                span Выбрано
+                                            button.map__close.btn__white(type="button" aria-label="Закрыть окно с описанием магазина") Закрыть
 
 
-                .order__step.order__step--payment.hidden
+                                .mapSection__wrapper#map-section-wrapper
 
-                    h3.order__heading
-                        span 3/3
-                        span оплата
+                                    //- .mapSection__overlay
 
-                    .order__step-content
 
-                        .order__section
-                            ul.order__list
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="payment" value="card" checked)
-                                        span
-                                        span Оплата картой
+                    .order__step.order__step--payment.hidden
 
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="payment" value="cash")
-                                        span
-                                        span Наличные
+                        h3.order__heading
+                            span 3/3
+                            span оплата
 
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="payment" value="bank-transfer")
-                                        span
-                                        span Банковский перевод
+                        .order__step-content
 
-                                li.order__item
-                                    label.order__label
-                                        input.order__radio(type="radio" name="payment" value="payment-on-account")
-                                        span
-                                        span Оплата по счету
+                            .order__section
+                                ul.order__list
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="payment" value="card" checked)
+                                            span
+                                            span Оплата картой
 
-                .order__nav 
-                    button.order__prev.btn__white(type="button" aria-label="Вернуться к предыдущему шагу") Назад
-                    button.order__next.btn__black(type="button" aria-label="Перейти к следующему шагу") Далее
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="payment" value="cash")
+                                            span
+                                            span Наличные
 
-            .order__checkout
-                input.cart__promocode.order__promocode(type="text" placeholder="Есть промокод" autocomplete="off")
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="payment" value="bank-transfer")
+                                            span
+                                            span Банковский перевод
 
-                .cart__checkout-inner
-                    .cart__total
-                        span Итого:
-                        span.cart__total-price 25 800₸
+                                    li.order__item
+                                        label.order__label
+                                            input.order__radio(type="radio" name="payment" value="payment-on-account")
+                                            span
+                                            span Оплата по счету
 
-                    ul.order__checkout-list
-                        li
-                            span Товаров:
-                            span 8
-                        li
-                            span Способ доставки:
-                            span СДЭК
-                        li
-                            span Стоимость доставки:
-                            span 800₸
+                    .order__nav 
+                        button.order__prev.btn__white(type="button" aria-label="Вернуться к предыдущему шагу") Назад
+                        button.order__next.btn__black(type="button" aria-label="Перейти к следующему шагу") Далее
 
-                    span.order__msg Оплата осуществляется после оформления заказа. С вами свяжется менеджер магазина для подтверждения заказа!
+                .order__checkout
+                    input.cart__promocode.order__promocode(type="text" placeholder="Есть промокод" autocomplete="off")
 
-                    button.cart__order.btn__black(type="submit" aria-label="Оформить заказ товаров") Оформить заказ
+                    .cart__checkout-inner
+                        .cart__total
+                            span Итого:
+                            span.cart__total-price 25 800₸
+
+                        ul.order__checkout-list
+                            li
+                                span Товаров:
+                                span 8
+                            li
+                                span Способ доставки:
+                                span СДЭК
+                            li
+                                span Стоимость доставки:
+                                span 800₸
+
+                        span.order__msg Оплата осуществляется после оформления заказа. С вами свяжется менеджер магазина для подтверждения заказа!
+
+                        button.cart__order.btn__black(type="submit" aria-label="Оформить заказ товаров") Оформить заказ

@@ -7,18 +7,15 @@ block page
 
     include ./blocks/_floating-cart
 
-    section.top
-
+    .top
         .container
+            include ./blocks/_breadcrupms
 
-            ul.top__breadcrumps
-                li: a(href="#") Главная
-                li: a(href="#") Каталог
-                li: span Средства ухода
 
-            h2.top__title Пигменты
 
-    .catalog
+    section.catalog
+
+        h2.top__title: span.container Пигменты
 
         .container.catalog__container
 

@@ -142,7 +142,7 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAdded
 
 
 mixin goodsCardItemSmall(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAddedToFavorites)
-    .goodsCard__item(class=isAddedToFavorites ? 'addedToFavorites' : '')
+    article.goodsCard__item(class=isAddedToFavorites ? 'addedToFavorites' : '')
         .goodsCard__descr
             .goodsCard__img
                 img(src= imgUrl alt= name)
@@ -166,13 +166,14 @@ mixin goodsCardItemSmall(imgUrl, isSale, isHit, price, oldPrice, name, descr, is
 
 
 mixin pagination(customClass)
-    ul.pagination(class= customClass)
+    nav
+        ul.pagination(class= customClass)
 
-        li.pagination__current: a(href="#") 1
-        li: a(href="#") 2
-        li: a(href="#") 3
-        li.pagination__dots: span ...
-        li: a(href="#") 32
+            li.pagination__current: a(href="#") 1
+            li: a(href="#") 2
+            li: a(href="#") 3
+            li.pagination__dots: span ...
+            li: a(href="#") 32
 
 
 
@@ -226,7 +227,7 @@ mixin starRating(customClassName, isDisable, id)
 
 
 mixin infoReviewsItem(id)
-    .info__reviews-item
+    article.info__reviews-item
 
         .info__reviews-descr
             span.info__reviews-user Ярослав П.
@@ -250,7 +251,7 @@ mixin infoReviewsItem(id)
 
 
 mixin cartRegularRow(imgNum)
-    .cart__regular-row
+    article.cart__regular-row
 
         .cart__descr
 
@@ -303,7 +304,7 @@ mixin brandsAbcItem(letter)
 
 
 mixin newsCard(img)
-    .news__unit
+    article.news__unit
         .news__content
             .news__img 
                 img(src= "./images/news-" + img + ".jpg" alt= "Новость номер " + img)

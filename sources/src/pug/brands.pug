@@ -5,18 +5,15 @@ block head
     title RR Beauty - Бренды
 block page
 
-    section.top
-
+    .top
         .container
+            include ./blocks/_breadcrupms
 
-            ul.top__breadcrumps
-                li: a(href="#") Главная
-                li: a(href="#") Каталог
-                li: span Средства ухода
 
-            h2.top__title.top__title--large Бренды
+    section.brands
 
-    .brands
+        h2.top__title.top__title--large: span.container Бренды
+
 
         .brands-popular
             .container 

@@ -116,17 +116,19 @@
       <div class="menu__overlay" id="menu-overlay"></div>
     </header>
     <main class="main">
-      <section class="top">
+      <div class="top">
         <div class="container">
-          <ul class="top__breadcrumps">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Каталог</a></li>
-            <li><span>Средства ухода</span></li>
-          </ul>
-          <h2 class="top__title top__title--large">Заказ сформирован</h2>
+          <nav>
+            <ol class="top__breadcrumps">
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Каталог</a></li>
+              <li><span>Средства ухода</span></li>
+            </ol>
+          </nav>
         </div>
-      </section>
-      <div class="completed">
+      </div>
+      <section class="completed">
+        <h2 class="top__title top__title--large"><span class="container">Заказ сформирован</span></h2>
         <div class="container">
           <h3 class="completed__title">Ваш заказ №54 от 22.08.2023 15:48 успешно создан. Номер вашей оплаты: №54/1</h3>
           <div class="completed__info">
@@ -134,7 +136,7 @@
             <div class="completed__nav"><a class="completed__to-main btn__black" href="#">Перейти на главную</a><a class="completed__to-cabinet btn__white" href="#">Личный кабинет</a></div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <section class="auth signin">
       <div class="auth__overlay auth-close"></div>

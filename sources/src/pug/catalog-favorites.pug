@@ -5,18 +5,13 @@ block head
     title RR Beauty - Каталог
 block page
 
-    section.top
-
+    .top
         .container
+            include ./blocks/_breadcrupms
 
-            ul.top__breadcrumps
-                li: a(href="#") Главная
-                li: a(href="#") Каталог
-                li: span Средства ухода
+    section.catalog
 
-            h2.top__title Избранное
-
-    .catalog
+        h2.top__title: span.container Избранное
 
         .container.catalog__container
 

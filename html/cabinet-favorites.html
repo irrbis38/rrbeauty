@@ -116,17 +116,19 @@
       <div class="menu__overlay" id="menu-overlay"></div>
     </header>
     <main class="main">
-      <section class="top">
+      <div class="top">
         <div class="container">
-          <ul class="top__breadcrumps">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Каталог</a></li>
-            <li><span>Средства ухода</span></li>
-          </ul>
-          <h2 class="top__title top__title--large">кабинет</h2>
+          <nav>
+            <ol class="top__breadcrumps">
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Каталог</a></li>
+              <li><span>Средства ухода</span></li>
+            </ol>
+          </nav>
         </div>
-      </section>
-      <div class="cabinet"> 
+      </div>
+      <section class="cabinet">
+        <h2 class="top__title top__title--large"><span class="container">кабинет</span></h2>
         <div class="container cabinet__container">
           <ul class="cabinet__menu">
             <li class="cabinet__menu-item"><a class="cabinet__menu-link" href="./cabinet-user-orders.html"><span>Заказы</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +151,7 @@
           </ul>
           <div class="cabinet__content">
             <div class="catalog__wrapper">
-              <div class="goodsCard__item addedToFavorites">
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-4.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button><span class="sticker__sale stiker__azure">-10%</span>
@@ -160,8 +162,8 @@
                   <p class="goodsCard__about">Пигмент для губ Nut pie (Ореховое пралине), 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
@@ -172,8 +174,8 @@
                   <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button>
@@ -184,8 +186,8 @@
                   <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button>
@@ -196,8 +198,8 @@
                   <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-7.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button>
@@ -208,8 +210,8 @@
                   <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button>
@@ -220,8 +222,8 @@
                   <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button>
@@ -232,8 +234,8 @@
                   <p class="goodsCard__about">MATTE LIP LIQUID #matteaboutyou Жидкая матовая помада</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-5.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button><span class="sticker__sale sticker__red">Хит</span>
@@ -244,8 +246,8 @@
                   <p class="goodsCard__about">Корректор для сине-серых бровей FOR BLUE GRAY EYEBROWS, 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
-              <div class="goodsCard__item addedToFavorites">
+              </article>
+              <article class="goodsCard__item addedToFavorites">
                 <div class="goodsCard__descr">
                   <div class="goodsCard__img"><img src="./images/goods-card-6.png" alt="AS COMPANY"/>
                     <button class="goodsCard__addToFavorites" type="button" aria-label="Добавить в избранное"><img src="./images/heart-icon.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-black.svg" alt="Добавить в избранное"/><img src="./images/heart-icon-red.svg" alt="Убрать из избранного"/></button>
@@ -256,19 +258,21 @@
                   <p class="goodsCard__about">Пигмент для бровей Brown haired (Шатен), 6 мл</p>
                 </div>
                 <button class="goodsCard__addToCart" type="button" aria-label="Добавить товар в корзину">В корзину</button>
-              </div>
+              </article>
             </div>
-            <ul class="pagination cabinet__pagination">
-              <li class="pagination__current"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li class="pagination__dots"><span>...</span></li>
-              <li><a href="#">32</a></li>
-            </ul>
+            <nav>
+              <ul class="pagination cabinet__pagination">
+                <li class="pagination__current"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="pagination__dots"><span>...</span></li>
+                <li><a href="#">32</a></li>
+              </ul>
+            </nav>
             <button class="catalog__btn showmore__btn cabinet__showmore">Показать еще</button>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <section class="auth signin">
       <div class="auth__overlay auth-close"></div>
