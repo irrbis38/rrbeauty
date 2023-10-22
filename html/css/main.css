@@ -10717,6 +10717,63 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     border-right: none
   }
 }
+.stores .top__title {
+  padding: 60px 0 83px;
+  font-size: 68px
+}
+@media (max-width:1300px) {
+  .stores .top__title {
+    font-size: 52px;
+    letter-spacing: 4px
+  }
+}
+@media (max-width:991px) {
+  .stores .top__title {
+    font-size: 40px;
+    letter-spacing: 2.5px
+  }
+}
+@media (max-width:767px) {
+  .stores .top__title {
+    padding: 30px 0 87px;
+    font-size: 28px;
+    letter-spacing: 1.4px
+  }
+}
+.stores .map {
+  min-height: 692px
+}
+@media (max-width:767px) {
+  .stores .map {
+    min-height: 644px
+  }
+}
+.stores .mapSection__container {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0
+}
+.stores .map__info {
+  top: -53px;
+  left: unset;
+  max-width: 464px;
+  margin: 0 auto
+}
+.stores .map__description {
+  position: absolute;
+  left: 100%;
+  top: 53px;
+  width: 333px;
+  margin-top: 0;
+  border-top: none
+}
+@media (max-width:1300px) {
+  .stores .map__description {
+    position: static;
+    width: 100%;
+    max-width: 100%
+  }
+}
 .notfound {
   overflow-x: hidden;
   padding-bottom: 241px

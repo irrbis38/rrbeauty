@@ -1,0 +1,58 @@
+.stores {
+  .top__title {
+    padding: 60px 0 83px;
+    font-size: 68px;
+
+    @include lg {
+      font-size: 52px;
+      letter-spacing: 4px;
+    }
+
+    @include sm {
+      font-size: 40px;
+      letter-spacing: 2.5px;
+    }
+
+    @include xs {
+      padding: 30px 0 87px;
+      font-size: 28px;
+      letter-spacing: 1.4px;
+    }
+  }
+
+  .map {
+    min-height: 692px;
+
+    @include xs {
+      min-height: 644px;
+    }
+  }
+
+  .mapSection__container {
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .map__info {
+    top: -53px;
+    left: unset;
+    max-width: 464px;
+    margin: 0 auto;
+  }
+
+  .map__description {
+    position: absolute;
+    left: 100%;
+    top: 53px;
+    width: 333px;
+    margin-top: 0;
+    border-top: none;
+
+    @include lg {
+      position: static;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'stores-page';
+block head
+    title RR Beauty - Магазины
+block page
+
+    .top
+        .container
+            include ./blocks/_breadcrupms
+
+
+
+    section.stores
+
+        h2.top__title
+            span.container Магазины
+
+        .map.stores__map
+
+            .mapSection__container
+
+                .map__info
+                    select.map__stores(name="stores" aria-label="Выбрать магазин") 
+                        option(value="Almaty") Алматы
+                        option(value="Astana") Астана
+                        option(value="Moscow") Москва
+
+                    .map__description
+                        .map__description-wrapper
+                            h3.map__storeName магазин №214
+                            .map__data
+                                p.map__name Адрес
+                                p.map__value Краснодар, В. Головатого, 313 
+                            .map__data
+                                p.map__name График работы
+                                p.map__value Ежедневно, 10:00 — 22:00
+                            .map__data
+                                p.map__name Горячая линия
+                                p.map__value: a(href="tel:88008805060") 8 800 880 50 60
+                            .map__data
+                                p.map__name Почта
+                                p.map__value: a(href="mailto:rrbeauty@gmail.com") rrbeauty@gmail.com
+
+                        button.map__close.btn__black(type="button" aria-label="Закрыть окно с описанием магазина") Закрыть
+
+
+            .mapSection__wrapper#map-section-wrapper

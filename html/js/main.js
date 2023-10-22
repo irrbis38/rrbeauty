@@ -203,6 +203,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     checkRequiredFormInputs();
   }
 
+  // stores page
+  const stores_page = document.querySelector(".stores-page");
+  if (stores_page) {
+    doInitMapStoresSelect();
+    doHideMapDescription();
+    doCreateMapScript();
+  }
+
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
