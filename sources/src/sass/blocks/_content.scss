@@ -73,6 +73,7 @@
   }
 }
 
+// promotions-item page
 .promotions-item-page {
   .content__img {
     width: 64.72%;
@@ -139,6 +140,131 @@
 
       @include xs {
         padding-bottom: 155px;
+      }
+    }
+  }
+}
+
+// company page
+.company-page {
+  .content {
+    position: relative;
+  }
+
+  .content__top {
+    position: relative;
+    max-width: 1480px;
+    justify-content: flex-start;
+    gap: 0 24px;
+  }
+
+  .content__heading {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    width: 69.69%;
+    padding: 57px 20px 82px 62px;
+    color: #000;
+    font-size: 74px;
+    font-weight: 600;
+    letter-spacing: 7.4px;
+    text-transform: uppercase;
+    background-color: #fff;
+    border-bottom: 1px solid #d9d9d9;
+
+    @include lg {
+      padding: 45px 20px 40px 40px;
+      font-size: 60px;
+    }
+
+    @include sm {
+      padding: 40px 15px 25px 30px;
+      font-size: 46px;
+    }
+
+    @include xs {
+      position: static;
+      width: 100%;
+      padding: 13px 20px 33px;
+      margin-bottom: 19px;
+      text-align: center;
+      font-size: 28px;
+      letter-spacing: 1.4px;
+    }
+  }
+
+  .content__img {
+    width: 66.11%;
+    padding-top: 54.51%;
+
+    @include xxs {
+      width: 100%;
+      padding-top: 100%;
+    }
+  }
+
+  .content__decor {
+    width: 23.75%;
+
+    @include sm {
+      width: 27.97%;
+    }
+  }
+
+  .content__additional-img {
+    position: absolute;
+    right: 20px;
+    top: 199px;
+    width: 23.11%;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-top: 105.56%;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include lg {
+      top: 130px;
+    }
+
+    @include sm {
+      top: 60px;
+    }
+
+    @include xxs {
+      display: none;
+    }
+  }
+
+  .content__title {
+    span {
+      padding-right: 18px;
+    }
+  }
+
+  .content__wrapper {
+    p:first-child {
+      @include sm {
+        border: none;
+      }
+    }
+
+    p:last-child {
+      padding-bottom: 0;
+      // padding-bottom: 89px;
+
+      @include xs {
+        padding-bottom: 63px;
       }
     }
   }
@@ -239,6 +365,11 @@
     &:first-child {
       padding-bottom: 57px;
       border-right: 1px solid #d9d9d9;
+      border-left: none !important;
+
+      &::after {
+        display: none;
+      }
 
       @include xxs {
         padding-bottom: 32px;

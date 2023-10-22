@@ -1,0 +1,128 @@
+.gallery {
+  margin-bottom: 89px;
+
+  @include xs {
+    margin-bottom: 82px;
+  }
+}
+
+.company-block__title {
+  padding: 31px 0 34px;
+  color: #000;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 2.24px;
+  text-transform: uppercase;
+  border-top: 1px solid #d9d9d9;
+
+  @include xs {
+    padding: 31px 0 26px;
+    font-size: 24px;
+    letter-spacing: 1.2px;
+  }
+}
+
+.gallery__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  grid-auto-rows: 10px;
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include xs {
+    display: block;
+  }
+}
+
+.gallery__item {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease-out;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+
+  @include xs {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    img {
+      position: static;
+      display: block;
+      height: auto;
+    }
+  }
+}
+
+.gallery__item--horiz {
+  grid-column-end: span 2;
+  grid-row-end: span 19;
+}
+
+.gallery__item--rect {
+  grid-row-end: span 14;
+}
+
+.gallery__item--vert {
+  grid-row-end: span 23;
+}
+
+.gallery__item--empty {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  @include lg {
+    display: none;
+  }
+}
+
+// certificates slider
+
+.certificates {
+  margin-bottom: 90px;
+
+  @include xs {
+    margin-bottom: 76px;
+  }
+}
+
+.certificates__slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.certificates__slide {
+  width: 220px;
+  height: 280px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include xxs {
+    width: 160px;
+    height: 202px;
+  }
+}

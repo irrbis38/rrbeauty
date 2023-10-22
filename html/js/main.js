@@ -194,6 +194,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     initAllGoodsSectionsSliders();
     doToggleFavoritesIcons();
   }
+
+  // promotions-item page
+  const company_page = document.querySelector(".company-page");
+  if (company_page) {
+    doInitCompanySlider();
+    doInitMaskInput();
+    checkRequiredFormInputs();
+  }
+
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -2851,6 +2860,34 @@ function doInitContentSlider() {
         spaceBetween: 24,
         slidesPerView: 4,
       },
+    },
+  });
+}
+
+function doInitCompanySlider() {
+  const companySlider = new Swiper(".certificates__slider", {
+    slidesPerView: 2,
+    spaceBetween: 15,
+    breakpoints: {
+      576: {
+        slidesPerView: 3,
+      },
+      768: {
+        spaceBetween: 24,
+      },
+      992: {
+        slidesPerView: 4,
+      },
+      1301: {
+        slidesPerView: 5,
+      },
+      1500: {
+        slidesPerView: 6,
+      },
+    },
+    navigation: {
+      prevEl: ".content__prev",
+      nextEl: ".content__next",
     },
   });
 }

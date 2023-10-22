@@ -1,0 +1,109 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'company-page';
+block head
+    title RR Beauty - О компании
+block page
+
+    .top
+
+        .container
+
+            include ./blocks/_breadcrupms
+
+    .content
+        h2.content__heading о компании
+        .content__top
+            .content__img
+                img(src="./images/company-preview-1.jpg" alt="Превью страницы о компании")
+            .content__decor
+            .content__additional-img
+                img(src="./images/company-preview-2.jpg" alt="")
+
+
+        .content__block
+            .container
+                .content__inner
+                    h2.content__title
+                        span Мы заботимся о наших покупателях и качестве продукции
+
+                    .content__wrapper
+                        p Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani Beauty, Lancome, Kerastase и Redken, не подтвердила готовность начать поставки в Россию. О этом сообщает «РИА Новости», ссылаясь на коммюнике компании.«L'Oreal вновь заявляет, что ее позиция не изменилась. L'Oréal строго соблюдает санкции ЕС и США», — говорится в заявлении.Косметическая компания добавила, что временно закрыла все собственные магазины, напрямую управляемые пункты продажи в универмагах и на сайтах под собственным брендом, а также приостановила рекламу.
+
+
+    section.gallery 
+        .container
+            h2.company-block__title наша фотопленка
+
+            .gallery__wrapper
+                .gallery__item.gallery__item--horiz
+                    img(src="./images/gallery-1.jpg" alt="")
+                .gallery__item.gallery__item--rect
+                    img(src="./images/gallery-2.jpg" alt="")
+                .gallery__item.gallery__item--rect
+                    img(src="./images/gallery-3.jpg" alt="")
+                .gallery__item.gallery__item--rect
+                    img(src="./images/gallery-4.jpg" alt="")
+                .gallery__item.gallery__item--vert
+                    img(src="./images/gallery-5.jpg" alt="")
+                .gallery__item.gallery__item--rect.gallery__item--empty
+                .gallery__item.gallery__item--rect
+                    img(src="./images/gallery-2.jpg" alt="")
+
+
+    section.certificates 
+        .container
+            h2.company-block__title СЕРТИФИКАТЫ
+
+            .certificates__slider.swiper-slider 
+                .certificates__wrapper.swiper-wrapper
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-1.jpg" alt="сертификат")
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-2.jpg" alt="сертификат")
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-1.jpg" alt="сертификат")
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-1.jpg" alt="сертификат")
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-2.jpg" alt="сертификат")
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-2.jpg" alt="сертификат")
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-2.jpg" alt="сертификат")
+                    .certificates__slide.swiper-slide 
+                        img(src="./images/certificates-1.jpg" alt="сертификат")
+
+                .content__nav.intro__nav
+
+                    button.intro__btn.content__prev(type="button" aria-label="Показать предыдущий слайд")
+                        svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                            path(d="M20.0002 11.0001V13.0001H8.00016L13.5002 18.5001L12.0802 19.9201L4.16016 12.0001L12.0802 4.08008L13.5002 5.50008L8.00016 11.0001H20.0002Z" fill="#000")
+
+                    span
+
+                    button.intro__btn.content__next(type="button" aria-label="Показать следующий слайд")
+                        svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                            path(d="M3.99984 11.0001V13.0001H15.9998L10.4998 18.5001L11.9198 19.9201L19.8398 12.0001L11.9198 4.08008L10.4998 5.50008L15.9998 11.0001H3.99984Z" fill="#000")
+
+
+    section.feedback 
+        .container
+            h2.company-block__title.feedback__title связаться с нами
+
+            .feedback__wrapper
+
+                form.feedback__form.form(action="#" novalidate)
+
+                    input.feedback__input.input(type="text" placeholder="Ваше имя" name="user_name" autocomplete="off")
+
+                    input.feedback__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Ваш телефон*" name="user_phone" autocomplete="off")
+
+                    textarea.feedback__textarea(name="question" placeholder="Вас интересует" rows="1")
+
+
+                    button.feedback__submit(type="submit" aria-label="Отправить запрос") Отправить
+
+                .feedback__policy Продолжая, вы соглашаетесь с #[a(href="#") политикой конфиденциальности]
+
+
