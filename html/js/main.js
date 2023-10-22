@@ -171,6 +171,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (cabinet_orders_item_page) {
     doToggleCabinetAccordion();
   }
+
+  // news-item page
+  const news_item_page = document.querySelector(".news-item-page");
+  if (news_item_page) {
+    doInitContentSlider();
+    initAllGoodsSectionsSliders();
+  }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -1389,6 +1396,13 @@ function initAllGoodsSectionsSliders() {
     ".discountedProducts"
   );
 
+  const news_item_page = document.querySelector(".news-item-page");
+
+  // amount of slides that leave after resize from 768px< to >=768px
+  var slidesToLeave = 4;
+
+  news_item_page ? (slidesToLeave = 3) : (slidesToLeave = 4);
+
   if (discounted_products_section) {
     sections = [].concat(goods_sections, [discounted_products_section]);
   } else {
@@ -1411,6 +1425,7 @@ function initAllGoodsSectionsSliders() {
       sliders_wrappers,
       prev_btn,
       next_btn,
+      slidesToLeave,
     };
 
     doCheckSlidesAmount(params);
@@ -1427,6 +1442,7 @@ function doCheckSlidesAmount(params) {
     sliders_wrappers,
     prev_btn,
     next_btn,
+    slidesToLeave,
   } = params;
 
   let slidesAmount = 0;
@@ -1446,6 +1462,7 @@ function doCheckSlidesAmount(params) {
       next_btn,
       slidesAmount,
       sectionItemsClassName,
+      slidesToLeave,
     };
 
     doInitGeneralSliderLogic(params);
@@ -1463,6 +1480,7 @@ function doInitGeneralSliderLogic(params) {
     next_btn,
     slidesAmount,
     sectionItemsClassName,
+    slidesToLeave,
   } = params;
 
   if (window.innerWidth >= 768) {
@@ -1491,7 +1509,7 @@ function doInitGeneralSliderLogic(params) {
       const section_items = Array.from(
         section.querySelectorAll(sectionItemsClassName)
       );
-      doRemoveAllAddedElements(section_items, 4);
+      doRemoveAllAddedElements(section_items, slidesToLeave);
 
       // init slider
       doAddSliderListeners();
@@ -1629,6 +1647,10 @@ function handleSliderNavButtons(
   }
   const newSlideInner = newSlide.children;
 
+  // == for news-item page
+  const news_item_page = document.querySelector(".news-item-page");
+  // ===
+
   if (currentSlideName) {
     const params = {
       prev_btn,
@@ -1643,6 +1665,20 @@ function handleSliderNavButtons(
       lastCurrentSlideInnerOffset,
     };
     gsapAnimationForPromotionsSlider(params);
+  } else if (news_item_page) {
+    const params = {
+      prev_btn,
+      next_btn,
+      currentSlideName,
+      currentSlide,
+      currentSlideInner,
+      newSlide,
+      newSlideInner,
+      firstCurrentSlideOffsset,
+      lastCurrentSlideOffset,
+      lastCurrentSlideInnerOffset,
+    };
+    gsapAnimationForNewsItemPage(params);
   } else {
     const params = {
       prev_btn,
@@ -1779,6 +1815,72 @@ function gsapAnimationForGoodsSectionSlider(params) {
     .call(doRemoveClassToButtons, [prev_btn, next_btn]);
 }
 
+function gsapAnimationForNewsItemPage(params) {
+  const {
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = params;
+
+  const title = currentSlide.querySelector(".news__title");
+  const subtitle = currentSlide.querySelector(".news__subtitle");
+  const bottom = currentSlide.querySelector(".news__bottom");
+
+  const elements = [title, subtitle, bottom];
+
+  const TL = gsap.timeline();
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.add("nodelay"))
+    )
+    .set(currentSlide, { zIndex: 1 })
+    .set(newSlide, { zIndex: 2 })
+    .set(elements, { opacity: 0 })
+    .to(currentSlide, {
+      left: firstCurrentSlideOffsset,
+      duration: 0.4,
+    })
+    .to(
+      newSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      newSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: lastCurrentSlideOffset,
+    })
+    .set(elements, {
+      opacity: 1,
+    })
+    .set(currentSlideInner, {
+      x: lastCurrentSlideInnerOffset,
+    })
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.remove("nodelay"))
+    )
+    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
+}
+
 // === END OF SLIDER LOGIC ===
 
 // === CATALOG-ITEM PAGE ===
@@ -1788,10 +1890,6 @@ function doInitCatalogItemSlider() {
     direction: "vertical",
     spaceBetween: 9,
     slidesPerView: 3,
-    // freeMode: true,
-    // watchSlidesProgress: true,
-    // navigation: false,
-
     breakpoints: {
       768: {
         spaceBetween: 23,
@@ -2709,4 +2807,33 @@ function doCheckOrderPlacementFirstStepInputs() {
   !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
   // adds listeners to all elements that can have an error className
   doRemoveErrorClassNameInAuth(required_inputs);
+}
+
+// news-item page
+
+function doInitContentSlider() {
+  const contentSlider = new Swiper(".content__slider", {
+    spaceBetween: 16,
+    slidesPerView: 1.4,
+    slidesOffsetAfter: 20,
+    navigation: {
+      prevEl: ".content__prev",
+      nextEl: ".content__next",
+    },
+
+    breakpoints: {
+      576: {
+        slidesPerView: 2,
+        slidesOffsetAfter: 0,
+      },
+      768: {
+        spaceBetween: 24,
+        slidesPerView: 3,
+      },
+      1001: {
+        spaceBetween: 24,
+        slidesPerView: 4,
+      },
+    },
+  });
 }

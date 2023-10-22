@@ -227,7 +227,7 @@ mixin starRating(customClassName, isDisable, id)
 
 
 mixin infoReviewsItem(id)
-    article.info__reviews-item
+    .info__reviews-item
 
         .info__reviews-descr
             span.info__reviews-user Ярослав П.
@@ -314,4 +314,44 @@ mixin newsCard(img)
         .news__bottom 
             a.news__link(href="#") Читать дальше
             time.news__published(datetime="2022-10-11") 10.11.2022
+
+
+mixin mightlikeCardItem(imgUrl)
+    .goodsCard__item
+        .goodsCard__sliderWrapper 
+            .goodsCard__slide
+                .news__inner
+                    .news__content
+                        .news__img 
+                            img(src= imgUrl.first alt= "Новость номер 1")
+                        h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
+                        p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
+
+                    .news__bottom 
+                        a.news__link(href="#") Читать дальше
+                        time.news__published(datetime="2022-10-11") 10.11.2022
+
+            .goodsCard__slide
+                .news__inner
+                    .news__content
+                        .news__img 
+                            img(src= imgUrl.second alt= "Новость номер 1")
+                        h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
+                        p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
+
+                    .news__bottom 
+                        a.news__link(href="#") Читать дальше
+                        time.news__published(datetime="2022-10-11") 10.11.2022
+
+            .goodsCard__slide
+                .news__inner
+                    .news__content
+                        .news__img 
+                            img(src= imgUrl.third alt= "Новость номер 1")
+                        h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
+                        p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
+
+                    .news__bottom 
+                        a.news__link(href="#") Читать дальше
+                        time.news__published(datetime="2022-10-11") 10.11.2022
 
