@@ -315,6 +315,14 @@ mixin newsCard(img)
             a.news__link(href="#") Читать дальше
             time.news__published(datetime="2022-10-11") 10.11.2022
 
+mixin promotionsCard(img, color)
+    article.promotions__unit
+        .promotions__content
+            .promotions__img 
+                img(src= "./images/promotions-" + img + ".jpg" alt= "Новость номер " + img)
+                span.promotionsSection__sticker(style= "background-color: " + color) 15.09 - 15.10
+            h3.promotions__title: a(href="#") Скидка 15% на пигменты AS company
+
 
 mixin mightlikeCardItem(imgUrl)
     .goodsCard__item

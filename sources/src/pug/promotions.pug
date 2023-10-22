@@ -1,0 +1,40 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'promotions-page';
+block head
+    title RR Beauty - Акции
+block page
+
+    .top
+        .container
+            include ./blocks/_breadcrupms
+
+
+
+    section.promotions
+
+        h2.top__title.top__title--large
+            span.container Акции
+
+        .container
+
+            .promotions__wrapper
+
+                -
+                    var promotionsList = [
+                        {img: '1', color: '#008DC3'},
+                        {img: '2', color: '#537C8B'},
+                        {img: '3', color: '#000'},
+                        {img: '4', color: '#AFC800'},
+                        {img: '5', color: '#8E3E1C'},
+                        {img: '6', color: '#302F17'},
+                        {img: '7', color: '#001BC6'}
+                    ]
+
+                each item in promotionsList
+                    +promotionsCard(item.img, item.color)
+
+
+            +pagination('promotions__pagination')
+
+            button.catalog__btn.showmore__btn Показать еще
