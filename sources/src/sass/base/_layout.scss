@@ -375,7 +375,7 @@ button {
     }
   }
 
-  .goodsCard__slide.addedToFavorites & {
+  .goodsCard__descr.addedToFavorites & {
     img {
       &:nth-child(1) {
         opacity: 0;

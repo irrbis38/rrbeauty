@@ -144,6 +144,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // }
   }
 
+  // cabinet favorites page
+  const cabinet_favorites_page = document.querySelector(
+    ".cabinet-favorites-page"
+  );
+
+  if (cabinet_favorites_page) {
+    doToggleFavoritesIcons();
+  }
+
   // cabinet-user-orders page
   const cabinet_user_orders_page = document.querySelector(
     ".cabinet-user-orders-page"
@@ -671,7 +680,7 @@ function doToggleFavoritesIcons() {
   goodsCard_addToFavorites_buttons.forEach((btn) =>
     btn.addEventListener("click", (e) => {
       // const button = e.target.closest(".goodsCard__item");
-      const button = e.target.closest(".goodsCard__slide");
+      const button = e.target.closest(".goodsCard__descr");
       button.classList.toggle("addedToFavorites");
     })
   );

@@ -144,8 +144,8 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAdded
 
 
 mixin goodsCardItemSmall(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAddedToFavorites)
-    article.goodsCard__item(class=isAddedToFavorites ? 'addedToFavorites' : '')
-        .goodsCard__descr
+    article.goodsCard__item
+        .goodsCard__descr(class=isAddedToFavorites ? 'addedToFavorites' : '')
             .goodsCard__img
                 img(src= imgUrl alt= name)
                 button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
