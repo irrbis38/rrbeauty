@@ -178,6 +178,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doInitContentSlider();
     initAllGoodsSectionsSliders();
   }
+
+  // promotions-item page
+  const promotions_item_page = document.querySelector(".promotions-item-page");
+  if (promotions_item_page) {
+    initAllGoodsSectionsSliders();
+    doToggleFavoritesIcons();
+  }
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 

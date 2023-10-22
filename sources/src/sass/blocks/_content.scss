@@ -73,6 +73,77 @@
   }
 }
 
+.promotions-item-page {
+  .content__img {
+    width: 64.72%;
+  }
+
+  .promotionsSection__sticker {
+    bottom: 82px;
+    min-width: 221px;
+    z-index: 3;
+    text-align: center;
+
+    @include md {
+      min-width: auto;
+    }
+
+    @include xs {
+      bottom: 28px;
+    }
+
+    @include xxs {
+      bottom: 2px;
+    }
+  }
+
+  .content__decor {
+    width: 33.28%;
+  }
+
+  @include xxs {
+    .content__img {
+      width: 100%;
+    }
+  }
+
+  .goodsSection {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .goodsCard__about {
+    margin-bottom: 26px;
+    padding: 0 !important;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .content__wrapper {
+    p:first-child {
+      padding-bottom: 36px;
+    }
+
+    .content__visual + p {
+      padding-top: 59px;
+
+      @include xs {
+        padding-top: 16px;
+      }
+    }
+
+    p:last-child {
+      padding-bottom: 100px;
+
+      @include xs {
+        padding-bottom: 155px;
+      }
+    }
+  }
+}
+
 .content__decor {
   position: relative;
   bottom: 82px;
