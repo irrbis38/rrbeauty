@@ -105,7 +105,8 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAdded
                             img(src= imgUrl.second alt= name.second)
                             button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
                                 img(src="./images/heart-icon.svg" alt="Добавить в избранное")
-                                img(src="./images/heart-icon-black.svg" alt="Убрать из избранного")
+                                img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
+                                img(src="./images/heart-icon-red.svg" alt="Убрать из избранного")
                             if isSale
                                 span.sticker__sale.stiker__azure -10%
                             if isHit
@@ -126,7 +127,8 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAdded
                             img(src= imgUrl.third alt= name.third)
                             button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
                                 img(src="./images/heart-icon.svg" alt="Добавить в избранное")
-                                img(src="./images/heart-icon-black.svg" alt="Убрать из избранного")
+                                img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
+                                img(src="./images/heart-icon-red.svg" alt="Убрать из избранного")
                             if isSale
                                 span.sticker__sale.stiker__azure -10%
                             if isHit

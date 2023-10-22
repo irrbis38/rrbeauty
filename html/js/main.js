@@ -670,7 +670,8 @@ function doToggleFavoritesIcons() {
 
   goodsCard_addToFavorites_buttons.forEach((btn) =>
     btn.addEventListener("click", (e) => {
-      const button = e.target.closest(".goodsCard__item");
+      // const button = e.target.closest(".goodsCard__item");
+      const button = e.target.closest(".goodsCard__slide");
       button.classList.toggle("addedToFavorites");
     })
   );
