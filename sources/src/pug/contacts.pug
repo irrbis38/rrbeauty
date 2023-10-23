@@ -1,0 +1,64 @@
+extends base/_layout
+block vars
+    - var bodyClass = 'contacts-page';
+block head
+    title RR Beauty - Контакты
+block page
+
+    .top
+        .container
+            include ./blocks/_breadcrupms
+
+
+
+    section.contacts
+
+        h2.top__title
+            span.container Контакты
+
+        .container
+            .contacts__list
+
+                a.contacts__email(href="mailto:rrbeauty@gmail.com") rrbeauty@gmail.com
+
+                .contacts__phones
+                    a.contacts__phone(href="tel:88008805060") 8 800 880 50 60
+                    span
+                    a.contacts__phone(href="tel:88008805060") 8 800 880 50 60
+
+                ul.contacts__social
+                    li: a(href="#" aria-label="Ссылка на whatsapp")
+                        include ./blocks/_icon-social-whatsapp
+
+                    li: a(href="#" aria-label="Ссылка на профиль в instagram")
+                        include ./blocks/_icon-social-instagram
+
+                    li: a(href="#" aria-label="Ссылка на профиль в telegram")
+                        include ./blocks/_icon-social-telegram
+
+        .map.contacts__map
+
+            .mapSection__wrapper#map-section-wrapper
+
+
+        .contacts__info ИП Ремез Нина Ивановна     ИНН: 233500834036     ОГРНИП: 314237310700062#[br]Фактический адрес: 352330, Краснодарский край, Усть-Лабинск, Красноармейская ул, д 249
+
+
+    section.feedback 
+        .container
+            h2.company-block__title.feedback__title связаться с нами
+
+            .feedback__wrapper
+
+                form.feedback__form.form(action="#" novalidate)
+
+                    input.feedback__input.input(type="text" placeholder="Ваше имя" name="user_name" autocomplete="off")
+
+                    input.feedback__input.input.input-required(type="text" data-maska="+7 (###) ###-##-##" required data-min-phone-length="18" placeholder="Ваш телефон*" name="user_phone" autocomplete="off")
+
+                    textarea.feedback__textarea(name="question" placeholder="Вас интересует" rows="1")
+
+
+                    button.feedback__submit(type="submit" aria-label="Отправить запрос") Отправить
+
+                .feedback__policy Продолжая, вы соглашаетесь с #[a(href="#") политикой конфиденциальности]

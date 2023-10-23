@@ -211,6 +211,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doCreateMapScript();
   }
 
+  // contacts page
+  const contacts_page = document.querySelector(".contacts-page");
+  if (contacts_page) {
+    doCreateMapScript();
+  }
+
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -533,36 +539,46 @@ function doInitMap() {
 
       marks.forEach((mark) => map.geoObjects.add(mark));
 
-      marks.forEach((item) =>
-        item.events.add("click", (e) => {
-          map_description.classList.remove("show");
+      var contacts_page = document.querySelector(".contacts-page");
 
-          // reset icon to default for all marks
-          marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
-          marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
+      if (!contacts_page) {
+        marks.forEach((item) =>
+          item.events.add("click", (e) => {
+            map_description.classList.remove("show");
 
-          // set new icon to current mark
-          e.get("target").options.set("iconImageHref", mark_current_link);
-          e.get("target").options.set("iconImageSize", [40, 40]);
+            changeMapMarks(e);
 
-          // show store card
-          map_description.classList.add("show");
-          const TL = gsap.timeline();
-          TL.from(
-            [".map__storeName", ".map__data", ".map__choose", ".map__close"],
-            {
-              autoAlpha: 0,
-              // y: 20,
-              x: 20,
-              ease: Power4.easeOut,
-              duration: 0.5,
-              stagger: {
-                each: 0.08,
-              },
-            }
-          );
-        })
-      );
+            // show store card
+            map_description.classList.add("show");
+            const TL = gsap.timeline();
+            TL.from(
+              [".map__storeName", ".map__data", ".map__choose", ".map__close"],
+              {
+                autoAlpha: 0,
+                // y: 20,
+                x: 20,
+                ease: Power4.easeOut,
+                duration: 0.5,
+                stagger: {
+                  each: 0.08,
+                },
+              }
+            );
+          })
+        );
+      } else {
+        console.log("todo");
+      }
+
+      function changeMapMarks(e) {
+        // reset icon to default for all marks
+        marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
+        marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
+
+        // set new icon to current mark
+        e.get("target").options.set("iconImageHref", mark_current_link);
+        e.get("target").options.set("iconImageSize", [40, 40]);
+      }
     }
   }
 
