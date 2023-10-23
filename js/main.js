@@ -144,6 +144,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // }
   }
 
+  // cabinet favorites page
+  const cabinet_favorites_page = document.querySelector(
+    ".cabinet-favorites-page"
+  );
+
+  if (cabinet_favorites_page) {
+    doToggleFavoritesIcons();
+  }
+
   // cabinet-user-orders page
   const cabinet_user_orders_page = document.querySelector(
     ".cabinet-user-orders-page"
@@ -171,6 +180,43 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (cabinet_orders_item_page) {
     doToggleCabinetAccordion();
   }
+
+  // news-item page
+  const news_item_page = document.querySelector(".news-item-page");
+  if (news_item_page) {
+    doInitContentSlider();
+    initAllGoodsSectionsSliders();
+  }
+
+  // promotions-item page
+  const promotions_item_page = document.querySelector(".promotions-item-page");
+  if (promotions_item_page) {
+    initAllGoodsSectionsSliders();
+    doToggleFavoritesIcons();
+  }
+
+  // promotions-item page
+  const company_page = document.querySelector(".company-page");
+  if (company_page) {
+    doInitCompanySlider();
+    doInitMaskInput();
+    checkRequiredFormInputs();
+  }
+
+  // stores page
+  const stores_page = document.querySelector(".stores-page");
+  if (stores_page) {
+    doInitMapStoresSelect();
+    doHideMapDescription();
+    doCreateMapScript();
+  }
+
+  // contacts page
+  const contacts_page = document.querySelector(".contacts-page");
+  if (contacts_page) {
+    doCreateMapScript();
+  }
+
   // ====== END OF DOMContentLoaded LISTENERS ========
 });
 
@@ -493,36 +539,46 @@ function doInitMap() {
 
       marks.forEach((mark) => map.geoObjects.add(mark));
 
-      marks.forEach((item) =>
-        item.events.add("click", (e) => {
-          map_description.classList.remove("show");
+      var contacts_page = document.querySelector(".contacts-page");
 
-          // reset icon to default for all marks
-          marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
-          marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
+      if (!contacts_page) {
+        marks.forEach((item) =>
+          item.events.add("click", (e) => {
+            map_description.classList.remove("show");
 
-          // set new icon to current mark
-          e.get("target").options.set("iconImageHref", mark_current_link);
-          e.get("target").options.set("iconImageSize", [40, 40]);
+            changeMapMarks(e);
 
-          // show store card
-          map_description.classList.add("show");
-          const TL = gsap.timeline();
-          TL.from(
-            [".map__storeName", ".map__data", ".map__choose", ".map__close"],
-            {
-              autoAlpha: 0,
-              // y: 20,
-              x: 20,
-              ease: Power4.easeOut,
-              duration: 0.5,
-              stagger: {
-                each: 0.08,
-              },
-            }
-          );
-        })
-      );
+            // show store card
+            map_description.classList.add("show");
+            const TL = gsap.timeline();
+            TL.from(
+              [".map__storeName", ".map__data", ".map__choose", ".map__close"],
+              {
+                autoAlpha: 0,
+                // y: 20,
+                x: 20,
+                ease: Power4.easeOut,
+                duration: 0.5,
+                stagger: {
+                  each: 0.08,
+                },
+              }
+            );
+          })
+        );
+      } else {
+        console.log("todo");
+      }
+
+      function changeMapMarks(e) {
+        // reset icon to default for all marks
+        marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
+        marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
+
+        // set new icon to current mark
+        e.get("target").options.set("iconImageHref", mark_current_link);
+        e.get("target").options.set("iconImageSize", [40, 40]);
+      }
     }
   }
 
@@ -656,7 +712,8 @@ function doToggleFavoritesIcons() {
 
   goodsCard_addToFavorites_buttons.forEach((btn) =>
     btn.addEventListener("click", (e) => {
-      const button = e.target.closest(".goodsCard__item");
+      // const button = e.target.closest(".goodsCard__item");
+      const button = e.target.closest(".goodsCard__descr");
       button.classList.toggle("addedToFavorites");
     })
   );
@@ -1389,6 +1446,13 @@ function initAllGoodsSectionsSliders() {
     ".discountedProducts"
   );
 
+  const news_item_page = document.querySelector(".news-item-page");
+
+  // amount of slides that leave after resize from 768px< to >=768px
+  var slidesToLeave = 4;
+
+  news_item_page ? (slidesToLeave = 3) : (slidesToLeave = 4);
+
   if (discounted_products_section) {
     sections = [].concat(goods_sections, [discounted_products_section]);
   } else {
@@ -1411,6 +1475,7 @@ function initAllGoodsSectionsSliders() {
       sliders_wrappers,
       prev_btn,
       next_btn,
+      slidesToLeave,
     };
 
     doCheckSlidesAmount(params);
@@ -1427,6 +1492,7 @@ function doCheckSlidesAmount(params) {
     sliders_wrappers,
     prev_btn,
     next_btn,
+    slidesToLeave,
   } = params;
 
   let slidesAmount = 0;
@@ -1446,6 +1512,7 @@ function doCheckSlidesAmount(params) {
       next_btn,
       slidesAmount,
       sectionItemsClassName,
+      slidesToLeave,
     };
 
     doInitGeneralSliderLogic(params);
@@ -1463,6 +1530,7 @@ function doInitGeneralSliderLogic(params) {
     next_btn,
     slidesAmount,
     sectionItemsClassName,
+    slidesToLeave,
   } = params;
 
   if (window.innerWidth >= 768) {
@@ -1491,7 +1559,7 @@ function doInitGeneralSliderLogic(params) {
       const section_items = Array.from(
         section.querySelectorAll(sectionItemsClassName)
       );
-      doRemoveAllAddedElements(section_items, 4);
+      doRemoveAllAddedElements(section_items, slidesToLeave);
 
       // init slider
       doAddSliderListeners();
@@ -1629,6 +1697,10 @@ function handleSliderNavButtons(
   }
   const newSlideInner = newSlide.children;
 
+  // == for news-item page
+  const news_item_page = document.querySelector(".news-item-page");
+  // ===
+
   if (currentSlideName) {
     const params = {
       prev_btn,
@@ -1643,6 +1715,20 @@ function handleSliderNavButtons(
       lastCurrentSlideInnerOffset,
     };
     gsapAnimationForPromotionsSlider(params);
+  } else if (news_item_page) {
+    const params = {
+      prev_btn,
+      next_btn,
+      currentSlideName,
+      currentSlide,
+      currentSlideInner,
+      newSlide,
+      newSlideInner,
+      firstCurrentSlideOffsset,
+      lastCurrentSlideOffset,
+      lastCurrentSlideInnerOffset,
+    };
+    gsapAnimationForNewsItemPage(params);
   } else {
     const params = {
       prev_btn,
@@ -1779,6 +1865,72 @@ function gsapAnimationForGoodsSectionSlider(params) {
     .call(doRemoveClassToButtons, [prev_btn, next_btn]);
 }
 
+function gsapAnimationForNewsItemPage(params) {
+  const {
+    prev_btn,
+    next_btn,
+    currentSlide,
+    currentSlideInner,
+    newSlide,
+    newSlideInner,
+    firstCurrentSlideOffsset,
+    lastCurrentSlideOffset,
+    lastCurrentSlideInnerOffset,
+  } = params;
+
+  const title = currentSlide.querySelector(".news__title");
+  const subtitle = currentSlide.querySelector(".news__subtitle");
+  const bottom = currentSlide.querySelector(".news__bottom");
+
+  const elements = [title, subtitle, bottom];
+
+  const TL = gsap.timeline();
+  return TL.call(doAddClassToButtons, [prev_btn, next_btn], 0)
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.add("nodelay"))
+    )
+    .set(currentSlide, { zIndex: 1 })
+    .set(newSlide, { zIndex: 2 })
+    .set(elements, { opacity: 0 })
+    .to(currentSlide, {
+      left: firstCurrentSlideOffsset,
+      duration: 0.4,
+    })
+    .to(
+      newSlide,
+      {
+        left: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .to(
+      newSlideInner,
+      {
+        x: "0%",
+        duration: 0.4,
+      },
+      0
+    )
+    .set(currentSlide, {
+      left: lastCurrentSlideOffset,
+    })
+    .set(elements, {
+      opacity: 1,
+    })
+    .set(currentSlideInner, {
+      x: lastCurrentSlideInnerOffset,
+    })
+    .call(() =>
+      document
+        .querySelectorAll(".goodsSection")
+        .forEach((section) => section.classList.remove("nodelay"))
+    )
+    .call(doRemoveClassToButtons, [prev_btn, next_btn]);
+}
+
 // === END OF SLIDER LOGIC ===
 
 // === CATALOG-ITEM PAGE ===
@@ -1788,10 +1940,6 @@ function doInitCatalogItemSlider() {
     direction: "vertical",
     spaceBetween: 9,
     slidesPerView: 3,
-    // freeMode: true,
-    // watchSlidesProgress: true,
-    // navigation: false,
-
     breakpoints: {
       768: {
         spaceBetween: 23,
@@ -2709,4 +2857,61 @@ function doCheckOrderPlacementFirstStepInputs() {
   !checkContainingErrorClassName(required_inputs) && doSavePersonalData();
   // adds listeners to all elements that can have an error className
   doRemoveErrorClassNameInAuth(required_inputs);
+}
+
+// news-item page
+
+function doInitContentSlider() {
+  const contentSlider = new Swiper(".content__slider", {
+    spaceBetween: 16,
+    slidesPerView: 1.4,
+    slidesOffsetAfter: 20,
+    navigation: {
+      prevEl: ".content__prev",
+      nextEl: ".content__next",
+    },
+
+    breakpoints: {
+      576: {
+        slidesPerView: 2,
+        slidesOffsetAfter: 0,
+      },
+      768: {
+        spaceBetween: 24,
+        slidesPerView: 3,
+      },
+      1001: {
+        spaceBetween: 24,
+        slidesPerView: 4,
+      },
+    },
+  });
+}
+
+function doInitCompanySlider() {
+  const companySlider = new Swiper(".certificates__slider", {
+    slidesPerView: 2,
+    spaceBetween: 15,
+    breakpoints: {
+      576: {
+        slidesPerView: 3,
+      },
+      768: {
+        spaceBetween: 24,
+      },
+      992: {
+        slidesPerView: 4,
+      },
+      1301: {
+        slidesPerView: 5,
+      },
+      1500: {
+        slidesPerView: 6,
+      },
+    },
+    navigation: {
+      prevEl: ".content__prev",
+      nextEl: ".content__next",
+    },
+  });
 }
