@@ -30,7 +30,7 @@
 .content__img {
   position: relative;
   width: 49%;
-  padding-top: 65.8%;
+  padding-top: 66%;
 
   img {
     position: absolute;
@@ -76,7 +76,7 @@
 // promotions-item page
 .promotions-item-page {
   .content__img {
-    width: 64.72%;
+    width: 65%;
   }
 
   .promotionsSection__sticker {
@@ -195,8 +195,10 @@
   }
 
   .content__img {
-    width: 66.11%;
-    padding-top: 54.51%;
+    // width: 66.11%;
+    // padding-top: 54.51%;
+    width: 66%;
+    padding-top: 55%;
 
     @include xxs {
       width: 100%;
@@ -272,6 +274,7 @@
 
 .content__decor {
   position: relative;
+  z-index: 3;
   bottom: 82px;
   width: 49%;
   height: 48px;

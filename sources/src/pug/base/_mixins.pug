@@ -307,23 +307,27 @@ mixin brandsAbcItem(letter)
 
 mixin newsCard(img)
     article.news__unit
-        .news__content
-            .news__img 
-                img(src= "./images/news-" + img + ".jpg" alt= "Новость номер " + img)
-            h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
-            p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
+        a.news__link(href="#" aria-label="Перейти на страницу новости")
+            .news__content
+                .news__img
+                    img(src= "./images/news-" + img + ".jpg" alt= "Новость номер " + img)
+                    span.news__decor
+                h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
+                p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
 
-        .news__bottom 
-            a.news__link(href="#") Читать дальше
-            time.news__published(datetime="2022-10-11") 10.11.2022
+            .news__bottom 
+                span.news__readmore Читать дальше
+                time.news__published(datetime="2022-10-11") 10.11.2022
 
 mixin promotionsCard(img, color)
     article.promotions__unit
-        .promotions__content
-            .promotions__img 
-                img(src= "./images/promotions-" + img + ".jpg" alt= "Новость номер " + img)
-                span.promotionsSection__sticker(style= "background-color: " + color) 15.09 - 15.10
-            h3.promotions__title: a(href="#") Скидка 15% на пигменты AS company
+        a.promotions__link(href="#" aria-label="Перейти на страницу акции")
+            .promotions__content
+                .promotions__img 
+                    img(src= "./images/promotions-" + img + ".jpg" alt= "Новость номер " + img)
+                    span.promotionsSection__sticker(style= "background-color: " + color) 15.09 - 15.10
+                    span.promotions__decor
+                h3.promotions__title Скидка 15% на пигменты AS company
 
 
 mixin mightlikeCardItem(imgUrl)
