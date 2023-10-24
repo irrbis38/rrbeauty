@@ -3,7 +3,7 @@ include _mixins
 block vars
     -
         var bodyClass = '';
-        var mapInclue = false;
+        //- var mapInclue = false;
 doctype html
 html(lang="ru")
     head
@@ -46,15 +46,18 @@ html(lang="ru")
         block footer
             include ../blocks/_footer
 
-            //- if mapInclue
-            //-     block js
-            //-         script(src="https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU")
-            //-         script(src="js/main.min.js")
-            //- else 
-            //-     block js
-            //-         script(src="js/main.min.js")
+            if bodyClass == 'contacts-page'
+                block js
+                    script(src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous")
+                    script(src="js/main.min.js")
+            else 
+                block js
+                    script(src="js/main.min.js")
 
-            block js
-                script(src="js/main.min.js")
+            //- block js
+            //-     script(src="https://code.jquery.com/jquery-3.7.1.min.js"
+            //-         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            //-         crossorigin="anonymous")
+            //-     script(src="js/main.min.js")
 
 

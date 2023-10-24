@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // sliders in goodsCard sections
     initAllGoodsSectionsSliders();
 
-    doCreateMapScript();
+    doCreateMapScript(doInitMap);
     // if (typeof ymaps !== "undefined" && ymaps !== null) {
     //   setTimeout(doInitMap, 0);
     // }
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doHideMapDescription();
     doSwitchOrderStep();
 
-    doCreateMapScript();
+    doCreateMapScript(doInitMap);
 
     // if (typeof ymaps !== "undefined" && ymaps !== null) {
     //   setTimeout(doInitMap, 0);
@@ -208,13 +208,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (stores_page) {
     doInitMapStoresSelect();
     doHideMapDescription();
-    doCreateMapScript();
+    doCreateMapScript(doInitMap);
   }
 
   // contacts page
   const contacts_page = document.querySelector(".contacts-page");
   if (contacts_page) {
-    doCreateMapScript();
+    doCreateMapScript(doInitContatcsMap);
   }
 
   // ====== END OF DOMContentLoaded LISTENERS ========
@@ -466,19 +466,23 @@ function doPanelInit() {
 
 // init map on main page
 
-function doCreateMapScript() {
+function doCreateMapScript(cb) {
   setTimeout(function () {
     var script = document.createElement("script");
     script.async = false;
     script.src = "https://api-maps.yandex.ru/2.1/?apikey=key&lang=ru_RU";
     document.body.appendChild(script);
-    script.onload = () => doInitMap();
+    script.onload = () => cb();
   }, 2000);
 }
 
+var marks = {};
+// map markers url
+var mark_link = "images/map-mark.svg";
+var mark_current_link = "images/map-current-mark.svg";
+
+// map initialization for pages: home, stores, order-placement
 function doInitMap() {
-  const mark_link = "images/map-mark.svg";
-  const mark_current_link = "images/map-current-mark.svg";
   const stores_coordinats = [
     [51.158562572612595, 71.43921449999996],
     [51.159952, 71.441514],
@@ -495,7 +499,7 @@ function doInitMap() {
 
       const map_description = document.querySelector(".map__description");
 
-      const marks = stores_coordinats.map(
+      marks = stores_coordinats.map(
         (coord) =>
           new ymaps.Placemark(
             coord,
@@ -509,45 +513,21 @@ function doInitMap() {
           )
       );
 
-      map.controls.remove("geolocationControl"); // удаляем геолокацию
-      map.controls.remove("searchControl"); // удаляем поиск
-      map.controls.remove("trafficControl"); // удаляем контроль трафика
-      map.controls.remove("typeSelector"); // удаляем тип
-      map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
-      // map.controls.remove("zoomControl"); // удаляем контрол зуммирования
-      map.controls.remove("rulerControl"); // удаляем контрол правил
-      map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
-
-      // отключаем скролл карты на малых экранах
-
-      if (window.innerWidth <= 767) {
-        map.behaviors.disable("drag");
-      }
-
-      const mq767 = window.matchMedia("(max-width: 767px)");
-
-      mq767.addEventListener("change", (e) => {
-        // became less than 767px
-        if (e.matches) {
-          map.behaviors.disable("drag");
-        }
-        // became larger than 767px
-        else {
-          map.behaviors.enable("drag");
-        }
-      });
-
       marks.forEach((mark) => map.geoObjects.add(mark));
 
-      var contacts_page = document.querySelector(".contacts-page");
+      marks.forEach((item) =>
+        item.events.add("click", (e) => {
+          // map_description.classList.remove("show");
 
-      if (!contacts_page) {
-        marks.forEach((item) =>
-          item.events.add("click", (e) => {
+          changeMapMarks(e, marks);
+
+          var isSelected =
+            e.get("target").options.get("iconImageHref") ===
+            "images/map-current-mark.svg";
+
+          if (!isSelected) {
             map_description.classList.remove("show");
-
-            changeMapMarks(e);
-
+          } else {
             // show store card
             map_description.classList.add("show");
             const TL = gsap.timeline();
@@ -555,7 +535,6 @@ function doInitMap() {
               [".map__storeName", ".map__data", ".map__choose", ".map__close"],
               {
                 autoAlpha: 0,
-                // y: 20,
                 x: 20,
                 ease: Power4.easeOut,
                 duration: 0.5,
@@ -564,25 +543,166 @@ function doInitMap() {
                 },
               }
             );
-          })
-        );
-      } else {
-        console.log("todo");
-      }
+          }
+        })
+      );
 
-      function changeMapMarks(e) {
-        // reset icon to default for all marks
-        marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
-        marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
-
-        // set new icon to current mark
-        e.get("target").options.set("iconImageHref", mark_current_link);
-        e.get("target").options.set("iconImageSize", [40, 40]);
-      }
+      configureMap(map);
     }
   }
 
   ymaps.ready(init);
+}
+
+// map initialization for contacts pages
+function doInitContatcsMap() {
+  const stores_data = [
+    {
+      coord: [51.158562572612595, 71.43921449999996],
+      content: "Краснодар, В. Головатого, 313",
+    },
+    { coord: [51.159952, 71.441514], content: "Краснодар, В. Головатого, 310" },
+    {
+      coord: [51.157783, 71.442053],
+      content: "Краснодар, В. Головатого, 200",
+    },
+  ];
+
+  function init() {
+    var center = stores_data[0].coord;
+    if (ymaps) {
+      var map = new ymaps.Map("map-section-wrapper", {
+        center: center,
+        zoom: 17,
+      });
+
+      // Создание макета содержимого балуна.
+      // Макет создается с помощью фабрики макетов с помощью текстового шаблона.
+      var BalloonContentLayout = ymaps.templateLayoutFactory.createClass(
+        '<div class="balloon-root ">' +
+          '<a class="close" href="#">&times;</a>' +
+          '<div class="arrow balloon-pin"></div>' +
+          '<div class="balloon-body balloon">$[properties.balloonContent]</div>' +
+          "</div>",
+        {
+          //Формирование макета
+          build: function () {
+            this.constructor.superclass.build.call(this);
+            // console.log(this);
+            this._$element = $(".balloon-root", this.getParentElement());
+            this.applyElementOffset();
+            this._$element
+              .find(".close")
+              .on("click", $.proxy(this.onCloseClick, this));
+          },
+          //удаление макета из DOM
+          clear: function () {
+            this._$element.find(".close").off("click");
+            this.constructor.superclass.clear.call(this);
+          },
+          //закрытие балуна
+          onCloseClick: function (e) {
+            e.preventDefault();
+            this.events.fire("userclose");
+          },
+
+          //Сдвигаем балун, чтобы "хвостик" указывал на точку привязки.
+          applyElementOffset: function () {
+            this._$element.css({
+              left: -(this._$element[0].offsetWidth / 2 - 5),
+              top: -this._$element[0].offsetHeight - 36,
+            });
+          },
+        }
+      );
+
+      var marks = stores_data.map(
+        (item) =>
+          new ymaps.Placemark(
+            item.coord,
+            {
+              balloonContent: item.content,
+            },
+            {
+              iconLayout: "default#image",
+              iconImageHref: mark_link,
+              iconImageSize: [32, 32],
+              iconImageOffset: [-15, -5],
+              zIndexActive: 11,
+              balloonShadow: false,
+              balloonLayout: BalloonContentLayout,
+              // Запретим замену обычного балуна на балун-панель.
+              // Если не указывать эту опцию, на картах маленького размера откроется балун-панель.
+              balloonPanelMaxMapArea: 1,
+              // Не скрываем иконку при открытом балуне.
+              hideIconOnBalloonOpen: false,
+            }
+          )
+      );
+
+      marks.forEach((mark) => map.geoObjects.add(mark));
+
+      marks.forEach((item) =>
+        item.events.add("click", (e) => {
+          changeMapMarks(e, marks);
+        })
+      );
+
+      configureMap(map);
+    }
+  }
+
+  ymaps.ready(init);
+}
+
+// change map markers by click
+function changeMapMarks(e, marks) {
+  var isSelected =
+    e.get("target").options.get("iconImageHref") ===
+    "images/map-current-mark.svg";
+
+  if (isSelected) {
+    e.get("target").options.set("iconImageHref", mark_link);
+    e.get("target").options.set("iconImageSize", [32, 32]);
+  } else {
+    // reset icon to default for all marks
+    marks.forEach((mark) => mark.options.set("iconImageHref", mark_link));
+    marks.forEach((mark) => mark.options.set("iconImageSize", [32, 32]));
+    // set new icon to current mark
+    e.get("target").options.set("iconImageHref", mark_current_link);
+    e.get("target").options.set("iconImageSize", [40, 40]);
+  }
+}
+
+// set map settings
+function configureMap(map) {
+  map.controls.remove("geolocationControl"); // удаляем геолокацию
+  map.controls.remove("searchControl"); // удаляем поиск
+  map.controls.remove("trafficControl"); // удаляем контроль трафика
+  map.controls.remove("typeSelector"); // удаляем тип
+  map.controls.remove("fullscreenControl"); // удаляем кнопку перехода в полноэкранный режим
+  // map.controls.remove("zoomControl"); // удаляем контрол зуммирования
+  map.controls.remove("rulerControl"); // удаляем контрол правил
+  map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
+
+  // отключаем скролл карты на малых экранах
+
+  if (window.innerWidth <= 767) {
+    map.behaviors.disable("drag");
+  }
+
+  const mq767 = window.matchMedia("(max-width: 767px)");
+
+  mq767.addEventListener("change", (e) => {
+    // became less than 767px
+    if (e.matches) {
+      map.behaviors.disable("drag");
+    }
+    // became larger than 767px
+    else {
+      map.behaviors.enable("drag");
+    }
+  });
 }
 
 // function doRemoveMapOverlayByClick() {
@@ -634,6 +754,10 @@ function doHideMapDescription() {
 
   map_close_btn.addEventListener("click", () => {
     map_description.classList.remove("show");
+    marks.forEach((mark) => {
+      mark.options.set("iconImageHref", mark_link);
+      mark.options.set("iconImageSize", [32, 32]);
+    });
   });
 }
 
