@@ -99,7 +99,17 @@
   }
 
   .content__decor {
-    width: 33.28%;
+    &::after {
+      width: 40.78%;
+
+      @include lg {
+        width: 31%;
+      }
+
+      @include sm {
+        width: 30%;
+      }
+    }
   }
 
   @include xxs {
@@ -195,8 +205,6 @@
   }
 
   .content__img {
-    // width: 66.11%;
-    // padding-top: 54.51%;
     width: 66%;
     padding-top: 55%;
 
@@ -207,10 +215,16 @@
   }
 
   .content__decor {
-    width: 23.75%;
+    &::after {
+      width: 35.04%;
 
-    @include sm {
-      width: 27.97%;
+      @include lg {
+        width: 30%;
+      }
+
+      @include sm {
+        width: 28%;
+      }
     }
   }
 
@@ -249,9 +263,7 @@
   }
 
   .content__title {
-    span {
-      padding-right: 18px;
-    }
+    padding-right: 18px;
   }
 
   .content__wrapper {
@@ -263,7 +275,6 @@
 
     p:last-child {
       padding-bottom: 0;
-      // padding-bottom: 89px;
 
       @include xs {
         padding-bottom: 63px;
@@ -273,21 +284,39 @@
 }
 
 .content__decor {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 3;
-  bottom: 82px;
-  width: 49%;
-  height: 48px;
-  border: 2px solid #000;
+  width: 100%;
+  border-bottom: 2px solid #000;
   border-left: none;
-
-  @include xs {
-    bottom: 28px;
-    width: 40%;
-  }
 
   @include xxs {
     display: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60.04%;
+    height: 48px;
+    border-right: 2px solid #000;
+    border-top: 2px solid #000;
+
+    @include lg {
+      width: 55%;
+    }
+
+    @include sm {
+      width: 49%;
+    }
+
+    @include xs {
+      width: 38%;
+    }
   }
 }
 
@@ -305,48 +334,44 @@
   }
 }
 
-.content__title {
+.content__title-wrapper {
   position: relative;
   max-width: 756px;
   margin: 0 auto;
-  color: #000;
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 58px;
-  border-top: 2px solid #000;
 
-  @include lg {
-    font-size: 42px;
-    line-height: 48px;
-  }
+  // border-top: 2px solid #000;
 
-  @include sm {
-    font-size: 38px;
-    line-height: 44px;
-  }
+  // @include xxs {
+  //   border-top: none;
+  // }
 
-  @include xs {
-    font-size: 30px;
-    line-height: 36px;
-  }
-
-  @include xxs {
-    border-top: none;
-  }
-
-  span {
+  .content__title {
     position: relative;
     display: block;
     width: 976px;
     padding: 34px 24px 32px 24px;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 58px;
+    color: #000;
     background-color: #fff;
 
     @include lg {
       width: 853px;
+      font-size: 42px;
+      line-height: 48px;
     }
 
     @include sm {
       width: 100%;
+
+      font-size: 38px;
+      line-height: 44px;
+    }
+
+    @include xs {
+      font-size: 30px;
+      line-height: 36px;
     }
 
     @include xxs {

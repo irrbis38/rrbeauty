@@ -9512,8 +9512,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   right: 0;
   bottom: 0;
   width: 80px;
-  height: 2px;
-  background-color: #000
+  border-bottom: 2px solid #000
 }
 .news__title {
   margin-bottom: 8px;
@@ -9812,8 +9811,18 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     bottom: 2px
   }
 }
-.promotions-item-page .content__decor {
-  width: 33.28%
+.promotions-item-page .content__decor::after {
+  width: 40.78%
+}
+@media (max-width:1300px) {
+  .promotions-item-page .content__decor::after {
+    width: 31%
+  }
+}
+@media (max-width:991px) {
+  .promotions-item-page .content__decor::after {
+    width: 30%
+  }
 }
 @media (max-width:575px) {
   .promotions-item-page .content__img {
@@ -9909,12 +9918,17 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     padding-top: 100%
   }
 }
-.company-page .content__decor {
-  width: 23.75%
+.company-page .content__decor::after {
+  width: 35.04%
+}
+@media (max-width:1300px) {
+  .company-page .content__decor::after {
+    width: 30%
+  }
 }
 @media (max-width:991px) {
-  .company-page .content__decor {
-    width: 27.97%
+  .company-page .content__decor::after {
+    width: 28%
   }
 }
 .company-page .content__additional-img {
@@ -9952,7 +9966,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     display: none
   }
 }
-.company-page .content__title span {
+.company-page .content__title {
   padding-right: 18px
 }
 @media (max-width:991px) {
@@ -9969,23 +9983,42 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   }
 }
 .content__decor {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 3;
-  bottom: 82px;
-  width: 49%;
-  height: 48px;
-  border: 2px solid #000;
+  width: 100%;
+  border-bottom: 2px solid #000;
   border-left: none
-}
-@media (max-width:767px) {
-  .content__decor {
-    bottom: 28px;
-    width: 40%
-  }
 }
 @media (max-width:575px) {
   .content__decor {
     display: none
+  }
+}
+.content__decor::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60.04%;
+  height: 48px;
+  border-right: 2px solid #000;
+  border-top: 2px solid #000
+}
+@media (max-width:1300px) {
+  .content__decor::after {
+    width: 55%
+  }
+}
+@media (max-width:991px) {
+  .content__decor::after {
+    width: 49%
+  }
+}
+@media (max-width:767px) {
+  .content__decor::after {
+    width: 38%
   }
 }
 .content__inner {
@@ -10003,58 +10036,44 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
     top: 0
   }
 }
-.content__title {
+.content__title-wrapper {
   position: relative;
   max-width: 756px;
-  margin: 0 auto;
-  color: #000;
+  margin: 0 auto
+}
+.content__title-wrapper .content__title {
+  position: relative;
+  display: block;
+  width: 976px;
+  padding: 34px 24px 32px 24px;
   font-size: 48px;
   font-weight: 600;
   line-height: 58px;
-  border-top: 2px solid #000
+  color: #000;
+  background-color: #fff
 }
 @media (max-width:1300px) {
-  .content__title {
+  .content__title-wrapper .content__title {
+    width: 853px;
     font-size: 42px;
     line-height: 48px
   }
 }
 @media (max-width:991px) {
-  .content__title {
+  .content__title-wrapper .content__title {
+    width: 100%;
     font-size: 38px;
     line-height: 44px
   }
 }
 @media (max-width:767px) {
-  .content__title {
+  .content__title-wrapper .content__title {
     font-size: 30px;
     line-height: 36px
   }
 }
 @media (max-width:575px) {
-  .content__title {
-    border-top: none
-  }
-}
-.content__title span {
-  position: relative;
-  display: block;
-  width: 976px;
-  padding: 34px 24px 32px 24px;
-  background-color: #fff
-}
-@media (max-width:1300px) {
-  .content__title span {
-    width: 853px
-  }
-}
-@media (max-width:991px) {
-  .content__title span {
-    width: 100%
-  }
-}
-@media (max-width:575px) {
-  .content__title span {
+  .content__title-wrapper .content__title {
     padding: 29px 0 27px
   }
 }
@@ -10641,8 +10660,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   right: 0;
   bottom: 0;
   width: 80px;
-  height: 2px;
-  background-color: #000
+  border-bottom: 2px solid #000
 }
 .promotions__title {
   margin-bottom: 36px;
