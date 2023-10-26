@@ -163,11 +163,13 @@
     transition: all 0.2s ease-out;
   }
 
-  &:hover {
-    background-color: #000;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #000;
 
-    path {
-      fill: #fff;
+      path {
+        fill: #fff;
+      }
     }
   }
 }

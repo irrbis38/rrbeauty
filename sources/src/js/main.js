@@ -195,12 +195,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
   }
 
-  // promotions-item page
+  // company page
   const company_page = document.querySelector(".company-page");
   if (company_page) {
     doInitCompanySlider();
     doInitMaskInput();
     checkRequiredFormInputs();
+    doShowCertificatesFullscreen();
   }
 
   // stores page
@@ -3036,8 +3037,49 @@ function doInitCompanySlider() {
       },
     },
     navigation: {
-      prevEl: ".content__prev",
-      nextEl: ".content__next",
+      prevEl: ".certificates__prev",
+      nextEl: ".certificates__next",
     },
   });
+  var swiperFull = new Swiper(".fullscreen__slider", {
+    effect: "fade",
+    slidesPerView: 1,
+    spaceBetween: 0,
+    // autoHeight: true,
+    navigation: {
+      prevEl: ".certificates__prev",
+      nextEl: ".certificates__next",
+    },
+
+    thumbs: {
+      swiper: companySlider,
+    },
+  });
+}
+
+function doShowCertificatesFullscreen() {
+  var slides = document.querySelectorAll(".certificates__slide");
+  var fullscreen = document.querySelector(".fullscreen");
+  var body = document.body;
+
+  var close_btn = document.querySelector(".fullscreen__close");
+
+  slides.forEach((slide) =>
+    slide.addEventListener("click", () => {
+      fullscreen.classList.add("show");
+      body.classList.add("noscroll");
+    })
+  );
+
+  close_btn.addEventListener("click", () => doClosePopup());
+
+  function doClosePopup() {
+    fullscreen.classList.remove("show");
+    body.classList.remove("noscroll");
+  }
+
+  window.addEventListener(
+    "keydown",
+    (e) => e.key === "Escape" && doClosePopup()
+  );
 }
