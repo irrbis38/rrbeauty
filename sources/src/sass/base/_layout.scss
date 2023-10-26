@@ -602,3 +602,64 @@ button {
     display: none;
   }
 }
+
+// animation for news and promotions
+@keyframes fadeup {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeleft {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes faderight {
+  0% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeupSecondLine {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

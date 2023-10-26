@@ -89,6 +89,40 @@
   }
 }
 
+// animation
+
+.promotions__unit {
+  &:nth-child(10n + 1) {
+    animation: fadeleft 1.2s ease-out forwards;
+  }
+
+  &:nth-child(10n + 2) {
+    animation: fadeup 0.7s ease-out forwards;
+  }
+
+  &:nth-child(10n + 3) {
+    animation: faderight 1.2s ease-out forwards;
+  }
+
+  &:nth-child(10n + 4) {
+    animation: fadeupSecondLine 1.7s ease-out forwards;
+  }
+
+  &:nth-child(10n + 5),
+  &:nth-child(10n + 6) {
+    animation: fadeupSecondLine 2.3s ease-out forwards;
+  }
+
+  &:nth-child(10n + 7) {
+    animation: fadeupSecondLine 2.8s ease-out forwards;
+  }
+
+  &:nth-child(10n + 8),
+  &:nth-child(10n + 9) {
+    animation: fadeupSecondLine 3s ease-out forwards;
+  }
+}
+
 .promotions__link {
   display: block;
   width: 100%;

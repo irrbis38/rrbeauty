@@ -78,14 +78,44 @@
 
 .news__unit {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
   margin-bottom: 43px;
-  border-bottom: 1px solid #d9d9d9;
+  // border-bottom: 1px solid #d9d9d9;
 
   @include xxs {
     margin-bottom: 36px;
+  }
+
+  &:nth-child(10n + 1) {
+    animation: fadeleft 1.2s ease-out forwards;
+  }
+
+  &:nth-child(10n + 2) {
+    animation: fadeup 0.7s ease-out forwards;
+  }
+
+  &:nth-child(10n + 3) {
+    animation: faderight 1.2s ease-out forwards;
+  }
+
+  &:nth-child(10n + 4) {
+    animation: fadeupSecondLine 1.7s ease-out forwards;
+  }
+
+  &:nth-child(10n + 5),
+  &:nth-child(10n + 6) {
+    animation: fadeupSecondLine 2.3s ease-out forwards;
+  }
+
+  &:nth-child(10n + 7) {
+    animation: fadeupSecondLine 2.8s ease-out forwards;
+  }
+
+  &:nth-child(10n + 8),
+  &:nth-child(10n + 9) {
+    animation: fadeupSecondLine 3s ease-out forwards;
   }
 
   // &:first-child {
@@ -129,6 +159,10 @@
   display: block;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9d9d9;
 
   @media (hover: hover) {
     &:hover {

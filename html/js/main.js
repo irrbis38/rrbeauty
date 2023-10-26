@@ -1783,11 +1783,13 @@ function doCheckCounter(counter, section, slidesAmount) {
 // disable / enable nav buttons
 
 function doAddClassToButtons(...buttons) {
-  buttons.forEach((btn) => btn.classList.add("disabled"));
+  // buttons.forEach((btn) => btn.classList.add("disabled"));
+  buttons.forEach((btn) => btn.setAttribute("disabled", true));
 }
 
 function doRemoveClassToButtons(...buttons) {
-  buttons.forEach((btn) => btn.classList.remove("disabled"));
+  // buttons.forEach((btn) => btn.classList.remove("disabled"));
+  buttons.forEach((btn) => btn.removeAttribute("disabled"));
 }
 
 // slider animation
