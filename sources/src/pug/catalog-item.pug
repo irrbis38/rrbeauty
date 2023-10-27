@@ -234,16 +234,13 @@ block page
                                     textarea.add__text(name="comment" placeholder="Расскажите о товаре" required)
 
                                     .add__images
-                                        .add__images-wrapper
-                                            .add__img
-                                                img(src="./images/cer1.jpg" alt="фото отзыва")
-                                            //- .add__img
-                                            //-     img(src="./images/info-img.png" alt="фото отзыва")
-                                            //- .add__img
-                                            //-     img(src="./images/info-img.png" alt="фото отзыва")
+                                        .add__img
+                                            img(src="./images/cer1.jpg" alt="фото отзыва")
+                                            button.add__img-remove(type="button" aria-label="Удалить фото отзыва")
 
-                                        label.add__img-btn(type="file" aria-label="Добавить фото")
-                                            input#images_input(type="file" multiple accept="image/*")
+
+                                        label.add__img-btn
+                                            input#images_input(type="file" multiple accept="image/png, image/jpeg, image/jpg" aria-label="Добавить фото")
                                             svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
                                                 path(d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#757575")
 

@@ -1297,13 +1297,12 @@
   }
 }
 
-.add__images,
-.add__images-wrapper {
+.add__images {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  // margin-top: 17px;
+  margin-top: 17px;
 
   @include xs {
     gap: 14px;
@@ -1312,10 +1311,6 @@
   @include r(400px) {
     gap: 14px 4.61%;
   }
-}
-
-.add__images {
-  margin-top: 17px;
 }
 
 .add__img {
@@ -1338,16 +1333,32 @@
     object-fit: cover;
   }
 
+  @include sm {
+    width: 96px;
+  }
+
   @include xs {
     width: 92px;
   }
 
   @include r(400px) {
-    width: 28%;
+    width: 27.4%;
   }
 }
 
+.add__img-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  background: url("../images/icon-remove.svg") center / contain no-repeat;
+  cursor: pointer;
+}
+
 .add__img-btn {
+  flex: 0 0 74px;
   position: relative;
   width: 74px;
   height: 74px;
@@ -1366,8 +1377,10 @@
     pointer-events: none;
   }
 
-  &:hover {
-    border-color: #000;
+  @media (hover: hover) {
+    &:hover {
+      border-color: #000;
+    }
   }
 
   @include xs {
@@ -1379,6 +1392,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  &.disabled {
+    cursor: default;
+
+    @media (hover: hover) {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 }
 

@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
     doResetEmptyInputByBlur();
     doToggleAddToCartButton();
+    addListernerToRemoveBtn();
     doInitFileRead();
   }
 
@@ -2376,43 +2377,73 @@ function doRemoveErrorClassNameByInput(elements) {
 // add images to reviews
 
 function doInitFileRead() {
-  var images_wrapper = document.querySelector(".add__images-wrapper");
+  var container = document.querySelector(".add__images");
+  var add_images_btn = document.querySelector(".add__img-btn");
   var file_input = document.querySelector("#images_input");
 
-  file_input.addEventListener("change", (e) => handleFiles(e.target.files));
+  file_input.addEventListener("change", () => handleFiles(file_input.files));
 
   function handleFiles(files) {
+    var queuedImagesArray = [];
+
     for (file of files) {
-      // check type of file
+      // check type of uploaded file
       if (!file.type.startsWith("image/")) {
         continue;
       }
 
-      // create image container
-      var img_item = document.createElement("DIV");
-
-      img_item.classList.add("add__img");
-
-      // create image
-      var img = document.createElement("IMG");
-
-      img_item.append(img);
-
-      img.alt = "фото отзыва";
-
-      // add image container to the DOM
-
-      // read files
-      var fileReader = new FileReader();
-
-      fileReader.addEventListener("load", () => {
-        img.src = fileReader.result;
-        images_wrapper.append(img_item);
-      });
-
-      fileReader.readAsDataURL(file);
+      queuedImagesArray.push(file);
     }
+
+    queuedImagesArray.forEach((image) => {
+      if (container.children.length < 6) {
+        // create image item and add className
+        var img_item = document.createElement("DIV");
+        img_item.classList.add("add__img");
+
+        // add innerHTML to image item
+        img_item.innerHTML = `<img src="${URL.createObjectURL(
+          image
+        )}" alt="фото отзыва"><button class="add__img-remove" type="button" aria-label="Удалить фото отзыва"></button>`;
+
+        // add image item to the DOM
+        add_images_btn.before(img_item);
+
+        // add listener to remove_btn
+        img_item
+          .querySelector(".add__img-remove")
+          .addEventListener("click", (e) =>
+            handleRemoveImage(e, add_images_btn, file_input)
+          );
+      } else {
+        // disable input 'file'
+        add_images_btn.classList.add("disabled");
+        file_input.setAttribute("disabled", true);
+      }
+    });
   }
+}
+
+function addListernerToRemoveBtn() {
+  var add_images_btn = document.querySelector(".add__img-btn");
+  var file_input = document.querySelector("#images_input");
+  var remove_btns = document.querySelectorAll(".add__img-remove");
+
+  remove_btns.forEach((btn) =>
+    btn.addEventListener("click", (e) =>
+      handleRemoveImage(e, add_images_btn, file_input)
+    )
+  );
+}
+
+function handleRemoveImage(e, add_images_btn, file_input) {
+  // delete "add__img" item
+  var img_item = e.target.closest(".add__img");
+  img_item.remove();
+
+  // enable input 'file'
+  add_images_btn.classList.remove("disabled");
+  file_input.removeAttribute("disabled");
 }
 
 // === ONECLICK
