@@ -1041,6 +1041,7 @@
 .info__reviews-img {
   position: relative;
   width: 98px;
+  cursor: pointer;
 
   &::after {
     content: "";

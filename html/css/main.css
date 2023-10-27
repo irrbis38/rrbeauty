@@ -6000,7 +6000,8 @@ input[type=number]:hover {
 }
 .info__reviews-img {
   position: relative;
-  width: 98px
+  width: 98px;
+  cursor: pointer
 }
 .info__reviews-img::after {
   content: "";

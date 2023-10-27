@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleAddToCartButton();
     addListernerToRemoveBtn();
     doInitFileRead();
+    doShowFullscreen();
   }
 
   // cart page
@@ -591,7 +592,6 @@ function doInitContatcsMap() {
           //Формирование макета
           build: function () {
             this.constructor.superclass.build.call(this);
-            // console.log(this);
             this._$element = $(".balloon-root", this.getParentElement());
             this.applyElementOffset();
             this._$element
@@ -2374,7 +2374,7 @@ function doRemoveErrorClassNameByInput(elements) {
   );
 }
 
-// add images to reviews
+// add images to reviews on the catalog-page
 
 function doInitFileRead() {
   var container = document.querySelector(".add__images");
@@ -3155,5 +3155,82 @@ function doShowCertificatesFullscreen() {
   window.addEventListener(
     "keydown",
     (e) => e.key === "Escape" && doClosePopup()
+  );
+}
+
+// reviews slider for catalog-item page
+
+function doShowFullscreen() {
+  var body = document.body;
+  var all_reviews_images = document.querySelectorAll(".info__reviews-img");
+  var swiper_wrapper = document.querySelector(".fullscreen .swiper-wrapper");
+  var fullscreen = document.querySelector(".fullscreen");
+  var close_btn = document.querySelector(".fullscreen__close");
+  var fullscreenSlider = {};
+
+  // add listeners to all ".info__reviews-img"
+  all_reviews_images.forEach((img) =>
+    img.addEventListener("click", (e) => {
+      // create image array of one selected review
+      var reviews_images = e.target.closest(".info__reviews-images");
+      var single_review_images = Array.from(reviews_images.children);
+
+      // get src of selected 'img'
+      var currSrc = e.target.src;
+
+      // create fragment
+      var fragment = document.createDocumentFragment();
+
+      // create slides for swiper
+      single_review_images.forEach((img) => {
+        var slide = document.createElement("DIV");
+        slide.classList.add("fullscreen__slide", "swiper-slide");
+        slide.innerHTML = img.innerHTML;
+        fragment.append(slide);
+      });
+
+      // add slides to swiper
+      swiper_wrapper.append(fragment);
+
+      // get index of initial slide
+      var idx = Array.from(swiper_wrapper.children).findIndex(
+        (item) => item.querySelector("img").src === currSrc
+      );
+
+      // check: if idx not found than set idx to 0
+      idx < 0 && (idx = 0);
+
+      // init swiper-slider
+      fullscreenSlider = new Swiper(".fullscreen__slider", {
+        initialSlide: idx,
+        effect: "fade",
+        slidesPerView: 1,
+        spaceBetween: 0,
+        navigation: {
+          prevEl: ".certificates__prev",
+          nextEl: ".certificates__next",
+        },
+      });
+
+      // show fullscreen popup
+      fullscreen.classList.add("show");
+      body.classList.add("noscroll");
+
+      // add close_btn listener
+      close_btn.addEventListener("click", handleCloseFullscreen);
+
+      // add listener to 'Escape' button
+      window.addEventListener(
+        "keydown",
+        (e) => e.key === "Escape" && handleCloseFullscreen()
+      );
+
+      function handleCloseFullscreen() {
+        fullscreenSlider.destroy(true, true);
+        fullscreen.classList.remove("show");
+        body.classList.remove("noscroll");
+        swiper_wrapper.innerHTML = "";
+      }
+    })
   );
 }
