@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
     doResetEmptyInputByBlur();
     doToggleAddToCartButton();
+    doInitFileRead();
   }
 
   // cart page
@@ -195,12 +196,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
   }
 
-  // promotions-item page
+  // company page
   const company_page = document.querySelector(".company-page");
   if (company_page) {
     doInitCompanySlider();
     doInitMaskInput();
     checkRequiredFormInputs();
+    doShowCertificatesFullscreen();
   }
 
   // stores page
@@ -1783,11 +1785,13 @@ function doCheckCounter(counter, section, slidesAmount) {
 // disable / enable nav buttons
 
 function doAddClassToButtons(...buttons) {
-  buttons.forEach((btn) => btn.classList.add("disabled"));
+  // buttons.forEach((btn) => btn.classList.add("disabled"));
+  buttons.forEach((btn) => btn.setAttribute("disabled", true));
 }
 
 function doRemoveClassToButtons(...buttons) {
-  buttons.forEach((btn) => btn.classList.remove("disabled"));
+  // buttons.forEach((btn) => btn.classList.remove("disabled"));
+  buttons.forEach((btn) => btn.removeAttribute("disabled"));
 }
 
 // slider animation
@@ -2367,6 +2371,48 @@ function doRemoveErrorClassNameByInput(elements) {
   rating_fieldset.addEventListener("input", (e) =>
     e.target.closest(".rating__fieldset").classList.remove("error")
   );
+}
+
+// add images to reviews
+
+function doInitFileRead() {
+  var images_wrapper = document.querySelector(".add__images-wrapper");
+  var file_input = document.querySelector("#images_input");
+
+  file_input.addEventListener("change", (e) => handleFiles(e.target.files));
+
+  function handleFiles(files) {
+    for (file of files) {
+      // check type of file
+      if (!file.type.startsWith("image/")) {
+        continue;
+      }
+
+      // create image container
+      var img_item = document.createElement("DIV");
+
+      img_item.classList.add("add__img");
+
+      // create image
+      var img = document.createElement("IMG");
+
+      img_item.append(img);
+
+      img.alt = "фото отзыва";
+
+      // add image container to the DOM
+
+      // read files
+      var fileReader = new FileReader();
+
+      fileReader.addEventListener("load", () => {
+        img.src = fileReader.result;
+        images_wrapper.append(img_item);
+      });
+
+      fileReader.readAsDataURL(file);
+    }
+  }
 }
 
 // === ONECLICK
@@ -3034,8 +3080,49 @@ function doInitCompanySlider() {
       },
     },
     navigation: {
-      prevEl: ".content__prev",
-      nextEl: ".content__next",
+      prevEl: ".certificates__prev",
+      nextEl: ".certificates__next",
     },
   });
+  var swiperFull = new Swiper(".fullscreen__slider", {
+    effect: "fade",
+    slidesPerView: 1,
+    spaceBetween: 0,
+    // autoHeight: true,
+    navigation: {
+      prevEl: ".certificates__prev",
+      nextEl: ".certificates__next",
+    },
+
+    thumbs: {
+      swiper: companySlider,
+    },
+  });
+}
+
+function doShowCertificatesFullscreen() {
+  var slides = document.querySelectorAll(".certificates__slide");
+  var fullscreen = document.querySelector(".fullscreen");
+  var body = document.body;
+
+  var close_btn = document.querySelector(".fullscreen__close");
+
+  slides.forEach((slide) =>
+    slide.addEventListener("click", () => {
+      fullscreen.classList.add("show");
+      body.classList.add("noscroll");
+    })
+  );
+
+  close_btn.addEventListener("click", () => doClosePopup());
+
+  function doClosePopup() {
+    fullscreen.classList.remove("show");
+    body.classList.remove("noscroll");
+  }
+
+  window.addEventListener(
+    "keydown",
+    (e) => e.key === "Escape" && doClosePopup()
+  );
 }
