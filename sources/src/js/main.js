@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doToggleFavoritesIcons();
     doResetEmptyInputByBlur();
     doToggleAddToCartButton();
+    doInitFileRead();
   }
 
   // cart page
@@ -2370,6 +2371,48 @@ function doRemoveErrorClassNameByInput(elements) {
   rating_fieldset.addEventListener("input", (e) =>
     e.target.closest(".rating__fieldset").classList.remove("error")
   );
+}
+
+// add images to reviews
+
+function doInitFileRead() {
+  var images_wrapper = document.querySelector(".add__images-wrapper");
+  var file_input = document.querySelector("#images_input");
+
+  file_input.addEventListener("change", (e) => handleFiles(e.target.files));
+
+  function handleFiles(files) {
+    for (file of files) {
+      // check type of file
+      if (!file.type.startsWith("image/")) {
+        continue;
+      }
+
+      // create image container
+      var img_item = document.createElement("DIV");
+
+      img_item.classList.add("add__img");
+
+      // create image
+      var img = document.createElement("IMG");
+
+      img_item.append(img);
+
+      img.alt = "фото отзыва";
+
+      // add image container to the DOM
+
+      // read files
+      var fileReader = new FileReader();
+
+      fileReader.addEventListener("load", () => {
+        img.src = fileReader.result;
+        images_wrapper.append(img_item);
+      });
+
+      fileReader.readAsDataURL(file);
+    }
+  }
 }
 
 // === ONECLICK

@@ -6287,7 +6287,8 @@ input[type=number]:hover {
 .add__text.error {
   border-color: red
 }
-.add__images {
+.add__images,
+.add__images-wrapper {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -6297,18 +6298,22 @@ input[type=number]:hover {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 17px
+  gap: 16px
 }
 @media (max-width:767px) {
-  .add__images {
+  .add__images,
+  .add__images-wrapper {
     gap: 14px
   }
 }
 @media only screen and (max-width:400px) {
-  .add__images {
+  .add__images,
+  .add__images-wrapper {
     gap: 14px 4.61%
   }
+}
+.add__images {
+  margin-top: 17px
 }
 .add__img {
   position: relative;
@@ -6340,6 +6345,7 @@ input[type=number]:hover {
   }
 }
 .add__img-btn {
+  position: relative;
   width: 74px;
   height: 74px;
   display: -webkit-flex;
@@ -6351,10 +6357,15 @@ input[type=number]:hover {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: 12px;
   background-color: #f1f1f1;
   border: 1px solid #f1f1f1;
-  transition: border-color .2s ease-out
+  transition: border-color .2s ease-out;
+  cursor: pointer
+}
+.add__img-btn input {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none
 }
 .add__img-btn:hover {
   border-color: #000
@@ -6363,6 +6374,13 @@ input[type=number]:hover {
   .add__img-btn {
     margin-left: 0
   }
+}
+.add__img-btn svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%)
 }
 .add__publish-btn {
   display: block;
