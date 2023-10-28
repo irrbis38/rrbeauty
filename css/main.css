@@ -4590,6 +4590,7 @@ body.lock .header {
   opacity: 0
 }
 .options__sortToggleBtn {
+  cursor: pointer;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
@@ -5282,6 +5283,7 @@ input[type=number]:hover {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  text-align: center;
   padding: 0;
   color: #000;
   font-size: 16px;

@@ -901,6 +901,7 @@ function doSortMenuLogic() {
 
       options_current.textContent = clickedSortButton.children[0].textContent;
       options_sort_toggle_btn.dataset.sortType = newSortType;
+      options_sort_toggle_btn.querySelector("input").value = newSortType;
     }
   }
 }
@@ -2108,7 +2109,7 @@ function doSelectValueButton() {
         var newValue = "";
 
         if (isWeightBlock) {
-          newValue = currentBtn.textContent + " гр";
+          newValue = currentBtn.value + " гр";
         } else if (isColorBlock) {
           newValue = currentBtn.dataset.colorName;
         } else {
