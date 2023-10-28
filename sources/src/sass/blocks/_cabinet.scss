@@ -885,19 +885,83 @@
 
 .cabinet__input-wrapper {
   position: relative;
+
+  .cabinet__clear,
+  &::after {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 3;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    visibility: 0;
+  }
+
+  &::after {
+    content: "";
+    background: url("../images/icon-edit.svg") center / contain no-repeat;
+    pointer-events: none;
+  }
+
+  .cabinet__clear {
+    background: url("../images/icon-close.svg") center / contain no-repeat;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &.non-empty:not(.focus) {
+    input {
+      background-color: #fff;
+      border: 1px solid #d9d9d9;
+    }
+
+    input:focus {
+      border: 1px solid #f1f1f1;
+      background-color: #f1f1f1;
+    }
+  }
+
+  @media (hover: hover) {
+    &.non-empty:not(.focus):hover {
+      &:after {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.focus.non-empty {
+    .cabinet__clear {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &.clicked {
+    input {
+      background-color: #f1f1f1 !important;
+      border: 1px solid #f1f1f1 !important;
+    }
+  }
 }
 
 .cabinet__input {
   display: block;
   width: 100%;
   margin-bottom: 16px;
-  padding: 12px 23px;
+  padding: 12px 34px 12px 23px;
   color: #000;
-  background-color: #f1f1f1;
   border: 1px solid #f1f1f1;
+  background-color: #f1f1f1;
   font-size: 16px;
   font-weight: 500;
   line-height: 17px;
+
+  &:focus {
+    border: 1px solid #f1f1f1;
+    background-color: #f1f1f1;
+  }
 
   &::placeholder {
     color: #757575;
@@ -922,7 +986,14 @@
   border: 1px solid #000;
   transition: color 0.2s ease-out, background-color 0.2s ease-out;
 
-  &:hover {
+  @media (hover: hover) {
+    &:hover {
+      color: #000;
+      background-color: #fff;
+    }
+  }
+
+  &:active {
     color: #000;
     background-color: #fff;
   }

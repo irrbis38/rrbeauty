@@ -143,9 +143,11 @@ button {
   border: 1px solid #000;
   transition: color 0.2s ease-out, background-color 0.2s ease-out;
 
-  &:hover {
-    color: #000;
-    background-color: #fff;
+  @media (hover: hover) {
+    &:hover {
+      color: #000;
+      background-color: #fff;
+    }
   }
 }
 
@@ -160,9 +162,11 @@ button {
   border: 1px solid #000;
   transition: color 0.2s ease-out, background-color 0.2s ease-out;
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
+  @media (hover: hover) {
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
   }
 }
 
@@ -184,9 +188,11 @@ button {
   border: 1px solid #000;
   transition: all 0.2s ease-out;
 
-  &:hover {
-    color: #000;
-    background-color: #fff;
+  @media (hover: hover) {
+    &:hover {
+      color: #000;
+      background-color: #fff;
+    }
   }
 
   @include xs {

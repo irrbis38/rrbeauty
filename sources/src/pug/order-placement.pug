@@ -165,7 +165,8 @@ block page
                         button.order__next.btn__black(type="button" aria-label="Перейти к следующему шагу") Далее
 
                 .order__checkout
-                    input.cart__promocode.order__promocode(type="text" placeholder="Есть промокод" autocomplete="off")
+                    .cart__promocode-wrapper.order__promocode-wrapper.incorrect
+                        input.cart__promocode.order__promocode(type="text" placeholder="Есть промокод" autocomplete="off")
 
                     .cart__checkout-inner
                         .cart__total

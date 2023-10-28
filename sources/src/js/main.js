@@ -173,6 +173,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (cabinet_personal_data_page) {
     doInitMaskInput();
     checkRequiredFormInputs();
+    doChangeInputState();
+    doClearInput();
   }
 
   // cabinet-personal-data page
@@ -2902,6 +2904,62 @@ function doCheckForm(input, all_inputs) {
   else {
     input.validity.valueMissing && input.classList.add("error");
   }
+}
+
+// change inputs state on the cabinet-personal-data page
+
+function doChangeInputState() {
+  var inputs = document.querySelectorAll(".cabinet__input");
+
+  inputs.forEach((input) =>
+    input.addEventListener("input", () => {
+      var input_wrapper = input.parentElement;
+      input_wrapper.parentElement.classList.remove("focus");
+      input.value.length > 0
+        ? input_wrapper.classList.add("non-empty")
+        : input_wrapper.classList.remove("non-empty");
+    })
+  );
+
+  inputs.forEach((input) =>
+    input.addEventListener("blur", (e) => {
+      var input_wrapper = input.parentElement;
+      input_wrapper.classList.remove("focus");
+    })
+  );
+
+  inputs.forEach((input) =>
+    input.addEventListener("focus", () => {
+      var input_wrapper = input.parentElement;
+      input_wrapper.classList.add("focus");
+    })
+  );
+}
+
+function doClearInput() {
+  var clear_btns = document.querySelectorAll(".cabinet__clear");
+
+  clear_btns.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      var input_wrapper = btn.parentElement;
+      input_wrapper.classList.remove("non-empty");
+      input = btn.previousElementSibling;
+      input.focus();
+      input.value = "";
+      // input_wrapper.classList.remove("clicked");
+    })
+  );
+
+  clear_btns.forEach((btn) =>
+    btn.addEventListener("mouseenter", () =>
+      btn.parentElement.classList.add("clicked")
+    )
+  );
+  clear_btns.forEach((btn) =>
+    btn.addEventListener("mouseleave", () =>
+      btn.parentElement.classList.remove("clicked")
+    )
+  );
 }
 
 // ORDER-PLACEMENT PAGE
