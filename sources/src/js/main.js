@@ -901,6 +901,7 @@ function doSortMenuLogic() {
 
       options_current.textContent = clickedSortButton.children[0].textContent;
       options_sort_toggle_btn.dataset.sortType = newSortType;
+      options_sort_toggle_btn.querySelector("input").value = newSortType;
     }
   }
 }
