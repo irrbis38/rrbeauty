@@ -291,6 +291,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding: 0;
 
     color: #000;
@@ -411,6 +412,12 @@
     height: 44px;
     padding: 0;
     cursor: pointer;
+
+    input {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
 
     &::after {
       content: "";

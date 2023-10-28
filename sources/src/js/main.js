@@ -2108,7 +2108,7 @@ function doSelectValueButton() {
         var newValue = "";
 
         if (isWeightBlock) {
-          newValue = currentBtn.textContent + " гр";
+          newValue = currentBtn.value + " гр";
         } else if (isColorBlock) {
           newValue = currentBtn.dataset.colorName;
         } else {

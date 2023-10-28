@@ -5282,6 +5282,7 @@ input[type=number]:hover {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  text-align: center;
   padding: 0;
   color: #000;
   font-size: 16px;
@@ -5355,6 +5356,11 @@ input[type=number]:hover {
   height: 44px;
   padding: 0;
   cursor: pointer
+}
+.details__feature-color .details__set-value input {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none
 }
 .details__feature-color .details__set-value::after {
   content: "";
