@@ -107,7 +107,7 @@ block page
                         span.details__current whisper
                     .details__values
                         each color in colors
-                            lable.details__set-value(type="button" aria-label="Выбрать цвет" data-color-name= color.colorName style="background-color:#" + color.value + ";" class= color.isSelected ? 'selected' : '')
+                            label.details__set-value(aria-label="Выбрать цвет" data-color-name= color.colorName style="background-color:#" + color.value + ";" class= color.isSelected ? 'selected' : '')
                                 input.visualhidden(type="text" value= color.colorName)
                         button.details__toggle-btn.non-overflow(type="button" aria-label="Показать / скрыть все цвета")
                             span
