@@ -15,9 +15,9 @@ block page
         h2.content__heading о компании
         .content__top
             .content__img
-                img(src="./images/company-preview-1.jpg" alt="Превью страницы о компании")
+                +picture('company-preview-1', 'jpg', 'x2')
             .content__additional-img
-                img(src="./images/company-preview-2.jpg" alt="")
+                +picture('company-preview-2', 'jpg', 'x2')
 
 
         .content__block
@@ -37,18 +37,18 @@ block page
 
             .gallery__wrapper
                 .gallery__item.gallery__item--horiz
-                    img(src="./images/gallery-1.jpg" alt="")
+                    +picture('gallery-1', 'jpg', 'x2')
                 .gallery__item.gallery__item--rect
-                    img(src="./images/gallery-2.jpg" alt="")
+                    +picture('gallery-2', 'jpg', 'x2')
                 .gallery__item.gallery__item--rect
-                    img(src="./images/gallery-3.jpg" alt="")
+                    +picture('gallery-3', 'jpg', 'x2')
                 .gallery__item.gallery__item--rect
-                    img(src="./images/gallery-4.jpg" alt="")
+                    +picture('gallery-4', 'jpg', 'x2')
                 .gallery__item.gallery__item--vert
-                    img(src="./images/gallery-5.jpg" alt="")
+                    +picture('gallery-5', 'jpg', 'x2')
                 .gallery__item.gallery__item--rect.gallery__item--empty
                 .gallery__item.gallery__item--rect
-                    img(src="./images/gallery-2.jpg" alt="")
+                    +picture('gallery-2', 'jpg', 'x2')
 
 
     section.certificates 
@@ -57,22 +57,22 @@ block page
 
             .certificates__slider.swiper-slider 
                 .certificates__wrapper.swiper-wrapper
+                    .certificates__slide.swiper-slide
+                        +picture('cer1', 'jpg', 'x2')
                     .certificates__slide.swiper-slide 
-                        img(src="./images/cer1.jpg" alt="сертификат")
+                        +picture('cer2', 'jpg', 'x2')
                     .certificates__slide.swiper-slide 
-                        img(src="./images/cer2.jpg" alt="сертификат")
+                        +picture('cer3', 'jpg', 'x2')
                     .certificates__slide.swiper-slide 
-                        img(src="./images/cer3.jpg" alt="сертификат")
+                        +picture('cer4', 'jpg', 'x2')
                     .certificates__slide.swiper-slide 
-                        img(src="./images/cer4.jpg" alt="сертификат")
+                        +picture('cer5', 'jpg', 'x2')
                     .certificates__slide.swiper-slide 
-                        img(src="./images/cer5.jpg" alt="сертификат")
+                        +picture('cer6', 'jpg', 'x2')
                     .certificates__slide.swiper-slide 
-                        img(src="./images/cer6.jpg" alt="сертификат")
+                        +picture('cer7', 'jpg', 'x2')
                     .certificates__slide.swiper-slide 
-                        img(src="./images/cer7.jpg" alt="сертификат")
-                    .certificates__slide.swiper-slide 
-                        img(src="./images/cer1.jpg" alt="сертификат")
+                        +picture('cer1', 'jpg', 'x2')
 
                 .content__nav.intro__nav
 
@@ -94,21 +94,21 @@ block page
                 .fullscreen__slider.swiper-slider 
                     .swiper-wrapper
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer1.jpg" alt="сертификат")
+                            +picture('cer1', 'jpg', 'x2')
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer2.jpg" alt="сертификат")
+                            +picture('cer2', 'jpg', 'x2')
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer3.jpg" alt="сертификат")
+                            +picture('cer3', 'jpg', 'x2')
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer4.jpg" alt="сертификат")
+                            +picture('cer4', 'jpg', 'x2')
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer5.jpg" alt="сертификат")
+                            +picture('cer5', 'jpg', 'x2')
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer6.jpg" alt="сертификат")
+                            +picture('cer6', 'jpg', 'x2')
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer7.jpg" alt="сертификат")
+                            +picture('cer7', 'jpg', 'x2')
                         .fullscreen__slide.swiper-slide
-                            img(src="./images/cer1.jpg" alt="сертификат")
+                            +picture('cer1', 'jpg', 'x2')
 
                 .fullscreen__nav.intro__nav
 

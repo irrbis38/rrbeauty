@@ -109,15 +109,15 @@
   width: 100%;
   height: 100%;
 
-  img:nth-child(2) {
+  picture:nth-child(2) {
     display: none;
   }
 
   @include xs {
-    img:nth-child(1) {
+    picture:nth-child(1) {
       display: none;
     }
-    img:nth-child(2) {
+    picture:nth-child(2) {
       display: block;
     }
   }

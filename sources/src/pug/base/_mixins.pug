@@ -60,8 +60,9 @@ mixin popularCategoriesItem(numberOfItem)
     li.popularCategories__item 
         a.popularCategories__link(href="#") 
 
-            .popularCategories__img 
-                img(src= "./images/popular-сategories-" + numberOfItem + ".jpg" alt="Популярная категория товара")
+            .popularCategories__img
+                +picture("/popular-сategories-" + numberOfItem, "jpg", "x2")
+                //- img(src= "./images/popular-сategories-" + numberOfItem + ".jpg" alt="Популярная категория товара")
 
             h3.popularCategories__name КАТЕГОРИЯ
 
@@ -80,7 +81,8 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAdded
                 .goodsCard__inner
                     .goodsCard__descr
                         .goodsCard__img
-                            img(src= imgUrl.first alt= name.first)
+                            +picture(imgUrl.first, 'jpg', 'x2')
+                            //- img(src= imgUrl.first alt= name.first)
                             button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
                                 img(src="./images/heart-icon.svg" alt="Добавить в избранное")
                                 img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
@@ -102,7 +104,8 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAdded
                 .goodsCard__inner
                     .goodsCard__descr
                         .goodsCard__img
-                            img(src= imgUrl.second alt= name.second)
+                            +picture(imgUrl.second, 'jpg', 'x2')
+                            //- img(src= imgUrl.second alt= name.second)
                             button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
                                 img(src="./images/heart-icon.svg" alt="Добавить в избранное")
                                 img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
@@ -124,7 +127,8 @@ mixin goodsCardItem(imgUrl, isSale, isHit, price, oldPrice, name, descr, isAdded
                 .goodsCard__inner
                     .goodsCard__descr
                         .goodsCard__img
-                            img(src= imgUrl.third alt= name.third)
+                            +picture(imgUrl.third, 'jpg', 'x2')
+                            //- img(src= imgUrl.third alt= name.third)
                             button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
                                 img(src="./images/heart-icon.svg" alt="Добавить в избранное")
                                 img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
@@ -147,7 +151,8 @@ mixin goodsCardItemSmall(imgUrl, isSale, isHit, price, oldPrice, name, descr, is
     article.goodsCard__item
         .goodsCard__descr(class=isAddedToFavorites ? 'addedToFavorites' : '')
             .goodsCard__img
-                img(src= imgUrl alt= name)
+                +picture(imgUrl, 'jpg', 'x2')
+                //- img(src= imgUrl alt= name)
                 button.goodsCard__addToFavorites(type="button" aria-label="Добавить в избранное")
                     img(src="./images/heart-icon.svg" alt="Добавить в избранное")
                     img(src="./images/heart-icon-black.svg" alt="Добавить в избранное")
@@ -244,11 +249,11 @@ mixin infoReviewsItem(id)
         .info__reviews-images
 
             .info__reviews-img
-                img(src="./images/cer1.jpg" alt="фото отзыва")
+                +picture('cer1', 'jpg', 'x2')
             .info__reviews-img
-                img(src="./images/cer2.jpg" alt="фото отзыва")
+                +picture('cer2', 'jpg', 'x2')
             .info__reviews-img
-                img(src="./images/cer3.jpg" alt="фото отзыва")
+                +picture('cer3', 'jpg', 'x2')
 
 
 
@@ -310,7 +315,8 @@ mixin newsCard(img)
         a.news__link(href="#" aria-label="Перейти на страницу новости")
             .news__content
                 .news__img
-                    img(src= "./images/news-" + img + ".jpg" alt= "Новость номер " + img)
+                    +picture("news-" + img, 'jpg', 'x2')
+                    //- img(src= "./images/news-" + img + ".jpg" alt= "Новость номер " + img)
                     span.news__decor
                 h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
                 p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
@@ -323,8 +329,9 @@ mixin promotionsCard(img, color)
     article.promotions__unit
         a.promotions__link(href="#" aria-label="Перейти на страницу акции")
             .promotions__content
-                .promotions__img 
-                    img(src= "./images/promotions-" + img + ".jpg" alt= "Новость номер " + img)
+                .promotions__img
+                    +picture("promotions-" + img, 'jpg', 'x2')
+                    //- img(src= "./images/promotions-" + img + ".jpg" alt= "Новость номер " + img)
                     span.promotionsSection__sticker(style= "background-color: " + color) 15.09 - 15.10
                     span.promotions__decor
                 h3.promotions__title Скидка 15% на пигменты AS company
@@ -336,8 +343,9 @@ mixin mightlikeCardItem(imgUrl)
             .goodsCard__slide
                 .news__inner
                     .news__content
-                        .news__img 
-                            img(src= imgUrl.first alt= "Новость номер 1")
+                        .news__img
+                            +picture(imgUrl.first, 'jpg', 'x2')
+                            //- img(src= imgUrl.first alt= "Новость номер 1")
                         h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
                         p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
 
@@ -348,8 +356,9 @@ mixin mightlikeCardItem(imgUrl)
             .goodsCard__slide
                 .news__inner
                     .news__content
-                        .news__img 
-                            img(src= imgUrl.second alt= "Новость номер 1")
+                        .news__img
+                            +picture(imgUrl.second, 'jpg', 'x2')
+                            //- img(src= imgUrl.second alt= "Новость номер 1")
                         h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
                         p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
 
@@ -360,8 +369,9 @@ mixin mightlikeCardItem(imgUrl)
             .goodsCard__slide
                 .news__inner
                     .news__content
-                        .news__img 
-                            img(src= imgUrl.third alt= "Новость номер 1")
+                        .news__img
+                            +picture(imgUrl.third, 'jpg', 'x2')
+                            //- img(src= imgUrl.third alt= "Новость номер 1")
                         h3.news__title L’Oreal опровергла возможность возобновления поставок в Россию
                         p.news__subtitle Французская косметическая компания L'Oreal, которой принадлежат бренды Giorgio Armani...
 
