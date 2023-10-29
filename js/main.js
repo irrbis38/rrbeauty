@@ -126,6 +126,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   if (brands_page) {
     doInitBrandsSearch();
+    doInitSmoothScroll();
+    doBrandsSearch();
   }
 
   // order-placement page
@@ -227,6 +229,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 // ========== FUNCTIONS =============
+
+// function - decorator
+function debounce(callee, timeoutMs) {
+  return function perform(...args) {
+    let previousCall = this.lastCall;
+    this.lastCall = Date.now();
+
+    if (previousCall && this.lastCall - previousCall <= timeoutMs) {
+      clearTimeout(this.lastCallTimer);
+    }
+
+    this.lastCallTimer = setTimeout(() => callee(...args), timeoutMs);
+  };
+}
 
 // start animation
 function doStartFirstScreenAnimation() {
@@ -2649,15 +2665,17 @@ function doClearCart() {
 // SEARCH ON THE BRANDS PAGE
 
 function doInitBrandsSearch() {
-  const input = document.querySelector(".brands-search__input");
-  const clear_search_btn = document.querySelector(".brands-search__clear");
+  var input = document.querySelector(".brands-search__input");
+  var clear_search_btn = document.querySelector(".brands-search__clear");
+  var result = document.querySelector(".brands__result");
+  var brands = document.querySelector(".brands__wrapper");
 
   input.addEventListener("input", () =>
     requestAnimationFrame(doSearchInputHandle)
   );
 
   function doSearchInputHandle() {
-    const isInputNotEmpty = Boolean(input.value);
+    var isInputNotEmpty = Boolean(input.value);
     if (!isInputNotEmpty) {
       input.classList.remove("active");
       clear_search_btn.classList.remove("visible");
@@ -2676,8 +2694,153 @@ function doInitBrandsSearch() {
     input.classList.remove("active");
     input.focus();
     clear_search_btn.classList.remove("visible");
+
+    result.classList.remove("show");
+    brands.classList.remove("hidden");
   }
 }
+
+// smooth scroll
+function doInitSmoothScroll() {
+  // add listener to wrapper of inner links
+  var brands_abc = document.getElementById("brands-abc");
+
+  // add listener if window.innerWidht > 991px
+
+  window.innerWidth > 991 &&
+    brands_abc.addEventListener("click", handleInnerLinks);
+
+  // add or remove listener by resize
+
+  var mq991 = window.matchMedia("(max-width: 991px)");
+
+  mq991.addEventListener("change", handleMQ);
+
+  function handleMQ(e) {
+    if (!e.matches) {
+      brands_abc.addEventListener("click", handleInnerLinks);
+    } else {
+      brands_abc.removeEventListener("click", handleInnerLinks);
+    }
+  }
+
+  // handle inner links
+
+  function handleInnerLinks(e) {
+    e.preventDefault();
+    var target = e.target;
+    var isInnerLink = target.classList.contains("brands-inner-link");
+    isInnerLink && doSmoothScroll(target);
+  }
+
+  function doSmoothScroll(link) {
+    var id = link.getAttribute("href").slice(1);
+    var scrollTarget = document.getElementById(id);
+
+    // 160 is scrollHeight of '.brands__sticky' element
+    var elementPosition = scrollTarget.getBoundingClientRect().top - 160;
+
+    window.scrollBy({
+      top: elementPosition,
+      behavior: "smooth",
+    });
+  }
+}
+
+// brands search
+function doBrandsSearch() {
+  var sticky = document.querySelector(".brands__sticky");
+  var input = document.querySelector(".brands-search__input");
+  var result = document.querySelector(".brands__result");
+  var wrapper = document.querySelector(".brands__wrapper");
+  var brands_links = Array.from(document.querySelectorAll(".brands-link"));
+  var brands_result_start = document.querySelector(".brands__result-start");
+  var brands_result_contains = document.querySelector(
+    ".brands__result-contains"
+  );
+
+  input.addEventListener("input", () => {
+    input.value.length > 0 ? showBrandsResult() : hideBrandsResult();
+    input.value.length > 0 && debouncedBrandSearch(input);
+  });
+
+  function showBrandsResult() {
+    // scroll window
+    var brandsTop = wrapper.getBoundingClientRect().top;
+    var position = brandsTop + window.scrollY - sticky.scrollHeight;
+
+    if (!result.classList.contains("show")) {
+      window.scrollTo({
+        top: position,
+        behavior: "smooth",
+      });
+    }
+
+    result.classList.add("show");
+    wrapper.classList.add("hidden");
+  }
+
+  function hideBrandsResult() {
+    result.classList.remove("show");
+    wrapper.classList.remove("hidden");
+  }
+
+  const debouncedBrandSearch = debounce(doSearch, 400);
+
+  // search logic
+  function doSearch(input) {
+    // clear wrapper by every input
+    brands_result_start.innerHTML = "";
+    brands_result_contains.innerHTML = "";
+
+    var value = input.value.toLowerCase();
+    // find links
+    var result = brands_links.filter((link) =>
+      link.textContent.toLowerCase().includes(value)
+    );
+
+    var startWith = [];
+    var justContains = [];
+
+    // sort links
+    result.forEach((item) => {
+      item.textContent.toLowerCase().startsWith(value)
+        ? startWith.push(item)
+        : justContains.push(item);
+    });
+
+    // render results
+    requestAnimationFrame(() =>
+      doRenderSearchResult(startWith, "start", value)
+    );
+    requestAnimationFrame(() =>
+      doRenderSearchResult(justContains, "contains", value)
+    );
+  }
+
+  // render results logic
+  function doRenderSearchResult(items, group, value) {
+    var fragment = document.createDocumentFragment();
+
+    items.forEach((item) => {
+      var resultItem = document.createElement("LI");
+      resultItem.classList.add("brands__result-item");
+      resultItem.innerHTML = `
+      <a class="brands__result-link" href="${item.getAttribute("href")}">${
+        item.textContent
+      }</a>
+      `;
+
+      fragment.append(resultItem);
+    });
+
+    group === "start"
+      ? brands_result_start.append(fragment)
+      : brands_result_contains.append(fragment);
+  }
+}
+
+//=== CART
 
 function doResetEmptyInputByBlur() {
   var goods_amout_inputs = document.querySelectorAll(".goods-amout");
