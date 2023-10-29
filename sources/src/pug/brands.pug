@@ -44,57 +44,66 @@ block page
                         a(href="#")
                             img(src= "./images/icon-brand-item-1.svg" alt="Givenchy")
 
-        .brands-search
-            .container 
-                .brands-search__wrapper
-                    img(src="./images/icon-search.svg" alt="")
-                    input.brands-search__input(type="text" aria-label="Поиск" placeholder="Поиск по брендам" autocomplete="off")
-                    svg.brands-search__clear(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label='Очистить поле поиска')
-                        path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+        .brands__sticky
 
-        .brands-abc
+            .brands-search
+                .container 
+                    .brands-search__wrapper
+                        img(src="./images/icon-search.svg" alt="")
+                        input.brands-search__input(type="text" aria-label="Поиск" placeholder="Поиск по брендам" autocomplete="off")
+                        svg.brands-search__clear(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-label='Очистить поле поиска')
+                            path(d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="black")
+
+            .brands-abc#brands-abc
+                .container
+                    ul.brands-abc__list
+                        -
+                            var abc_list = [
+                                'A',
+                                'B',
+                                'C',
+                                'D',
+                                'E',
+                                'F',
+                                'G',
+                                'H',
+                                'I',
+                                'J',
+                                'K',
+                                'L',
+                                'M',
+                                'N',
+                                'O',
+                                'P',
+                                'Q',
+                                'R',
+                                'S',
+                                'T',
+                                'U',
+                                'V',
+                                'W',
+                                'X',
+                                'Y',
+                                'Z',
+                            ]
+
+                        each letter in abc_list
+                            +brandsAbcInnerLink(letter, letter)
+
+                    ul.brands-abc__list 
+                        +brandsAbcInnerLink('А - Я', "CYR")
+
+                    ul.brands-abc__list 
+                        +brandsAbcInnerLink('0 - 9', "NUM")
+
+        .brands__result
             .container
-                ul.brands-abc__list
-                    -
-                        var abc_list = [
-                            'A',
-                            'B',
-                            'C',
-                            'D',
-                            'E',
-                            'F',
-                            'G',
-                            'H',
-                            'I',
-                            'J',
-                            'K',
-                            'L',
-                            'N',
-                            'O',
-                            'P',
-                            'Q',
-                            'R',
-                            'S',
-                            'T',
-                            'U',
-                            'V',
-                            'W',
-                            'X',
-                            'Y',
-                            'Z',
-                        ]
-
-                    each letter in abc_list
-                        +brandsAbcItem(letter)
-
-                ul.brands-abc__list 
-                    +brandsAbcItem('А - Я')
-
-                ul.brands-abc__list 
-                    +brandsAbcItem('0 - 9')
+                .brands__result-wrapper
+                    ul.brands__result-start
+                    ul.brands__result-contains
 
         -
-            var brands_list = [
+            var brands_list_A = [
                 "A+T Home Décor_",
                 "Artie",
                 "A+T Home Décor_",
@@ -137,20 +146,658 @@ block page
                 "Afina",
             ]
 
+        -
+            var brands_list_B = [
+                "Badgley Mischka",
+                "Baggallini",
+                "Baldinini",
+                "Balenciaga",
+                "Ballantyne",
+                "Bally",
+                "Balmain",
+                "Barba",
+                "BARBIE",
+                "Barbour",
+                "BaubleBar",
+                "Baxton Studio",
+                "BCBGeneration",
+                "Bcbgmaxazria",
+                "Bella + Canvas",
+                "Benjara",
+                "Berna",
+                "Betsey Johnson",
+                "BGment",
+                "Billabong",
+                "Bioworld",
+                "Birkenstock",
+                "Blumarine",
+                "Boden",
+                "Boglioli",
+            ]
+
+        -
+            var brands_list_C = [
+                "C.P. Company",
+                "Caliban",
+                "Calvin Klein",
+                "Camper",
+                "Canali",
+                "Carhartt Work",
+                "Caroline's Treasures",
+                "Cartier",
+                "Carve Designs",
+                "Casadei",
+                "CAT",
+                "Catch Some Rays",
+                "Certified International",
+                "Champion",
+                "Chanel",
+                "Chiara Ferragni",
+                "Chic Home",
+                "Chinese Laundry",
+                "Chloé",
+                "Christian Louboutin",
+                "Christopher Knight Home",
+                "City Chic",
+                "Clarks",
+                "Coach",
+                "Coaster Fine Furniture",
+                "Cole Haan",
+            ]
+
+        -
+            var brands_list_D = [
+                "Daniele Alessandrini",
+                "Daniele Fiesoli",
+                "David Yurman",
+                "DC",
+                "DC Comics",
+                "Dearfoams",
+                "Deco 79",
+                "Deconovo",
+                "Delmar",
+                "Demdaco",
+                "Deny Designs",
+                "Department Five",
+                "DESIGN ART",
+                "Design Toscano",
+                "Design with Vinyl",
+                "Desigual",
+                "Dickies",
+                "Diesel",
+                "Dion Lee",
+                "Dior",
+                "Dirk Bikkembergs",
+                "Disney",
+                "Dixie",
+                "DKNY",
+                "Dockers",
+                "Dokotoo",
+            ]
+
+        -
+            var brands_list_E = [
+                "e.l.f. Cosmetics",
+                "Eastpak",
+                "East West Furniture",
+                "Easy Spirit",
+                "Easy Street",
+                "Ebarrito",
+                "Eberjey",
+                "Ebros Gift",
+                "Ecco",
+                "Eclipse",
+                "Eddie Bauer",
+                "Edikted",
+                "Effy",
+                "Eileen Fisher",
+                "Ekouaer",
+                "Elanze Designs",
+                "Elegant Comfort",
+                "Eleventy",
+                "Elisabetta Franchi",
+                "Ellie Shoes",
+                "Elrene",
+                "Emanuele Bicocchi",
+                "Ember Fine Jewelry",
+                "Emma & Gaia",
+                "Emporio Armani",
+                "Enesco",
+            ]
+
+        -
+            var brands_list_F = [
+                "Fabiana Filippi",
+                "Faherty",
+                "Falke",
+                "Farberware",
+                "Fedeli",
+                "Federica Tosi",
+                "Fendi",
+                "Ferragamo",
+                "Ferrari",
+                "Fifth Sun",
+                "Fila",
+                "Fiorio",
+                "Fisico",
+                "Fjällräven",
+                "Flash Furniture",
+                "Floerns",
+                "Florsheim",
+                "Foco",
+                "For Bare Feet",
+                "Fornasetti",
+                "Forte_Forte",
+                "Fortessa",
+                "Fossil",
+                "Foxcroft",
+                "Fox Run",
+                "Fracomina",
+            ]
+
+        -
+            var brands_list_G = [
+                "Gabor",
+                "Gaëlle Paris",
+                "Ganni",
+                "GAP",
+                "Garland Rug",
+                "Gaudì",
+                "GCDS",
+                "Generic",
+                "Gentle Souls",
+                "Gentryportofino",
+                "Geox",
+                "Gevril Group",
+                "Giambattista Valli",
+                "Giampaolo",
+                "Gianvito Rossi",
+                "Gibson Home",
+                "Giesswein",
+                "Gildan",
+                "Ginori 1735",
+                "Giorgio Armani",
+                "Giuseppe Zanotti",
+                "Givenchy",
+                "Glaze Jewelry",
+                "Gloria Vanderbilt",
+                "Godinger",
+                "Golden Goose",
+            ]
+
+        -
+            var brands_list_H = [
+                "H.VERSAILTEX",
+                "Haggar",
+                "Haikure",
+                "Half Price Drapes",
+                "Hallmark",
+                "Halston Heritage",
+                "Hamilton Beach",
+                "Hanes",
+                "Hanita",
+                "Hanky Panky",
+                "Harley-Davidson",
+                "Harmont & Blaine",
+                "Harris Wharf London",
+            ]
+
+        -
+            var brands_list_I = [
+                "iBlues",
+                "iCanvas",
+                "Iceberg",
+                "Icebreaker",
+                "Icecream",
+                "Iconic Home",
+                "iDesign",
+                "iEnjoy Home",
+                "Ih Nom Uh Nit",
+                "Illume",
+                "Imperial",
+                "Imusa",
+                "Inc International Concepts",
+            ]
+
+        -
+            var brands_list_J = [
+                "J.A. Henckels International",
+                "J. Reneé",
+                "J.W.Anderson",
+                "Jack & Jones",
+                "Jack Wolfskin",
+                "Jacob Cohen",
+                "Jacquemus",
+                "Jag Jeans",
+                "Jane Iredale",
+                "JCombs",
+                "Jeckerson",
+                "Jeffrey Campbell",
+                "Jessica Simpson",
+            ]
+
+        -
+            var brands_list_K = [
+                "Kaanas",
+                "KANGRA",
+                "Kanu Surf",
+                "Kaos",
+                "Kappa",
+                "Kardiel",
+                "Karen Kane",
+                "Karl Lagerfeld",
+                "Karma",
+                "Kasper",
+            ]
+
+        -
+            var brands_list_L = [
+                "L.L.Bean",
+                "L'autre Chose",
+                "L'Oréal",
+                "La Blanca",
+                "Lacoste",
+                "La DoubleJ",
+                "Lafayette 148 New York",
+                "Lancôme",
+                "Lands End",
+                "Lanvin",
+            ]
+
+        -
+            var brands_list_M = [
+                "M.A.C",
+                "Maaji",
+                "Madewell",
+                "Madison Park",
+                "Maison Margiela",
+                "Maje",
+                "Majestic Filatures",
+                "MakeMeChic",
+                "Manila Grace",
+                "Manuel Ritz",
+                "Marc Fisher",
+                "Marc Jacobs",
+                "Marni",
+                "MARVEL",
+                "Mason's",
+                "Mauro Grifoni",
+                "Max Mara",
+                "Max Studio",
+                "mDesign",
+                "Mepra",
+                "Meridian Furniture",
+                "Merokeety",
+                "Michael Coal",
+                "Michael Kors",
+                "Missoni",
+                "Miulee",
+            ]
+
+        -
+            var brands_list_N = [
+                "Nanushka",
+                "Naot",
+                "Nars",
+                "National Tree Company",
+                "Natori",
+                "Naturalizer",
+                "Nautica",
+                "Nearly Natural",
+                "Neil Barrett",
+                "Nestl",
+            ]
+
+        -
+            var brands_list_O = [
+                "O'Neill",
+                "Oakley",
+                "OAMC",
+                "Obermeyer",
+                "Obey",
+                "Oceanaut",
+                "Odi Et Amo",
+                "Officina 36",
+                "Officine Creative",
+                "Off-white",
+            ]
+
+        -
+            var brands_list_P = [
+                "P.A.R.O.S.H.",
+                "Paco Rabanne",
+                "Paige",
+                "Palm Angels",
+                "Pal Zileri",
+                "Pantaloni Torino",
+                "Paolo Pecora",
+                "Parajumpers",
+                "Patelai",
+                "Patrizia Pepe",
+            ]
+
+        -
+            var brands_list_Q = [
+                "Quarvif",
+                "QUATTRO.DECIMI",
+                "Quay",
+                "Que",
+                "Queen",
+                "Queen Bee",
+                "Queenberry",
+                "Queen Helene",
+                "Queens",
+                "Queens of Christmas",
+            ]
+
+        -
+            var brands_list_R = [
+                "Rekucci",
+                "Renditions Gallery",
+                "Restaurantware",
+                "Retreez",
+                "Revlon",
+                "Rick Owens",
+                "Rip Curl",
+                "Robert Graham",
+                "Roberto Cavalli",
+                "Roberto Collina",
+            ]
+
+        -
+            var brands_list_S = [
+                "Salomon",
+                "Sanctuary",
+                "Sandro",
+                "Santoni",
+                "Saro Lifestyle",
+                "Saucony",
+                "See By Chloé",
+                "Seembo",
+                "Semicouture",
+                "Sergio Rossi",
+            ]
+
+        -
+            var brands_list_T = [
+                "Tagliatore",
+                "TangDepot",
+                "Tarte",
+                "Tatuo",
+                "Ted Baker",
+                "Teva",
+                "The Attico",
+                "The Drop",
+                "The North Face",
+                "The Oliver Gal Artist Co.",
+                "Theory",
+                "Thermos",
+                "The Row",
+            ]
+
+        -
+            var brands_list_U = [
+                "UGG",
+                "UGP Campus Apparel",
+                "Ulla Johnson",
+                "Ulta Beauty Collection",
+                "UltraClub",
+                "Ulysse Nardin",
+                "Uma",
+                "Uma Wang",
+                "Umbra",
+                "Umbro",
+            ]
+
+        -
+            var brands_list_V = [
+                "Vagabond",
+                "Valentino",
+                "Valentino Garavani",
+                "Vance Co.",
+                "Vanessa Scott",
+                "Van Heusen",
+                "Vans",
+                "Vasagle",
+                "VDP Collection",
+                "Veja",
+                "Velvet",
+                "Venum",
+                "Vera Bradley",
+            ]
+
+        -
+            var brands_list_W = [
+                "W&P",
+                "Wacoal",
+                "Wales Bonner",
+                "Walker Edison",
+                "Walking Cradles",
+                "Wallflower Jeans",
+                "Wallmonkeys",
+                "Walter Baker",
+                "Walter Van Beirendonck",
+                "Wandler",
+                "Wantdo",
+                "Waterford",
+                "Wayf",
+            ]
+
+        -
+            var brands_list_X = [
+                "Xacus",
+                "Xagon Man",
+                "Xander Zhou",
+                "Xandres",
+                "XBRAND",
+                "X-Cape",
+                "XCEL",
+                "XcluSIve",
+                "XConcept",
+                "Xcvi",
+                "Xen",
+                "Xen-Tan",
+                "Xerjoff",
+            ]
+
+        -
+            var brands_list_Y = [
+                "Yes4All",
+                "Yes London",
+                "Yes-Zee",
+                "Yeti",
+                "Ymc You Must Create",
+                "YMI",
+                "Yogalicious",
+                "Yohji Yamamoto",
+                "Yoki",
+                "Yoko London",
+                "Yonique",
+                "Yoon",
+                "Yosi Samra",
+            ]
+
+        -
+            var brands_list_Z = [
+                "Zero Friction",
+                "Zeroll",
+                "ZeroXposur",
+                "Zeus + Dione",
+                "Zeynep Arcay",
+                "Ziggy Chen",
+                "Zigi Soho",
+                "Zilcremo",
+                "Zimmermann",
+                "Zinda",
+            ]
+
+        -
+            var brands_list_NUM = [
+                "1-ONE",
+                "2(x)ist",
+                "2W2M",
+                "2xHome",
+                "2XU",
+                "3.1 Phillip Lim",
+                "34 Heritage",
+                "3D Rose",
+                "3Juin",
+                "3x1",
+            ]
+
+        -
+            var brands_list_CYR = [
+                "АКВИОН",
+                "Активное МУМИЕ",
+                "Алтайский букет",
+                "АлфаВит",
+                "Алфит Плюс",
+                "Анавидин",
+                "Ангелика",
+                "АНС",
+                "АОС",
+                "Ароматы мечты",
+            ]
+
         .brands__wrapper
             .container
-                .brands-block
+                .brands-block(id="A")
                     span.brands-block__letter A
                     ul.brands-block__list
-                        each brand in brands_list
+                        each brand in brands_list_A
                             +brandsAbcItem(brand)
-                .brands-block
+                .brands-block(id="B")
                     span.brands-block__letter B
                     ul.brands-block__list
-                        each brand in brands_list
+                        each brand in brands_list_B
                             +brandsAbcItem(brand)
-                .brands-block
+                .brands-block(id="C")
                     span.brands-block__letter C
                     ul.brands-block__list
-                        each brand in brands_list
+                        each brand in brands_list_C
+                            +brandsAbcItem(brand)
+                .brands-block(id="D")
+                    span.brands-block__letter D
+                    ul.brands-block__list
+                        each brand in brands_list_D
+                            +brandsAbcItem(brand)
+                .brands-block(id="E")
+                    span.brands-block__letter E
+                    ul.brands-block__list
+                        each brand in brands_list_E
+                            +brandsAbcItem(brand)
+                .brands-block(id="F")
+                    span.brands-block__letter F
+                    ul.brands-block__list
+                        each brand in brands_list_F
+                            +brandsAbcItem(brand)
+                .brands-block(id="G")
+                    span.brands-block__letter G
+                    ul.brands-block__list
+                        each brand in brands_list_G
+                            +brandsAbcItem(brand)
+                .brands-block(id="H")
+                    span.brands-block__letter H
+                    ul.brands-block__list
+                        each brand in brands_list_H
+                            +brandsAbcItem(brand)
+                .brands-block(id="I")
+                    span.brands-block__letter I
+                    ul.brands-block__list
+                        each brand in brands_list_I
+                            +brandsAbcItem(brand)
+                .brands-block(id="J")
+                    span.brands-block__letter J
+                    ul.brands-block__list
+                        each brand in brands_list_J
+                            +brandsAbcItem(brand)
+                .brands-block(id="K")
+                    span.brands-block__letter K
+                    ul.brands-block__list
+                        each brand in brands_list_K
+                            +brandsAbcItem(brand)
+                .brands-block(id="L")
+                    span.brands-block__letter L
+                    ul.brands-block__list
+                        each brand in brands_list_L
+                            +brandsAbcItem(brand)
+                .brands-block(id="M")
+                    span.brands-block__letter M
+                    ul.brands-block__list
+                        each brand in brands_list_M
+                            +brandsAbcItem(brand)
+                .brands-block(id="N")
+                    span.brands-block__letter N
+                    ul.brands-block__list
+                        each brand in brands_list_N
+                            +brandsAbcItem(brand)
+                .brands-block(id="O")
+                    span.brands-block__letter O
+                    ul.brands-block__list
+                        each brand in brands_list_O
+                            +brandsAbcItem(brand)
+                .brands-block(id="P")
+                    span.brands-block__letter P
+                    ul.brands-block__list
+                        each brand in brands_list_P
+                            +brandsAbcItem(brand)
+                .brands-block(id="Q")
+                    span.brands-block__letter Q
+                    ul.brands-block__list
+                        each brand in brands_list_Q
+                            +brandsAbcItem(brand)
+                .brands-block(id="R")
+                    span.brands-block__letter R
+                    ul.brands-block__list
+                        each brand in brands_list_R
+                            +brandsAbcItem(brand)
+                .brands-block(id="S")
+                    span.brands-block__letter S
+                    ul.brands-block__list
+                        each brand in brands_list_S
+                            +brandsAbcItem(brand)
+                .brands-block(id="T")
+                    span.brands-block__letter T
+                    ul.brands-block__list
+                        each brand in brands_list_T
+                            +brandsAbcItem(brand)
+                .brands-block(id="U")
+                    span.brands-block__letter U
+                    ul.brands-block__list
+                        each brand in brands_list_U
+                            +brandsAbcItem(brand)
+                .brands-block(id="V")
+                    span.brands-block__letter V
+                    ul.brands-block__list
+                        each brand in brands_list_V
+                            +brandsAbcItem(brand)
+                .brands-block(id="W")
+                    span.brands-block__letter W
+                    ul.brands-block__list
+                        each brand in brands_list_W
+                            +brandsAbcItem(brand)
+                .brands-block(id="X")
+                    span.brands-block__letter X
+                    ul.brands-block__list
+                        each brand in brands_list_X
+                            +brandsAbcItem(brand)
+                .brands-block(id="Y")
+                    span.brands-block__letter Y
+                    ul.brands-block__list
+                        each brand in brands_list_Y
+                            +brandsAbcItem(brand)
+                .brands-block(id="Z")
+                    span.brands-block__letter Z
+                    ul.brands-block__list
+                        each brand in brands_list_Z
+                            +brandsAbcItem(brand)
+                .brands-block(id="NUM")
+                    span.brands-block__letter 0...9
+                    ul.brands-block__list
+                        each brand in brands_list_NUM
+                            +brandsAbcItem(brand)
+                .brands-block(id="CYR")
+                    span.brands-block__letter А
+                    ul.brands-block__list
+                        each brand in brands_list_CYR
                             +brandsAbcItem(brand)
