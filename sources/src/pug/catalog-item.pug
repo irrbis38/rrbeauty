@@ -65,10 +65,14 @@ block page
                         span Вес / 
                         span.details__current 12 гр
                     .details__values
-                        input.details__set-value.selected(type="button" value="12" aria-label="Выбрать вес")
-                        input.details__set-value(type="button" value="20" aria-label="Выбрать вес")
-                        input.details__set-value(type="button" value="25" aria-label="Выбрать вес")
-                        input.details__set-value(type="button" value="32" aria-label="Выбрать вес")
+                        label.details__set-value.selected 12
+                            input(type="radio" value="12" aria-label="Выбрать вес")
+                        label.details__set-value 20
+                            input(type="radio" value="20" aria-label="Выбрать вес")
+                        label.details__set-value 25
+                            input(type="radio" value="25" aria-label="Выбрать вес")
+                        label.details__set-value 32
+                            input(type="radio" value="32" aria-label="Выбрать вес")
 
                 -
                     const colors = [
@@ -108,7 +112,7 @@ block page
                     .details__values
                         each color in colors
                             label.details__set-value(aria-label="Выбрать цвет" data-color-name= color.colorName style="background-color:#" + color.value + ";" class= color.isSelected ? 'selected' : '')
-                                input.visualhidden(type="text" value= color.colorName)
+                                input.visualhidden(type="radio" value= color.colorName)
                         button.details__toggle-btn.non-overflow(type="button" aria-label="Показать / скрыть все цвета")
                             span
                             span
