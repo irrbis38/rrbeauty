@@ -4249,13 +4249,13 @@ body.lock .header {
 }
 .catalog__wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(332px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(332px,1fr));
   gap: 41px 24px;
   margin-bottom: 90px
 }
 @media (max-width:1300px) {
   .catalog__wrapper {
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr))
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr))
   }
 }
 @media (max-width:767px) {
@@ -5197,19 +5197,29 @@ input[type=number]:hover {
   position: static;
   left: unset;
   bottom: unset;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-transform: uppercase;
   padding: 9px 19px;
   font-size: 21px
 }
 .details__brand {
-  height: 44px;
-  padding: 15px 19px 15px 21px;
-  background-color: #f1f1f1
+  width: 100%;
+  max-width: 105px
 }
 .details__brand img {
   display: block;
-  height: 100%;
-  width: auto
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+  object-fit: contain
 }
 .details__title {
   font-size: 40px;
@@ -8488,7 +8498,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   flex: 1 1 100%;
   padding-top: 12px;
   display: grid;
-  grid-template-columns: repeat(auto-fit,220px);
+  grid-template-columns: repeat(auto-fill,220px);
   gap: 31px 24px
 }
 @media (max-width:767px) {
@@ -9835,7 +9845,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
 }
 .news__wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
   gap: 0 24px;
   margin-bottom: 36px;
   padding-top: 20px
@@ -11147,7 +11157,7 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
 }
 .promotions__wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
   gap: 0 24px;
   margin-bottom: 36px;
   padding-top: 23px

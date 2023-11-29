@@ -197,6 +197,8 @@
   top: 0;
   padding: 0 24px;
   display: flex;
+  // align-items: flex-start;
+  // align-items: center;
   gap: 0 16px;
 
   @include sm {
@@ -208,20 +210,28 @@
   position: static;
   left: unset;
   bottom: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   padding: 9px 19px;
   font-size: 21px;
 }
 
 .details__brand {
-  height: 44px;
-  padding: 15px 19px 15px 21px;
-  background-color: #f1f1f1;
+  width: 100%;
+  max-width: 105px;
+  // height: 44px;
+  // padding: 15px 19px 15px 21px;
+  // background-color: #f1f1f1;
 
   img {
     display: block;
-    height: 100%;
-    width: auto;
+    width: 100%;
+    // max-width: 170px;
+    height: auto;
+    object-fit: contain;
+    // width: auto;
   }
 }
 

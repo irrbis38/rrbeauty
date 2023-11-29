@@ -503,25 +503,131 @@ var marks = {};
 var mark_link = "images/map-mark.svg";
 var mark_current_link = "images/map-current-mark.svg";
 
+const stores = [
+  {
+    id: "60",
+    title: "Магазин на Измайловском шоссе",
+    coords: ["55.778421", "37.727841"],
+    address: "г. Москва, Измайловское шоссе 28",
+    time: "",
+    phone: "+7 963 775 53 70",
+    email: "info@rrbeauty.kz",
+    city: "Москва",
+  },
+  {
+    id: "31",
+    title: "Магазин на проспекте Абая",
+    coords: ["43.239961", "76.926565"],
+    address: "г. Алматы, Олимпик, ​проспект Абая, 44/1​1 этаж; 16 офис",
+    time: "",
+    phone: "+77017312525",
+    email: "info@rrbeauty.kz",
+    city: "Алматы",
+  },
+  {
+    id: "61",
+    title: "Магазин на проспекте Кунаева",
+    coords: ["42.345036", "69.609185"],
+    address: "г. Шымкент, проспект Кунаева 91, ЖК БИИК",
+    time: "",
+    phone: "+7 701 599 9981",
+    email: "info@rrbeauty.kz",
+    city: "Шымкент",
+  },
+  {
+    id: "63",
+    title: "Магазин на ул. Александра Бараева",
+    coords: ["51.158563", "71.439215"],
+    address:
+      "г. Астана, ул. Александра Бараева 16, БЦ Лига, Блок А, этаж 2, офис 208а",
+    time: "",
+    phone: "+7 701 731 25 25",
+    email: "info@rrbeauty.kz",
+    city: "Астана",
+  },
+  {
+    id: "32",
+    title: "Магазин на ул. Кабдолова",
+    coords: ["43.237767", "76.858571"],
+    address: "г. Алматы, Кабдолова 2",
+    time: "",
+    phone: "+7 775 352 52 39",
+    email: "info@rrbeauty.kz",
+    city: "Алматы",
+  },
+  {
+    id: "62",
+    title: "Магазин ул. Гурьевская",
+    coords: ["47.103033", "51.926513"],
+    address: "г. Атырау, ТД Ажар, ул. Гурьевская 4А",
+    time: "",
+    phone: "+7 771 408 8650",
+    email: "info@rrbeauty.kz",
+    city: "Атырау",
+  },
+];
+
+function getMapCenter() {
+  // определяем текущее значение select
+  let current_city = document.querySelector(".map__stores option").textContent;
+  // выбираем в качестве центра карты координаты первого по списку магазина, город которого соответствует текущему
+  let center = stores.find((store) => store.city === current_city).coords;
+
+  if (center.length > 0) {
+    return center.map((value) => Number(value));
+  }
+}
+
+function getAllCoords() {
+  if (stores.length > 0) {
+    let stores_coords = stores.map((store) =>
+      store.coords.map((value) => Number(value))
+    );
+
+    return stores_coords;
+  }
+}
+
+function getCurrentStoresCoords() {
+  // определяем текущее значение select
+  let current_city = document.querySelector(".map__stores option").textContent;
+  // выбираем в качестве центра карты координаты первого по списку магазина, город которого соответствует текущему
+  let current_stores = stores.filter((store) => store.city === current_city);
+
+  if (current_stores.length > 0) {
+    let stores_coords = current_stores.map((store) =>
+      store.coords.map((value) => Number(value))
+    );
+
+    return stores_coords;
+  }
+}
+
 // map initialization for pages: home, stores, order-placement
 function doInitMap() {
-  const stores_coordinats = [
-    [51.158562572612595, 71.43921449999996],
-    [51.159952, 71.441514],
-    [51.157783, 71.442053],
-  ];
+  // const stores_coordinats = [
+  //   [43.237767, 76.858571],
+  //   [43.239961, 76.926565],
+  //   [51.158562572612595, 71.43921449999996],
+  // ];
 
   function init() {
-    let center = stores_coordinats[0];
+    // получаем координаты всех магазинов
+    let all_stores_coords = getAllCoords();
+
+    // получаем координаты магазинов выбранного города
+    let stores_coordinats = getCurrentStoresCoords();
+
     if (ymaps) {
       let map = new ymaps.Map("map-section-wrapper", {
-        center: center,
-        zoom: 17,
+        bounds: ymaps.util.bounds.fromPoints(stores_coordinats),
       });
+
+      map.setZoom(map.getZoom() - 0.4);
 
       const map_description = document.querySelector(".map__description");
 
-      marks = stores_coordinats.map(
+      marks = all_stores_coords.map(
         (coord) =>
           new ymaps.Placemark(
             coord,
@@ -539,8 +645,6 @@ function doInitMap() {
 
       marks.forEach((item) =>
         item.events.add("click", (e) => {
-          // map_description.classList.remove("show");
-
           changeMapMarks(e, marks);
 
           var isSelected =
@@ -570,6 +674,22 @@ function doInitMap() {
       );
 
       configureMap(map);
+
+      // добавляем слушатель на селект выбора города на карте
+      const select = document.querySelector(".map__stores");
+
+      select.addEventListener("change", () => {
+        // при выборе другого города получаем координаты магазинов в этом городе
+        let newCoords = getCurrentStoresCoords();
+        // перемещаем карту на выбранный город таким образом, чтобы все точки были видны
+        map.setBounds(ymaps.util.bounds.fromPoints(newCoords));
+
+        // корректируем зум карты
+        // если точка одна, то устанавливаем зум в значение 17
+        // в противном случае чуть уменьшаем зум, чтобы точки не прилипали к краям области просмотра карты
+        let zoom = map.getZoom();
+        zoom > 17 ? map.setZoom(17) : map.setZoom(map.getZoom() - 0.4);
+      });
     }
   }
 
@@ -595,7 +715,7 @@ function doInitContatcsMap() {
     if (ymaps) {
       var map = new ymaps.Map("map-section-wrapper", {
         center: center,
-        zoom: 17,
+        zoom: 13,
       });
 
       // Создание макета содержимого балуна.
@@ -749,11 +869,9 @@ function doInitMapStoresSelect() {
 
 // function doAddMapStoresListener() {
 //   const select = document.querySelector(".map__stores");
-//   const map_description = document.querySelector(".map__description");
+//   // const map_description = document.querySelector(".map__description");
 
-//   select.addEventListener("choice", () =>
-//     map_description.classList.remove("hidden")
-//   );
+//   select.addEventListener("choice", () => console.log("stores"));
 // }
 
 // choose current store
