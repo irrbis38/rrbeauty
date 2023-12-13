@@ -268,7 +268,7 @@
   }
 
   &:last-child {
-    margin-bottom: 24px;
+    margin-bottom: 17px;
   }
 }
 
@@ -305,6 +305,10 @@
     border-bottom: 2px solid #000;
     opacity: 0;
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .filters__checkbox:checked + span {
@@ -316,6 +320,10 @@
   font-size: 17px;
   font-weight: 600;
   line-height: 22px;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .filters__search {
@@ -349,6 +357,12 @@
     background: url("./../images/icon-search-light.svg") center / contain
       no-repeat;
   }
+}
+
+.filters__brands {
+  height: 200px;
+  padding: 5px 0;
+  overflow-y: auto;
 }
 
 .filters__submit,

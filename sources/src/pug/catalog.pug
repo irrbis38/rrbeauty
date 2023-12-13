@@ -96,8 +96,8 @@ block page
                         .filters__wrapper
                             .filters__search
                                 input(type="search" placeholder='Поиск бренда' autocomplete="off")
-                            .filters__listName A
-                            ul.filters__list
+
+                            .filters__brands
 
                                 -
                                     const filtersData2 = [
@@ -107,22 +107,29 @@ block page
                                         'Cheyenne',
                                     ]
 
-                                each filtersItem in filtersData2
-                                    +filtersItem(filtersItem)
+                                .filters__listName A
+                                ul.filters__list
 
-                            .filters__listName B
-                            ul.filters__list
+                                    each filtersItem in filtersData2
+                                        +filtersItem(filtersItem)
 
-                                -
-                                    const filtersData3 = [
-                                        'Alina Shakhova',
-                                        'RR Beauty',
-                                        'A. Sivak',
-                                        'Cheyenne',
-                                    ]
+                                .filters__listName B
+                                ul.filters__list
 
-                                each filtersItem in filtersData3
-                                    +filtersItem(filtersItem)
+                                    each filtersItem in filtersData2
+                                        +filtersItem(filtersItem)
+
+                                .filters__listName C
+                                ul.filters__list
+
+                                    each filtersItem in filtersData2
+                                        +filtersItem(filtersItem)
+
+                                .filters__listName D
+                                ul.filters__list
+
+                                    each filtersItem in filtersData2
+                                        +filtersItem(filtersItem)
 
 
 

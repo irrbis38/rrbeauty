@@ -4740,7 +4740,7 @@ body.lock .header {
   margin-bottom: 17px
 }
 .filters__item:last-child {
-  margin-bottom: 24px
+  margin-bottom: 17px
 }
 .filters__label {
   position: relative;
@@ -4776,6 +4776,9 @@ body.lock .header {
   border-bottom: 2px solid #000;
   opacity: 0
 }
+.filters__label.hidden {
+  display: none
+}
 .filters__checkbox:checked + span {
   opacity: 1
 }
@@ -4784,6 +4787,9 @@ body.lock .header {
   font-size: 17px;
   font-weight: 600;
   line-height: 22px
+}
+.filters__listName.hidden {
+  display: none
 }
 .filters__search {
   position: relative;
@@ -4831,6 +4837,11 @@ body.lock .header {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   background: url(../images/icon-search-light.svg) center/contain no-repeat
+}
+.filters__brands {
+  height: 200px;
+  padding: 5px 0;
+  overflow-y: auto
 }
 .filters__reset,
 .filters__submit {

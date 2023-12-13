@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     doSortMenuLogic();
     doFiltersMenuLogic();
     handleAllInputRange();
+    catalogSearchBrannd();
   }
 
   // catalog brand page
@@ -3626,4 +3627,41 @@ function showReviewsPublishMessage() {
       body.classList.remove("noscroll");
     })
   );
+}
+
+function catalogSearchBrannd() {
+  var input = document.querySelector(".filters__search input");
+  var labels = Array.from(
+    document.querySelectorAll(".filters__brands .filters__label")
+  );
+  var letters = document.querySelectorAll(".filters__listName");
+
+  var debouncedCatalogSearch = debounce(
+    () => catalogSearch(input, labels, letters),
+    400
+  );
+
+  input.addEventListener("input", () => debouncedCatalogSearch());
+}
+
+function catalogSearch(input, labels, letters) {
+  var value = input.value.toLowerCase();
+
+  if (value.length > 0) {
+    letters.forEach((el) => el.classList.add("hidden"));
+  } else {
+    letters.forEach((el) => el.classList.remove("hidden"));
+  }
+
+  var filtered_labels = labels.filter((l) =>
+    l.lastElementChild.textContent.toLowerCase().includes(value)
+  );
+
+  labels.forEach((l) => {
+    if (filtered_labels.includes(l)) {
+      l.classList.remove("hidden");
+    } else {
+      l.classList.add("hidden");
+    }
+  });
 }
