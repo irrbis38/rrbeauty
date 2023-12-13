@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     addListernerToRemoveBtn();
     doInitFileRead();
     doShowFullscreen();
+    handleCloseFormSubmitedMessage();
   }
 
   // cart page
@@ -567,16 +568,16 @@ const stores = [
   },
 ];
 
-function getMapCenter() {
-  // определяем текущее значение select
-  let current_city = document.querySelector(".map__stores option").textContent;
-  // выбираем в качестве центра карты координаты первого по списку магазина, город которого соответствует текущему
-  let center = stores.find((store) => store.city === current_city).coords;
+// function getMapCenter() {
+//   // определяем текущее значение select
+//   let current_city = document.querySelector(".map__stores option").textContent;
+//   // выбираем в качестве центра карты координаты первого по списку магазина, город которого соответствует текущему
+//   let center = stores.find((store) => store.city === current_city).coords;
 
-  if (center.length > 0) {
-    return center.map((value) => Number(value));
-  }
-}
+//   if (center.length > 0) {
+//     return center.map((value) => Number(value));
+//   }
+// }
 
 function getAllCoords() {
   if (stores.length > 0) {
@@ -605,12 +606,6 @@ function getCurrentStoresCoords() {
 
 // map initialization for pages: home, stores, order-placement
 function doInitMap() {
-  // const stores_coordinats = [
-  //   [43.237767, 76.858571],
-  //   [43.239961, 76.926565],
-  //   [51.158562572612595, 71.43921449999996],
-  // ];
-
   function init() {
     // получаем координаты всех магазинов
     let all_stores_coords = getAllCoords();
@@ -2464,6 +2459,8 @@ function checkNewCommentForm() {
 
   // add listener to submit form button
   form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
     if (user_name.validity.valueMissing) {
       user_name.classList.add("error");
     }
@@ -2477,9 +2474,12 @@ function checkNewCommentForm() {
       comment.classList.add("error");
     }
 
-    checkContainingErrorClassName(elements)
-      ? e.preventDefault()
-      : form.submit();
+    if (!checkContainingErrorClassName(elements)) {
+      var newCommentBlock = document.querySelector(".add");
+      form.reset();
+      newCommentBlock.classList.remove("active");
+      showReviewsPublishMessage();
+    }
   });
 
   // adds listeners to all elements that can have an error className
@@ -2606,7 +2606,8 @@ function doHideOneclick() {
   close_oneclick_buttons.forEach((btn) =>
     btn.addEventListener("click", () => {
       requestAnimationFrame(() => {
-        oneclick.classList.remove("active", "submited");
+        // oneclick.classList.remove("active", "submited");
+        oneclick.classList.remove("active");
         body.classList.remove("noscroll");
       });
     })
@@ -2618,6 +2619,7 @@ function doHideOneclick() {
 // check new comment form on catalog-item page
 function checkOneclickForm() {
   var oneclick_block = document.querySelector(".oneclick");
+  // var form_submited_block = document.querySelector(".form-submited");
   var form = document.querySelector(".oneclick__form");
   var user_name = form.elements.customer_name;
   var phone = form.elements.customer_phone;
@@ -2636,7 +2638,10 @@ function checkOneclickForm() {
     !checkContainingErrorClassName(elements) && clearFormInputs();
 
     function clearFormInputs() {
-      oneclick_block.classList.add("submited");
+      // oneclick_block.classList.add("submited");
+      oneclick_block.classList.remove("active");
+      // form_submited_block.classList.add("active");
+      showFormSubmitedMessage();
       const elements = Array.from(form.elements);
       elements.forEach((el) => {
         el.classList.contains("oneclick__input") && (el.value = "");
@@ -3087,7 +3092,7 @@ function doRemoveErrorClassNameInAuth(inputs) {
 function doSubmitAuth(auth, body, auth_inputs) {
   handleHideAuth(auth, body, auth_inputs);
 
-  console.log("form submited");
+  // console.log("form submited");
 
   // HERE DO SOMETHING TO AUTH OR REGISTRATION FORM SUBMIT
 }
@@ -3571,6 +3576,54 @@ function doShowFullscreen() {
         body.classList.remove("noscroll");
         swiper_wrapper.innerHTML = "";
       }
+    })
+  );
+}
+
+// form-submited block
+
+function showFormSubmitedMessage() {
+  var form_submited_block = document.querySelector(".form-submited");
+  var body = document.body;
+
+  form_submited_block.classList.add("active");
+  body.classList.add("noscroll");
+}
+
+function hideFormSubmitedMessage() {
+  var form_submited_block = document.querySelector(".form-submited");
+  var body = document.body;
+
+  form_submited_block.classList.remove("active");
+  body.classList.remove("noscroll");
+}
+
+function handleCloseFormSubmitedMessage() {
+  var form_submited_close = document.querySelectorAll(".form-submited-close");
+
+  form_submited_close.forEach((btn) =>
+    btn.addEventListener("click", () =>
+      requestAnimationFrame(hideFormSubmitedMessage)
+    )
+  );
+}
+
+// review publish successfull
+
+function showReviewsPublishMessage() {
+  var body = document.body;
+  var review_submited_block = document.querySelector(".review-submited");
+  var review_submited_close_buttons = document.querySelectorAll(
+    ".review-submited-close"
+  );
+
+  review_submited_block.classList.add("active");
+  body.classList.add("noscroll");
+
+  review_submited_close_buttons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      review_submited_block.classList.remove("active");
+      body.classList.remove("noscroll");
     })
   );
 }

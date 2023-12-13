@@ -39,12 +39,12 @@
     padding-top: 56.46%;
   }
 
-  @include lg {
-    height: 600px;
+  @include xs {
+    // height: 600px;
 
-    &::after {
-      display: none;
-    }
+    // &::after {
+    //   display: none;
+    // }
   }
 }
 
@@ -62,9 +62,9 @@
     object-fit: cover;
   }
 
-  @include lg {
-    position: static;
-  }
+  // @include lg {
+  //   position: static;
+  // }
 }
 
 .intro__slider {
@@ -80,6 +80,7 @@
 }
 
 .intro__slide {
+  height: 100%;
   position: relative;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -119,6 +120,9 @@
     }
     picture:nth-child(2) {
       display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
   // object-fit: cover;

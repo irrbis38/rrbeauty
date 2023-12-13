@@ -1321,6 +1321,7 @@
 }
 
 .add__images {
+  min-height: 98px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -1493,5 +1494,69 @@
       padding-top: 31px;
       padding-bottom: 160px;
     }
+  }
+}
+
+// review submited message
+
+.review-submited {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.review-submited__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(25, 25, 25, 0.2);
+}
+
+.review-submited__wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 90%;
+  max-width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.review-submited__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.review-submited__msg {
+  font-size: 16px;
+  text-align: center;
+  span {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 20px;
   }
 }
