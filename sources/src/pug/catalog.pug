@@ -169,6 +169,49 @@ block page
                     button.aditionalFilters__button Охлаждающие крема и гели
                     button.aditionalFilters__button Средства ухода
 
+                
+                -
+                    const fastFiltersList = [
+                        {
+                            img: 'fast-filters/item-1',
+                            name: 'Беспроводные татуировочные машины'
+                        },
+                        {
+                            img: 'fast-filters/item-2',
+                            name: 'DEFENDERR'
+                        },
+                        {
+                            img: 'fast-filters/item-3',
+                            name: 'Рукоятки'
+                        },
+                        {
+                            img: 'fast-filters/item-4',
+                            name: 'Аппарат для перманентного макияжа Bella Dragon'
+                        },
+                        {
+                            img: 'fast-filters/item-3',
+                            name: 'Рукоятки'
+                        },
+                        {
+                            img: 'fast-filters/item-1',
+                            name: 'Беспроводные татуировочные машины'
+                        },
+                    ]
+
+
+                ul.catalog__fast_filters.fast_filters
+
+                    each item in fastFiltersList
+
+                        li.fast_filters__item 
+
+                            button.fast_filters__button 
+                                .fast_filters__img
+                                    +pictureSizeWithoutLazy(item.img,'png','x2',94,75)
+
+                                span.fast_filters__name= item.name
+
+
                 .catalog__wrapper
 
                     -
