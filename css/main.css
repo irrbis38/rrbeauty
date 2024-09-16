@@ -12836,4 +12836,98 @@ body.favorites-non-empty .floating-cart__show-favorites .panel__amount {
   color: #000;
   background-color: #fff
 }
+.fast_filters {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 21px;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px
+}
+@media (max-width:767px) {
+  .fast_filters {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    gap: 16px 0;
+    margin-bottom: 36px
+  }
+}
+.fast_filters__item {
+  max-width: 380px
+}
+@media (max-width:767px) {
+  .fast_filters__item {
+    width: 100%;
+    max-width: 100%
+  }
+}
+.fast_filters__button {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0 20px;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  padding: 11px 20px 12px 12px;
+  border: 1px solid #d9d9d9;
+  transition: border-color .2s ease-out
+}
+@media (max-width:767px) {
+  .fast_filters__button {
+    gap: 0 14px;
+    padding: 10px 10px 10px 11px
+  }
+}
+@media (hover:hover) {
+  .fast_filters__button:hover {
+    border-color: #000
+  }
+}
+.fast_filters__img {
+  -webkit-flex: 0 0 94px;
+  -ms-flex: 0 0 94px;
+  flex: 0 0 94px;
+  aspect-ratio: 94/75
+}
+.fast_filters__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover
+}
+@media (max-width:991px) {
+  .fast_filters__img {
+    -webkit-flex: 0 0 65px;
+    -ms-flex: 0 0 65px;
+    flex: 0 0 65px;
+    aspect-ratio: 65/61
+  }
+}
+.fast_filters__name {
+  font-weight: 600;
+  font-size: 17px;
+  color: #000;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden
+}
+@media (max-width:767px) {
+  .fast_filters__name {
+    font-size: 15px
+  }
+}
 /*# sourceMappingURL=maps/main.css.map */
